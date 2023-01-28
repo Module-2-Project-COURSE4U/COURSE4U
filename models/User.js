@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
  
 const userSchema = new Schema(
   // Add whichever fields you need for your app
@@ -18,7 +19,7 @@ const userSchema = new Schema(
     },
     hashedPassword: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Password is required.'],
     },
     googleID: {
       type: String,
@@ -26,10 +27,10 @@ const userSchema = new Schema(
     facebookID: {
       type: String,
     },
-    timestamps: true
+    timestamps: {}
   }
 );
  
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

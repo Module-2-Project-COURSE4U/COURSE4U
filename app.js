@@ -8,35 +8,6 @@ const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const User = require('./models/User');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    // Aquí se colocaría la lógica para buscar o crear un usuario en su base de datos
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
-
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    // Aquí se colocaría la lógica para buscar o crear un usuario en su base de datos
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
 
 // Routers require
 const indexRouter = require('./routes/index');
@@ -66,10 +37,10 @@ app.use(
       maxAge: 2592000000 // 30 days in milliseconds
     },
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URL
-    })
+      mongoUrl:'mongodb+srv://admin:admin@cluster0.p7p1ppk.mongodb.net/Course4U_DB',
+    }),
   }) 
-)
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

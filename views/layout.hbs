@@ -8,6 +8,20 @@
   <title>Project module 2</title>
 </head>
 <body>
+
+   <nav>
+      <ul>
+        {{#if user}}
+          <li id="to-left"><a href="/">HOME </a></li>
+          <li id="to-right"><a href="/auth/logout">LOG OUT</a> </li>
+        {{else}}
+          <li id="to-left"><a href="/">HOME </a> </li>
+          <li id="to-right"><a href="/auth/signup">SIGNUP</a>
+            <span> | </span>
+            <a href="/auth/login">LOGIN</a></li>
+        {{/if}}
+      </ul>
+    </nav>
     {{{ body }}}
 </body>
 </html>
