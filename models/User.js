@@ -19,9 +19,13 @@ const userSchema = new Schema(
     hashedPassword: {
       type: String,
       required: [true, 'Password is required.']
-    }
+    },
+    googleID: {
+      type: String,
   },
-  {
+    facebookID: {
+      type: String,
+    },
     timestamps: true
   }
 );
