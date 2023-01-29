@@ -2,27 +2,23 @@
 
 <div id="form">
   <form action="/auth/signup" method="POST">
- 
-    <label>Username</label>
-      <input type="text" name="username" placeholder="JohnDoe88" />
- 
-    <label>Email</label>
-      <input type="email" name="email" placeholder="john@doe.com" />
-    
-    <label>Password</label>
-      <input type="password" name="password" placeholder="********" />
 
-      {{#if error}}
+    <label>Username</label>
+    <input type="text" name="username" placeholder="JohnDoe88" />
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="john@doe.com" />
+
+    <label>Password</label>
+    <input type="password" name="password" placeholder="********" />
+
+    {{#if error}}
       <p style="color: red;">{{error}}</p>
-      {{/if}}
- 
-     <button type="submit">Sign up</button>
-  
-    <div id="social-login">
-      <a href="/auth/google" class="google-btn">Sign in with Google</a>
-      <a href="/auth/facebook" class="facebook-btn">Sign in with Facebook</a>
-    </div>
- 
+    {{/if}}
+
+    <button type="submit">Sign up</button>
+    <a href="/auth/login">Already have an account? Log in!</a>
+    
+
   </form>
 </div>
-

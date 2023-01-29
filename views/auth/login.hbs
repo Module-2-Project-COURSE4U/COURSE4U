@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2>Welcome to course4U</h2>
 
 <div>
   <form action="/auth/login" method="POST">
@@ -8,12 +8,12 @@
     
     <label>Password</label>
     <input type="password" name="password" placeholder="********" />
-     
+      <button type="submit">Login</button>
+    <a href="/auth/signup">Not registered yet? Sign up!</a>
+
     {{#if error}}
     <p style="color:rgb(218, 90, 90)">{{ error }}</p>
     {{/if}}
     
-    <button type="submit">Login</button>
-
   </form>
 </div>

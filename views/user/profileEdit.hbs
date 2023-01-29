@@ -1,0 +1,16 @@
+><div class="profilePage">
+  <h1>{{user.username}} {{userInDB.username}}'s profile</h1>
+  <form method="POST" action="/user/profile/edit">
+    <label>New username:</label>
+    <input
+      type="text"
+      name="username"
+      required="true"
+      value="{{user.username}}"
+    />
+    <button type="submit">Save changes</button>
+  </form>
+  {{#if message}}
+    <div class="message">{{message}}</div>
+  {{/if}}
+</div>

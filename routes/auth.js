@@ -57,34 +57,36 @@ router.post('/signup', async (req, res, next) => {
 // @desc    Sends user auth data to database to authenticate user
 // @route   POST /auth/login
 // @access  Public
-router.post('/login', async  (req, res, next) => {
+
+/* POST log in view. */
+router.post("/login", async function (req, res, next) {
   const { email, password } = req.body;
-  // ⚠️ Add validations!
-  if (!email | !password) {
-    res.render('auth/login', { error: 'username or password do not match' });
+  if (!email || !password) {
+    res.render("auth/login", {
+      error: "Please introduce email and password to log in",
+    });
     return;
   }
   try {
-    const findUserInDB = await User.findOne({ email: email });
-    if (!findUserInDB) {
-      res.render('auth/login', { error: "User not found" });
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      res.render("auth/login", { error: `There are no users by ${email}` });
       return;
     } else {
-      const match = await bcrypt.compare(password, findUserInDB.hashedPassword);
-      if (match) {
-        // Remember to assign user to session cookie:
-        req.session.currentUser = findUserInDB;
-        const user = req.session.currentUser;
-        res.redirect('/');
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+      if (passwordMatch) {
+        req.session.currentUser = user;
+        res.redirect("/");
       } else {
-        res.render('auth/login', { error: "Unable to authenticate user" });
+        res.render("auth/login", { errorMessage: "incorrect password" });
         return;
       }
     }
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
+
 
 // @desc    Destroy user session and log out
 // @route   POST /auth/logout
