@@ -92,12 +92,13 @@ router.post("/login", async function (req, res, next) {
 // @route   POST /auth/logout
 // @access  Private 
 router.post('/logout', (req, res, next) => {
+console.log('vamos a borrar');
   req.session.destroy((err) => {
     if (err) {
-      next(err)
+      return next(err);
     } else {
-      res.clearCookie('COURSE4U')
-      res.redirect('auth/login');
+      res.clearCookie('COURSE4U');
+      res.redirect('/auth/login');
     }
   });
 });

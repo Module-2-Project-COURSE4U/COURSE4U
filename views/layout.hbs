@@ -9,21 +9,16 @@
 </head>
 <body>
 
-<nav>
+  {{#if user}}
+  <nav>
   <ul>
-    {{#if user}}
       <li id="to-right"><a href="/auth/login">LOG OUT</a> </li>
       <span> | </span>
-      <a href="/user/profile">My account</a></li>
+      <a href="/user/profile">My account</a>
       <a href="/">Home</a></li>
-    {{else}}
-      <li id="to-right"><a href="/auth/signup">SIGNUP</a>
-        <span> | </span>
-        <a href="/auth/login">LOGIN</a></li>
-    {{/if}}
   </ul>
 </nav>
-
+{{/if}}
 
     {{{ body }}}
 </body>

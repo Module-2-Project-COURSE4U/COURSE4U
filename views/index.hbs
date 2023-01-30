@@ -1,1 +1,21 @@
+{{#if user}}
+{{else}}
 <h1>Welcome to course4U</h1>
+<div class="container">
+    <div id="imagen">
+  <img src="images/onlinecourse.jpg" alt="online course" /> </div>
+  <div class="btnSigLog">
+    <a href="/auth/signup">Signup</a>
+    <a href="/auth/login">Login</a>
+  </div>
+  <P> or connect with</P>
+  <div class="socialSignup">
+    <a href="/auth/login">
+      <img src="images/googleLogo.png" alt="signup google" />
+    </a>
+    <a  href="/auth/login">
+      <img src="images/facebookLogo.png" alt="signup facebook" />
+    </a>
+  </div>
+</div>
+{{/if}}
