@@ -38,11 +38,11 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      maxAge:300000, // 5m in milliseconds
+      maxAge:2592000000, // 30 days in milliseconds
     },
     store: MongoStore.create({
       mongoUrl:
-        "mongodb+srv://admin:admin@cluster0.p7p1ppk.mongodb.net/Course4U_DB",
+      process.env.MONGO_URL,
     }),
   })
 );

@@ -30,32 +30,36 @@ router.get("/profile/edit",  (req, res, next) => {
 // POST login route ==> to process form data
 router.post("/profile/edit", async (req, res, next) => {
   const { username,  password1, password2  } = req.body;
+  const user = req.session.currentUser;
 
   if (!username || !password1 || !password2 ) {
-    res.render("user/profileEdit", { message: "Please provide all fields." });
+    res.render("user/profileEdit", { user });
+    // { message: "Please provide all fields." });
     return;
   }
 
   const regexPassword =
   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
   if (!regexPassword.test(password1)) {
-    res.render("user/profileEdit", {
-      error:
-      'Password needs to contain at lesat 7 characters, one number, one lowercase an one uppercase letter.',
-    });
+    res.render("user/profileEdit", { user });
+    // res.render("user/profileEdit", {
+    //   error:
+    //   'Password needs to contain at lesat 7 characters, one number, one lowercase an one uppercase letter.',});
     return;
   }
   if (!regexPassword.test(password2)) {
-    res.render("/user/profileEdit", {
-      error: "the password does not match",
-    });
+    res.render("user/profileEdit", { user });
+    // res.render("/user/profileEdit", {
+    //   error: "the password does not match",
+    // });
     return;
   }
 
   if (!password1 === password2) {
-    res.render("user/profileEdit", {
-      error: "Doublecheck the password on both fields",
-    });
+    res.render("user/profileEdit", { user });
+    // res.render("user/profileEdit", {
+    //   error: "Doublecheck the password on both fields",
+    // });
     return;
   }
 
@@ -69,7 +73,7 @@ router.post("/profile/edit", async (req, res, next) => {
       { new: true }
     );
     req.session.currentUser = userInDB;
-    res.redirect("/");
+    res.redirect("/user/profile");
   } catch (error) {
     next(error);
   }
