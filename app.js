@@ -8,6 +8,7 @@ const logger = require("morgan");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/User");
+const multer = require('multer');
 
 // Routers require
 const indexRouter = require("./routes/index");
@@ -37,7 +38,7 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      maxAge: 60000, // 1m in milliseconds
+      maxAge:300000, // 5m in milliseconds
     },
     store: MongoStore.create({
       mongoUrl:
