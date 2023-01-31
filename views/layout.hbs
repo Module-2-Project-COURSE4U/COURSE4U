@@ -12,14 +12,15 @@
 <nav>
   <ul>
     {{#if user}}
-      <li id="to-right"><a href="/auth/login">LOG OUT</a> </li>
+      <li class="to-right"><a href="/auth/login">LOG OUT</a> </li>
       <span> | </span>
       <a href="/user/profile">My account</a></li>
       <a href="/">Home</a></li>
     {{else}}
-      <li id="to-right"><a href="/auth/signup">SIGNUP</a>
+      <li class="to-right"><a href="/auth/signup">SIGNUP</a>
         <span> | </span>
         <a href="/auth/login">LOGIN</a></li>
+        <a href="/courses">Courses</a></li>
     {{/if}}
   </ul>
 </nav>

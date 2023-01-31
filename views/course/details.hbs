@@ -1,0 +1,52 @@
+<div>
+  <h4>{{course.title}}</h4>
+  <img width="150px" src={{course.image}} alt={{course.title}}/>
+  <p>Sinopsis: {{course.description}} Released in {{course.year}}.</p>
+  <a href="/courses/delete/{{course._id}}">Delete</a>
+  <a href="/courses/edit/{{course._id}}">Edit course</a>
+
+  {{!-- <form method="POST" action="/courses/delete/{{_id}}">
+    <button type="submit">Delete</button>
+  </form>   Then the route should be router.post --}}
+
+  {{#if course.seasons}}
+    {{#each course.seasons}}
+      <div class="season">
+        <h3>Season: {{number}}. {{this.title}}</h3>
+        <p>Released on {{this.releaseYear}}. Number of episodes: {{this.numberOfEpisodes}}</p>
+      </div>
+    {{/each}}
+  {{/if}}
+
+  {{#if reviews}}
+    {{#each reviews}}
+      <p><strong>{{this.username}}</strong>: {{this.comment}}. Stars: {{this.stars}}/5</p>
+    {{/each}}
+  {{/if}}
+
+  <form method="POST" action="/seasons/new/{{course._id}}">
+    <label>Season number:</label>
+    <input type="number" placeholder="1" name="number"/>
+    <label>Release year:</label>
+    <input type="number" placeholder="2010" name="releaseYear"/>
+    <label>Number of episodes:</label>
+    <input type="number" placeholder="22" name="numberOfEpisodes"/>
+    <label>Title of the season:</label>
+    <input type="text" placeholder="First season" name="title"/>
+    <button type="submit">Save season</button>
+  </form>
+
+  {{#if user}}
+  <form method="POST" action="/reviews/new/{{course._id}}">
+    <label>How would you rate this course?</label>
+    <input type="number" placeholder="5" name="stars"/>
+    <label>Comment:</label>
+    <input type="text" placeholder="I really liked this course" name="comment"/>
+    {{!-- <label>User's name:</label>
+    <input type="text" placeholder="John Doe" name="username"/> --}}
+    <button type="submit">Add review</button>
+  </form>
+  {{/if}}
+
+
+</div>

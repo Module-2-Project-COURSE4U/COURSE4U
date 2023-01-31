@@ -1,0 +1,7 @@
+<h3>Results by: {{query}}</h3>
+
+{{#if course}}
+  {{>courseCard course}}
+  {{else}}
+  <p>Sorry, no courses found by {{query}}. Try again: <a href="/courses">go back to courses</a></p>
+{{/if}}

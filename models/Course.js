@@ -8,13 +8,19 @@ const courseSchema = new Schema(
         type: String,
         required: true
     },
-    description: {
+    place:{
         type: String,
         required: true
     },
-    subcategories:{
-        type: String,
-        required: true
+    description: {
+        subdescription:{
+            type: String,
+            required: true
+        },
+        subdescription2:{
+            type: String,
+            required: true
+        }
     },
     image:{
         type: String,
