@@ -1,25 +1,51 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='/stylesheets/style.css' rel="stylesheet"/>
-  <title>Project module 2</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/stylesheets/style.css" rel="stylesheet" />
+    <title>Project module 2</title>
+  </head>
+  <body>
 
-  {{#if user}}
-  <nav>
-  <ul>
-      <li id="to-right"><a href="/auth/login">LOG OUT</a> </li>
-      <span> | </span>
-      <a href="/user/profile">My account</a>
-      <a href="/">Home</a></li>
-  </ul>
-</nav>
-{{/if}}
+    {{#if user}}
+      <h1>Welcome to course4U</h1>
+      <div class="container">
+        <div id="imagen">
+          <img src="images/onlinecourse.jpg" alt="online course" />
+        </div>
+            <div class="btnSigLog">
+              <a href="/auth/signup">Signup</a>
+              <a href="/auth/login">Login</a>
+            </div>
+        </div>
 
-    {{{ body }}}
-</body>
+    {{else}}
+
+    <!-- <a href="/auth/login">LOG OUT</a>
+    <a href="/user/profile">My account</a>
+    <a href="/">Home</a> -->
+    {{/if}}
+
+    <nav>
+      <ul>
+        <li><a href="/"><img
+              src="/public/images/icons-home.png"
+              alt="home icon"
+            /></a></li>
+        <li><a href="/"><img
+              src="/public/images/icons-search.png"
+              alt="search icon"
+            /></a></li>
+        <li><a href="/"><img
+              src="/public/images/icons-diploma.png"
+              alt="my courses icon"
+            /></a></li>
+      </ul>
+    </nav>
+
+    {{{body}}}
+
+    <script src="/js/script.js"></script>
+  </body>
 </html>

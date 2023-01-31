@@ -4,14 +4,14 @@ const User = require("../models/User");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-// const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 // @desc    is responsible for displaying the user's profile page.
 // @route   GET /USER/PROFILE
 // @access  Public
 
 /*Get user PAGE*/
-router.get("/profile",  (req, res, next) => {
+router.get("/profile",isLoggedIn,  function (req, res, next){
   const user = req.session.currentUser;
   res.render("user/profile", { user });
 });
@@ -20,7 +20,7 @@ router.get("/profile",  (req, res, next) => {
 // @route   GET /profile/edit 
 // @access  Public
 /*Get edit page */
-router.get("/profile/edit",  (req, res, next) => {
+router.get("/profile/edit", isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser;
   res.render("user/profileEdit", { user });
 });
@@ -28,7 +28,7 @@ router.get("/profile/edit",  (req, res, next) => {
 // @desc is responsible for processing the data from the form submitted from the profile editing page.
 // @route   POST /profile/edit 
 // POST login route ==> to process form data
-router.post("/profile/edit", async (req, res, next) => {
+router.post("/profile/edit",isLoggedIn, async (req, res, next) => {
   const { username,  password1, password2  } = req.body;
 
   if (!username || !password1 || !password2 ) {

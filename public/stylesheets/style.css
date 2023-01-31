@@ -22,6 +22,39 @@ body {
   justify-content: center;
 }
 
+/***** Navbar styles ****/
+nav {
+  width: 100vw;
+  padding: 20px;
+  background-color: #fff;
+  position:fixed;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  flex-basis: 100%;
+}
+
+nav li img {
+  width: 50px;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  nav ul {
+    flex-basis: auto;
+  }
+}
+
+
+
 /* @index page */
 
 h1 {
@@ -254,6 +287,10 @@ button[type="submit"]:hover {
     font-size: 14px;
   }
 }
+
+/* login Page*/
+
+
 /*profile page */
 .profilePage {
   display: flex;
