@@ -1,40 +1,49 @@
-<div class="profilePage">
+<!-- <div class="profilePage">
   <h1>{{user.username}} {{userInDB.username}}'s profile</h1>
   <form method="POST" action="/user/profile/edit">
+
     <label for="profilePicture">Update profile picture</label>
     <input type="file" name="profilePicture" id="profilePicture" />
+
     <label>New username:</label>
     <input type="text" name="username" required value="{{user.username}}" />
+
     <label>Password</label>
     <input type="password" name="password1" placeholder="********" required />
 
     <label>Confirm password</label>
     <input type="password" name="password2" placeholder="********" required />
 
-    <!-- <label>Full name:</label>
-<input type="text" name="fullName"  value="{{user.fullName}}"> -->
-
-    <!-- <label>Payment card:</label>
-<input type="number" name="paymentCard"  placeholder="***********"value="{{user.paymentCard}}">
-
-<label>Expiry date:</label>
-<input type="date" name="expiryDate"  placeholder="27/12/24" value="{{user.expiryDate}}">
-
-<label>CVV:</label>
-<input type="number" name="cvv"  placeholder="***" value="{{user.cvv}}">
-
-<label>Name on card:</label>
-<input type="text" name="nameOnCard"  placeholder="card name" value="{{user.nameOnCard}}"> -->
-
-    <!-- <label>Country:</label>
-    <input
-      type="text"
-      name="country"
-      placeholder="Spain"
-      value="{{userInDB.country}}"
-    /> -->
-
     <button type="submit">Save changes</button>
+
+  </form>
+  {{#if message}}
+    <div class="message">{{message}}</div>
+  {{/if}}
+</div> -->
+
+<div class="profilePage">
+  <div class="signupHeader"><a href="/user/profile"><img
+    src="/public/images/leftIcon.png"
+    alt="icon Left"
+  /></a>
+<h1> Profile </h1>
+  <h1> Hola {{user.username}}</h1>
+
+ <h2> Change your password </h2>
+
+  <form method="POST" action="/user/profile/edit">
+
+    <label>Current password:</label>
+    <input type="password" name="currentPassword" placeholder="********" required />
+
+    <label>New password:</label>
+    <input type="password" name="newPassword1" placeholder="********" required />
+
+    <label>Confirm new password:</label>
+    <input type="password" name="newPassword2" placeholder="********" required />
+
+    <button type="submit">Save new password</button>
 
   </form>
   {{#if message}}

@@ -1,5 +1,8 @@
-<div class="signupHeader"><a href="/"><img src="/public/images/leftIcon.png" alt="icon Left" /></a>
-<h1>Login </h1> 
+<div class="signupHeader"><a href="/"><img
+      src="/public/images/leftIcon.png"
+      alt="icon Left"
+    /></a>
+  <h1>Login </h1>
 </div>
 <div class="container">
   <div id="imagen"><img
@@ -7,18 +10,20 @@
       alt="online course"
     />
   </div>
-<div id="form">
-  <form action="/auth/login" method="POST">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="john@doe.com" />
-    
-    <label>Password</label>
-    <input type="password" name="password" placeholder="********" />
+  <div id="form">
+    <form action="/auth/login" method="POST">
+   
+      <label>Username</label>
+      <input type="text" name="username" placeholder="JohnDoe88" />
 
-     {{#if error}}
-    <p style="color:rgb(218, 90, 90)">{{ error }}</p>
-    {{/if}}
+      <label>Password</label>
+      <input type="password" name="password" placeholder="********" />
+
+      {{#if error}}
+        <p style="color:rgb(218, 90, 90)">{{error}}</p>
+      {{/if}}
       <button type="submit">Login</button>
-    <a href="/auth/signup">Not registered yet? Sign up!</a> 
-  </form>
+      <a href="/auth/signup">Not registered yet? Sign up!</a>
+    </form>
+  </div>
 </div>
