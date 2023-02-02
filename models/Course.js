@@ -51,7 +51,7 @@ const courseSchema = new Schema(
             subtitle:String
         }
     },
-    Skills:Array,
+    skills:Array,
     content:{
         _1:{
             image:String,
