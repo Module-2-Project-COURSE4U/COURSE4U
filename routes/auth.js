@@ -28,7 +28,6 @@ router.get("/login", async (req, res, next) => {
 // @access  Public
 router.post("/signup", async (req, res, next) => {
   const { email, password, username } = req.body;
-  // ⚠️ Add validations!
   // Check that username, email, and password are provided
   if (!username || !password) {
     res.render("auth/signup", { error: "All fields are necessary!" });
@@ -96,7 +95,7 @@ router.post("/login", async function (req, res, next) {
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
-// @access  Private
+// @access  Private/ user
 router.post("/logout", (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {

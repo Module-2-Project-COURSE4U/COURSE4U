@@ -44,12 +44,24 @@ What can the user do with the app?
 - User can sign up and create and account
 - User can login
 - User can log out
-- User can create ...
+- User can upload a profile picture
+- User can edit profile (username, name)
+- User can choose the courses. 
+- User see profile account
+- User has an account with their courses ( my courses)
+- User can add review
+- User can see the course's review
 
 ## User stories (Backlog)
 
-- User can upload a profile picture
-- User can ...
+- User can edit deadline course
+- user can filter by certified courses 
+- user can select categories (Model - type (subcategory))
+- user can subscribe- pay a monthly fee to access the course)
+- user can change password
+- User can login with google and facebook
+- user can contact support via chat- predefined automatic message
+
 
 ---
 

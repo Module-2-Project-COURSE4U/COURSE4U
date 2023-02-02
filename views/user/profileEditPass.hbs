@@ -1,0 +1,40 @@
+<div class="profilePage">
+  {{#if user.imageUrl}}
+    <img src="{{user.imageUrl}}" class="card-img-profile" alt="image url" />
+  {{else}}
+    <img src="/public/images/profilePic1.png" alt="Profile Logo" />
+  {{/if}}
+  <div class="cardEditPass">
+    <div class="signupHeader">
+      <h1> Hola {{user.username}}</h1>
+    </div>
+    <h2> Change your password </h2>
+    <form method="POST" action="/user/profile/edit">
+      <label>Current password:</label>
+      <input
+        type="password"
+        name="currentPassword"
+        placeholder="********"
+        required
+      />
+      <label>New password:</label>
+      <input
+        type="password"
+        name="newPassword1"
+        placeholder="********"
+        required
+      />
+      <label>Confirm new password:</label>
+      <input
+        type="password"
+        name="newPassword2"
+        placeholder="********"
+        required
+      />
+      <button type="submit">Save new password</button>
+    </form>
+    {{#if message}}
+      <div class="message">{{message}}</div>
+    {{/if}}
+  </div>
+</div>
