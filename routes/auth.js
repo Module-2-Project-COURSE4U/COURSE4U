@@ -67,6 +67,7 @@ router.post("/signup", async (req, res, next) => {
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
   if (!username || !password) {
+    error = "Please introduce email and password to log in"
     res.render("auth/login", {
       error: "Please introduce email and password to log in",
     });
@@ -75,7 +76,7 @@ router.post("/login", async function (req, res, next) {
   try {
     const user = await User.findOne({ username: username });
     if (!user) {
-      res.render("auth/login", { error: `There are no users by ${email}` });
+      return res.render("auth/login", { error: `There are no users by ${username}` });
       return;
     } else {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
@@ -83,12 +84,13 @@ router.post("/login", async function (req, res, next) {
         req.session.currentUser = user;
         res.render("user/profile", { user });
       } else {
-        res.render("auth/login", { errorMessage: "incorrect password" });
+        console.log('password')
+        res.render("auth/login", { error: "incorrect password" });
         return;
       }
     }
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err)
   }
 });
 
