@@ -49,9 +49,9 @@ const courseSchema = new Schema(
             svg:String,
             title:String,
             subtitle:String
-        },
+        }
     },
-    skills:String,
+    Skills:Array,
     content:{
         _1:{
             image:String,
@@ -129,7 +129,7 @@ const courseSchema = new Schema(
             description_2:String,
             description_3:String,
             description_4:String,
-        },
+        }
     },
     why:{
         title:String,
