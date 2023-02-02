@@ -4,12 +4,11 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const isLoggedIn = require("../middleware/isLoggedIn");
+const fileUploader = require("../config/cloudinary.config");
 
 // @desc    is responsible for displaying the user's profile page.
 // @route   get /profile
 // @access  Public
-
-/*Get user PAGE*/
 router.get("/profile", isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
   res.render("user/profile", { user });
@@ -18,72 +17,19 @@ router.get("/profile", isLoggedIn, function (req, res, next) {
 // @desc  is responsible for displaying the user's profile editing page.
 // @route   get /profile/edit
 // @access  Public
-/*Get edit page */
 router.get("/profile/edit", isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser;
-  res.render("user/profileEdit", { user });
+  res.render("user/profileEditPass", { user });
 });
-
-// @desc is responsible for processing the data from the form submitted from the profile editing page.
+// @desc This route allows a user to change their password. It verifies that the password fields are valid and then updates the user's password in the database. It then redirects the user to their profile page.
 // @route   post /profile/edit
 // Post login route ==> to process form data
-// router.post("/profile/edit",isLoggedIn, async (req, res, next) => {
-//   const { username,  password1, password2  } = req.body;
-//   const user = req.session.currentUser;
-
-//   if (!username || !password1 || !password2 ) {
-//     res.render("user/profileEdit", { user });
-//     // { message: "Please provide all fields." });
-//     return;
-//   }
-
-//   const regexPassword =
-//   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
-//   if (!regexPassword.test(password1)) {
-//     res.render("user/profileEdit", { user });
-//     // res.render("user/profileEdit", {
-//     //   error:
-//     //   'Password needs to contain at lesat 7 characters, one number, one lowercase an one uppercase letter.',});
-//     return;
-//   }
-//   if (!regexPassword.test(password2)) {
-//     res.render("user/profileEdit", { user });
-//     // res.render("/user/profileEdit", {
-//     //   error: "the password does not match",
-//     // });
-//     return;
-//   }
-
-//   if (!password1 === password2) {
-//     res.render("user/profileEdit", { user });
-//     // res.render("user/profileEdit", {
-//     //   error: "Doublecheck the password on both fields",
-//     // });
-//     return;
-//   }
-
-//   const userId = req.session.currentUser._id;
-//   try {
-//     const salt = await bcrypt.genSalt(saltRounds);
-//     const hashedPassword = await bcrypt.hash(password1, salt);
-//     const userInDB = await User.findByIdAndUpdate(
-//      {_id: userId },
-//       { username,  hashedPassword },
-//       { new: true }
-//     );
-//     req.session.currentUser = userInDB;
-//     res.redirect("/user/profile");
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   const { currentPassword, newPassword1, newPassword2 } = req.body;
   const user = req.session.currentUser;
 
   if (!currentPassword || !newPassword1 || !newPassword2) {
-    res.render("user/profileEdit", {
+    res.render("user/profileEditPass", {
       user,
       message: "Please provide all fields.",
     });
@@ -95,7 +41,7 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     user.hashedPassword
   );
   if (!isPasswordValid) {
-    res.render("user/profileEdit", {
+    res.render("user/profileEditPass", {
       user,
       message: "Current password is incorrect.",
     });
@@ -113,7 +59,7 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   }
 
   if (newPassword1 !== newPassword2) {
-    res.render("user/profileEdit", {
+    res.render("user/profileEditPass", {
       user,
       message: "New passwords do not match.",
     });
@@ -134,5 +80,38 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+
+// @desc  is responsible for displaying the user's profile editing page.
+// @route   get /profile/editPhoto
+// @access  Public
+router.get("/profile/editPhoto", function (req, res, next) {
+  const user = req.session.currentUser;
+  res.render("user/profileEditPhoto", { user, imageUrl: user.imageUrl }); 
+});
+
+// @desc  This route allows the user to edit their profile picture.
+// @route   post /profile/editPhoto
+// @access  User
+router.post("/profile/editPhoto",fileUploader.single("imageUrl"),
+  async (req, res, next) => {
+    if (!req.file) {
+      // console.log("No file was uploaded.");
+      res.render("/user/profile", { error: "there is no file" }); //it renders a page for the user to select an image to upload.
+      return;
+    }
+    const user = req.session.currentUser;
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { imageUrl: req.file.path },
+        { new: true } //it processes the uploaded image and saves it to the database
+      );
+      req.session.currentUser = updatedUser;
+      res.redirect("/user/profile"); //it redirects the user to their profile with the new photo.
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

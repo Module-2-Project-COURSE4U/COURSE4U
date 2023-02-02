@@ -1,0 +1,26 @@
+<div class="profilePage">
+{{#if user.imageUrl}}
+  <img
+    src="{{user.imageUrl}}"
+    class="card-img-profile"
+    alt="image url"
+  />
+{{else}}
+  <img src="/public/images/profilePic1.png" alt="profile Logo" />
+{{/if}}
+<div class="cardEditPass">
+  <div class="signupHeader">
+<h1>Update profile's picture</h1> 
+</div>   
+        <form action="/user/profile/editPhoto" method="post" enctype="multipart/form-data">
+        <label>Image:
+          <input type="file" name="imageUrl" class="form-control-file" required=" true"/>
+        </label>
+      </div>
+      <button type="submit">Save changes</button>
+    </form>
+    {{#if message}}
+      <div class="message">{{message}}</div>
+    {{/if}}
+  </div>
+</div>
