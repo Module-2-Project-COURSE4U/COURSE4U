@@ -1,29 +1,150 @@
 // MONICA ESTA NOCHE AÑADO YO LA INFO, SOLO ES PARA SI QUIERES IR AVANZANDO, QUE AYER NO PUDE PONERME Y HOY HASTA LA NOCHE TAMPOCO
 module.exports = [
     {
-        title:'Title 1',
-        place:'Ironhack',
-        description: 
-        {
-            subdescription:'subdescription1',
-            subdescription2:'subdescription1'
+        category: 'Google IT Support Professional Certificate',
+        title: 'Technical Support Fundamentals',
+        about:{
+            description:'This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.',
+            subdescription:'By the end of this course, you’ll be able to:',
+            list:['understand how the binary system works','assemble a computer from scratch, choose and install an operating system on a computer','understand what the Internet is, how it works','and the impact it has in the modern world','learn how applications are created and how they work under the hood of a computer','utilize common problem-solving methodologies and soft skills in an Information Technology setting']
         },
-        image:'image.com',
-        price:1.1,
-        certificate:true,
-        duration:'1 month'
-    },
-    {
-        title:'Title 2',
-        place:'Ironhack 2',
-        description: 
-        {
-            subdescription:'subdescription2',
-            subdescription2:'subdescription2'
+        offered_by:{
+            place:'Google',
+            logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        image:'image2.com',
-        price:2.2,
-        certificate:false,
-        duration:'2 month'
-    }
+        features:{
+            _1:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+            _2:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+            _3:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+            _4:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+            _5:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+            _6:{
+                svg:String,
+                title:String,
+                subtitle:String
+            },
+        },
+        skills:String,
+        content:{
+            _1:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _2:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _3:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _4:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _5:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _6:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+            _7:{
+                image:String,
+                title:String,
+                subtitle:String,
+                time:String,
+                title_description:String,
+                description_1:String,
+                description_2:String,
+                description_3:String,
+                description_4:String,
+            },
+        },
+        why:{
+            title:String,
+            _1:{
+                subtitle:String,
+                list:String,
+                description:String
+            },
+            _2:{
+                subtitle:String,
+                list:String,
+                description:String
+            },
+            _3:{
+                subtitle:String,
+                list:String,
+                description:String
+            },
+            _4:{
+                subtitle:String,
+                list:String,
+                description:String
+            }
+        },
 ]

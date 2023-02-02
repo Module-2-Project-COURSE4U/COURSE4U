@@ -4,39 +4,155 @@ const { Schema } = mongoose;
 const courseSchema = new Schema(
   // Add whichever fields you need for your app
   {
-    title: {
-        type: String,
-        required: true
-    },
-    place:{
-        type: String,
-        required: true
-    },
-    description: {
-        subdescription:{
+    category: String,
+    title: String,
+    about:{
+        description:
+        {
             type: String,
             required: true
         },
-        subdescription2:{
-            type: String,
-            required: true
+        subdescription:String,
+        list:Array
+    },
+    offered_by:{
+        place:String,
+        logo:String
+    },
+    features:{
+        _1:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+        _2:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+        _3:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+        _4:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+        _5:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+        _6:{
+            svg:String,
+            title:String,
+            subtitle:String
+        },
+    },
+    skills:String,
+    content:{
+        _1:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _2:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _3:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _4:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _5:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _6:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+        _7:{
+            image:String,
+            title:String,
+            subtitle:String,
+            time:String,
+            title_description:String,
+            description_1:String,
+            description_2:String,
+            description_3:String,
+            description_4:String,
+        },
+    },
+    why:{
+        title:String,
+        _1:{
+            subtitle:String,
+            list:Array,
+            description:String
+        },
+        _2:{
+            subtitle:String,
+            list:Array,
+            description:String
+        },
+        _3:{
+            subtitle:String,
+            list:Array,
+            description:String
+        },
+        _4:{
+            subtitle:String,
+            list:Array,
+            description:String
         }
-    },
-    image:{
-        type: String,
-        required: true
-    },
-    price:{
-        type: Number,
-        required:true
-    },
-    certificate:{
-        type: Boolean,
-        required: true
-    },
-    duration:{
-        type: String,
-        required: true
     },
     timestamps: {}
   }
