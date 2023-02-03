@@ -1,8 +1,8 @@
-# App name
+# App COURSE4u
 
 ## Description
 
-This is a project developed by XXX and YYY as the project for the second module at Ironhack. The purpose of the application is...
+COURSE4u is a cutting-edge online learning platform that provides users with a comprehensive and dynamic learning experience. With the ability to browse, explore, and register for courses, as well as add courses to their favorites and leave reviews, COURSE4u is poised to revolutionize the world of online education. Join the community of learners today and take your education to the next level!"
 
 ---
 
@@ -94,7 +94,64 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
-```
+
+Course:
+
+const courseSchema = new Schema(
+  {
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    subcategories:{
+        type: String,
+        required: true
+    },
+    image:{
+        type: String,
+        required: true
+    },
+    price:{
+        type: Number,
+        required:true
+    },
+    certificate:{
+        type: Boolean,
+        required: true
+    },
+    duration:{
+        type: String,
+        required: true
+    },
+    timestamps: {}
+  }
+);
+
+Review:
+
+const reviewSchema = new Schema(
+  {
+    stars: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 5
+      },
+      comment: {
+        type: String
+      },
+      username: {
+        type: String
+      },
+      show: {
+        type: Schema.Types.ObjectId, // Solo uno
+        ref: 'Course'
+      }
+    })
 
 ---
 
