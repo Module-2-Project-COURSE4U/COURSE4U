@@ -1,10 +1,19 @@
-<img src="/public/images/profileIcon.png" alt="online course" />
 <div class="profilePage">
-  <h1> Profile </h1>
+  <h1>My account</h1>
+  {{#if user.imageUrl}}
+  <div style="width: 200px; height: 200px;">
+    <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl">
+  </div>
+  {{else}}
+    <img src="../public/images/profilePic1.png" alt="Profile Logo">
+  {{/if}}
+  <div class="card-profile">
   <h1>{{user.username}}</h1>
   <h2>Email: {{user.email}}</h2>
   <div class="editBtn">
-    <a href="/user/profile/edit">Edit your profile</a>
+    <a href="/user/profile/edit">Change password</a>
+   
+    <a href="/user/profile/editPhoto">Edit profile picture</a>
   </div>
-  <a href="/">Home</a>
+  </div>
 </div>

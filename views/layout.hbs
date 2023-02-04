@@ -4,23 +4,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/stylesheets/style.css" rel="stylesheet" />
+    <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <title>Project module 2</title>
   </head>
   <body>
-
-    {{#if user}}
-      <nav>
-        <ul>
-          <a href="/auth/login">LOG OUT</a>
-          <a href="/user/profile">account</a>
-          <a href="/">Home</a>
-        </ul>
-      </nav>
-  
-    {{/if}}
+    <nav class="nav-header">
+      <img
+        class="app-logo"
+        src="../public/images/logoApp.png"
+        alt="course4u logo"
+      />
+      <ul>
+        {{#if user}}
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Your courses</a></li>
+        <li><a href="/auth/login">Log out</a></li>
+        <li><a href="/user/profile">Profile</a></li>
+        {{else}}    
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/auth/signup">Sign up</a></li>
+        <li><a href="/auth/login">Log in</a></li>
+        {{/if}}
+      </ul>
+    </nav>
 
     {{{body}}}
 
-    <script src="/js/script.js"></script>
+   <script src="/script.js"></script>
   </body>
 </html>

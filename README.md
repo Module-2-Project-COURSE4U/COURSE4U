@@ -1,8 +1,8 @@
-# App name
+# App COURSE4u
 
 ## Description
 
-This is a project developed by XXX and YYY as the project for the second module at Ironhack. The purpose of the application is...
+COURSE4u is a cutting-edge online learning platform that provides users with a comprehensive and dynamic learning experience. With the ability to browse, explore, and register for courses, as well as add courses to their favorites and leave reviews, COURSE4u is poised to revolutionize the world of online education. Join the community of learners today and take your education to the next level!"
 
 ---
 
@@ -44,12 +44,24 @@ What can the user do with the app?
 - User can sign up and create and account
 - User can login
 - User can log out
-- User can create ...
+- User can upload a profile picture
+- User can edit profile (username, name)
+- User can choose the courses. 
+- User see profile account
+- User has an account with their courses ( my courses)
+- User can add review
+- User can see the course's review
 
 ## User stories (Backlog)
 
-- User can upload a profile picture
-- User can ...
+- User can edit deadline course
+- user can filter by certified courses 
+- user can select categories (Model - type (subcategory))
+- user can subscribe- pay a monthly fee to access the course)
+- user can change password
+- User can login with google and facebook
+- user can contact support via chat- predefined automatic message
+
 
 ---
 
@@ -82,7 +94,64 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
-```
+
+Course:
+
+const courseSchema = new Schema(
+  {
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    subcategories:{
+        type: String,
+        required: true
+    },
+    image:{
+        type: String,
+        required: true
+    },
+    price:{
+        type: Number,
+        required:true
+    },
+    certificate:{
+        type: Boolean,
+        required: true
+    },
+    duration:{
+        type: String,
+        required: true
+    },
+    timestamps: {}
+  }
+);
+
+Review:
+
+const reviewSchema = new Schema(
+  {
+    stars: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 5
+      },
+      comment: {
+        type: String
+      },
+      username: {
+        type: String
+      },
+      show: {
+        type: Schema.Types.ObjectId, // Solo uno
+        ref: 'Course'
+      }
+    })
 
 ---
 

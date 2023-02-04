@@ -1,0 +1,16 @@
+<div class="profilePage">
+  <img src="/public/images/profilePic1.png" alt="profile Logo" />
+  <h2>Add a photo</h2>
+  <form
+    action="/user/profile/createPhoto"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <div class="form-group">
+      <label>Image:
+        <input type="file" name="image-cover-image" class="form-control-file" />
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="profilePage">
+  {{#if user.imageUrl}}
+    <div style="width: 200px; height: 200px;">
+      <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl" />
+    </div>
+  {{else}}
+    <img src="/public/images/profilePic1.png" alt="profile Logo" />
+  {{/if}}
+  <div class="cardEditPass">
+    <div class="signupHeader">
+      <h2>Update profile's picture</h2>
+    </div>
+    <form
+      action="/user/profile/editPhoto"
+      id="form"method="post"
+      enctype="multipart/form-data"
+    >
+      <label>Image:
+        <input type="file" name="imageUrl" required=" true" />
+      </label>
+
+      <button type="submit">Save changes</button>
+    </form>
+   <a href="/user/profile" onclick="return confirm('Are you sure you want to delete the profile picture?')">Delete image</a>
+    {{#if message}}
+      <div class="message">{{message}}</div>
+    {{/if}}
+  </div>
+</div>

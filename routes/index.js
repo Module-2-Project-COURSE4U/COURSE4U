@@ -1,3 +1,5 @@
+const Course = require('../models/Course');
+
 const router = require('express').Router();
 
 // @desc    App home page
@@ -5,7 +7,7 @@ const router = require('express').Router();
 // @access  Public
 router.get('/', (req, res, next) => {
   const user = req.session.currentUser;
-  res.render('index',  user );
+  res.redirect('courses');
 });
 
 module.exports = router;

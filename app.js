@@ -24,8 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 // For deployment
 app.set("trust proxy", 1);
@@ -39,11 +38,10 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      maxAge:2592000000, // 30 days in milliseconds
+      maxAge: 2592000000, // 30 days in milliseconds
     },
     store: MongoStore.create({
-      mongoUrl:
-      process.env.MONGO_URL,
+      mongoUrl: process.env.MONGO_URL,
     }),
   })
 );

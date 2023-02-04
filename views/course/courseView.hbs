@@ -1,13 +1,12 @@
 <h3>Courses</h3>
-
-<form method="GET" action="/courses/search"> 
+<form class="course-form" method="GET" action="/courses/search"> 
   <label>Search by title</label>
   <input type="text" name="title"/>
   <button type="submit">Search</button>
 </form>
-
+ <div class="card-container">
 {{#each courses}}
- <div>
+ <div class="card-course">
   <h4>{{this.title}}</h4>
   <img width="150px" src={{this.image}} alt={{this.title}}/>
   <p>Description: {{this.description}}.</p>
@@ -19,8 +18,9 @@
   {{!-- <a href="/courses/{{this _id}}">See details</a> --}}
 </div>
 {{/each}}
+</div>
 
-<p>This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.
+<!-- <p>This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.
 
 By the end of this course, you’ll be able to:
 <b></b>
@@ -28,4 +28,4 @@ understand how the binary system works
 
 ● assemble a computer from scratch
 ● choose and install an operating system on a computer
-● understand what the Internet is, how it works, and the impact it has in the modern world</p>
+● understand what the Internet is, how it works, and the impact it has in the modern world</p> -->

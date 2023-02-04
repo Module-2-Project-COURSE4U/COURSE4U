@@ -3,70 +3,83 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
-body {
-  font-family: Montserrat, sans-serif;
-  background-color: #f5f5f5;
-  margin-bottom: 50px;
-  padding: 50px;
-}
 
-.container {
-  max-width: 100vw;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/**** Color variables ****/
+:root {
+  --primary-blue: #17c3b2;
+  --primary-orange: #fbe6c4;
+  --light-blue: lightcyan;
+  --basic-white: #fef9ef;
+  --secondary-red: #fe6d73;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f5f5f5;
+  margin: 30px;
+  margin-bottom: 100px;
 }
 
 /***** Navbar styles ****/
-nav {
-  width: 100vw;
-  padding: 20px;
-  background-color: #fff;
-  position:fixed;
-  bottom: 0;
+.nav-header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-evenly;
-  flex-basis: 100%;
-}
-
-nav li img {
-  width: 50px;
-  max-width: 100%;
-  height: auto;
-}
-
-@media (min-width: 768px) {
-  nav ul {
-    flex-basis: auto;
-  }
-}
-
-
-
-/* @index page */
-
-h1 {
-  font-size: 2rem;
-  margin-top: 10px;
-  color: #5072a7;
-  text-align: center;
-}
-
-#imagen img {
+  flex-direction: row;
   width: 100%;
-  margin-top: 50px;
+  height: 6vh;
+  justify-content: space-between;
+  }
+  
+  .app-logo {
+  width: 20vh;
+  height: 8vh;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: flex-end;
+    margin-right: 20px;
+   
+  }
+
+  li {
+  display: inline;
+  text-decoration: none;
+  color: #6495ED;
+  list-style: none;
+ 
+  }
+  nav ul li a {
+  text-decoration: none;
+  color: #2874A6 ;
+  font-size: 1.8rem;
+  font-weight: lighter;
+  font-family: "CircularSp", "CircularSp-Arab","CircularSp-Hebr","CircularSp-Cyrl","CircularSp-Grek","CircularSp-Deva",var(--fallback-fonts,sans-serif),sans-serif;
+  }
+  
+  @media (max-width:768px) {
+  nav ul {
+  flex-direction: column;
+  align-items: flex-end;
+  }
+  
+  li {
+  margin: 0.8rem 0;
+  }
+  .app-logo {
+    max-width: 100px;
+    max-height: 40px;
+  }
+  }
+
+
+/* signup and login page*/
+#imagen img {
+  width: 30%;
+  margin-top: 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px #ccc;
 }
@@ -103,13 +116,6 @@ h1 {
   background-color: #6495ed;
 }
 
-.container p {
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #5072a7;
-}
-
 .socialSignup {
   display: flex;
   flex-direction: column;
@@ -117,14 +123,18 @@ h1 {
   margin-top: 5px;
   gap: 10px;
 }
-
+.socialSignup h2 {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #5072a7;
+}
 .socialSignup a {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 30px;
-  width: 100%;
+  width: 17%;
   padding: 0.35em 1.2em;
   border: 0.2em solid;
   border-radius: 10px;
@@ -177,31 +187,28 @@ h1 {
 .signupHeader h1 {
   font-size: 1.5rem;
   color: #5072a7;
-  margin-top: 0;
+  margin-top: 50px;
+}
+.container {
+  max-width: 100vw;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.socialSignup h2 {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #5072a7;
-}
 #form {
-  width: 90%;
+  width: 30%;
   margin: 0 auto;
   padding: 30px;
-  background-color: rgb(222, 231, 248);
+  background-color: #eaf5f8;
   border-radius: 10px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
+#form label {
   font-size: 18px;
   margin-bottom: 0px;
   text-align: left;
@@ -210,7 +217,7 @@ label {
   font-weight: 500;
 }
 
-input[type="text"],
+#form input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -219,38 +226,41 @@ input[type="password"] {
   background-color: transparent;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid rgb(114, 115, 115);
+  border-bottom: 2px solid rgb(166, 167, 167);
 }
 
-input[type="text"]:focus,
+#form input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   border-bottom: 2px solid rgb(77, 77, 245);
   outline: none;
 }
 
-button[type="submit"] {
-  width: 100%;
+#form button[type="submit"] {
+  width: 60%;
   padding: 10px;
   background-color: rgb(84, 136, 232);
-  color: white;
+  color: whitesmoke;
   border: none;
-  border-radius: 40px;
+  border-radius: 10px;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-  background-color: rgb(242, 243, 247);
-  color: #5072a7;
+#form button[type="submit"]:hover {
+  background-color: rgb(84, 136, 232);
+  color: #2c2c2c;
 }
 
 #form a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: rgb(84, 136, 232);
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 1rem;
   text-decoration: underline;
 }
 
@@ -265,25 +275,25 @@ button[type="submit"]:hover {
     width: 95%;
   }
 
-  label {
+  #form label {
     font-size: 14px;
   }
 
-  input[type="text"],
+  #form input[type="text"],
   input[type="email"],
   input[type="password"] {
     font-size: 12px;
   }
 
-  button[type="submit"] {
+  #form button[type="submit"] {
     font-size: 14px;
   }
 
-  a {
+  #form a {
     font-size: 14px;
   }
 
-  p {
+  #form p {
     font-size: 14px;
   }
 }
@@ -297,8 +307,25 @@ button[type="submit"]:hover {
   flex-direction: column;
   align-items: center;
 }
+.cardEditPass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 .profilePage h2 {
-  color: rgb(63, 62, 62);
+  font-size: 1.3rem;
+  text-align: center;
+  color: rgb(82, 81, 81);
+  margin-bottom: 20px;
+}
+.profilePage h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #2874A6 ;
+  margin-bottom: 20px;
+  margin-top: 200px;
 }
 .profilePage label {
   color: rgb(63, 62, 62);
@@ -306,9 +333,69 @@ button[type="submit"]:hover {
   font-size: 1.2em;
 }
 .profilePage img {
-  width: 600px;
-  height: 550px;
-  border-radius: 20px;
+  width: 20vw;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 } 
 
+.card-img-profile {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+ 
+}
+.card-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 100%;
+  padding: 0.35em 1.2em;
+  margin: 0px;
+}
+.editBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.editBtn a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100%;
+  padding: 0.35em 1.2em;
+  border: 0.2em solid;
+  border-radius: 40px;
+  background-color: rgb(84, 136, 232); ;
+  margin: 0 0.3em 0.3em 0;
+  color: whitesmoke;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s
+}
+
+.editBtn a:hover {
+  color: #292828;
+  background-color: #6495ed;
+}
+@media (max-width: 768px) {
+  .card-profile {
+    height: auto;
+  }
+  .profilePage img {
+    width: 80%;
+    max-width: 100%;
+  }
+  .editBtn a {
+    font-size: 0.8em;
+  }
+}
 
