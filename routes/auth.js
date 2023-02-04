@@ -11,7 +11,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 // @route   Get/auth/signup
 // @access  Public 
 router.get("/signup", async (req, res, next) => {
-  const user = req.session.currentUser;
+  // const user = req.session.currentUser;
   res.render("auth/signup");
 });
 
@@ -19,7 +19,7 @@ router.get("/signup", async (req, res, next) => {
 // @route   Get /auth/login
 // @access  Public
 router.get("/login", async (req, res, next) => {
-  const user = req.session.currentUser;
+  // const user = req.session.currentUser;
   res.render("auth/login");
 });
 
@@ -66,7 +66,6 @@ router.post("/signup", async (req, res, next) => {
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
   if (!username || !password) {
-    error = "Please introduce email and password to log in"
     res.render("auth/login", {
       error: "Please introduce email and password to log in",
     });
@@ -76,7 +75,6 @@ router.post("/login", async function (req, res, next) {
     const user = await User.findOne({ username: username });
     if (!user) {
       return res.render("auth/login", { error: `There are no users by ${username}` });
-      return;
     } else {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
       if (passwordMatch) {

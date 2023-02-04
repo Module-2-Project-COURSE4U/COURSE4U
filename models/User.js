@@ -23,6 +23,7 @@ const userSchema = new Schema(
     },
     imageUrl: {
       type: String,
+      default: "../public/images/profilePic1.png" 
     },
     country: {
       type: String,
