@@ -94,7 +94,7 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
 // @access  Public
 router.get("/profile/editPhoto", function (req, res, next) {
   const user = req.session.currentUser;
-  res.render("user/profileEditPhoto", { user, imageUrl: user.imageUrl }); 
+  res.render("user/profileEditPhoto", { user }); 
 });
 
 // @desc  This route allows the user to edit their profile picture.
