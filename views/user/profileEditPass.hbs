@@ -1,11 +1,7 @@
 <div class="profilePage">
-  {{#if user.imageUrl}}
     <div style="width: 200px; height: 200px;">
     <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl">
   </div>
-  {{else}}
-    <img src="/public/images/profilePic1.png" alt="Profile Logo" />
-  {{/if}}
   <div class="cardEditPass">
     <div class="signupHeader">
       <h1> Hola {{user.username}}</h1>
