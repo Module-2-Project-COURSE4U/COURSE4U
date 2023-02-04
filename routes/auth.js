@@ -86,8 +86,8 @@ router.post("/login", async function (req, res, next) {
         return;
       }
     }
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 });
 

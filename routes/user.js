@@ -127,7 +127,7 @@ router.post("/profile/editPhoto",fileUploader.single("imageUrl"),
 // @access  User
 router.get("/profile/deletePhoto", async (req, res, next) => {
   const user = req.session.currentUser;
- 
+  console.log('it works')
   try {
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
