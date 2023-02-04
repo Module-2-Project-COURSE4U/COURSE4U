@@ -37,7 +37,7 @@ router.post("/signup", async (req, res, next) => {
   if (!regex.test(password)) {
     res.render("auth/signup", {
       error:
-        "Password needs to contain at lesat 7 characters, one number, one lowercase an one uppercase letter.",
+        "Password needs to contain at least 7 characters, one number, one lowercase an one uppercase letter.",
     });
     return;
   }

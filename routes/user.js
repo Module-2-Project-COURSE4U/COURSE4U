@@ -36,6 +36,14 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     return;
   }
 
+  if (currentPassword === newPassword1 || currentPassword === newPassword2) {
+    res.render("user/profileEditPass", {
+      user,
+      message: "New password must be different from the current password.",
+    });
+    return;
+  }
+
   const isPasswordValid = await bcrypt.compare(
     currentPassword,
     user.hashedPassword
@@ -43,14 +51,14 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   if (!isPasswordValid) {
     res.render("user/profileEditPass", {
       user,
-      message: "Current password is incorrect.",
+      message: "Password must contain at least 7 characters, one number, one lowercase and one uppercase letter.",
     });
     return;
   }
 
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
   if (!passwordRegex.test(newPassword1)) {
-    res.render("user/profileEdit", {
+    res.render("user/profileEditPass", {
       user,
       message:
         "Password must contain at least 7 characters, one number, one lowercase and one uppercase letter.",
@@ -113,5 +121,26 @@ router.post("/profile/editPhoto",fileUploader.single("imageUrl"),
     }
   }
 );
+
+// @desc  This route allows the user to delete their profile picture.
+// @route   Get /user/profile/deletePhoto
+// @access  User
+router.get("/profile/deletePhoto", async (req, res, next) => {
+  const user = req.session.currentUser;
+ 
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      user._id,
+      { imageUrl: "../public/images/profilePic1.png" },
+      { new: true }
+    );
+    console.log("DELETE PIC", updatedUser);
+    req.session.currentUser = updatedUser;
+    res.redirect("/user/profile");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 module.exports = router;

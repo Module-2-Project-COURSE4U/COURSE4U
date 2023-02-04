@@ -1,6 +1,8 @@
 <div class="profilePage">
   {{#if user.imageUrl}}
-    <img src="{{user.imageUrl}}" class="card-img-profile" alt="image url" />
+    <div style="width: 200px; height: 200px;">
+    <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl">
+  </div>
   {{else}}
     <img src="/public/images/profilePic1.png" alt="Profile Logo" />
   {{/if}}
@@ -9,7 +11,7 @@
       <h1> Hola {{user.username}}</h1>
     </div>
     <h2> Change your password </h2>
-    <form method="POST" action="/user/profile/edit">
+    <form id="form"  method="POST" action="/user/profile/edit">
       <label>Current password:</label>
       <input
         type="password"
