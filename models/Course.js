@@ -16,143 +16,22 @@ const courseSchema = new Schema(
         list:Array
     },
     offered_by:{
-        place:String,
-        logo:String
+        type: Schema.Types.ObjectId,
+        ref: 'Offered_by'
     },
     features:{
-        _1:{
-            svg:String,
-            title:String,
-            subtitle:String
-        },
-        _2:{
-            svg:String,
-            title:String,
-            subtitle:String
-        },
-        _3:{
-            svg:String,
-            title:String,
-            subtitle:String
-        },
-        _4:{
-            svg:String,
-            title:String,
-            subtitle:String
-        },
-        _5:{
-            svg:String,
-            title:String,
-            subtitle:String
-        },
-        _6:{
-            svg:String,
-            title:String,
-            subtitle:String
-        }
+        type: Schema.Types.ObjectId,
+        ref: 'Offered_by'
     },
     skills:Array,
     content:{
-        _1:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _2:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _3:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _4:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _5:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _6:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        },
-        _7:{
-            image:String,
-            title:String,
-            subtitle:String,
-            time:String,
-            title_description:String,
-            description_1:String,
-            description_2:String,
-            description_3:String,
-            description_4:String,
-        }
+        type: Schema.Types.ObjectId,
+        ref: 'Content'
     },
-    why:{
-        title:String,
-        _1:{
-            subtitle:String,
-            list:Array,
-            description:String
-        },
-        _2:{
-            subtitle:String,
-            list:Array,
-            description:String
-        },
-        _3:{
-            subtitle:String,
-            list:Array,
-            description:String
-        },
-        _4:{
-            subtitle:String,
-            list:Array,
-            description:String
-        }
+    title_why:String,
+    reasons:{
+        type: Schema.Types.ObjectId,
+        ref: 'Reasons'
     },
     timestamps: {}
   }
