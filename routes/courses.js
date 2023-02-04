@@ -9,9 +9,9 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 // @route   GET /
 // @access  SemiPublic (Can see part of the info)
 router.get('/', async function (req, res, next) {
+  const user = req.session.currentUser;
     try {
       const courses = await Course.find({}).sort({ title: 1 });
-      const user = req.session.currentUser;
       res.render('course/courseView',{ courses , user });
     } catch (error) {
       next(error)
@@ -40,7 +40,7 @@ router.get('/:courseId', async function (req, res, next) {
   const { courseId } = req.params;
   const user = req.session.currentUser;
   try {
-    const course = await course.findById(courseId);
+    const course = await Course.findById(courseId);
     const reviews = await Review.find({ course: courseId });
     res.render('/coursedetails', { course, reviews, user });
   } catch (error) {
