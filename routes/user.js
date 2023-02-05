@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const isLoggedIn = require("../middleware/isLoggedIn");
+const { isAdmin, isLoggedIn, isUser } = require('../middleware/adminLoggedIn');
 const fileUploader = require("../config/cloudinary.config");
 
 // @desc    is responsible for displaying the user's profile page.

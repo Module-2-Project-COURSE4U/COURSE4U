@@ -180,7 +180,7 @@ body {
 .signupHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -198,7 +198,7 @@ body {
   justify-content: center;
 }
 
-#form {
+.form {
   width: 30%;
   margin: 0 auto;
   padding: 30px;
@@ -208,7 +208,7 @@ body {
   margin-top: 20px;
 }
 
-#form label {
+.form label {
   font-size: 18px;
   margin-bottom: 0px;
   text-align: left;
@@ -217,7 +217,7 @@ body {
   font-weight: 500;
 }
 
-#form input[type="text"],
+.form input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -229,14 +229,14 @@ input[type="password"] {
   border-bottom: 2px solid rgb(166, 167, 167);
 }
 
-#form input[type="text"]:focus,
+.form input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   border-bottom: 2px solid rgb(77, 77, 245);
   outline: none;
 }
 
-#form button[type="submit"] {
+.form button[type="submit"] {
   width: 60%;
   padding: 10px;
   background-color: rgb(84, 136, 232);
@@ -249,12 +249,12 @@ input[type="password"]:focus {
   margin-top: 10px;
 }
 
-#form button[type="submit"]:hover {
+.form button[type="submit"]:hover {
   background-color: rgb(84, 136, 232);
   color: #2c2c2c;
 }
 
-#form a {
+.form a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -264,7 +264,7 @@ input[type="password"]:focus {
   text-decoration: underline;
 }
 
-#form p {
+.form p {
   color: red;
   margin-top: 5px;
   font-size: 14px;
@@ -305,13 +305,17 @@ input[type="password"]:focus {
 .profilePage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 .cardEditPass {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   margin-top: 20px;
 }
 .profilePage h2 {
@@ -325,27 +329,22 @@ input[type="password"]:focus {
   text-align: center;
   color: #2874A6 ;
   margin-bottom: 20px;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 .profilePage label {
   color: rgb(63, 62, 62);
   font-weight: 700;
   font-size: 1.2em;
 }
-.profilePage img {
-  width: 20vw;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-} 
 
+/*converts any photo that the user uploads to the profile in round format*/
 .card-img-profile {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
   object-fit: cover;
-  border-radius: 50%;
   overflow: hidden;
- 
+
 }
 .card-profile {
   display: flex;

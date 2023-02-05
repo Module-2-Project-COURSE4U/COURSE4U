@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific route
-const isLoggedIn = require("../middleware/isLoggedIn");
+const { isAdmin, isLoggedIn, isUser } = require('../middleware/adminLoggedIn');
+
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
