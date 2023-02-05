@@ -6,31 +6,25 @@ const courseSchema = new Schema(
   {
     category: String,
     title: String,
-    about:{
-        description:
-        {
-            type: String,
-            required: true
-        },
-        subdescription:String,
-        list:Array
-    },
-    offered_by:{
-        type: Schema.Types.ObjectId,
-        ref: 'Offered_by'
+    description: String,
+    subdescription:String,
+    list:Array,
+    offered:{
+        type: [Schema.Types.ObjectId],
+        ref: 'Offered'
     },
     features:{
-        type: Schema.Types.ObjectId,
-        ref: 'Offered_by'
+        type: [Schema.Types.ObjectId],
+        ref: 'Features'
     },
     skills:Array,
     content:{
-        type: Schema.Types.ObjectId,
+        type: [Schema.Types.ObjectId],
         ref: 'Content'
     },
     title_why:String,
     reasons:{
-        type: Schema.Types.ObjectId,
+        type: [Schema.Types.ObjectId],
         ref: 'Reasons'
     },
     timestamps: {}
