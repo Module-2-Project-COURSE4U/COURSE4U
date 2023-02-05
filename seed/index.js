@@ -16,6 +16,7 @@ const { offered__GOOGLE__1_2_3_4_5, offered__IRONHACK__6_7_8_9 } = require('../d
 
   
 let all_courses;
+let offered;
 
 mongoose.connect(process.env.MONGO_URL)
   .then(response => console.log(`Connected to the database ${response.connection.name}`))
@@ -31,22 +32,19 @@ mongoose.connect(process.env.MONGO_URL)
     
     // Offered Create & Populate
     .then(() => Offered.create(offered__GOOGLE__1_2_3_4_5))
-    .then((offered) => {
-      Course.findByIdAndUpdate(all_courses[0].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[1].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[2].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[3].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[4].id, { $push: { offered: offered.id } })
-      return
-    })
+    .then((createdoffered) => offered = createdoffered)
+    .then(() => Course.findByIdAndUpdate(all_courses[0].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[1].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[2].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[3].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[4].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[5].id, { $push: { offered: offered.id } }))
     .then(() => Offered.create(offered__IRONHACK__6_7_8_9))
-    .then((offered) => {
-      Course.findByIdAndUpdate(all_courses[5].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[6].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[7].id, { $push: { offered: offered.id } })
-      Course.findByIdAndUpdate(all_courses[8].id, { $push: { offered: offered.id } })
-      return
-    })
+    .then((offered) => offered = offered)
+    .then(() => Course.findByIdAndUpdate(all_courses[5].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[6].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[7].id, { $push: { offered: offered.id } }))
+    .then(() => Course.findByIdAndUpdate(all_courses[8].id, { $push: { offered: offered.id } }))
     
     // Features Create & Populate
     // 1º
