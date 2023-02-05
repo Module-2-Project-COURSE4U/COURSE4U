@@ -1,4 +1,4 @@
-const Course = require('../models/Course');
+// const Course = require('../models/Course');
 const router = require('express').Router();
 
 // @desc    App home page
