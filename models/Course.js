@@ -1,36 +1,60 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
- 
+
 const courseSchema = new Schema(
-  // Add whichever fields you need for your app
   {
-    category: String,
-    title: String,
-    description: String,
-    subdescription:String,
-    list:Array,
-    offered:{
-        type: [Schema.Types.ObjectId],
-        ref: 'Offered'
+    category: {
+      type: String,
+      required: true
     },
-    features:{
-        type: [Schema.Types.ObjectId],
-        ref: 'Features'
+    title: {
+      type: String,
+      required: true
     },
-    skills:Array,
-    content:{
-        type: [Schema.Types.ObjectId],
+    description: {
+      type: String
+    },
+    subdescription: {
+      type: String
+    },
+    list: {
+      type: Array
+    },
+    content: [
+      {
+        type: Schema.Types.ObjectId,
         ref: 'Content'
-    },
-    title_why:String,
-    reasons:{
-        type: [Schema.Types.ObjectId],
+      }
+    ],
+    features: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Features'
+      }
+    ],
+    reasons: [
+      {
+        type: Schema.Types.ObjectId,
         ref: 'Reasons'
+      }
+    ],
+    offered: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Offered'
+      }
+    ],
+    skills: {
+      type: Array
     },
-    timestamps: {}
+    title_why: {
+      type: String
+    }
+  },
+  {
+    timestamps: true
   }
 );
- 
-const Course = mongoose.model('Course', courseSchema);
 
+const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;

@@ -4,14 +4,13 @@
   <input type="text" name="title" />
   <button type="submit">Search</button>
 </form>
+
 <div class="card-container">
   {{#each courses}}
-    <div class="card-course">
+    <div class="card-course" data-id="{{_id}}">
       <h4>{{this.title}}</h4>
       <img width="150px" src={{this.image}} alt={{this.title}} />
       <p>Description:{{truncate this.description 100}}...</p>
-      <!-- <p>Subcategories: {{this.subcategories}}</p> -->
-      <a href="/courses/{{this._id}}"></a>
     </div>
   {{/each}}
 </div>

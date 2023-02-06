@@ -15,6 +15,8 @@ const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const coursesRouter = require("./routes/courses");
+const mongoose = require("mongoose");
+mongoose.set("strictPopulate", false);
 
 const app = express();
 
@@ -50,8 +52,6 @@ app.use(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + '/views/partials');
-
-
 // that takes in a string and a length and returns a truncated version of the string, limited to the specified length.
 hbs.registerHelper('truncate', function(str, length) {
   return str.slice(0, length);

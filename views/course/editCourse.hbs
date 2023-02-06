@@ -1,0 +1,30 @@
+<h1>Edit Course</h1>
+<hr />
+<div class="editCoursePage">
+  <form action="/courses/editCourse/{{course._id}}" method="post">
+    <label>Category:</label>
+    <input type="text" name="category" value="{{course.category}}" />
+    <br />
+    <label>Title:</label>
+    <input  type="text" name="title" value="{{course.title}}" />
+    <br />
+    <label>Description:</label>
+    <textarea name="description">{{course.description}}</textarea>
+    <br />
+    <label>Sub-Description:</label>
+    <input type="text" name="subdescription" value="{{course.subdescription}}" />
+    <br />
+    <label>Offered By:</label>
+    {{#each course.offered}}
+      <br />
+      <label>Place:</label>
+      <input  type="text" name="place" value="{{this.place}}" />
+      <br />
+      <label>Logo:</label>
+      <input type="text" name="logo" value="{{this.logo}}" />
+    {{/each}}
+    <br />
+  
+    <input type="submit" value="Submit" />
+  </form>
+</div>

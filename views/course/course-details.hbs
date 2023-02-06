@@ -1,0 +1,67 @@
+<div>
+  <a href="/courses/editCourse/{{course._id}}">EDIT</a>
+
+  <h4>{{course.category}}</h4>
+  <h5>{{course.title}}</h5>
+  <p>About: {{course.description}}</p>
+  <p>{{course.subdescription}}</p>
+  <h5>List:</h5>
+  {{#each course.list}}
+    <p>{{this}}</p>
+  {{/each}}
+  {{#if course.offered}}
+{{#each course.offered}}
+<p><strong>Offered_by:{{this.place}}</strong></p>
+<img width="100px" src={{this.logo}} alt={{this.place}} />
+{{/each}}
+{{/if}}
+{{#if course.feature}}
+{{#each course.feature}}
+<img width="100px" src={{this.svg}} alt={{this.title}} />
+<h5>{{this.title}}</h5>
+<p>{{this.subtitle}}</p>
+{{/each}}
+{{/if}}
+
+  <h5>Skills you will learn:</h5>
+  {{#each course.skills}}
+    <p>{{this}}</p>
+  {{/each}}
+{{#if course.content}}
+{{#each course.content}}
+<img width="100px" src={{this.image}} alt={{this.title}} />
+<h5>{{this.title}}</h5>
+<p>{{this.subtitle}}</p>
+<p>Duration: {{this.time}}</p>
+<h5>{{this.title_description}}</h5>
+<p>{{this.description_1}}</p>
+<p>{{this.description_2}}</p>
+<p>{{this.description_3}}</p>
+<p>{{this.description_4}}</p>
+{{/each}}
+{{/if}}
+
+  <h5>{{course.title_why}}</h5>
+  {{#if course.reason}}
+    {{#each course.reason}}
+      <h6>{{this.subtitle}}</h6>
+      {{#each this.list}}
+        <p>{{this}}</p>
+      {{/each}}
+      <p>{{this.description}}</p>
+    {{/each}}
+  {{/if}}
+
+
+  <form method="POST" action="/reviews/new/{{course._id}}">
+    <label>How would you rate this course?</label>
+    <input type="number" placeholder="5" name="stars"/>
+    <label>Comment:</label>
+    <input type="text" placeholder="I really liked this course" name="comment"/>
+    {{!-- <label>User's name:</label>
+    <input type="text" placeholder="John Doe" name="username"/> --}}
+    <button type="submit">Add review</button>
+  </form>
+
+</div>
+

@@ -5,13 +5,13 @@ module.exports = [
         about:{
             description:'This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.',
             subdescription:'By the end of this course, you’ll be able to:',
-            list:['understand how the binary system works','assemble a computer from scratch, choose and install an operating system on a computer','understand what the Internet is, how it works','and the impact it has in the modern world','learn how applications are created and how they work under the hood of a computer','utilize common problem-solving methodologies and soft skills in an Information Technology setting']
+            list:['understand how the binary system works','assemble a computer from scratch, choose and install an operating system on a computer,','understand what the Internet is, how it works,','and the impact it has in the modern world','learn how applications are created and how they work under the hood of a computer,','utilize common problem-solving methodologies and soft skills in an Information Technology setting.']
         },
         offered_by:{
             place:'Google',
             logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Reset deadlines in accordance to your schedule.'
@@ -93,7 +93,7 @@ module.exports = [
             place:'Google',
             logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Reset deadlines in accordance to your schedule.'
@@ -173,7 +173,7 @@ module.exports = [
             place:'Google',
             logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Reset deadlines in accordance to your schedule.'
@@ -253,7 +253,7 @@ module.exports = [
             place:'Google',
             logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Reset deadlines in accordance to your schedule.'
@@ -333,7 +333,7 @@ module.exports = [
             place:'Google',
             logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Reset deadlines in accordance to your schedule.'
@@ -411,14 +411,14 @@ module.exports = [
         }
     },
     {
-            category: 'Web Development',
+            category: 'Techonology',
             title: 'Web Development',
             description:'Join our Web Development bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Build apps with HTML, CSS, JavaScript, and React. 9 week full time or 24 week part time courses to become a Full-Stack Developer. No previous IT background is required. Learn in person or online.',
             offered_by:{
                 place:'Ironhack',
                 logo:'https://cdn-images-1.medium.com/max/1200/1*69RcxrWXuk385lSxkIYYLA.png'
             },
-            features:{
+            feature:{
                 _1:{
                     title:'Flexible deadlines',
                     subtitle:'Choose a date prior to the course between several months of the year'
@@ -498,14 +498,14 @@ module.exports = [
             }
         },
     {
-        category: 'UX/UI Design',
+        category: 'Technology',
         title: 'UX/UI Design',
         description:"Join our UX UI Design immersive bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Learn user experience, research, Figma, design thinking, and user interface to be part of any company's workforce. Become a UX UI Designer in just 9 weeks full time or 24 weeks part time without any previous IT background.",
         offered_by:{
             place:'Ironhack',
             logo:'https://cdn-images-1.medium.com/max/1200/1*69RcxrWXuk385lSxkIYYLA.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Choose a date prior to the course between several months of the year'
@@ -581,14 +581,14 @@ module.exports = [
         }
     },
     {
-        category: 'Data Analytics',
+        category: 'Technology',
         title: 'Data Analytics',
         description:"Join our Data Analytics immersive bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Intensive training in Python, SQL, Tableau, and statistics to become a Data Analyst. Study 9 weeks full-time, or 24 weeks part-time. No previous experience required.",
         offered_by:{
             place:'Ironhack',
             logo:'https://cdn-images-1.medium.com/max/1200/1*69RcxrWXuk385lSxkIYYLA.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Choose a date prior to the course between several months of the year'
@@ -664,14 +664,14 @@ module.exports = [
         }
     },
     {
-        category: 'Cybersecurity',
+        category: 'Technology',
         title: 'Cybersecurity',
         description:"Join our Cybersecurity bootcamp powered by Cybint and get the hands-on skills you need to land a job in the growing cybersecurity industry. Develop the knowledge you require to be part of any company's cybersecurity workforce. Become a cybersecurity professional in just 12 weeks or 26 weeks without any previous IT background.",
         offered_by:{
             place:'Ironhack',
             logo:'https://cdn-images-1.medium.com/max/1200/1*69RcxrWXuk385lSxkIYYLA.png'
         },
-        features:{
+        feature:{
             _1:{
                 title:'Flexible deadlines',
                 subtitle:'Choose a date prior to the course between several months of the year'
