@@ -150,7 +150,6 @@ router.post("/editCourse/:id", async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
-
     const course = await Course.findByIdAndUpdate(id, {
       title,
       description,
@@ -166,6 +165,34 @@ router.post("/editCourse/:id", async (req, res, next) => {
   } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
+  }
+});
+
+router.post('/delete/:id', async (req, res) => {
+  const course = await Course.findById(req.params.id);
+
+  if (!course) {
+    return res.status(404).send('No se encontró el curso.');
+  }
+
+  if (course.purchased) {
+    return res.status(400).send('No se puede borrar un curso que ha sido comprado.');
+  }
+  try {
+  await course.remove();
+  const deleteCourse = true;
+  const courses = await Course.find({}).sort({ title: 1 });
+    // it maps each course object and truncates its description property to show only the first 100 lines by splitting the string by newline characters and rejoining the first 100 lines.
+    const truncatedCourses = courses.map((course) => {
+      course.description = course.description
+        .split("\n")
+        .slice(0, 100)
+        .join("\n");
+      return course;
+    });
+    res.render("course/courseView", { courses: truncatedCourses, user,  deleteCourse});
+  } catch (error) {
+ 
   }
 });
 
