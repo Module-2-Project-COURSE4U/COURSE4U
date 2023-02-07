@@ -12,3 +12,4 @@ cardContainer.addEventListener('click', event => {
     window.location.href = '/courses/course-details/' + id;
   }
 });
+

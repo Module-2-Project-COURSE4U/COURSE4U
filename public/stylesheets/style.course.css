@@ -151,3 +151,56 @@
     min-height: auto;
     }
     }
+
+    .navbar_content_title {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .navbar_content_title h4 {
+      padding: 2%;
+    }
+
+    #PREWORK {
+      display: flex;
+    }
+
+    #PREWORK div {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .no_active_display{
+      display: none;
+    }
+
+    .active_display{
+      display: flex;
+    }
+    
+    .svg_no_process {
+      position: absolute;
+      width: 100%;
+    }
+
+    .svg_process_color {
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+      transition: width 2s;
+    }
+
+    .svg_process_color:hover {
+      width: 75%;
+    }
+
+    .svg {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      width: 90%;
+      height: 15%;
+    }
+
+    
