@@ -1,8 +1,7 @@
 <div class="detailsPage">
   <h1>{{course.title}}</h1>
   <a href="/courses/editCourse/{{course._id}}">EDIT</a>
-    <form action="/courses/{{course._id}}/delete" method="post">
-   
+    <form action="/courses/delete/{{course._id}}" method="post"> 
       <button type="submit">Delete curso</button>
     </form>
   <div class="card-plan-Premium">
