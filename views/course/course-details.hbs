@@ -50,7 +50,7 @@
 
 <div class="card-content">
 {{#if course.content}}
-<p class="no_active_display" id="lenght">{{course.content}}</p>
+<h1 id="lenght">{{number}}</h1>
 {{#each course.content}}
 <article class="svg">
       <img class='svg_no_process' src="/public/images/SVG/WEB_DEV/Background_process_modules.svg"/>
@@ -68,7 +68,7 @@
 </div>
  
   {{#each course.content}}
-  <div id='div {{@index}}' class="no_active_display">
+  <div id='div {{@index}}' class="div" class="no_active_display">
     <div>
       <img width="100px" src={{this.image}} alt={{this.title}} />
     </div>

@@ -62,7 +62,7 @@ router.get("/course-details/:id", async (req, res, next) => {
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
-    return res.render("course/course-details", { course });
+    return res.render("course/course-details", { course, number:course.content.length });
     } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
