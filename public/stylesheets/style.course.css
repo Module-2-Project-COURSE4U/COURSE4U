@@ -442,3 +442,50 @@
     width: 100%;
   }
 }
+
+/*edit course */
+
+.editCourseForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.editCourseForm label {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.editCourseForm input[type="text"],
+.editCourseForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.editCourseForm input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .editCourseForm label {
+    width: 25%;
+  }
+
+  .editCourseForm input[type="text"],
+  .editCourseForm textarea {
+    width: 75%;
+  }
+}
