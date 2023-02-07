@@ -15,7 +15,7 @@ const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 router.get("/", async function (req, res, next) {
   const user = req.session.currentUser;
   try {
-    const courses = await Course.find({}).sort({ title: 1 });
+    const courses = await (await Course.find({active: true }).sort({ title: 1 }));
     // it maps each course object and truncates its description property to show only the first 100 lines by splitting the string by newline characters and rejoining the first 100 lines.
     const truncatedCourses = courses.map((course) => {
       course.description = course.description
@@ -170,7 +170,6 @@ router.post("/editCourse/:id", async (req, res, next) => {
 
 router.post('/delete/:id', async (req, res) => {
   const course = await Course.findById(req.params.id);
-
   if (!course) {
     return res.status(404).send('No se encontró el curso.');
   }
@@ -178,10 +177,13 @@ router.post('/delete/:id', async (req, res) => {
   if (course.purchased) {
     return res.status(400).send('No se puede borrar un curso que ha sido comprado.');
   }
+
+  const user = req.session.currentUser
   try {
-  await course.remove();
-  const deleteCourse = true;
-  const courses = await Course.find({}).sort({ title: 1 });
+  const active = {active: false }
+  const delete_course = true
+  await Course.findByIdAndUpdate(req.params.id, active)
+  const courses = await Course.find({active: true }).sort({ title: 1 });
     // it maps each course object and truncates its description property to show only the first 100 lines by splitting the string by newline characters and rejoining the first 100 lines.
     const truncatedCourses = courses.map((course) => {
       course.description = course.description
@@ -190,9 +192,9 @@ router.post('/delete/:id', async (req, res) => {
         .join("\n");
       return course;
     });
-    res.render("course/courseView", { courses: truncatedCourses, user,  deleteCourse});
+    res.render("course/courseView", { courses: truncatedCourses, user,  delete_course});
   } catch (error) {
- 
+    next(error)
   }
 });
 
