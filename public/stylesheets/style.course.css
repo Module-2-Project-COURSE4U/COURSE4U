@@ -204,3 +204,241 @@
     }
 
     
+    /*course ViewDetails*/
+
+    .detailsPage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 80%;
+      margin: 50px auto;
+    }
+    
+    .detailsPage h1 {
+      font-size: 2em;
+      margin: 30px 0;
+    }
+    
+    .detailsPage a {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      text-decoration: underline;
+    }
+    
+    .card-plan-Premium {
+      background-color: #eee;
+      padding: 20px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    
+    .card-plan-Premium h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    
+    .card-plan-Premium h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    .card-plan-Premium a {
+      font-size: 1.2em;
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+    
+    .card-plan-Premium p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    .card-info {
+      background-color: #eee;
+      padding: 20px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    
+    .card-info p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    
+    .card-skills {
+      background-color: #eee;
+      padding: 20px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    
+    .card-skills p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .card-featContent {
+      display: flex;
+      flex-direction: column;
+      width:50%;
+      margin-bottom: 20px;
+    }
+    .card-featAbout{
+      display: flex;
+      flex-direction: row; 
+      gap:50px;
+    }
+    .card-skillsAbout {
+      width: 70%;
+    }
+    .card-features {
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap;
+      margin: auto;
+      width:20%;
+    }
+    
+    .card-features img {
+      width: 40px;
+      margin: 10px;
+      align-items:flex-start;
+    }
+    
+    .card-features h5 {
+      font-size: 0.8rem;
+      margin: 10px;
+    }
+    
+    .card-features p {
+      font-size: 0.8rem;
+    }
+    .imgFeatures {
+      display: flex;
+      flex-direction: column;
+      align-items:flex-end;
+      width: 30%
+    }
+    .card-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    .card-content img {
+      width: 200px;
+      margin: 10px;
+    }
+    
+    
+.card-content h5 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.card-content p {
+  text-align: justify;
+  margin: 0 20px;
+}
+
+.card-reasons {
+  margin: 40px 0;
+}
+
+.card-reasons h5 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-reasons h6 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.card-reasons p {
+  text-align: justify;
+  margin: 0 20px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.review-form label {
+  margin: 10px 0;
+}
+
+.review-form input[type="number"],
+.review-form input[type="text"] {
+  padding: 10px;
+  margin: 10px 0;
+  width: 300px;
+}
+
+.review-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .detailsPage {
+    padding: 20px;
+  }
+
+  .card-plan-Premium,
+  .card-info,
+  .card-skills,
+  .card-features,
+  .card-content,
+  .card-reasons,
+  .review-form {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-plan-Premium h2,
+  .card-plan-Premium h3,
+  .card-plan-Premium p,
+  .card-info p,
+  .card-skills p,
+  .card-features h5,
+  .card-features p,
+  .card-content h5,
+  .card-content p,
+  .card-reasons h5,
+  .card-reasons h6 {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .card-plan-Premium a,
+  .card-features img,
+  .card-content img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .card-reasons p {
+    margin: 0;
+  }
+
+  .review-form input[type="number"],
+  .review-form input[type="text"] {
+    width: 100%;
+  }
+}

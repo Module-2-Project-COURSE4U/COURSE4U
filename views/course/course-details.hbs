@@ -1,33 +1,54 @@
-<div>
+<div class="detailsPage">
+  <h1>{{course.title}}</h1>
   <a href="/courses/editCourse/{{course._id}}">EDIT</a>
-
-  <h4>{{course.category}}</h4>
-  <h5>{{course.title}}</h5>
+    <form action="/courses/{{course._id}}/delete" method="post">
+   
+      <button type="submit">Delete curso</button>
+    </form>
+  <div class="card-plan-Premium">
+  <h2>Subsribe to Course4u's top courses</h3>
+  <h3> Get premium access to all courses</h3>
+  <a href="/auth/signup">Try Personal Plan for free</a>
+  <p>€24.99 per month</p>
+  </div>
+  <div class="card-featAbout">
+  <div class="card-skillsAbout">
+  <div class="card-info">
   <p>About: {{course.description}}</p>
   <p>{{course.subdescription}}</p>
-  <h5>List:</h5>
   {{#each course.list}}
     <p>{{this}}</p>
   {{/each}}
+   <h5>Skills you will learn:</h5>
+   </div>
+   <div class="card-skills">
+  {{#each course.skills}}
+    <p>{{this}}</p>
+  {{/each}}
+  </div>
+  </div>
+ <div class="card-features">
+      {{#if course.features}}
+      {{#each course.features}}
+      <div class="imgFeatures">
+        <img  src={{this.svg}} alt={{this.title}} />
+      </div>
+   <div class="card-featContent">
+      <h5>{{this.title}}</h5>
+      <p>{{this.subtitle}}</p>
+   </div>
+      {{/each}}
+      {{/if}}
+  </div>
+</div>
   {{#if course.offered}}
 {{#each course.offered}}
 <p><strong>Offered_by:{{this.place}}</strong></p>
 <img width="100px" src={{this.logo}} alt={{this.place}} />
 {{/each}}
 {{/if}}
-{{#if course.feature}}
-{{#each course.feature}}
-<img width="100px" src={{this.svg}} alt={{this.title}} />
-<h5>{{this.title}}</h5>
-<p>{{this.subtitle}}</p>
-{{/each}}
-{{/if}}
 
-  <h5>Skills you will learn:</h5>
-  {{#each course.skills}}
-    <p>{{this}}</p>
-  {{/each}}
-
+<div class="card-content">
 {{#if course.content}}
 <p class="no_active_display" id="lenght">{{course.content}}</p>
 {{#each course.content}}
@@ -65,10 +86,11 @@
   
 {{/each}}
 {{/if}}
-
+</div>
+<div class="card-reasons">
   <h5>{{course.title_why}}</h5>
-  {{#if course.reason}}
-    {{#each course.reason}}
+  {{#if course.reasons}}
+    {{#each course.reasons}}
       <h6>{{this.subtitle}}</h6>
       {{#each this.list}}
         <p>{{this}}</p>
@@ -76,18 +98,17 @@
       <p>{{this.description}}</p>
     {{/each}}
   {{/if}}
-
-
-  <form method="POST" action="/reviews/new/{{course._id}}">
+</div>
+  <form class="review-form" method="POST" action="/reviews/new/{{course._id}}">
     <label>How would you rate this course?</label>
     <input type="number" placeholder="5" name="stars"/>
     <label>Comment:</label>
     <input type="text" placeholder="I really liked this course" name="comment"/>
-    {{!-- <label>User's name:</label>
-    <input type="text" placeholder="John Doe" name="username"/> --}}
+    <label>User's name:</label>
+    <input type="text" placeholder="John Doe" name="username"/>
     <button type="submit">Add review</button>
   </form>
-
+</div>
 </div>
 
 <script src='/public/script/dom_details.js'></script>

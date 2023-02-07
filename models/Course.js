@@ -5,15 +5,19 @@ const courseSchema = new Schema(
   {
     category: {
       type: String,
-      required: true
     },
     image: {
       type: String,
-      required: true
+    },
+    purchased: { 
+      type: Boolean, default: false
+     },
+    active: { type: Boolean, 
+      default: true 
     },
     title: {
       type: String,
-      required: true
+
     },
     description: {
       type: String

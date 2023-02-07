@@ -45,28 +45,28 @@ const courses = [
     skills:['Cybersecurity','Wireless Security','Cryptography','Network Security']
   },
   {
-    category: 'Web Development',
+    category: 'Tecnology',
     image: '/public/images/PHOTOS-NO_BACKGROUND/Web_dev.svg',
     title: 'Web Development',
     description:'Join our Web Development bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Build apps with HTML, CSS, JavaScript, and React. 9 week full time or 24 week part time courses to become a Full-Stack Developer. No previous IT background is required. Learn in person or online.',
     title_why:'Why Web Development at Ironhack?'
   },
   {
-    category: 'UX/UI Design',
+    category: 'Techonology',
     image: '/public/images/PHOTOS-NO_BACKGROUND/UX.svg',
     title: 'UX/UI Design',
     description:"Join our UX UI Design immersive bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Learn user experience, research, Figma, design thinking, and user interface to be part of any company's workforce. Become a UX UI Designer in just 9 weeks full time or 24 weeks part time without any previous IT background.",
     title_why:'Why should you learn UX/UI Design?'
   },
   {
-    category: 'Data Analytics',
+    category: 'Technology',
     image: '/public/images/PHOTOS-NO_BACKGROUND/DATA.svg',
     title: 'Data Analytics',
     description:"Join our Data Analytics immersive bootcamp and get the hands-on skills you need to land a job in the growing tech industry. Intensive training in Python, SQL, Tableau, and statistics to become a Data Analyst. Study 9 weeks full-time, or 24 weeks part-time. No previous experience required.",
     title_why:'Why should you learn Data analytics?'
   },
   {
-    category: 'Cybersecurity',
+    category: 'Technology',
     image: '/public/images/PHOTOS-NO_BACKGROUND/Cyber.svg',
     title: 'Cybersecurity',
     description:"Join our Cybersecurity bootcamp powered by Cybint and get the hands-on skills you need to land a job in the growing cybersecurity industry. Develop the knowledge you require to be part of any company's cybersecurity workforce. Become a cybersecurity professional in just 12 weeks or 26 weeks without any previous IT background.",
