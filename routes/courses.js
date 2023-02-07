@@ -168,6 +168,8 @@ router.post("/editCourse/:id", async (req, res, next) => {
   }
 });
 
+    
+
 router.post('/delete/:id', async (req, res) => {
   const course = await Course.findById(req.params.id);
   if (!course) {

@@ -1,37 +1,44 @@
 <h1>Edit Course</h1>
 <hr />
-<form class="editCourseForm"> action="/courses/edit/{{course._id}}" method="post">
+<form class="editCourseForm"
+  action="/courses/editCourse/{{course._id}}" method="post">
   <h1>Edit {{course.title}}</h1>
+  <label>Category:</label>
+  <input type="text" name="category" value="{{course.category}}" />
   <label>Title:</label>
-  <input type="text" name="title" value="{{course.title}}">
-
+  
+  <input type="text" name="title" value="{{course.title}}" />
   <label>Description:</label>
-  <textarea name="description">{{course.description}}</textarea>
+  <textarea name="description">{{course.description}} </textarea>
 
   <label>Subdescription:</label>
   <textarea name="subdescription">{{course.subdescription}}</textarea>
 
   <label>List:</label>
   {{#each course.list}}
-    <input type="text" name="list" value="{{this}}">
+    <input type="text" name="list" value="{{this}}" />
   {{/each}}
 
   <label>Skills:</label>
   {{#each course.skills}}
-    <input type="text" name="skills" value="{{this}}">
+    <input type="text" name="skills" value="{{this}}"  />
   {{/each}}
 
   <label>Features:</label>
   {{#if course.features}}
     {{#each course.features}}
       <label>Title:</label>
-      <input type="text" name="features_title" value="{{this.title}}">
+      <input
+        type="text"
+        name="features_title"
+        value="{{this.title}}"
+      />
 
       <label>Subtitle:</label>
-      <input type="text" name="features_subtitle" value="{{this.subtitle}}">
+      <input type="text" name="features_subtitle" value="{{this.subtitle}}" />
 
       <label>SVG:</label>
-      <input type="text" name="features_svg" value="{{this.svg}}">
+      <input type="text" name="features_svg" value="{{this.svg}}" />
     {{/each}}
   {{/if}}
 
@@ -39,10 +46,10 @@
   {{#if course.offered}}
     {{#each course.offered}}
       <label>Place:</label>
-      <input type="text" name="offered_place" value="{{this.place}}">
+      <input type="text" name="offered_place" value="{{this.place}}"  />
 
       <label>Logo:</label>
-      <input type="text" name="offered_logo" value="{{this.logo}}">
+      <input type="text" name="offered_logo" value="{{this.logo}}"  />
     {{/each}}
   {{/if}}
 
@@ -50,30 +57,54 @@
   {{#if course.content}}
     {{#each course.content}}
       <label>Title:</label>
-      <input type="text" name="content_title" value="{{this.title}}">
+      <input type="text" name="content_title" value="{{this.title}}"  />
 
       <label>Subtitle:</label>
-      <input type="text" name="content_subtitle" value="{{this.subtitle}}">
+      <input
+        type="text"
+        name="content_subtitle"
+        value="{{this.subtitle}}"
+      
+      />
 
       <label>Time:</label>
-      <input type="text" name="content_time" value="{{this.time}}">
+      <input type="text" name="content_time" value="{{this.time}}"  />
 
       <label>Image:</label>
-      <input type="text" name="content_image" value="{{this.image}}">
-
+      <input type="text" name="content_image" value="{{this.image}}" />
+      <h1>Content </h1>
       <label>Title Description:</label>
-      <input type="text" name="content_title_description" value="{{this.title_description}}">
-
+      <input
+        type="text"
+        name="content_title_description"
+        value="{{this.title_description}}"
+        
+      />
       <label>Description 1:</label>
-      <input type="text" name="content_description_1" value="{{this.description_1}}">
+      <input
+        type="text"
+        name="content_description_1"
+        value="{{this.description_1}}"
+        
+      />
 
       <label>Description 2:</label>
-      <input type="text" name="content_description_2" value="{{this.description_2}}">
+      <input
+        type="text"
+        name="content_description_2"
+        value="{{this.description_2}}"
+        
+      />
 
       <label>Description 3:</label>
-       <input type="text" name="content_description_3" value="{{this.description_3}}">
-    
+      <input
+        type="text"
+        name="content_description_3"
+        value="{{this.description_3}}"
+        
+      />
+
     {{/each}}
   {{/if}}
-  <input type="submit" value="Update Course">
+  <input type="submit" value="Update Course" />
 </form>
