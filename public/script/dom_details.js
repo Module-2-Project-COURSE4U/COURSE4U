@@ -6,9 +6,13 @@ const div_4 = document.getElementById('div 4')
 const div_5 = document.getElementById('div 5')
 const div_6 = document.getElementById('div 6')
 
+const number = document.getElementById('lenght')
+console.log(number.innerText)
 const div = document.getElementsByClassName('div')
 
 console.log(div)
+
+
 
 // const title_0 = document.getElementById('title 0')
 // const title_1 = document.getElementById('title 1')
