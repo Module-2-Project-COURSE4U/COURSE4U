@@ -57,7 +57,8 @@ router.get("/course-details/:id", async (req, res, next) => {
       .populate("offered")
       .populate("features")
       .populate("reasons")
-      .populate("content");
+      .populate("content")
+      .populate("review");
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
@@ -67,6 +68,40 @@ router.get("/course-details/:id", async (req, res, next) => {
     return res.status(500).send({ error: "Server error" });
   }
 });
+
+
+// GET - Create Course Page
+router.get("/newCourse", async (req, res, next) => {
+  try {
+    const offered = await Offered.find();
+    const features = await Features.find();
+    const reasons = await Reasons.find();
+    const content = await Content.find();
+    res.render("course/newCourse", { offered, features, reasons, content });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
+// router.get("/newCourse", function (req, res, next) {
+// res.render("course/newCourse");
+// });
+// POST - Create Course
+router.post("/newCourse", async function (req, res, next) {
+  const { category, title, description, image, offered, features, reasons, content } = req.body;
+  try {
+    const newCourse = await Course.create({category, title, description, image });
+    newCourse.offered = offered;
+    newCourse.features = features;
+    newCourse.reasons = reasons;
+    newCourse.content = content;
+    res.redirect('/courses');
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
+
 
 // Display to Edit routes page (edit-movie.hbs)
 
@@ -87,26 +122,51 @@ router.get("/editCourse/:id", async (req, res, next) => {
   }
 });
 
-
-
-/* GET one show */
-/* ROUTE /shows/:showId */
-// router.get("/:courseId", async function (req, res, next) {
-//   const { courseId } = req.params;
-//   const user = req.session.currentUser;
+// if the role is admin example
+// router.get("/editCourse/:id", async (req, res, next) => {
 //   try {
-//     const course = await Course.findById(courseId).populate(
-//       "Feature",
-//       "Reason",
-//       "Content",
-//       "Skills",
-//       "Offered"
-//     );
-//     const reviews = await Review.find({ course: courseId });
-//     res.render("details", { course, reviews, user });
-//   } catch (error) {
-//     next(error);
+//     const { id } = req.params;
+//     if (!mongoose.Types.ObjectId.isValid(id)) {
+//       return res.status(400).send({ error: "Invalid course ID" });
+//     }
+//     const course = await Course.findById(id);
+//     if (!course) {
+//       return res.status(404).send({ error: "Course not found" });
+//     }
+//     if (req.user.role !== "admin") {
+//       return res.status(401).send({ error: "Unauthorized access" });
+//     }
+//     return res.render("course/editCourse", { course });
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).send({ error: "Server error" });
 //   }
 // });
+router.post("/editCourse/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { title, description, image, category } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send({ error: "Invalid course ID" });
+    }
+
+    const course = await Course.findByIdAndUpdate(id, {
+      title,
+      description,
+      image,
+      category
+    });
+
+    if (!course) {
+      return res.status(404).send({ error: "Course not found" });
+    }
+
+    return res.redirect("/courses");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ error: "Server error" });
+  }
+});
 
 module.exports = router;
