@@ -7,7 +7,7 @@ const Content = require("../models/Content");
 const Features = require("../models/Features");
 const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
-const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    App courses page, GET ALL COURSES
 // @route   GET /
@@ -47,8 +47,10 @@ router.get("/search", async function (req, res, next) {
 //@desc  view course details  by Id
 /* @route GET 
 /* @access Public*/
-router.get("/course-details/:id", async (req, res, next) => {
+router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
   try {
+    const user = req.session.currentUser;
+    const { username } = req.session.currentUser;
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
@@ -62,15 +64,15 @@ router.get("/course-details/:id", async (req, res, next) => {
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
-    return res.render("course/course-details", { course, number:course.content.length });
+    return res.render("course/course-details", { course, username, user, number:course.content.length });
     } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
   }
 });
-
-
-// GET - Create Course Page
+//@desc  create new course  
+/* @route Get 
+/* @access Admin*/
 router.get("/newCourse", async (req, res, next) => {
   try {
     const offered = await Offered.find();
@@ -83,10 +85,9 @@ router.get("/newCourse", async (req, res, next) => {
     next(err);
   }
 });
-// router.get("/newCourse", function (req, res, next) {
-// res.render("course/newCourse");
-// });
-// POST - Create Course
+//@desc  create new course  
+/* @route Post 
+/* @access Admin*/
 router.post("/newCourse", async function (req, res, next) {
   const { category, title, description, image, offered, features, reasons, content } = req.body;
   try {
@@ -102,91 +103,40 @@ router.post("/newCourse", async function (req, res, next) {
   }
 });
 
-
-// Display to Edit routes page (edit-movie.hbs)
-
-router.get("/editCourse/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).send({ error: "Invalid course ID" });
-    }
-    const course = await Course.findById(id);
-    if (!course) {
-      return res.status(404).send({ error: "Course not found" });
-    }
-    return res.render("course/editCourse", { course });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send({ error: "Server error" });
-  }
+//@desc  edit course details  by Id
+/* @route Post 
+/* @access Admin*/
+router.get('/editCourse/:id', (req, res) => {
+  Course.findById(req.params.id, (err, foundCourse) => {
+    if (err) return res.status(400).send(err);
+    res.render("course/editCourse", { course: foundCourse });
+  });
 });
 
-// if the role is admin example
-// router.get("/editCourse/:id", async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//       return res.status(400).send({ error: "Invalid course ID" });
-//     }
-//     const course = await Course.findById(id);
-//     if (!course) {
-//       return res.status(404).send({ error: "Course not found" });
-//     }
-//     if (req.user.role !== "admin") {
-//       return res.status(401).send({ error: "Unauthorized access" });
-//     }
-//     return res.render("course/editCourse", { course });
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).send({ error: "Server error" });
-//   }
-// });
-router.post("/editCourse/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const { title, description, image, category } = req.body;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).send({ error: "Invalid course ID" });
-    }
-    const course = await Course.findByIdAndUpdate(id, {
-      title,
-      description,
-      image,
-      category
-    });
-
-    if (!course) {
-      return res.status(404).send({ error: "Course not found" });
-    }
-
-    return res.redirect("/courses");
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send({ error: "Server error" });
-  }
+// Ruta POST para actualizar los campos de un curso NO FUNCIONA SOLO MODIFICA LOS PARAMETROS DEL MODELO CURSO
+router.post('/editCourse/:id', (req, res) => {
+  Course.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedCourse) => {
+    if (err) return res.status(400).send(err);
+    res.redirect("/courses");
+  });
 });
-
-    
-
+//@desc  remove course by id 
+/* @route Get 
+/* @access Admin*/
 router.post('/delete/:id', async (req, res) => {
   const course = await Course.findById(req.params.id);
   if (!course) {
     return res.status(404).send('No se encontró el curso.');
   }
-
   if (course.purchased) {
     return res.status(400).send('No se puede borrar un curso que ha sido comprado.');
   }
-
   const user = req.session.currentUser
   try {
   const active = {active: false }
   const delete_course = true
   await Course.findByIdAndUpdate(req.params.id, active)
   const courses = await Course.find({active: true }).sort({ title: 1 });
-    // it maps each course object and truncates its description property to show only the first 100 lines by splitting the string by newline characters and rejoining the first 100 lines.
     const truncatedCourses = courses.map((course) => {
       course.description = course.description
         .split("\n")
@@ -199,5 +149,27 @@ router.post('/delete/:id', async (req, res) => {
     next(error)
   }
 });
+
+/* GET one show */
+/* ROUTE /shows/:showId */
+router.get('/:courseId', async function (req, res, next) {
+  const { courseId } = req.params;
+  const user = req.session.currentUser;
+  try {
+    const course = await Course.findById(courseId)
+    .populate("offered")
+    .populate("features")
+    .populate("reasons")
+    .populate("reviews")
+    .populate("content");
+    const reviews = await Review.find({ course: courseId })
+    res.render("course/course-details", { course, reviews, user });
+    return;
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 module.exports = router;
