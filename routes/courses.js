@@ -42,8 +42,6 @@ router.get("/search", async function (req, res, next) {
     next(error);
   }
 });
-
-
 //@desc  view course details  by Id
 /* @route GET 
 /* @access Public*/
@@ -55,6 +53,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
+    const reviews = await Review.find();
     const course = await Course.findById(id)
       .populate("offered")
       .populate("features")
@@ -64,7 +63,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
-    return res.render("course/course-details", { course, username, user, number:course.content.length });
+    return res.render("course/course-details", { course, username, user, reviews, number:course.content.length });
     } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
@@ -149,27 +148,6 @@ router.post('/delete/:id', async (req, res) => {
     next(error)
   }
 });
-
-/* GET one show */
-/* ROUTE /shows/:showId */
-router.get('/:courseId', async function (req, res, next) {
-  const { courseId } = req.params;
-  const user = req.session.currentUser;
-  try {
-    const course = await Course.findById(courseId)
-    .populate("offered")
-    .populate("features")
-    .populate("reasons")
-    .populate("reviews")
-    .populate("content");
-    const reviews = await Review.find({ course: courseId })
-    res.render("course/course-details", { course, reviews, user });
-    return;
-  } catch (error) {
-    next(error);
-  }
-});
-
 
 
 module.exports = router;

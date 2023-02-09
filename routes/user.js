@@ -131,7 +131,7 @@ router.get("/profile/deletePhoto", async (req, res, next) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
-      { imageUrl: "https://media.vogue.mx/photos/62e19b3d4a4bcdd2c09a7c1b/2:3/w_1920,c_limit/GettyImages-1155131913-2.jpg" },
+      { imageUrl: "https://cdn-icons-png.flaticon.com/512/720/720236.png" },
       { new: true }
     );
     console.log("DELETE PIC", updatedUser);

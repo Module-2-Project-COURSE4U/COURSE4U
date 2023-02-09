@@ -8,4 +8,8 @@ router.get('/', (req, res, next) => {
   res.redirect('/courses');
 });
 
+router.get('/about', (req, res, next) => {
+  res.render('/course/about');
+});
+
 module.exports = router;

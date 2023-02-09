@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
  
 const reviewSchema = new Schema(
-  // Add whichever fields you need for your app
+
   {
     stars: {
         type: Number,
@@ -17,7 +17,7 @@ const reviewSchema = new Schema(
         type: String
       },
       course: {
-        type: Schema.Types.ObjectId, // Solo uno
+        type: Schema.Types.ObjectId, 
         ref: 'Course'
       }
     })
