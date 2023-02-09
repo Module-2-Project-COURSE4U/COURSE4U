@@ -1,20 +1,23 @@
-<h1>Add New course  </h1>
-<hr />
+<h1>Add New course </h1>
 <div class="editCoursePage">
-    <form action="/courses/newCourse" method="post">
-      <label>Category: </label>
-      <input type="text" name="category" placeholder="{{course.category}}" />
-      <label>Title:</label>
-      <input  type="text" name="title" placeholder="{{course.title}}" />
-      <label>Description:</label>
-      <input  type="text" name="description" placeholder="{{course.description}}" />
-      <label>Image: </label>
-      <input type="text" name="image" placeholder="https://.../" />
-          <label>Offered By:</label>
-    
-          <label>Logo: </label>
-          <input  type="text" name="logo" placeholder="https://.../" />
-          <label>Place:</label>
-          <input  type="text" name="place" placeholder="{{offered.place}}" />
-          
-      <button type="submit">SAVE
+  <form action="/courses/newCourse" method="post">
+    <label>Category: </label>
+    <input type="text" name="category" placeholder="{{course.category}}" />
+    <label>Title:</label>
+    <input type="text" name="title" placeholder="{{course.title}}" />
+    <label>Description:</label>
+    <input
+      type="text"
+      name="description"
+      placeholder="{{course.description}}"
+    />
+    <label>Image: </label>
+    <input type="text" name="image" placeholder="https://.../" />
+    <label>Offered By:</label>
+    <label>Logo: </label>
+    <input type="text" name="logo" placeholder="https://.../" />
+    <label>Place:</label>
+    <input type="text" name="place" placeholder="{{offered.place}}" />
+    <button type="submit" value="SAVE">Add</button>
+  </form>
+</div>

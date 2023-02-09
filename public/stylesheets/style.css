@@ -1,29 +1,148 @@
 /**** Reset ****/
-* {
+* :before,
+:after {
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
+  outline: 0;
   box-sizing: border-box;
 }
 
 /**** Color variables ****/
 :root {
-  --primary-blue: #17c3b2;
+  --primary-blue: rgb(84, 136, 232);
   --primary-orange: #fbe6c4;
   --light-blue: lightcyan;
   --basic-white: #fef9ef;
   --secondary-red: #fe6d73;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
-  margin: 30px;
-  margin-bottom: 100px;
+  margin: auto;
+  overflow-x: hidden;
+}
+/***** Navbar styles ****/
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(206, 223, 238);
+  box-shadow: 5px 0 10px rgba(230, 226, 251, 0.6);
+  background-color: #ebf5fb;
+  height: 100px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+}
+.app-logo {
+  width: 200px;
+  height: 75px;
+  padding: 0 80px;
+}
+.menu_items {
+  display: flex;
+  list-style: none;
+  margin-right: 30px;
+  overflow: hidden;
+  gap: 20px;
+}
+.menu_items li {
+  border-radius: 3px;
+  margin: 0 5 px;
+}
+.menu_items li a {
+  padding: 7px 13px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 800;
+  display: block;
+  text-transform: uppercase;
+  color: rgb(84, 136, 232);
+}
+.menu_items li:hover,
+li.active {
+  background-color: #d4eef7;
+  transition: 0.4s;
+}
+.btn_menu {
+  margin-right: 30px;
+  width: 50px;
+  height: 50px;
+  color: rgb(47, 45, 45);
+  cursor: pointer;
+  display: none;
+}
+ul.show {
+  top: 65px;
 }
 
-/***** Navbar styles ****/
-.nav-header {
+@media screen and (max-width: 952px) {
+  .app-logo {
+    padding-left: 16px;
+    width: 30vh;
+    height: 12vh;
+  }
+  .menu_items li a {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  .menu {
+    height: 65px;
+  }
+  .btn_menu {
+    display: inline-flex;
+  }
+  .menu_items {
+    position: fixed;
+    padding-left: 100px;
+    width: 100vw;
+    height: calc(50% - 65px);
+    background: #85a0cf;
+    color: rgb(82, 81, 81);
+    top: -100vh;
+    text-align: center;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+}
+.menu_items li {
+  line-height: 20px;
+  width: 50%;
+}
+.menu_items li:hover,
+li.active {
+  background-color: #85a0cf;
+  transition: 0.4s;
+}
+.menu_items li a {
+  font-size: 20px;
+  color: rgb(60, 59, 59);
+  font-weight: bold;
+}
+.menu_items li a:hover {
+  color: rgb(208, 220, 249);
+}
+.app-logo {
+  padding-left: 35px;
+  width: 20vh;
+  height: 10vh;
+}
+
+@media screen and (max-width: 858px) and (orientation: landscape) {
+  .menu_items li {
+    margin: 5px 0 0 0;
+  }
+  .menu_items {
+    overflow: scroll;
+    height: calc(100% -65px);
+  }
+}
+/* .nav-header {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -73,8 +192,7 @@ body {
     max-width: 100px;
     max-height: 40px;
   }
-  }
-
+  } */
 
 /* signup and login page*/
 #imagen img {
@@ -300,7 +418,6 @@ input[type="password"]:focus {
 
 /* login Page*/
 
-
 /*profile page */
 .profilePage {
   display: flex;
@@ -327,7 +444,7 @@ input[type="password"]:focus {
 .profilePage h1 {
   font-size: 2rem;
   text-align: center;
-  color: #2874A6 ;
+  color: #2874a6;
   margin-bottom: 20px;
   margin-top: 20px;
 }
@@ -344,7 +461,6 @@ input[type="password"]:focus {
   border-radius: 200px;
   object-fit: cover;
   overflow: hidden;
-
 }
 .card-profile {
   display: flex;
@@ -372,13 +488,13 @@ input[type="password"]:focus {
   padding: 0.35em 1.2em;
   border: 0.2em solid;
   border-radius: 40px;
-  background-color: rgb(84, 136, 232); ;
+  background-color: rgb(84, 136, 232);
   margin: 0 0.3em 0.3em 0;
   color: whitesmoke;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s
+  transition: all 0.2s;
 }
 
 .editBtn a:hover {
@@ -397,4 +513,3 @@ input[type="password"]:focus {
     font-size: 0.8em;
   }
 }
-
