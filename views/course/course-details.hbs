@@ -106,50 +106,7 @@
     {{/each}}
   {{/if}}
 
-  <div class="card-content">
-    {{#if course.content}}
-      <h1 id="lenght">{{number}}</h1>
-      {{#each course.content}}
-        <article class="svg">
-          <img
-            class="svg_no_process"
-            src="/public/images/SVG/WEB_DEV/Background_process_modules.svg"
-          />
-          <img
-            id="svg_process_color {{@index}}"
-            class="svg_process_color"
-            class="no_active_display"
-            src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"
-          />
-        </article>
-      {{/each}}
-
-      <div class="navbar_content_title">
-        {{#each course.content}}
-          <h4 id="title {{@index}}">{{this.title}}</h4>
-        {{/each}}
-      </div>
-
-      {{#each course.content}}
-        <div id="div {{@index}}" class="div" class="no_active_display">
-          <div>
-            <img width="100px" src={{this.image}} alt={{this.title}} />
-          </div>
-          <div>
-            <h5>{{this.title}}</h5>
-            <p>{{this.subtitle}}</p>
-            <p>Duration: {{this.time}}</p>
-            <h5>{{this.title_description}}</h5>
-            <p>{{this.description_1}}</p>
-            <p>{{this.description_2}}</p>
-            <p>{{this.description_3}}</p>
-            <p>{{this.description_4}}</p>
-          </div>
-        </div>
-
-      {{/each}}
-    {{/if}}
-  </div>
+  
   <div class="card-reasons">
     <h5>{{course.title_why}}</h5>
     {{#if course.reasons}}
