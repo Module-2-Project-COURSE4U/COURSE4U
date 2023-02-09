@@ -13,7 +13,7 @@ cardContainer.addEventListener('click', event => {
   }
 });
 
-/* Cuando hago CLICK .button, .nav TOGGLE 'activo' */
+/* active menu hamburquesa*/
 addEventListener('DOMContentLoaded', () => {
 const btn_menu = document.querySelector('.btn_menu')
 if (btn_menu) {
