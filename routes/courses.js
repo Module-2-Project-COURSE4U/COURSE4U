@@ -62,7 +62,10 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
-    return res.render("course/course-details", { course, username, user, reviews, number:course.content.length });
+    for(let i=0;i<course.features.length;i++){
+      (course.features[i]).svg = `/public/images/SVG/FEATURES/${i+1}.svg`
+    }
+    return res.render("course/course-details", { course });
     } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
