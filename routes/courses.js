@@ -53,13 +53,12 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
-    const reviews = await Review.find();
+    const reviews = await Review.find({course: id});
     const course = await Course.findById(id)
       .populate("offered")
       .populate("features")
       .populate("reasons")
-      .populate("content")
-      .populate("review");
+      .populate("content");
     if (!course) {
       return res.status(404).send({ error: "Course not found" });
     }
@@ -74,11 +73,12 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
 /* @access Admin*/
 router.get("/newCourse", async (req, res, next) => {
   try {
+    const user = req.session.currentUser;
     const offered = await Offered.find();
     const features = await Features.find();
     const reasons = await Reasons.find();
     const content = await Content.find();
-    res.render("course/newCourse", { offered, features, reasons, content });
+    res.render("course/newCourse", { offered, features, reasons, content, user });
   } catch (err) {
     console.log(err);
     next(err);

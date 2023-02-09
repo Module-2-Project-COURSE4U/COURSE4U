@@ -25,7 +25,8 @@ router.get("/delete/:id", async function (req, res, next) {
   const { id } = req.params;
   const user = req.session.currentUser
   try {
-    await Review.findByIdAndDelete(id);
+   const review = await Review.find({course: id}, {username: user});
+ console.log("----------", review);
     res.redirect("/courses");
   } catch (err) {
     next(err);

@@ -52,6 +52,7 @@ const courseSchema = new Schema(
         ref: 'Offered'
       }
     ],
+   
     skills: {
       type: Array
     },
