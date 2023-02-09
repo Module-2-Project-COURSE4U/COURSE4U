@@ -1,14 +1,12 @@
-<h3>Courses</h3>
 {{#if delete_course}}
-<h1> Course deleted succesfully</h1>
+  <h1> Course deleted succesfully</h1>
 {{/if}}
-
+<h3>Course4u</h3>
 <form class="course-form" method="GET" action="/courses/search">
   <label>Search by title</label>
   <input type="text" name="title" />
   <button type="submit">Search</button>
 </form>
-
 <div class="card-container">
   {{#each courses}}
     <div class="card-course" data-id="{{_id}}">

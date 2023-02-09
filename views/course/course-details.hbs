@@ -1,130 +1,143 @@
-
 <div class="detailsPage">
   <h1>{{course.title}}</h1>
   <a href="/courses/editCourse/{{course._id}}">EDIT</a>
-    <form action="/courses/delete/{{course._id}}" method="post"> 
-      <button type="submit">Delete course</button>
-    </form>
+  <form action="/courses/delete/{{course._id}}" method="post">
+    <button type="submit">Delete course</button>
+  </form>
   <div class="card-plan-Premium">
-  <h2>Subsribe to Course4u's top courses</h3>
-  <h3> Get premium access to all courses</h3>
-  <a href="/auth/signup">Try Personal Plan for free</a>
-  <p>€24.99 per month</p>
+    <h2>Subsribe to Course4u's top courses</h2>
+    <h3> Get premium access to all courses</h3>
+    <a href="/auth/signup">Try Personal Plan for free</a>
+    <p>€24.99 per month</p>
   </div>
   <div class="card-featAbout">
-  <div class="card-skillsAbout">
-  <div class="card-info">
-  <p>About: {{course.description}}</p>
-  <p>{{course.subdescription}}</p>
-  {{#each course.list}}
-    <p>{{this}}</p>
-  {{/each}}
-   <h5>Skills you will learn:</h5>
-   </div>
-   <div class="card-skills">
-  {{#each course.skills}}
-    <p>{{this}}</p>
-  {{/each}}
-  </div>
-  </div>
- <div class="card-features">
-      {{#if course.features}}
-      {{#each course.features}}
-      <div class="imgFeatures">
-        <img  src={{this.svg}} alt={{this.title}} />
+    <div class="card-skillsAbout">
+      <div class="card-info">
+        <p>About: {{course.description}}</p>
+        <p>{{course.subdescription}}</p>
+        {{#each course.list}}
+          <p>{{this}}</p>
+        {{/each}}
+        <h5>Skills you will learn:</h5>
       </div>
-   <div class="card-featContent">
-      <h5>{{this.title}}</h5>
-      <p>{{this.subtitle}}</p>
-   </div>
-      {{/each}}
+      <div class="card-skills">
+        {{#each course.skills}}
+          <p>{{this}}</p>
+        {{/each}}
+      </div>
+    </div>
+    <div class="card-features">
+      {{#if course.features}}
+        {{#each course.features}}
+          <div class="imgFeatures">
+            <img src={{this.svg}} alt={{this.title}} />
+          </div>
+          <div class="card-featContent">
+            <h5>{{this.title}}</h5>
+            <p>{{this.subtitle}}</p>
+          </div>
+        {{/each}}
       {{/if}}
+    </div>
   </div>
-</div>
   {{#if course.offered}}
-{{#each course.offered}}
-<p><strong>Offered_by:{{this.place}}</strong></p>
-<img width="100px" src={{this.logo}} alt={{this.place}} />
-{{/each}}
-{{/if}}
-
-<div class="card-content">
-{{#if course.content}}
-<h1 id="lenght">{{number}}</h1>
-{{#each course.content}}
-<article class="svg">
-      <img class='svg_no_process' src="/public/images/SVG/WEB_DEV/Background_process_modules.svg"/>
-      <img id='svg_process_color {{@index}}' class="svg_process_color" class="no_active_display" src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
-</article>
-  {{/each}}
-
-
-  <div class="navbar_content_title">
-    {{#each course.content}}
-    <h4 id='title {{@index}}'>{{this.title}}</h4>
+    {{#each course.offered}}
+      <p><strong>Offered_by:{{this.place}}</strong></p>
+      <img width="100px" src={{this.logo}} alt={{this.place}} />
     {{/each}}
-  </div>
-  
-</div>
- 
-  {{#each course.content}}
-  <div id='div {{@index}}' class="div" class="no_active_display">
-    <div>
-      <img width="100px" src={{this.image}} alt={{this.title}} />
-    </div>
-    <div>
-      <h5>{{this.title}}</h5>
-      <p>{{this.subtitle}}</p>
-      <p>Duration: {{this.time}}</p>
-      <h5>{{this.title_description}}</h5>
-      <p>{{this.description_1}}</p>
-      <p>{{this.description_2}}</p>
-      <p>{{this.description_3}}</p>
-      <p>{{this.description_4}}</p>
-    </div>
-  </div>
-  
-{{/each}}
-{{/if}}
-</div>
-<div class="card-reasons">
-  <h5>{{course.title_why}}</h5>
-  {{#if course.reasons}}
-    {{#each course.reasons}}
-      <h6>{{this.subtitle}}</h6>
-      {{#each this.list}}
-        <p>{{this}}</p>
+  {{/if}}
+
+  <div class="card-content">
+    {{#if course.content}}
+      <h1 id="lenght">{{number}}</h1>
+      {{#each course.content}}
+        <article class="svg">
+          <img
+            class="svg_no_process"
+            src="/public/images/SVG/WEB_DEV/Background_process_modules.svg"
+          />
+          <img
+            id="svg_process_color {{@index}}"
+            class="svg_process_color"
+            class="no_active_display"
+            src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"
+          />
+        </article>
       {{/each}}
-      <p>{{this.description}}</p>
-    {{/each}}
-{{/if}}
-</div>
 
-{{#if reviews}}
-  {{#each reviews}}
-    {{#if success_message}}
-      <h1>Review deleted successfully</h1>
+      <div class="navbar_content_title">
+        {{#each course.content}}
+          <h4 id="title {{@index}}">{{this.title}}</h4>
+        {{/each}}
+      </div>
+
+      {{#each course.content}}
+        <div id="div {{@index}}" class="div" class="no_active_display">
+          <div>
+            <img width="100px" src={{this.image}} alt={{this.title}} />
+          </div>
+          <div>
+            <h5>{{this.title}}</h5>
+            <p>{{this.subtitle}}</p>
+            <p>Duration: {{this.time}}</p>
+            <h5>{{this.title_description}}</h5>
+            <p>{{this.description_1}}</p>
+            <p>{{this.description_2}}</p>
+            <p>{{this.description_3}}</p>
+            <p>{{this.description_4}}</p>
+          </div>
+        </div>
+
+      {{/each}}
     {{/if}}
-    <p><strong>{{this.username}}</strong>: {{this.comment}}. Stars: {{this.stars}}/5</p> 
-    <form>
-      <button type="submit">Delete Review</button>
-      <a href="/reviews/{{this._id}}/delete"></a>
+  </div>
+  <div class="card-reasons">
+    <h5>{{course.title_why}}</h5>
+    {{#if course.reasons}}
+      {{#each course.reasons}}
+        <h6>{{this.subtitle}}</h6>
+        {{#each this.list}}
+          <p>{{this}}</p>
+        {{/each}}
+        <p>{{this.description}}</p>
+      {{/each}}
+    {{/if}}
+  </div>
+
+  {{#if reviews}}
+    {{#each reviews}}
+      {{#if success_message}}
+        <h1>Review deleted successfully</h1>
+      {{/if}}
+      <p><strong>{{this.username}}</strong>:
+        {{this.comment}}. Stars:
+        {{this.stars}}/5</p>
+      <form>
+        <button type="submit">Delete Review</button>
+        <a href="/reviews/{{this._id}}/delete"></a>
+      </form>
+    {{/each}}
+  {{/if}}
+
+  {{#if user}}
+    <form
+      class="review-form"
+      method="POST"
+      action="/reviews/newReview/{{course._id}}"
+    >
+      <label>How would you rate this course?</label>
+      <input type="number" placeholder="5" name="stars" min="1" max="5" />
+      <label>Comment:</label>
+      <input
+        type="text"
+        placeholder="I really liked this course"
+        name="comment"
+      />
+      <label>User's name:</label>
+      <input type="text" placeholder={{username}} disabled />
+      <button type="submit">Add review</button>
     </form>
-  {{/each}}
-{{/if}}
-
-{{#if user}}
-  <form class="review-form" method="POST" action="/reviews/newReview/{{course._id}}">
-    <label>How would you rate this course?</label>
-    <input type="number" placeholder="5" name="stars" min="1" max="5"/>
-    <label>Comment:</label>
-    <input type="text" placeholder="I really liked this course" name="comment"/>
-    <label>User's name:</label>
-    <input type="text" placeholder={{username}} disabled />
-    <button type="submit">Add review</button>
-  </form>
-{{/if }}
-</div>
+  {{/if}}
 </div>
 
-<script src='/public/script/dom_details.js'></script>
+<script src="/public/script/dom_details.js"></script>

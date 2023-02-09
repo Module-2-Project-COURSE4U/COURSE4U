@@ -1,6 +1,6 @@
-<h1>Add New course </h1>
-<div class="editCoursePage">
-  <form action="/courses/newCourse" method="post">
+<div class="editCourse">
+  <h1>Add New course </h1>
+  <form class="editCourseForm" action="/courses/newCourse" method="post">
     <label>Category: </label>
     <input type="text" name="category" placeholder="{{course.category}}" />
     <label>Title:</label>
@@ -13,11 +13,10 @@
     />
     <label>Image: </label>
     <input type="text" name="image" placeholder="https://.../" />
-    <label>Offered By:</label>
-    <label>Logo: </label>
+    <label>Offered By: logo</label>
     <input type="text" name="logo" placeholder="https://.../" />
     <label>Place:</label>
     <input type="text" name="place" placeholder="{{offered.place}}" />
-    <button type="submit" value="SAVE">Add</button>
+    <input type="submit" value="Add Course" />
   </form>
 </div>
