@@ -17,7 +17,7 @@ const courseSchema = new Schema(
     },
     title: {
       type: String,
-
+      required: true
     },
     description: {
       type: String
@@ -52,6 +52,7 @@ const courseSchema = new Schema(
         ref: 'Offered'
       }
     ],
+   
     skills: {
       type: Array
     },

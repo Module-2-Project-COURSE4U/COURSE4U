@@ -1,149 +1,143 @@
-/**** Reset ****/
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    box-sizing: border-box;
-  }
-  
-  /**** Color variables ****/
-  :root {
-    --primary-blue: #17c3b2;
-    --primary-orange: #fbe6c4;
-    --light-blue: lightcyan;
-    --basic-white: #fef9ef;
-    --secondary-red: #fe6d73;
-  }
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f5f5;
-    margin: 30px;
-    margin-bottom: 100px;
-  }
+/* Online Course Page */
 
-  /* Online Course Page */
+h3 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 150px;
+}
+.course-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  gap: 10px;
+  margin: auto;
+  margin-top: 50px;
+}
 
+.course-form label {
+  font-size: 1.4em;
+  color: rgb(63, 62, 62);
+  font-weight: bold;
+}
+
+.course-form input[type="text"] {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 1.2em;
+  width: 30%;
+  min-width: 200px;
+}
+.course-form button[type="submit"] {
+  width: 15%;
+  border-radius: 10px;
+  background-color: rgb(100, 149, 237);
+  color: white;
+  font-size: 1.4em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.course-form button[type="submit"]:hover {
+  background-color: #38598b;
+}
+
+@media (max-width: 858px) {
   h3 {
-    font-size: 2rem;
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    font-size: 1.5rem;
+    margin-top: 100px;
   }
-  .course-form  {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
-    gap: 10px;
-    margin: auto;
-    }
-   
-    @media (max-width: 768px) {
-    .course-form  {
-        flex-direction: column;
-        width: 100%;
-    }
-    }
-    
-    .course-form label {
-    font-size: 1.4em;
-    color: rgb(63, 62, 62);
-    font-weight: bold;
-    }
-    
-    .course-form input[type="text"] {
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    font-size: 1.2em;
-    width: 30%;
-    min-width: 200px;
-    }
-    
-    @media (max-width: 768px) {
-    .course-form input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    }
-    
-    .course-form button[type="submit"] {
-    width: 10%;
-    border-radius: 10px;
-    background-color: rgb(84, 136, 232);
-    color: white;
-    font-size: 1.4em;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    }
-    
-    .course-form button[type="submit"]:hover {
-    background-color: #6495ed;
-    }
-
-    .card-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    }
-    .card-course {
-    display: flex;
+  .course-form input[type="text"] {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .course-form {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    min-height: 350px;
-    margin: 2em 0;
-    padding: 1em;
-    cursor: pointer;
-    text-decoration: none;
-    }
-    
-    .card-course h3 a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .card-course h4 {
-    font-size: 1.4em;
-    margin-bottom: 1em;
-    color: rgb(63, 62, 62);
-    }
-    
-    .card-course img {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 1em;
-    }
-    
-    .card-course p {
+    width: 90%;
+    margin-top: 10px;
+  }
+  .course-form label {
     font-size: 1.2em;
-    margin-bottom: 1em;
-    color: rgb(63, 62, 62);
-    }
-    
-    .card-course p a {
-    color: rgb(84, 136, 232);
-    text-decoration: none;
-    transition: all 0.2s;
-    }
-    
-    .card-course p a:hover {
-    color: #053691;
-    }
-    
-    @media (max-width: 500px) {
-    .course-search input[type="text"] {
+  }
+
+  .course-form button[type="submit"] {
+    width: 45%;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .course-form button[type="submit"] {
+    width: 30%;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.card-course {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  min-height: 350px;
+  margin: 2em 0;
+  padding: 1em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card-course h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+.card-course h4 {
+  font-size: 1.4em;
+  margin-bottom: 1em;
+  color: rgb(63, 62, 62);
+}
+
+.card-course img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 1em;
+}
+
+.card-course p {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: rgb(63, 62, 62);
+}
+
+.card-course p a {
+  color: rgb(84, 136, 232);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.card-course p a:hover {
+  color: #053691;
+}
+
+/* @media (max-width: 768px) { */
+  /* .course-search input[type="text"] {
     width: 70%;
     }
     .card-course {
@@ -402,6 +396,69 @@
 
   .review-form input[type="number"],
   .review-form input[type="text"] {
+    width: 100%;
+  }
+}
+
+/*edit course and add new course */
+
+.editCourse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.editCourseForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.editCourseForm label {
+  width: 150px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.editCourseForm input[type="text"],
+textarea {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.editCourseForm input[type="submit"] {
+  width: 30%;
+  padding: 10px;
+  background-color: rgb(100, 149, 237);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .editCourseForm {
+    width: 90%;
+  }
+
+  .editCourseForm label {
+    width: 100%;
+    text-align: left;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .editCourseForm input[type="text"],
+  textarea {
     width: 100%;
   }
 }

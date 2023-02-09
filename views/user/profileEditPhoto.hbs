@@ -1,18 +1,17 @@
 <div class="profilePage">
     <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl" />
   <div class="cardEditPass">
-    <h2>Update profile's picture</h2>
-    <form class="form" 
+    <h2>Update Profile's Photo</h2>
+    <form class="formEditPhoto" 
       action="/user/profile/editPhoto"
       method="POST"
       enctype="multipart/form-data">
-      <label>Image:
+      <label>Photo:
         <input type="file" name="imageUrl" required=" true" />
       </label>
-
       <button type="submit">Save changes</button>
+      <a href="/user/profile/deletePhoto">Delete image</a>
     </form>
-    <a href="/user/profile/deletePhoto">Delete image</a>
     {{#if message}}
       <div class="message">{{message}}</div>
     {{/if}}
