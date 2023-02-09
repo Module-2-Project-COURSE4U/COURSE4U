@@ -1,0 +1,71 @@
+  .navbar_content_title, .div_content,.div_content div,.div_content div:last-child,.div_content div:last-child > *{
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+  .navbar_content_title, .div_content{
+    width: 90%;
+    justify-content: space-evenly;
+  }
+
+.div_content div,.div_content div:last-child,.div_content div:last-child > *{
+  width: 100%;
+  justify-content: center;
+}
+.div_content div:last-child > *{
+  padding: 1%;
+}
+  .navbar_content_title h4 {
+    
+    padding: 2%;
+  }
+
+  #PREWORK {
+    display: flex;
+  }
+
+  #PREWORK div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .no_active_display{
+    display: none;
+  }
+
+  .active_display{
+    display: flex;
+  }
+  
+  #svg_no_process {
+    position: absolute;
+    width: 100%;
+  }
+
+  .svg_process_color {
+    object-fit: cover;
+    position: absolute;
+    display: inline-block;
+    transition-property: width;
+    transition-timing-function: ease-in-out;
+    transition-duration: 3s;
+  }
+
+  .transformed_svg{
+    transition-property: width;
+    transition-timing-function: ease-in-out;
+    transition-duration: 3s;
+  }
+
+  .delay-1 {
+    transition-delay: 0.5s;
+  }
+
+  #div_svg {
+    margin-top: 10%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+  }

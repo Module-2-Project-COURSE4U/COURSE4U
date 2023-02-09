@@ -1,3 +1,8 @@
+<style id="style">
+ .svg_process_color {
+     width: 100%;
+  }
+</style>
 <div class="detailsPage">
   <h1>{{course.title}}</h1>
   <a href="/courses/editCourse/{{course._id}}">EDIT</a>
@@ -18,71 +23,73 @@
   {{#each course.list}}
     <p>{{this}}</p>
   {{/each}}
-   <h5>Skills you will learn:</h5>
+  {{#if course.skills}}
    </div>
+   
    <div class="card-skills">
-  {{#each course.skills}}
+    <h5>Skills you will learn:</h5>
+    {{#each course.skills}}
     <p>{{this}}</p>
-  {{/each}}
+    {{/each}}
+    </div>
+    {{/if}}
   </div>
   </div>
  <div class="card-features">
       {{#if course.features}}
       {{#each course.features}}
       <div class="imgFeatures">
-        <img  src={{this.svg}} alt={{this.title}} />
+        <img class="svg_features" src={{this.svg}} alt={{this.title}}/>
       </div>
    <div class="card-featContent">
-      <h5>{{this.title}}</h5>
-      <p>{{this.subtitle}}</p>
+      <h4>{{this.title}}</h4>
+      <h5>{{this.subtitle}}</h5>
    </div>
       {{/each}}
       {{/if}}
   </div>
-</div>
+
   {{#if course.offered}}
-{{#each course.offered}}
-<p><strong>Offered_by:{{this.place}}</strong></p>
-<img width="100px" src={{this.logo}} alt={{this.place}} />
+  {{#each course.offered}}
+<div class="card-offered">
+  <p><strong>Offered by:{{this.place}}</strong></p>
+  <img src={{this.logo}} alt={{this.place}} />
+</div>
 {{/each}}
 {{/if}}
 
 <div class="card-content">
 {{#if course.content}}
-<h1 id="lenght">{{number}}</h1>
-{{#each course.content}}
-<article class="svg">
-      <img class='svg_no_process' src="/public/images/SVG/WEB_DEV/Background_process_modules.svg"/>
-      <img id='svg_process_color {{@index}}' class="svg_process_color" class="no_active_display" src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
-</article>
-  {{/each}}
-
+<h3>PROGRESS</h3>
+  <div id='div_svg'>
+        <img id="svg_process_color" class="svg_process_color delay-1" src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
+  </div>
 
   <div class="navbar_content_title">
     {{#each course.content}}
-    <h4 id='title {{@index}}'>{{this.title}}</h4>
+    <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
     {{/each}}
   </div>
-  
-</div>
- 
+
   {{#each course.content}}
-  <div id='div {{@index}}' class="div" class="no_active_display">
-    <div>
-      <img width="100px" src={{this.image}} alt={{this.title}} />
-    </div>
-    <div>
-      <h5>{{this.title}}</h5>
-      <p>{{this.subtitle}}</p>
-      <p>Duration: {{this.time}}</p>
-      <h5>{{this.title_description}}</h5>
-      <p>{{this.description_1}}</p>
-      <p>{{this.description_2}}</p>
-      <p>{{this.description_3}}</p>
-      <p>{{this.description_4}}</p>
-    </div>
-  </div>
   
+    <div class="div_content no_active_display">
+      <div>
+        <img width="100px" src={{this.image}} alt={{this.title}} />
+      </div>
+      <div>
+        <h2>{{this.subtitle}}</h2>
+        <p>Duration: {{this.time}}</p>
+        <h5>{{this.title_description}}</h5>
+        <p>{{this.description_1}}</p>
+        <p>{{this.description_2}}</p>
+        <p>{{this.description_3}}</p>
+        <p>{{this.description_4}}</p>
+      </div>
+
+    </div>
+
+  </div>
 {{/each}}
 {{/if}}
 </div>

@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 const featuresSchema = new Schema(
   // Add whichever fields you need for your app
   {
-    svg:String,
+    svg:{
+      type:String,
+      default:true
+    },
     title:String,
     subtitle:String
     
