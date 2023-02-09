@@ -1,42 +1,42 @@
 const content__1 = [
     {
-      title:'WEEK',
-      subtitle:'1',
+      title:'W1',
+      subtitle:'WEEK 1',
       time:'4 hours to complete',
       title_description:'Introduction to IT',
       description_1:"Welcome to Technical Support Fundamentals, the first course of the IT Support Professional Certificate! By enrolling in this course, you are taking the first step to kickstarting your career in tech. In the first week of the course, we'll learn about how computers were invented, how they've evolved over time, and how they work today. We will also learn about what an 'IT Support Specialist' is and what they do in their job. By the end of this module, you will know how to count like a computer using binary and understand why these calculations are so powerful for society. So let's get started!"
     },
     {
-      title:'WEEK',
-      subtitle:'2',
+      title:'W2',
+      subtitle:'WEEK 2',
       time:'4 hours to complete',
       title_description:'Hardware',
       description_1:"In the second week of this course, we'll learn about what's inside a computer. We'll learn all about the hardware components or different pieces inside a computer. We'll discover what each component does and how they work together to make a computer function. By the end of this module, you will also know how to build a computer from scratch!"
     },
     {
-      title:'WEEK',
-      subtitle:'3',
+      title:'W3',
+      subtitle:'WEEK 3',
       time:'5 hours to complete',
       title_description:'Operating System',
       description_1:"In the third week of the course we will become familiar with operating systems. We discuss the operating systems that are most widely used today and learn how an operating system interacts with computer hardware. We will learn about the startup process of an operating system and show you how to install the Windows, Linux and Mac OS X operating systems from scratch. At the end of this module you will interact directly with the Windows and Linux operating systems via the Qwiklabs environment."
     },
     {
-      title:'WEEK',
-      subtitle:'4',
+      title:'W4',
+      subtitle:'WEEK 4',
       time:'2 hours to complete',
       title_description:'Networking',
       description_1:"In the fourth week of this course, we'll learn about computer networking. We'll explore the history of the Internet and what 'The Web' actually is. We'll also discuss topics like Internet privacy, security, and what the future of the Internet may look like. You'll also understand why the Internet has limitations even today. By the end of this module, you will know how the Internet works and recognize both the positive and negative impacts the Internet has had on the world."
     },
     {
-      title:'WEEK',
-      subtitle:'5',
+      title:'W5',
+      subtitle:'WEEK 5',
       time:'3 hours to complete',
       title_description:'Software',
       description_1:"In the fifth week of this course, we'll learn about computer software. We'll learn about what software actually is and the different types of software you may encounter as an IT Support Specialist. We'll also explore how to manage software and revisit the concept of 'abstraction'. By the end of this module, you'll use the Qwiklabs environment to install, update and remove software on both Windows and Linux operating systems."
     },
     {
-      title:'WEEK',
-      subtitle:'6',
+      title:'W6',
+      subtitle:'WEEK 6',
       time:'3 hours to complete',
       title_description:'Troubleshooting',
       description_1:"Congratulations, you've made it to the last week of the course! In the final week, we'll learn about the importance of troubleshooting and customer support. We'll go through some real-world scenarios that you might encounter at a Help Desk or Desktop Support role. We'll learn why empathizing with a user is super important when working in a tech role. Finally, we'll learn why writing documentation is an important aspect of any IT role. By the end of this module, you will utilize soft skills and write documentation to communicate with others."
@@ -45,43 +45,43 @@ const content__1 = [
 
   const content__2 = [
     {
-        title:'WEEK',
-        subtitle:'1',
+        title:'W1',
+        subtitle:'WEEK 1',
         time:'5 hours to complete',
         title_description:'Introduction to Networking',
         description_1:"Welcome to the Networking course of the IT Support Professional Certificate! In the first week of this course, we will cover the basics of computer networking. We will learn about the TCP/IP and OSI networking models and how the network layers work together. We'll also cover the basics of networking devices such as cables, hubs and switches, routers, servers and clients. We'll also explore the physical layer and data link layer of our networking model in more detail. By the end of this module, you will know how all the different layers of the network model fit together to create a network."
     },
     {
-        title:'WEEK',
-        subtitle:'2',
+        title:'W2',
+        subtitle:'WEEK 2',
         time:'4 hours to complete',
         title_description:'The Network Layer',
         description_1:"In the second week of this course, we'll explore the network layer in more depth. We'll learn about the IP addressing scheme and how subnetting works. We'll explore how encapsulation works and how protocols such as ARP allow different layers of the network to communicate. We'll also cover the basics of routing, routing protocols, and how the Internet works. By the end of this module, you'll be able to describe the IP addressing scheme, understand how subnetting works, perform binary math to describe subnets, and understand how the Internet works."
     },
     {
-        title:'WEEK',
-        subtitle:'3',
+        title:'W3',
+        subtitle:'WEEK 3',
         time:'5 hours to complete',
         title_description:'The Transport and Application Layers',
         description_1:"In the third week of this course, we'll explore the transport and application layers. By the end of this module, you'll be able to describe TCP ports and sockets, identify the different components of a TCP header, show the difference between connection-oriented and connectionless protocols, and explain how TCP is used to ensure data integrity."
     },
     {
-        title:'WEEK',
-        subtitle:'4',
+        title:'W4',
+        subtitle:'WEEK 4',
         time:'5 hours to complete',
         title_description:'Networking Services',
         description_1:"In the fourth week of this course, we'll explore networking services. We'll learn about why we need DNS and how it works. We'll also show you why DHCP makes network administration a simpler task. By the end of this module, you'll be able to do describe how DNS and DHCP work, how NAT technologies help keep networks secure, and how VPNs and proxies help users connect and stay secured."
     },
     {
-        title:'WEEK',
-        subtitle:'5',
+        title:'W5',
+        subtitle:'WEEK 5',
         time:'5 hours to complete',
         title_description:'Connecting to the Internet',
         description_1:"In the fifth week of this course, we'll explore the history of the Internet, how it evolved, and how it works today. We'll understand the different ways to connect to the Internet through cables, wireless and cellar connections, and even fiber connections. By the end of this module, you'll be able to define the components of WANs and outline the basics of wireless and cellular networking."
     },
     {
-        title:'WEEK',
-        subtitle:'6',
+        title:'W6',
+        subtitle:'WEEK 6',
         time:'5 hours to complete',
         title_description:'Troubleshooting and the Future of Networking',
         description_1:"Congratulations, you've made it to the final week in the course! In the last week of this course, we'll explore the future of computer networking. We'll also cover the practical aspects of troubleshooting a network using popular operating systems. By the end of this module, you'll be able to detect and fix a lot of common network connectivity problems using tools available in Microsoft Windows, MacOS, and Linux operating systems."
@@ -90,43 +90,43 @@ const content__1 = [
 
   const content__3 = [
     {
-        title:'WEEK',
-        subtitle:'1',
+        title:'W1',
+        subtitle:'WEEK 1',
         time:'6 hours to complete',
         title_description:'Navigating the System',
         description_1:"Welcome to the Operating Systems course of the IT Support Professional Certificate! In the first week of this course, we will cover the basics of Windows and Linux operating systems (OS). We will learn about how directories and files work in Windows and Linux OS. You will also learn practical ways to manipulate files and directories in the Windows graphical user interface (GUI), Windows command line interface (CLI), and Linux shell. By the end of this module, you will interact with files and directories and perform basic text manipulation in Windows and Linux OS."
     },
     {
-        title:'WEEK',
-        subtitle:'2',
+        title:'W2',
+        subtitle:'WEEK 2',
         time:'5 hours to complete',
         title_description:'Users and Permissions',
         description_1:"In the second week of this course, we'll learn about configuring users and permissions in Windows and Linux OS. As an IT Support Specialist, it's important to know how to grant the appropriate permissions to users and groups for both Windows and Linux OS. By the end of this module, you will know how to add, modify, and remove users for a computer and for specific files and folders by using the Windows GUI, Windows CLI, and Linux shell."
     },
     {
-        title:'WEEK',
-        subtitle:'3',
+        title:'W3',
+        subtitle:'WEEK 3',
         time:'7 hours to complete',
         title_description:'Package and Software Management',
         description_1:"In the third week of this course, we'll learn about package and software management in Windows and Linux OS. It's important to know how package installs work and how devices and drivers are managed within these operating systems. We will also learn about different packaging and file compression methods. By the end of this module, you will know how to create, update, and remove software by using the Windows GUI, Windows CLI and Linux shell."                
     },
     {               
-        title:'WEEK',
-        subtitle:'4',
+        title:'W4',
+        subtitle:'WEEK 4',
         time:'6 hours to complete',
         title_description:'Filesystems',
         description_1:"In the fourth week of this course, we'll learn about how filesystems work for Windows and Linux OS. We'll learn about filesystem types and why they're different for certain OS. We'll learn about disk partitioning and virtual memory and why these are so important for an IT Support Specialist's role. We'll also cover ways mount and unmount filesystems, read disk usage, and repair filesystems. By the end of this module, you will partition and format a disk drive yourself in both Windows and Linux."
     },
     {
-        title:'WEEK',
-        subtitle:'5',
+        title:'W5',
+        subtitle:'WEEK 5',
         time:'5 hours to complete',
         title_description:'Process Management',
         description_1:"In the fifth week of this course, we'll explore process management. As an IT Support Specialist, it is important to use system tools to read and understand process statuses of machines. We will cover ways to start and terminate a process in Windows and Linux. We will also apply troubleshooting tools to solve problems with processes and resources. By the end of this module, you will use Windows and Linux commands to do practical process maintenance."        
     },
     {
-        title:'WEEK',
-        subtitle:'6',
+        title:'W6',
+        subtitle:'WEEK 6',
         time:'6 hours to complete',
         title_description:'Operating Systems in Practice',
         description_1:"Congratulations, you've made it to the final week in the course! In the last week of this course, we will cover some of the practical aspects of operating systems that you'll use all the time in IT Support. We will cover remote access and how to troubleshoot a computer from afar. We'll explore virtualization tools to manage and remove virtual instances, use logs for system monitoring, and show you a few different techniques for OS deployment. By the end of this module, you will apply all the skills from this course to debug some issues within Windows and Linux OS. Good luck!"
@@ -135,43 +135,43 @@ const content__1 = [
 
   const content__4 = [
     {
-        title:'WEEK',
-        subtitle:'1',
+        title:'W1',
+        subtitle:'WEEK 1',
         time:'4 hours to complete',
         title_description:'What is System Administration?',
         description_1:"Welcome to the System Administration course of the IT Support Professional Certificate! In the first week of this course, we will cover the basics of system administration. We'll cover organizational policies, IT infrastructure services, user and hardware provisioning, routine maintenance, troubleshooting, and managing potential issues. By the end of this module, you will understand the roles and responsibilities of a System Administrator. So let's get started!"
     },
     {
-        title:'WEEK',
-        subtitle:'2',
+        title:'W2',
+        subtitle:'WEEK 2',
         time:'7 hours to complete',
         title_description:'Network and Infrastructure Services',
         description_1:"In the second week of this course, we'll learn about network and infrastructure services. We will cover what IT infrastructure services are and what their role is in system administration. We'll also learn about server operating systems, virtualization, network services, DNS for web services, and how to troubleshoot network services. By the end of this module, you will know the most common IT infrastructure services you'll encounter when handling system administration tasks."
     },
     {
-        title:'WEEK',
-        subtitle:'3',
+        title:'W3',
+        subtitle:'WEEK 3',
         time:'6 hours to complete',
         title_description:'Software and Platform Services',
         description_1:"In the third week of this course, we'll explore software and platform services. We'll cover what types of software and platform services you may encounter in a tech role and how to manage them. We'll learn how to configure email services, security services, file services, print services, and platform services. We'll explore ways to troubleshoot platform services and common issues to look out for. By the end of this module, you'll understand how to setup and manage the IT infrastructure services to help a business stay productive, keep information secure, and deliver applications to its users."
     },
     {
-        title:'WEEK',
-        subtitle:'4',
+        title:'W4',
+        subtitle:'WEEK 4',
         time:'7 hours to complete',
         title_description:'Directory Services',
         description_1:"In the fourth week of this course, we'll learn about directory services. Specifically, we'll cover how two of the most popular directory services, Active Directory and OpenLDAP, work in action. We'll explore the concept of centralized management and how this can help SysAdmins maintain and support all the different parts of an IT infrastructure. By the end of this module, you will know how to add users, passwords, and use group policies in Active Directory and OpenLDAP."
     },
     {
-        title:'WEEK',
-        subtitle:'5',
+        title:'W5',
+        subtitle:'WEEK 5',
         time:'3 hours to complete',
         title_description:'Data Recovery & Backups',
         description_1:"In the fifth week of this course, we'll learn about data recovery and backups. In any tech role, it's important to know how to backup and recover data -- it's even more important for system administration. We will also learn about common corporate practices like designing a disaster recovery plan and writing post-mortem documentation. By the end of this module, you'll know the tradeoffs between on-site and off-site backups, understand the value and importance of backup and recovery testing, know different options for data backup (as well as the risks) and understand the purpose and contents of a disaster recovery plan."
     },
     {
-        title:'WEEK',
-        subtitle:'6',
+        title:'W6',
+        subtitle:'WEEK 6',
         time:'24 minutes to complete',
         title_description:'Final Project',
         description_1:"Congratulations, you've made it to the final week in the course! The last week of this course is dedicated to the final project. For the final project, you will apply all the skills you've learned in this course by providing systems administration consultation. You will assess the IT infrastructure of three fictitious (but very real-life based!) companies and provide recommendations and advice about how to support their IT infrastructure. By the end of this project, you will demonstrate the skills and problem-solving techniques of a SysAdmin. Good luck!"
@@ -180,50 +180,50 @@ const content__1 = [
 
   const content__5 = [
     {
-        title:'WEEK',
-        subtitle:'1',
+        title:'W1',
+        subtitle:'WEEK 1',
         time:'4 hours to complete',
         title_description:'Understanding Security Threats',
         description_1:"Welcome to the IT Security course of the IT Support Professional Certificate! In the first week of this course, we will cover the basics of security in an IT environment. We will learn how to define and recognize security risks, vulnerabilities and threats. We'll identify the most common security attacks in an organization and understand how security revolves around the 'CIA' principle. By the end of this module, you will know the types of malicious software, network attacks, client-side attacks, and the essential security terms you'll see in the workplace."
     },
     {
-        title:'WEEK',
-        subtitle:'2',
+        title:'W2',
+        subtitle:'WEEK 2',
         time:'6 hours to complete',
         title_description:'Pelcgbybtl (Cryptology)',
         description_1:"In the second week of this course, we'll learn about cryptology. We'll explore different types of encryption practices and how they work. We'll show you the most common algorithms used in cryptography and how they've evolved over time. By the end of this module, you'll understand how symmetric encryption, asymmetric encryption, and hashing work; you'll also know how to choose the most appropriate cryptographic method for a scenario you may see in the workplace."
     },
     {
-        title:'WEEK',
-        subtitle:'3',
+        title:'W3',
+        subtitle:'WEEK 3',
         time:'3 hours to complete',
         title_description:'AAA Security (Not Roadside Assistance)',
         description_1:"In the third week of this course, we'll learn about the 'three A's' in cybersecurity. No matter what type of tech role you're in, it's important to understand how authentication, authorization, and accounting work within an organization. By the end of this module, you'll be able to choose the most appropriate method of authentication, authorization, and level of access granted for users in an organization."
     },
     {
-        title:'WEEK',
-        subtitle:'4',
+        title:'W4',
+        subtitle:'WEEK 4',
         time:'5 hours to complete',
         title_description:'Securing Your Networks',
         description_1:"In the fourth week of this course, we'll learn about secure network architecture. It's important to know how to implement security measures on a network environment, so we'll show you some of the best practices to protect an organization's network. We'll learn about some of the risks of wireless networks and how to mitigate them. We'll also cover ways to monitor network traffic and read packet captures. By the end of this module, you'll understand how VPNs, proxies and reverse proxies work; why 802.1X is a super important for network protection; understand why WPA/WPA2 is better than WEP; and know how to use tcpdump to capture and analyze packets on a network. That's a lot of information, but well worth it for an IT Support Specialist to understand!"
     },
     {
-        title:'WEEK',
-        subtitle:'5',
+        title:'W5',
+        subtitle:'WEEK 5',
         time:'3 hours to complete',
         title_description:'Defense in Depth',
         description_1:"In the fifth week of this course, we're going to go more in-depth into security defense. We'll cover ways to implement methods for system hardening, application hardening, and determine the policies for OS security. By the end of this module, you'll know why it's important to disable unnecessary components of a system, learn about host-based firewalls, setup anti-malware protection, implement disk encryption, and configure software patch management and application policies."
     },
     {
-        title:'WEEK',
-        subtitle:'6',
+        title:'W6',
+        subtitle:'WEEK 6',
         time:'6 hours to complete',
         title_description:'Creating a Company Culture for Security',
         description_1:"Congratulations, you've made it to the final week in the course! In the last week of this course, we'll explore ways to create a company culture for security. It's important for any tech role to determine appropriate measures to meet the three goals of security. By the end of this module, you will develop a security plan for an organization to demonstrate the skills you've learned in this course. You're almost done, keep up the great work!"
     },
     {
-        title:'WEEK',
-        subtitle:'7',
+        title:'W7',
+        subtitle:'WEEK 7',
         time:'5 hours to complete',
         title_description:'Prepare for Jobs in IT Support',
         description_1:"You will engage in a series of interactive activities based on concepts you’ve explored and skills you’ve gained throughout the program. You’ll also explore job readiness skills, develop your resume, and practice interviewing for jobs."

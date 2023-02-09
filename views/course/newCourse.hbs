@@ -2,19 +2,50 @@
 <hr />
 <div class="editCoursePage">
     <form action="/courses/newCourse" method="post">
-      <label>Category: </label>
-      <input type="text" name="category" placeholder="{{course.category}}" />
-      <label>Title:</label>
-      <input  type="text" name="title" placeholder="{{course.title}}" />
-      <label>Description:</label>
-      <input  type="text" name="description" placeholder="{{course.description}}" />
-      <label>Image: </label>
-      <input type="text" name="image" placeholder="https://.../" />
-          <label>Offered By:</label>
-    
-          <label>Logo: </label>
-          <input  type="text" name="logo" placeholder="https://.../" />
-          <label>Place:</label>
-          <input  type="text" name="place" placeholder="{{offered.place}}" />
+    <div>
+        <h3>About</h3> 
+        <div>
+            <label>Category: </label>
+            <input type="text" name="category" placeholder="{{course.category}}" />
+            <label>Title:</label>
+            <input  type="text" name="title" placeholder="{{course.title}}" />
+            <label>Description:</label>
+            <input  type="text" name="description" placeholder="{{course.description}}" />
+            <label>List:</label>
+            <input  type="text" name="description" placeholder="{{course.list}}" />
+            <label>Image: </label>
+            <input type="text" name="image" placeholder="https://.../" />
+        </div>
+        <h3>Creator Course</h3>
+        <div>
+            <label>Logo Business: </label>
+            <input  type="text" name="logo" placeholder="https://.../" />
+            <label>Place:</label>
+            <input  type="text" name="place" placeholder="{{offered.place}}" />
+        </div>
+        <h3>Content</h3>
+        <div>
+            <label>Image: </label>
+            <input type="text" name="image" placeholder="https://.../" />
+            <label>Title:</label>
+            <input  type="text" name="title" placeholder="{{course.title}}" />
+            <label>Subtitle:</label>
+            <input  type="text" name="subtitle" placeholder="{{course.description}}" />
+            <label>Time to complete the course:</label>
+            <input  type="text" name="time" placeholder="{{course.description}}" />
+            <label>Title of the description of the content:</label>
+            <input  type="text" name="title_description" placeholder="{{course.description}}" />
+            <label>First description paragraph:</label>
+            <input  type="text" name="description" placeholder="{{course.description}}" />
+            <label>Second description paragraph:</label>
+            <input  type="text" name="description" placeholder="{{course.description}}" />
+            <label>Third description paragraph:</label>
+            <input  type="text" name="description" placeholder="{{course.description}}" />
+            <label>Fourth description paragraph:</label>
+            <input  type="text" name="description" placeholder="{{course.description}}" />
+        </div>
+          
+    </div>
+     
           
       <button type="submit">SAVE
