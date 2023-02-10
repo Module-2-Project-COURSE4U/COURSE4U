@@ -1,7 +1,17 @@
 {{#if delete_course}}
   <h1> Course deleted succesfully</h1>
-{{/if}}
+{{/if}} 
 <h3>Course4u</h3>
+{{#if user}}
+  <p>Let's start learning, {{ user.username}}</p>
+{{else}}
+  <div class="card-plan-Premium">
+    <h2>Subscribe to Course4u's top courses</h2>
+    <h3>Get premium access to all courses</h3>
+    <a href="/signup">Subscribe</a>Try Personal Plan for free</a>
+    <p>€24.99 per month</p>
+  </div>
+{{/if}}
 <form class="course-form" method="GET" action="/courses/search">
   <label>Search by title</label>
   <input type="text" name="title" />
