@@ -20,7 +20,12 @@ let i = 0
 let parameter;
 function change() {
   svg_color.classList.toggle('transformed_svg');
-  i++
+  if(i==3){
+    i=1
+  }
+  else {
+    i++
+  }
 }
 arr_title.forEach(function (elem,i) {
   elem.addEventListener('click', function() {

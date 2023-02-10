@@ -13,18 +13,15 @@
 
  
     <nav class="menu">
-      <img class="app-logo"
-        src="/public/images/SVG/LOGO/LOGO.svg"
-        alt="course4u logo"
-      />
-      <ul class="menu_items">
+      <img class="app-logo" src="/images/SVG/LOGO/LOGO.svg" alt="course4u logo"/>
+      <ul class="menu_nav menu_items">
         {{#if user}}
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/">My courses</a></li> 
         <!-- <li><a href="/courses/course-details/:id"></a></li> -->
-        <li><a href="courses/newCourse">Add Course</a></li>
+        <li><a href="/courses/newCourse">Add Course</a></li>
         <li><a href="/user/profile">Profile</a></li>
-        <li><a href="/auth/login">Log out</a></li>
+        <li><a href="/auth/logout">Log out</a></li>
         {{else}}    
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
@@ -33,12 +30,12 @@
         {{/if}}
       </ul>
      
-      <img class="btn_menu" src="../public/images/menu_icon.png" alt="Icon menu"/>
+      <img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu"/>
       
     </nav>
   
     {{{body}}}
 
-   <script src="scrpit/script.js"></script>
+   <script src="/script/script.js"></script>
   </body>
 </html>

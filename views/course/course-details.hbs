@@ -63,7 +63,7 @@
 {{#if course.content}}
 <h3>PROGRESS</h3>
   <div id='div_svg'>
-        <img id="svg_process_color" class="svg_process_color delay-1" src="/public/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
+        <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
   </div>
 
   <div class="navbar_content_title">
@@ -94,10 +94,10 @@
 {{/each}}
 {{/if}}
 </div>
+{{#if course.reasons}}
 <div class="card-reasons">
   <h5>{{course.title_why}}</h5>
-  {{#if course.reasons}}
-    {{#each course.reasons}}
+  {{#each course.reasons}}
       <h6>{{this.subtitle}}</h6>
       {{#each this.list}}
         <p>{{this}}</p>
@@ -105,19 +105,6 @@
       <p>{{this.description}}</p>
     {{/each}}
   {{/if}}
-
-  
-  <div class="card-reasons">
-    <h5>{{course.title_why}}</h5>
-    {{#if course.reasons}}
-      {{#each course.reasons}}
-        <h6>{{this.subtitle}}</h6>
-        {{#each this.list}}
-          <p>{{this}}</p>
-        {{/each}}
-        <p>{{this.description}}</p>
-      {{/each}}
-    {{/if}}
   </div>
 
   {{#if reviews}}
@@ -157,4 +144,4 @@
   {{/if}}
 </div>
 
-<script src="/public/script/dom_details.js"></script>
+<script src="/script/dom_details.js"></script>

@@ -74,9 +74,10 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
 //@desc  create new course  
 /* @route Get 
 /* @access Admin*/
-router.get("/newCourse", async (req, res, next) => {
+router.get("/newCourse", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.session.currentUser;
+    console.log(user)
     const offered = await Offered.find();
     const features = await Features.find();
     const reasons = await Reasons.find();
@@ -100,7 +101,6 @@ router.post("/newCourse", async function (req, res, next) {
     newCourse.content = content;
     res.redirect('/courses');
   } catch (err) {
-    console.log(err);
     next(err);
   }
 });

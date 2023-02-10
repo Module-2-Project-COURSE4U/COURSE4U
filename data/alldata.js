@@ -443,14 +443,14 @@ module.exports = [
             },
             content:{
                 _1:{
-                    image:'../public/images/SVG/WEB DEV/Pre-work.png',
+                    image:'/images/SVG/WEB DEV/Pre-work.png',
                     title:'PREWORK',
                     subtitle:'Prework: Get ready for your Web Development bootcamp',
                     description_1:"Remote prep",
                     description_2:'As an official Ironhack student, you will be granted access to our platform’s prep materials. Ironhack’s pre work is 50 hours of self paced material in JavaScript, HTML and CSS designed to prepare you to hit the ground running on day one. The bootcamp is an accelerated learning process. Having a solid foundation of the pre-work will benefit your career transition and technical projects throughout the course.'
                 },
                 _2:{
-                    image:'../public/images/SVG/WEB DEV/Module 1.png',
+                    image:'/images/SVG/WEB DEV/Module 1.png',
                     title:'MODULE 1',
                     subtitle:'Module 1: Responsive design with HTML, CSS and JavaScript',
                     description_1:"Intro to modern coding",
@@ -459,7 +459,7 @@ module.exports = [
                     description_4:'For your first project, you will code a game using the skills you learned in Module 1. Deeply familiarize yourself with JavaScript basics and take your knowledge to the next level by developing your own game. Want to build your favorite childhood game? Pacman? Street Fighter? Asteroids? Recreate classics with your own personal twist, or maybe even create your own original game — it’s up to you!.'
                 },
                 _3:{
-                    image:'../public/images/SVG/WEB DEV/Module 2.png',
+                    image:'/images/SVG/WEB DEV/Module 2.png',
                     title:'MODULE 2',
                     subtitle:'Module 2: The back-end',
                     description_1:"Try your hand at NodeJS, ExpressJS and MongoDB",
@@ -468,7 +468,7 @@ module.exports = [
                     description_4:'Finish Module 2 by combining all of the technologies you’ve just learned — NodeJS, ExpressJS and MongoDB, along with Mongoose and many other packages — to create a full-stack web application. You’ll use external APIs in your application, giving you a taste of how applications are built in the real world. Finally, to make the whole process more fun and practical, you will complete this project with a partner. Tech companies commonly utilize pair programming, so you will accrue excellent working experience for the jobs you’ll land after bootcamp!'
                 },
                 _4:{
-                    image:'../public/images/SVG/WEB DEV/Module 3.png',
+                    image:'/images/SVG/WEB DEV/Module 3.png',
                     title:'MODULE 3',
                     subtitle:'Module 3: The front-end',
                     description_1:"Learn ReactJS",
@@ -530,14 +530,14 @@ module.exports = [
         },
         content:{
             _1:{
-                image:'../public/images/SVG/UX UI/Pre-work.png',
+                image:'/images/SVG/UX UI/Pre-work.png',
                 title:'PREWORK',
                 subtitle:'UX/UI Design prework',
                 description_1:"40-hour online training",
                 description_2:'Take the first steps of your UX/UI Design journey by learning the basics of design thinking, interaction design and state-of-the-art design software. After setting up your tools and completing the introductory exercises, you’ll be ready to hit the ground running during bootcamp. During prework, you will create your first usability evaluation and site redesign, as well as develop your design sensitivity in a number of engaging activities. You will also be introduced to the basics of HTML and CSS, which is an essential foundation for the bootcamp’s design implementation section.'  
             },
             _2:{
-                image:'../public/images/SVG/UX UI/Module 1.png',
+                image:'/images/SVG/UX UI/Module 1.png',
                 title:'MODULE 1',
                 subtitle:'Module 1: Understand user experience',
                 description_1:"Learn the cornerstones of the industry: design thinking, agile organization and lean management. Then hone your skills with hands-on practice using UX research methods, interaction design principles and information architectures.",
@@ -546,7 +546,7 @@ module.exports = [
                 description_4:'Manage your first product-design project on your own by utilizing agile methodologies. You will discover who your users are, how to empathize with them, and then plan a creative and innovative product roadmap to solve their problems. Finish up your project with guerrilla user-testing and presentations that will enhance your public speaking skills.'
             },
             _3:{
-                image:'../public/images/SVG/UX UI/Module 2.png',
+                image:'/images/SVG/UX UI/Module 2.png',
                 title:'MODULE 2',
                 subtitle:'Module 2: Learn to design user interfaces',
                 description_1:"Deep dive into visual design fundamentals and design systems",
@@ -555,7 +555,7 @@ module.exports = [
                 description_4:'It’s your last project before the final module! You’ll utilize all the skills you’ve built up to create a state-of-the-art website design with engaging animations and a refined style. Not only will you cultivate your visual design and workflow skills, but you’ll also document the entire process to ensure a smooth hand-off to development. When the project’s complete, you will delight your stakeholders with a presentation of your product.'
             },
             _4:{
-                image:'../public/images/SVG/UX UI/Module 3.png',
+                image:'/images/SVG/UX UI/Module 3.png',
                 title:'MODULE 3',
                 subtitle:'Module 3: Design implementation',
                 description_1:"Design handoff, HTML, CSS, portfolios and geek culture",
@@ -613,14 +613,14 @@ module.exports = [
         },
         content:{
             _1:{
-                image:'../public/images/SVG/DATA/Pre-work.png',
+                image:'/images/SVG/DATA/Pre-work.png',
                 title:'PREWORK',
                 subtitle:'Data prework: Before the course',
                 description_1:"Dive into the world of data",
                 description_2:'Once you become an official Ironhack Data analytics student, you will be given 60 hours of online learning material focusing on command line, Git, Python, MySQL, and statistical analysis. To get you ready for learning Data analytics, this essential prework will familiarize you with the basics of programming and statistics necessary for the bootcamp. Although you will learn these topics remotely before you arrive at your chosen campus, you won’t be far away from the resources of the Ironhack community. Make use of our Slack channel to connect with your peers and get help from expert academic staff. At the end of your prework, you’ll be ready for the fast pace on campus!'
             },
             _2:{
-                image:'../public/images/SVG/DATA/Module 1.png',
+                image:'/images/SVG/DATA/Module 1.png',
                 title:'MODULE 1',
                 subtitle:'Module 1: Introduction to Data analytics and Python',
                 description_1:"Your first weeks as a data analyst",
@@ -629,7 +629,7 @@ module.exports = [
                 description_4:'During the last week of the module, you will put your new Python, API connection, and web scraping skills to the test! In your first project, you will create an entirely new data set that no one has ever used before. You will then share it with your classmates by saving it in an SQL database. Time to get a taste for the real work of a data analyst!'
             },
             _3:{
-                image:'../public/images/SVG/DATA/Module 2.png',
+                image:'/images/SVG/DATA/Module 2.png',
                 title:'MODULE 2',
                 subtitle:'Module 2: Advanced Data Analytics',
                 description_1:"Take a deeper look at statistics and probability",
@@ -638,7 +638,7 @@ module.exports = [
                 description_4:'In this module’s last week, you will develop your second project: a complete analysis of real data sets that you will have processed, cleaned and visualized!'
             },
             _4:{
-                image:'../public/images/SVG/DATA/Module 3.jpg',
+                image:'/images/SVG/DATA/Module 3.jpg',
                 title:'MODULE 3',
                 subtitle:'Module 3: Get a handle on the fundamentals of machine learning',
                 description_1:"Build. Train. Evaluate.",
@@ -696,14 +696,14 @@ module.exports = [
         },
         content:{
             _1:{
-                image:'../public/images/SVG/CYBERSECURITY/Pre-work.png',
+                image:'/images/SVG/CYBERSECURITY/Pre-work.png',
                 title:'PREWORK',
                 subtitle:'Cybersecurity prework: Before the course',
                 description_1:"Dive into the world of cybersecurity",
                 description_2:'Once you become an official Ironhack Cybersecurity student, you will be given 20 hours of online learning material. To get you ready for learning Cybersecurity, this prework will familiarize you with computer systems (what is a computer, how it works and what are its main functionalities), operating systems (main operations, processes, file systems and sytem commands), and networks (principles, types, protocols and configuration). This knowledge will set the ground to have a productive and meaningful learning process during the bootcamp. Also, although you will learn these topics remotely before you arrive at your chosen campus, you won’t be far away from the resources of the Ironhack community. Make use of our Slack channel to connect with your peers and get help from expert academic staff. At the end of your prework, you’ll be ready for the fast pace on campus!'
             },
             _2:{
-                image:'../public/images/SVG/CYBERSECURITY/Module 1.png',
+                image:'/images/SVG/CYBERSECURITY/Module 1.png',
                 title:'MODULE 1',
                 subtitle:'Module 1: Introduction to Cybersecurity',
                 description_1:"In Module 1 we will onboard you on everything that is necessary to have a cybersecurity mindset. From introduction to the most important topics in the field to hands-on practice to every concept you’ll need to understand the Cybersecurity industry.",
@@ -712,7 +712,7 @@ module.exports = [
                 description_4:'Also, you will start working on your first projects with a hands-on approach on concepts such as the creation and analysis of critical network servers, analysis of network topologies, mapping and OS Fingerprinting, encrypting and decrypting data and media, or backup and recovery, among others.'
             },
             _3:{
-                image:'../public/images/SVG/CYBERSECURITY/Module 2.jpg',
+                image:'/images/SVG/CYBERSECURITY/Module 2.jpg',
                 title:'MODULE 2',
                 subtitle:'Module 2: Security and Threats',
                 description_1:"In this module you will learn how to understand and build a security program, as well as to identify and tackle the principles and most common threats in today’s environment.",
@@ -721,7 +721,7 @@ module.exports = [
                 description_4:'In the end, you will learn more about how to conduct a vulnerability and compliance scan and how to perform an incident response, a damage assessment, as well as an incident triage along with tracking and reporting everything. Get ready to identify vulnerabilities and build a secure environment.'
             },
             _4:{
-                image:'../public/images/SVG/CYBERSECURITY/Module 3.png',
+                image:'/images/SVG/CYBERSECURITY/Module 3.png',
                 title:'MODULE 3',
                 subtitle:'Module 3: Real projects for your new career',
                 description_1:"During the last module of the Bootcamp you will be starting to protect from real time Cyber Attacks while improving your acquired knowledge in previous modules with some upcoming analysis trends of the market, performing a security analysis and architecture evaluation, as well as performing static and dynamic analysis from different data sources and how to handle digital evidence.",

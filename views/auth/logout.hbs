@@ -1,0 +1,13 @@
+<div class="form form_logout">
+    <form class='logout' action="/auth/logout" method="POST">
+   
+      <label>Are you sure you want to log out?</label>
+
+      {{#if error}}
+        <p style="color:rgb(218, 90, 90)">{{error}}</p>
+      {{/if}}
+      
+      <button type="submit" value="YES" name="submit">YES</button>
+      <button type="submit" value="NO" name="submit">NO</button>
+    </form>
+</div>

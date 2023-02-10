@@ -1,8 +1,9 @@
+require("dotenv").config();
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 
-const MONGO_URI =
-  process.env.MONGODB_URL ||'mongodb+srv://admin:admin@cluster0.p7p1ppk.mongodb.net/Course4U_DB'
+const MONGO_URI = process.env.MONGO_URL
+  
 mongoose
   .connect(MONGO_URI)
   .then((x) => {

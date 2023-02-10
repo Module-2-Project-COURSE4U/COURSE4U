@@ -16,14 +16,6 @@ router.get("/signup", async (req, res, next) => {
   res.render("auth/signup");
 });
 
-// @desc    Displays form view to log in
-// @route   Get /auth/login
-// @access  Public
-router.get("/login", async (req, res, next) => {
-  // const user = req.session.currentUser;
-  res.render("auth/login");
-});
-
 // @desc    Sends user auth data to database to create a new user
 // @route   Post /auth/signup
 // @access  Public
@@ -58,6 +50,13 @@ router.post("/signup", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+// @desc    Displays form view to log in
+// @route   Get /auth/login
+// @access  Public
+router.get("/login", async (req, res, next) => {
+  res.render("auth/login");
 });
 
 // @desc    Sends user auth data to database to authenticate user
@@ -95,15 +94,41 @@ router.post("/login", async function (req, res, next) {
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user
-router.post("/logout", (req, res, next) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return next(err);
-    } else {
-      res.clearCookie("COURSE4U");
-      res.redirect("/auth/login");
-    }
-  });
+router.get("/logout", (req, res, next) => {
+  res.render('auth/logout');
+  // console.log(req.session)
+  // req.session.destroy((err) => {
+  //   if (err) {
+  //     return next(err);
+  //   } else {
+  //     res.clearCookie("course4u-cookie");
+  //     console.log('cookie cleared')
+  //     res.redirect("/auth/login");
+  //   }
+  // });
 });
+
+router.post("/logout", (req, res, next) => {
+  const submit = req.body.submit;
+  try{
+    if(submit === "YES"){
+      req.session.destroy((err) => {
+        if (err) {
+          return next(err);
+        } else {
+          res.clearCookie("course4u-cookie");
+          console.log('cookie cleared')
+          res.redirect("/auth/login");
+        }
+      })
+    }
+    else if(submit === "NO"){
+      res.redirect('/user/profile')
+    }
+  }
+  catch (err) {
+    next(err);
+  }
+})
 
 module.exports = router;

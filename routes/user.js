@@ -11,6 +11,7 @@ const fileUploader = require("../config/cloudinary.config");
 // @access  Public
 router.get("/profile", isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
+  console.log('profile',user)
   res.render("user/profile", { user });
 });
 

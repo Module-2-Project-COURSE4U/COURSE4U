@@ -4,12 +4,12 @@
 <h3>Course4u</h3>
 <form class="course-form" method="GET" action="/courses/search">
   <label>Search by title</label>
-  <input type="text" name="title" />
+  <input id="input_search" type="text" name="title" />
   <button type="submit">Search</button>
 </form>
 <div class="card-container">
   {{#each courses}}
-    <div class="card-course" data-id="{{_id}}">
+    <div class="card-course" id="{{_id}}">
       <h4>{{this.title}}</h4>
       <img width="150px" src={{this.image}} alt={{this.title}} />
       <p>Description:{{truncate this.description 100}}...</p>
@@ -17,7 +17,8 @@
   {{/each}}
 </div>
 
-<script src="/script.js"></script>
+<script src="/script/courseView.js"></script>
+<script src="/script/search.js"></script>
 
 <!-- <p>This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.
 
