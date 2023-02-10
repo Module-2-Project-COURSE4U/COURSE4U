@@ -217,59 +217,59 @@ router.get("/editCourse/:id", (req, res) => {
 // });
 
 
-// router.post('/editCourse/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const course = await Course.findById(id);
-//     const { description, title, subdescription } = req.body;
+router.post('/editCourse/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await Course.findById(id);
+    const { description, title, subdescription } = req.body;
 
-//     course.description = description;
-//     course.title = title;
-//     course.subdescription = subdescription;
+    course.description = description;
+    course.title = title;
+    course.subdescription = subdescription;
     
-//     if (req.body.offered) {
-//       const offeredUpdates = req.body.offered.map(async (offer, index) => {
-//         const offered = course.offered[index];
-//         offered.value = offer.value;
-//         return offered.save();
-//       });
-//       await Promise.all(offeredUpdates);
-//     }
+    if (req.body.offered) {
+      const offeredUpdates = req.body.offered.map(async (offer, index) => {
+        const offered = course.offered[index];
+        offered.value = offer.value;
+        return offered.save();
+      });
+      await Promise.all(offeredUpdates);
+    }
 
-//     if (req.body.content) {
-//       const contentUpdates = req.body.content.map(async (con, index) => {
-//         const content = course.content[index];
-//         content.value = con.value;
-//         return content.save();
-//       });
-//       await Promise.all(contentUpdates);
-//     }
+    if (req.body.content) {
+      const contentUpdates = req.body.content.map(async (con, index) => {
+        const content = course.content[index];
+        content.value = con.value;
+        return content.save();
+      });
+      await Promise.all(contentUpdates);
+    }
 
-//     if (req.body.features) {
-//       const featuresUpdates = req.body.features.map(async (feature, index) => {
-//         const features = course.features[index];
-//         features.value = feature.value;
-//         return features.save();
-//       });
-//       await Promise.all(featuresUpdates);
-//     }
+    if (req.body.features) {
+      const featuresUpdates = req.body.features.map(async (feature, index) => {
+        const features = course.features[index];
+        features.value = feature.value;
+        return features.save();
+      });
+      await Promise.all(featuresUpdates);
+    }
 
-//     if (req.body.reasons) {
-//       const reasonsUpdates = req.body.reasons.map(async (reason, index) => {
-//         const reasons = course.reasons[index];
-//         reasons.value = reason.value;
-//         return reasons.save();
-//       });
-//       await Promise.all(reasonsUpdates);
-//     }
+    if (req.body.reasons) {
+      const reasonsUpdates = req.body.reasons.map(async (reason, index) => {
+        const reasons = course.reasons[index];
+        reasons.value = reason.value;
+        return reasons.save();
+      });
+      await Promise.all(reasonsUpdates);
+    }
 
-//     await course.save();
-//     res.redirect(`/course-details/${course._id}`);
-//   } catch (err) {
-//     console.log(err);
-//     res.redirect("/courses");
-//   }
-// });
+    await course.save();
+    res.redirect(`/course-details/${course._id}`);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/courses");
+  }
+});
 
 
 router.post("/editCourse/:id", async (req, res) => {
