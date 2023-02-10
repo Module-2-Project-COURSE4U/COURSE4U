@@ -9,7 +9,15 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/about', (req, res, next) => {
-  res.render('/course/about');
+  res.render('about');
+});
+
+router.get('/terms_privacy', (req, res, next) => {
+  res.render('terms_privacy');
+});
+
+router.get('/checkout', (req, res, next) => {
+  res.render('checkout');
 });
 
 module.exports = router;

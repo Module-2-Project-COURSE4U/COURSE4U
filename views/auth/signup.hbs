@@ -1,3 +1,4 @@
+
 <div class="signupHeader">
   <!-- <a href="/"><img
       src="/images/leftIcon.png"
@@ -22,12 +23,30 @@
       <label>Password</label>
       <input type="password" name="password" placeholder="********" />
 
-      {{#if error}}
-        <p style="color: red;">{{error}}</p>
-      {{/if}}
-      <button type="submit">Sign up</button>
-      <p style="color: gray"> By signing up , you agree to our terms of use and Privacy Policy<P>
-      <a href="/auth/login">Already have an account? Log in!</a>
+      <label>Name on Card</label>
+      <input type="text" name="nameOnCard" placeholder="John Doe" />
+
+      <label>Credit Card Number</label>
+      <input type="text" name="cardNumber" placeholder="1111 2222 3333 4444" />
+
+      <label>Expiration Date</label>
+      <input type="text" name="expirationDate" placeholder="MM/YY" />
+
+      <label>CVV</label>
+      <input type="text" name="cvv" placeholder="***" />
+
+      <label>Country</label>
+      <input type="text" name="country" placeholder="USA" />
+
+{{#if error}}
+  <p style="color: red;">{{error}}</p>
+{{/if}}
+
+<button type="submit">Subscribe</button>
+<p style="color: gray">
+  By subscribing, you agree to our terms of use and Privacy Policy
+</p>
+<a href="/auth/login">Already have an account? Log in!</a>
       
 
        <div class="socialSignup">
@@ -42,4 +61,5 @@
     </form>
    
  </div>
-<script src="/script.js"></script>
+
+<script src="/script/signup.js"></script>

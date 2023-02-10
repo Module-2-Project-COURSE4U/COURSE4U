@@ -28,6 +28,10 @@ const courseSchema = new Schema(
     list: {
       type: Array
     },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     content: [
       {
         type: Schema.Types.ObjectId,
