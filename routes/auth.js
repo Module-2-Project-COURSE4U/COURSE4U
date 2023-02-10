@@ -96,16 +96,6 @@ router.post("/login", async function (req, res, next) {
 // @access  Private/ user
 router.get("/logout", (req, res, next) => {
   res.render('auth/logout');
-  // console.log(req.session)
-  // req.session.destroy((err) => {
-  //   if (err) {
-  //     return next(err);
-  //   } else {
-  //     res.clearCookie("course4u-cookie");
-  //     console.log('cookie cleared')
-  //     res.redirect("/auth/login");
-  //   }
-  // });
 });
 
 router.post("/logout", (req, res, next) => {
