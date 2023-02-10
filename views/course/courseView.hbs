@@ -1,15 +1,21 @@
+<div class="container">
 {{#if delete_course}}
-  <h1> Course deleted succesfully</h1>
+  <div class="popup-message">
+    <h1> Course deleted succesfully!</h1>
+  </div>
 {{/if}} 
 <h3>Course4u</h3>
 {{#if user}}
-  <p>Let's start learning, {{ user.username}}</p>
+  <div class="popup-message">
+    <h1>Let's start learning, {{ user.username}}!</h1>
+  </div>
 {{else}}
   <div class="card-plan-Premium">
     <h2>Subscribe to Course4u's top courses</h2>
     <h3>Get premium access to all courses</h3>
-    <a href="/signup">Subscribe</a>Try Personal Plan for free</a>
-    <p>€24.99 per month</p>
+    <a href="/signup">Subscribe</a>
+    <p> Try Personal Plan for free</p>
+     <h4> €21.99 per month</h4>
   </div>
 {{/if}}
 <form class="course-form" method="GET" action="/courses/search">
@@ -27,6 +33,7 @@
       <p>{{truncate this.description 100}}...</p>
     </div>
   {{/each}}
+</div>
 </div>
 
 <script src="/script/courseView.js"></script>

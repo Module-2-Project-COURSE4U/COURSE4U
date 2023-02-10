@@ -37,12 +37,13 @@ router.get("/", async function (req, res, next) {
 router.get("/search", async function (req, res, next) {
   const user = req.session.currentUser;
   const { title } = req.query;
-  try {
-    const course = await Course.findOne({ title: title });
-    res.render("course/search", { query: title, course });
-  } catch (error) {
-    next(error);
-  }
+  if(title.length > 0)
+    try {
+      const course = await Course.find({ title: title });
+      res.render("course/search", { query: title, course });
+    } catch (error) {
+      next(error);
+    }
 });
 //@desc  view course details  by Id
 /* @route GET 
