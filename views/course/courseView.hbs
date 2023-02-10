@@ -13,16 +13,18 @@
   </div>
 {{/if}}
 <form class="course-form" method="GET" action="/courses/search">
-  <label>Search by title</label>
-  <input id="input_search" type="text" name="title" />
+  <label>Search by title</label>  
+  <input id="input_search" type="text" name="title"/> 
+  <select name="options" id="select" class="no_active_display" multiple>
+  </select>
   <button type="submit">Search</button>
 </form>
 <div class="card-container">
   {{#each courses}}
-    <div class="card-course" id="{{_id}}">
+    <div class="card-course {{_id}}" id='{{this.title}}'>
       <h4>{{this.title}}</h4>
       <img width="150px" src={{this.image}} alt={{this.title}} />
-      <p>Description:{{truncate this.description 100}}...</p>
+      <p>{{truncate this.description 100}}...</p>
     </div>
   {{/each}}
 </div>
