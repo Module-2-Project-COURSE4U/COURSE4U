@@ -3,7 +3,7 @@ const menu_items = document.querySelector(".menu_nav");
 const btn_logo = document.querySelector(".app-logo")
 
 btn_logo.addEventListener("click", () => {
-  window.location.href = `/`
+  window.location.href = `/courses/course-details/${}`
 })
 
 btn_menu.addEventListener("click", () => {

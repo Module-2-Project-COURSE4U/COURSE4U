@@ -28,6 +28,12 @@ const userSchema = new Schema(
     country: {
       type: String,
     },
+    my_courses:[
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Course'
+      }
+    ]
   },
   {
     timestamps: true,

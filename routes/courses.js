@@ -65,7 +65,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for(let i=0;i<course.features.length;i++){
       (course.features[i]).svg = `/public/images/SVG/FEATURES/${i+1}.svg`
     }
-    return res.render("course/course-details", { course });
+    return res.render("course/course-details", { course, user });
     } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
