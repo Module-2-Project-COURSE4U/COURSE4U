@@ -1,0 +1,8 @@
+
+<div class="container">
+<h1>My Learning</h1>
+{{#each courses}}
+    <img width="300px" src={{this.image}} alt={{this.title}} />
+    <h4>{{this.title}}</h4>
+    <p>{{this.description}}</p>
+{{/each}}

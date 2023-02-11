@@ -443,14 +443,14 @@ module.exports = [
             },
             content:{
                 _1:{
-                    image:'/images/SVG/WEB DEV/Pre-work.png',
+                    image:/images/SVG/WEB DEV/Pre-work.png',
                     title:'PREWORK',
                     subtitle:'Prework: Get ready for your Web Development bootcamp',
                     description_1:"Remote prep",
                     description_2:'As an official Ironhack student, you will be granted access to our platform’s prep materials. Ironhack’s pre work is 50 hours of self paced material in JavaScript, HTML and CSS designed to prepare you to hit the ground running on day one. The bootcamp is an accelerated learning process. Having a solid foundation of the pre-work will benefit your career transition and technical projects throughout the course.'
                 },
                 _2:{
-                    image:'/images/SVG/WEB DEV/Module 1.png',
+                    image:/images/SVG/WEB DEV/Module 1.png',
                     title:'MODULE 1',
                     subtitle:'Module 1: Responsive design with HTML, CSS and JavaScript',
                     description_1:"Intro to modern coding",
@@ -459,7 +459,7 @@ module.exports = [
                     description_4:'For your first project, you will code a game using the skills you learned in Module 1. Deeply familiarize yourself with JavaScript basics and take your knowledge to the next level by developing your own game. Want to build your favorite childhood game? Pacman? Street Fighter? Asteroids? Recreate classics with your own personal twist, or maybe even create your own original game — it’s up to you!.'
                 },
                 _3:{
-                    image:'/images/SVG/WEB DEV/Module 2.png',
+                    image:/images/SVG/WEB DEV/Module 2.png',
                     title:'MODULE 2',
                     subtitle:'Module 2: The back-end',
                     description_1:"Try your hand at NodeJS, ExpressJS and MongoDB",

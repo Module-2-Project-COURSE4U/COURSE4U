@@ -1,9 +1,6 @@
-<h1>Add New course</h1>
-<div class="editCoursePage">
+<div class="editCourse">
     <form action="/courses/newCourse" method="post">
-    <div>
-        <h3>About</h3> 
-        <div>
+            <h1>Add New Course</h1>
             <label>Category: </label>
             <input type="text" name="category" placeholder="{{course.category}}" />
             <label>Title:</label>
@@ -14,16 +11,13 @@
             <input  type="text" name="description" placeholder="{{course.list}}" />
             <label>Image: </label>
             <input type="text" name="image" placeholder="https://.../" />
-        </div>
-        <h3>Creator Course</h3>
-        <div>
+      
+            <h1>Offered by: </h1>
             <label>Logo Business: </label>
             <input  type="text" name="logo" placeholder="https://.../" />
             <label>Place:</label>
             <input  type="text" name="place" placeholder="{{offered.place}}" />
-        </div>
-        <h3>Content</h3>
-        <div>
+            <h1>Content</h1>
             <label>Image: </label>
             <input type="text" name="image" placeholder="https://.../" />
             <label>Title:</label>
@@ -42,9 +36,9 @@
             <input  type="text" name="description" placeholder="{{course.description}}" />
             <label>Fourth description paragraph:</label>
             <input  type="text" name="description" placeholder="{{course.description}}" />
-        </div>
+            <input type="submit" value="Create Course" />
+   </form>
+</div>  
           
-    </div>
      
-          
-      <button type="submit">SAVE
+

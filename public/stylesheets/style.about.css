@@ -1,0 +1,234 @@
+body {
+  margin-top: 150px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+.welcome-section,
+.about-section {
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+}
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  width: 50%;
+  text-align: justify;
+}
+
+.about-container p {
+  font-size: 1rem;
+}
+
+.header-text {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: rgb(63, 62, 62);
+}
+
+/* .img_About {
+  display: inline-block;
+  margin: 20px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 40px;
+} */
+
+.img_About {
+  display: inline-block;
+  margin: 20px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+.img_About:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+.img_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  width: 50%;
+  text-align: justify;
+}
+
+.features-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  margin: auto;
+  padding-top: 30px;
+  width: 70%;
+  height: 500px;
+  align-items: flex-start;
+}
+.features-section-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  text-align: justify;
+  height: auto;
+}
+.features-section-text1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  text-align: justify;
+  height: auto;
+}
+
+.features-section,
+.cta-section {
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+.cta-section {
+  background-color: rgb(129, 167, 238);
+  color: rgb(67, 66, 66);
+  text-align: center;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-weight: 800;
+  position: relative;
+}
+.cta-section img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 100px;
+  padding-bottom: 20px;
+  filter: brightness(70%);
+}
+
+@media only screen and (max-width: 1200px) {
+  .features-section {
+    width: 80%;
+  }
+  .header-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .cta-section img {
+    width: 180px;
+    height: 80px;
+    /* position: absolute; */
+    right: 0;
+  }
+  .cta-section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 60%;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 858px) {
+  body {
+    margin-top: 100px;
+  }
+
+  .welcome-section,
+  .about-section {
+    width: 70%;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+  }
+
+  .img_About {
+    width: 100px;
+    height: 100px;
+  }
+
+  .about-section {
+    width: 70%;
+  }
+  .about-container p {
+    font-size: 0.7rem;
+  }
+
+  .features-section {
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+  }
+
+  .features-section-text,
+  .features-section-text1 {
+    width: 100%;
+    height: auto;
+  }
+
+  .cta-section {
+    text-align: center;
+    box-sizing: border-box;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cta-section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 60%;
+    height: auto;
+  }
+
+  .cta-section-content h2 {
+    font-size: 0.7em;
+    margin: 0;
+  }
+
+  .cta-section-content p {
+    font-size: 0.5em;
+    margin: 0;
+  }
+
+  .cta-section img {
+    width: 100px;
+    height: 60px;
+    /* position: absolute; */
+    right: 20px;
+  }
+}

@@ -13,18 +13,24 @@
   </div>
   <div class="form">
     <form action="/auth/login" method="POST">
-   
       <label>Username</label>
       <input type="text" name="username" placeholder="JohnDoe88" />
-
       <label>Password</label>
       <input type="password" name="password" placeholder="********" />
-
       {{#if error}}
         <p style="color:rgb(218, 90, 90)">{{error}}</p>
       {{/if}}
       <button type="submit">Login</button>
       <a href="/auth/signup">Not registered yet? Sign up!</a>
+      <div class="socialSignup">
+        <h2> or connect with</h2>
+        <a href="/auth/login">
+          <img src="/images/googleLogo.png" alt="signup google" />
+        </a>
+        <a href="/auth/login">
+          <img src="/images/facebookLogo.png" alt="signup facebook" />
+        </a>
+     </div>
     </form>
   </div>
 </div>

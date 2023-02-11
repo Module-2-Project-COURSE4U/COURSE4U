@@ -1,15 +1,19 @@
-const Course = require('../models/Course');
-const router = require('express').Router();
+const Course = require("../models/Course");
+const router = require("express").Router();
 
 // @desc    App home page
 // @route   GET /
 // @access  Public
-router.get('/', (req, res, next) => {
-  res.redirect('/courses');
+router.get("/", (req, res, next) => {
+  res.redirect("/courses");
 });
 
-router.get('/about', (req, res, next) => {
-  res.render('/course/about');
+router.get("/about", (req, res, next) => {
+  res.render("about");
+});
+
+router.get("/terms_privacy", (req, res, next) => {
+  res.render("terms_privacy");
 });
 
 module.exports = router;

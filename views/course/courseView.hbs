@@ -1,7 +1,23 @@
+<div class="container">
 {{#if delete_course}}
-  <h1> Course deleted succesfully</h1>
+  <div class="popup-message">
+    <h1> Course deleted succesfully!</h1>
+  </div>
 {{/if}}
 <h3>Course4u</h3>
+{{#if user}}
+  <div class="popup-message">
+    <h1>Let's start learning, {{ user.username}}!</h1>
+  </div>
+{{else}}
+  <div class="card-plan-Premium">
+    <h2>Subscribe to Course4u's top courses</h2>
+    <h3>Get premium access to all courses</h3>
+    <a href="/auth/signup">Subscribe</a>
+    <p> Try Personal Plan for free</p>
+     <h4> €21.99 per month</h4>
+  </div>
+{{/if}}
 <form class="course-form" method="GET" action="/courses/search">
   <label>Search by title</label>  
   <input id="input_search" type="text" name="title"/> 
@@ -11,12 +27,13 @@
 </form>
 <div class="card-container">
   {{#each courses}}
-    <div class="card-course" id='{{_id}}'>
+    <div class="card-course" id= '{{_id}}'>
       <h4>{{this.title}}</h4>
       <img width="150px" src={{this.image}} alt={{this.title}} />
       <p>{{truncate this.description 100}}...</p>
     </div>
   {{/each}}
+</div>
 </div>
 
 <script src="/script/courseView.js"></script>

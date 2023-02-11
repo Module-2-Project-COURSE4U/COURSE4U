@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const { isAdmin, isLoggedIn, isUser } = require('../middleware/adminLoggedIn');
+const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 const fileUploader = require("../config/cloudinary.config");
 
 // @desc    is responsible for displaying the user's profile page.
@@ -11,7 +11,7 @@ const fileUploader = require("../config/cloudinary.config");
 // @access  Public
 router.get("/profile", isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
-  console.log('profile',user)
+  console.log("profile", user);
   res.render("user/profile", { user });
 });
 
@@ -36,7 +36,6 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     });
     return;
   }
-
   if (currentPassword === newPassword1 || currentPassword === newPassword2) {
     res.render("user/profileEditPass", {
       user,
@@ -44,7 +43,6 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     });
     return;
   }
-
   const isPasswordValid = await bcrypt.compare(
     currentPassword,
     user.hashedPassword
@@ -52,11 +50,11 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   if (!isPasswordValid) {
     res.render("user/profileEditPass", {
       user,
-      message: "Password must contain at least 7 characters, one number, one lowercase and one uppercase letter.",
+      message:
+        "Password must contain at least 7 characters, one number, one lowercase and one uppercase letter.",
     });
     return;
   }
-
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
   if (!passwordRegex.test(newPassword1)) {
     res.render("user/profileEditPass", {
@@ -66,7 +64,6 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     });
     return;
   }
-
   if (newPassword1 !== newPassword2) {
     res.render("user/profileEditPass", {
       user,
@@ -89,19 +86,20 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-
 // @desc  is responsible for displaying the user's profile editing page.
 // @route   get /profile/editPhoto
 // @access  Public
 router.get("/profile/editPhoto", function (req, res, next) {
   const user = req.session.currentUser;
-  res.render("user/profileEditPhoto", { user }); 
+  res.render("user/profileEditPhoto", { user });
 });
 
 // @desc  This route allows the user to edit their profile picture.
 // @route   post /profile/editPhoto
 // @access  User
-router.post("/profile/editPhoto",fileUploader.single("imageUrl"),
+router.post(
+  "/profile/editPhoto",
+  fileUploader.single("imageUrl"),
   async (req, res, next) => {
     if (!req.file) {
       // console.log("No file was uploaded.");
@@ -122,13 +120,12 @@ router.post("/profile/editPhoto",fileUploader.single("imageUrl"),
     }
   }
 );
-
 // @desc  This route allows the user to delete their profile picture.
 // @route   Get /user/profile/deletePhoto
 // @access  User
 router.get("/profile/deletePhoto", async (req, res, next) => {
   const user = req.session.currentUser;
-  console.log('it works')
+  console.log("it works");
   try {
     const updatedUser = await User.findByIdAndUpdate(
       user._id,

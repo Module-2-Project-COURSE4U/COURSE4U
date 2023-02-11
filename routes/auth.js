@@ -5,12 +5,11 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific route
-const { isAdmin, isLoggedIn, isUser } = require('../middleware/adminLoggedIn');
-
+const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
-// @access  Public 
+// @access  Public
 router.get("/signup", async (req, res, next) => {
   // const user = req.session.currentUser;
   res.render("auth/signup");
@@ -20,10 +19,34 @@ router.get("/signup", async (req, res, next) => {
 // @route   Post /auth/signup
 // @access  Public
 router.post("/signup", async (req, res, next) => {
-  const { email, password, username } = req.body;
+  const {
+    email,
+    password,
+    username,
+    nameOnCard,
+    cardNumber,
+    expirationDate,
+    cvv,
+    country,
+  } = req.body;
   // Check that username, email, and password are provided
-  if (!username || !password) {
+  if (
+    !username ||
+    !password ||
+    !nameOnCard ||
+    !cardNumber ||
+    !expirationDate ||
+    !cvv ||
+    !country
+  ) {
     res.render("auth/signup", { error: "All fields are necessary!" });
+    return;
+  }
+  const findEmailInDB = await User.findOne({ email: email });
+  if (findEmailInDB) {
+    res.render("auth/signup", {
+      error: `There already is a user with email ${email}`,
+    });
     return;
   }
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
@@ -44,13 +67,24 @@ router.post("/signup", async (req, res, next) => {
     } else {
       const salt = await bcrypt.genSalt(saltRounds);
       const hashedPassword = await bcrypt.hash(password, salt);
-      const user = await User.create({ username, email, hashedPassword });
-      res.render("auth/login", user);
-    }
-  } catch (err) {
-    next(err);
-  }
+      const user = await User.create({
+        username,
+        email,
+        hashedPassword,
+        nameOnCard,
+        cardNumber,
+        expirationDate,
+        cvv,
+        country,
+      });
+      req.session.isUserLoggedIn = true;
+res.render("auth/login", user);
+}
+} catch (err) {
+next(err);
+}
 });
+  
 
 // @desc    Displays form view to log in
 // @route   Get /auth/login
@@ -74,23 +108,25 @@ router.post("/login", async function (req, res, next) {
   try {
     const user = await User.findOne({ username: username });
     if (!user) {
-      return res.render("auth/login", { error: `There are no users by ${username}` });
+      return res.render("auth/login", {
+        error: `There are no users by ${username}`,
+      });
     } else {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = user;
-        res.render("user/profile", { user });
+        // res.render("user/profile", { user });
+        res.redirect("/courses");
       } else {
-        console.log('password')
+        console.log("password");
         res.render("auth/login", { error: "incorrect password" });
         return;
       }
     }
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
-
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user
@@ -98,6 +134,9 @@ router.get("/logout", (req, res, next) => {
   res.render('auth/logout');
 });
 
+//@desc    Destroy user session and log out
+//@route   Post /auth/logout
+//@access  Private/ user
 router.post("/logout", (req, res, next) => {
   const submit = req.body.submit;
   try{
