@@ -14,7 +14,8 @@ const reviewSchema = new Schema(
         type: String
       },
       username: {
-        type: String
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
       },
       course: {
         type: Schema.Types.ObjectId, 

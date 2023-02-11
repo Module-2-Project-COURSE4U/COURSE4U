@@ -49,13 +49,13 @@
     display: inline-block;
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 3s;
+    transition-duration: 1s;
   }
 
   .transformed_svg{
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 3s;
+    transition-duration: 1s;
   }
 
   .delay-1 {

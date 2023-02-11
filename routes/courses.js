@@ -58,7 +58,9 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
-    const reviews = await Review.find({ course: id });
+    const reviews = await Review.find({ course: id},{username:user._id})
+    .populate("username");
+    console.log(reviews)
     const course = await Course.findById(id)
       .populate("offered")
       .populate("features")
@@ -70,7 +72,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    return res.render("course/course-details", { course , user});
+    return res.render("course/course-details", { course , user, reviews});
   } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
@@ -137,7 +139,7 @@ router.get("/addCourse/:courseId", async (req, res, next) => {
   const userId = req.session.currentUser._id;
   let foundCourse = null;
   try {
-    foundCourse = await User.findOne({ Courses: ObjectId(courseId) });
+    foundCourse = await User.findOne({ courses: ObjectId(courseId) });
   } catch (error) {
     next(error);
   }
@@ -145,7 +147,7 @@ router.get("/addCourse/:courseId", async (req, res, next) => {
   if(foundCourse === null){
     try {
       console.log(userId, ' -------- ', courseId);
-      await User.findByIdAndUpdate(userId, { $push: { Courses: ObjectId(courseId) } });
+      await User.findByIdAndUpdate(userId, { $push: { courses: ObjectId(courseId) } });
     } catch (error) {
       next(error);
     }
@@ -156,11 +158,11 @@ res.redirect("/courses/myCourses");
 /* @route GET 
 /* @access  especific User*/
 router.get("/myCourses", async (req, res, next) => {
-  const userId = req.session.currentUser._id;
+  const user = req.session.currentUser
   try {
-    const user = await User.findById(userId).populate("Courses");
-    console.log("a ver qué tenemos: ", user);
-    res.render("course/myCourses", { courses: user.Courses });
+    const courses = await User.findById(user._id).populate("courses");
+    console.log("a ver qué tenemos: ", courses);
+    res.render("course/myCourses", { courses: courses.courses , user});
   } catch (error) {
     next(error);
   }

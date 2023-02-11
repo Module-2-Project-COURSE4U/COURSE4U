@@ -2,6 +2,8 @@ const search = document.getElementById('input_search')
 const div_search = document.getElementById('select')
 const content = document.querySelectorAll('.card-course')
 
+console.log(content.classList)
+
 let content_id = []
 let content_title = []
 const arr_content = Array.from(content)

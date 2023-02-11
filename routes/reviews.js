@@ -11,16 +11,16 @@ router.post(
   "/newReview/:courseId",
   isLoggedIn,
   async function (req, res, next) {
+    const user_id = req.session.currentUser._id;
     const { stars, comment } = req.body;
-    const { username } = req.session.currentUser;
     const { courseId } = req.params;
     try {
       const review = await Review.create({
         stars,
         comment,
-        username,
         course: courseId,
       });
+      await Review.findByIdAndUpdate(review._id, { $push: { username: user_id } });
       res.redirect(`/courses/course-details/${courseId}`);
     } catch (error) {
       next(error);
@@ -35,7 +35,6 @@ router.get("/delete/:id", async function (req, res, next) {
   const user = req.session.currentUser;
   try {
     const review = await Review.find({ course: id }, { username: user });
-    console.log("----------", review);
     res.redirect("/courses");
   } catch (err) {
     next(err);
