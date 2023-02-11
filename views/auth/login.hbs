@@ -13,13 +13,10 @@
   </div>
   <div class="form">
     <form action="/auth/login" method="POST">
-   
       <label>Username</label>
       <input type="text" name="username" placeholder="JohnDoe88" />
-
       <label>Password</label>
       <input type="password" name="password" placeholder="********" />
-
       {{#if error}}
         <p style="color:rgb(218, 90, 90)">{{error}}</p>
       {{/if}}

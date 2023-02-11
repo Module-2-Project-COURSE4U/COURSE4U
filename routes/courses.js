@@ -7,6 +7,7 @@ const Content = require("../models/Content");
 const Features = require("../models/Features");
 const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
+const User = require("../models/User");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    App courses page, GET ALL COURSES
@@ -37,7 +38,7 @@ router.get("/", async function (req, res, next) {
 router.get("/search", async function (req, res, next) {
   const user = req.session.currentUser;
   const { title } = req.query;
-  if(title.length > 0)
+  if (title.length > 0)
     try {
       const course = await Course.find({ title: title });
       res.render("course/search", { query: title, course });
@@ -80,7 +81,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
 router.get("/newCourse", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.session.currentUser;
-    console.log(user)
+    console.log(user);
     const offered = await Offered.find();
     const features = await Features.find();
     const reasons = await Reasons.find();
@@ -127,9 +128,42 @@ router.post("/newCourse", async function (req, res, next) {
     next(err);
   }
 });
+//@desc   add course to myaccount
+/* @route GET 
+/* @access User*/
+router.get("/addCourse/:courseId", async (req, res, next) => {
+  const { courseId } = req.params;
+  const userId = req.session.currentUser._id;
+  let foundCourse = null;
+  try {
+    foundCourse = await Course.findOne({ _id: courseId });
+  } catch (error) {
+    next(error);
+  }
+  if (foundCourse === null)
+    try {
+      await User.findByIdAndUpdate(userId, { $push: { Courses: courseId } });
+    } catch (error) {
+      next(error);
+    }
+  res.redirect("/courses/myCourses");
+});
+//@desc   view courses in myaccount
+/* @route GET 
+/* @access  especific User*/
+router.get("/myCourses", async (req, res, next) => {
+  const userId = req.session.currentUser._id;
+  try {
+    const user = await User.findById(userId).populate("Courses");
+    console.log("a ver qué tenemos: ", user);
+    res.render("course/myCourses", { courses: user.Courses });
+  } catch (error) {
+    next(error);
+  }
+});
 
 //@desc  edit course details  by Id
-/* @route Post 
+/* @route POST 
 /* @access Admin*/
 router.get("/editCourse/:id", (req, res) => {
   Course.findById(req.params.id)
@@ -141,8 +175,6 @@ router.get("/editCourse/:id", (req, res) => {
       res.render("course/editCourse", { course: foundCourse });
     });
 });
-
-
 // SE BORRA CASI TODO
 // router.post('/editCourse/:id', async (req, res) => {
 //   try {
@@ -166,113 +198,6 @@ router.get("/editCourse/:id", (req, res) => {
 //     res.redirect("/courses");
 //   }
 // });
-
-
-// router.post('/editCourse/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     let update = {};
-
-//     if (req.body.description) {
-//       update.description = req.body.description;
-//     }
-
-//     if (req.body.title) {
-//       update.title = req.body.title;
-//     }
-
-//     if (req.body.subdescription) {
-//       update.subdescription = req.body.subdescription;
-//     }
-
-//     if (req.body.content) {
-//       const content = await Content.findById(req.body.content);
-//       content.update(req.body.content);
-//     }
-
-//     if (req.body.features) {
-//       const features = await Features.findById(req.body.features);
-//       features.update(req.body.features);
-//     }
-
-//     if (req.body.reasons) {
-//       const reasons = await Reasons.findById(req.body.reasons);
-//       reasons.update(req.body.reasons);
-//     }
-
-//     if (req.body.offered) {
-//       const offered = await Offered.findById(req.body.offered);
-//       offered.update(req.body.offered);
-//     }
-
-//     const editCourse = await Course.findByIdAndUpdate(
-//       id,
-//       update,
-//       { new: true }
-//     );
-//     res.redirect(`/course-details/${editCourse._id}`);
-//   } catch (err) {
-//     console.log(err);
-//     res.redirect("/courses");
-//   }
-// });
-
-
-// router.post('/editCourse/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const course = await Course.findById(id);
-//     const { description, title, subdescription } = req.body;
-
-//     course.description = description;
-//     course.title = title;
-//     course.subdescription = subdescription;
-    
-//     if (req.body.offered) {
-//       const offeredUpdates = req.body.offered.map(async (offer, index) => {
-//         const offered = course.offered[index];
-//         offered.value = offer.value;
-//         return offered.save();
-//       });
-//       await Promise.all(offeredUpdates);
-//     }
-
-//     if (req.body.content) {
-//       const contentUpdates = req.body.content.map(async (con, index) => {
-//         const content = course.content[index];
-//         content.value = con.value;
-//         return content.save();
-//       });
-//       await Promise.all(contentUpdates);
-//     }
-
-//     if (req.body.features) {
-//       const featuresUpdates = req.body.features.map(async (feature, index) => {
-//         const features = course.features[index];
-//         features.value = feature.value;
-//         return features.save();
-//       });
-//       await Promise.all(featuresUpdates);
-//     }
-
-//     if (req.body.reasons) {
-//       const reasonsUpdates = req.body.reasons.map(async (reason, index) => {
-//         const reasons = course.reasons[index];
-//         reasons.value = reason.value;
-//         return reasons.save();
-//       });
-//       await Promise.all(reasonsUpdates);
-//     }
-
-//     await course.save();
-//     res.redirect(`/course-details/${course._id}`);
-//   } catch (err) {
-//     console.log(err);
-//     res.redirect("/courses");
-//   }
-// });
-
-
 router.post("/editCourse/:id", async (req, res) => {
   try {
     const { description, title, subdescription } = req.body;
@@ -303,16 +228,13 @@ router.post("/editCourse/:id", async (req, res) => {
     // Guarda los cambios
     await course.save();
     res.redirect("/courses");
-    
   } catch (err) {
     console.log(err);
     res.redirect(`/course-details/${course._id}`);
   }
 });
-
-
-//@desc  remove course by id
-/* @route Get 
+//@desc  Remove course by id but it does not delete from User Account
+/* @route Get
 /* @access Admin*/
 router.post("/delete/:id", async (req, res) => {
   const course = await Course.findById(req.params.id);

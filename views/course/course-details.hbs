@@ -6,6 +6,7 @@
 <div class="detailsPage">
   <h1>{{course.title}}</h1>
   <a href="/courses/editCourse/{{course._id}}">EDIT</a>
+  <a href="/courses/addCourse/{{course._id}}">Enroll course</a>
   <form action="/courses/delete/{{course._id}}" method="post">
     <button type="submit">Delete course</button>
   </form>
@@ -19,7 +20,6 @@
   {{/each}}
   {{#if course.skills}}
    </div>
-   
    <div class="card-skills">
     <h5>Skills you will learn:</h5>
     {{#each course.skills}}
@@ -43,7 +43,6 @@
       {{/if}}
     </div>
   </div>
-
   {{#if course.offered}}
   {{#each course.offered}}
 <div class="card-offered">
@@ -52,23 +51,19 @@
 </div>
 {{/each}}
 {{/if}}
-
 <div class="card-content">
 {{#if course.content}}
 <h3>PROGRESS</h3>
   <div id='div_svg'>
         <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
   </div>
-
   <div class="navbar_content_title">
     {{#each course.content}}
     <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
     {{/each}}
   </div>
-
   {{#each course.content}}
-  
-    <div class="div_content no_active_display">
+   <div class="div_content no_active_display">
       <div>
         <img width="100px" src={{this.image}} alt={{this.title}} />
       </div>
@@ -80,10 +75,9 @@
         <p>{{this.description_2}}</p>
         <p>{{this.description_3}}</p>
         <p>{{this.description_4}}</p>
-      </div>
+     </div>
 
     </div>
-
   </div>
 {{/each}}
 {{/if}}

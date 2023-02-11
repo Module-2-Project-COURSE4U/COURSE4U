@@ -37,6 +37,10 @@ const userSchema = new Schema(
        type: String, 
        required: [true, "Coutry name is required."]
     },
+    Courses: [{
+      type: Schema.Types.ObjectId,
+      ref: "Course",
+    }],
     
     hashedPassword: {
       type: String,
