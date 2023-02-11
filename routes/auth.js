@@ -60,6 +60,7 @@ router.post("/signup", async (req, res, next) => {
   try {
     const findUserInDB = await User.findOne({ username: username });
     if (findUserInDB) {
+
       res.render("auth/signup", {
         error: `There alredy is a user with username ${username}`,
       });
@@ -78,7 +79,8 @@ router.post("/signup", async (req, res, next) => {
         country,
       });
       req.session.isUserLoggedIn = true;
-res.render("auth/login", user);
+const first_user = true
+res.render("auth/login", { user, first_user });
 }
 } catch (err) {
 next(err);

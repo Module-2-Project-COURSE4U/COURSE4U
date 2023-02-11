@@ -3,7 +3,11 @@
       src="/images/leftIcon.png"
       alt="icon Left"
     /></a> -->
+    {{#if first_user}}
+      <h1>Welcome {{user.username}}</h1>
+    {{else}}
   <h1>Welcome Back </h1>
+  {{/if}}
 </div>
 <div class="container">
   <div id="imagen"><img
