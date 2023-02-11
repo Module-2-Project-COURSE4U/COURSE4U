@@ -8,6 +8,7 @@ const Features = require("../models/Features");
 const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
 const User = require("../models/User");
+const { ObjectId } = require('mongodb');
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    App courses page, GET ALL COURSES
@@ -69,7 +70,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    return res.render("course/course-details", { course });
+    return res.render("course/course-details", { course , user});
   } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
@@ -136,17 +137,20 @@ router.get("/addCourse/:courseId", async (req, res, next) => {
   const userId = req.session.currentUser._id;
   let foundCourse = null;
   try {
-    foundCourse = await Course.findOne({ _id: courseId });
+    foundCourse = await User.findOne({ Courses: ObjectId(courseId) });
   } catch (error) {
     next(error);
   }
-  if (foundCourse === null)
+  console.log('found course: ', foundCourse);
+  if(foundCourse === null){
     try {
-      await User.findByIdAndUpdate(userId, { $push: { Courses: courseId } });
+      console.log(userId, ' -------- ', courseId);
+      await User.findByIdAndUpdate(userId, { $push: { Courses: ObjectId(courseId) } });
     } catch (error) {
       next(error);
     }
-  res.redirect("/courses/myCourses");
+  }
+res.redirect("/courses/myCourses");
 });
 //@desc   view courses in myaccount
 /* @route GET 
@@ -184,6 +188,7 @@ router.get("/editCourse/:id", (req, res) => {
 //     const content = req.body.content ? req.body.content : [];
 //     const reasons = req.body.reasons ? req.body.reasons : [];
 //     const offered = req.body.offered ? req.body.offered : [];
+
 
 //     const editCourse = await Course.findByIdAndUpdate(
 //       id,
