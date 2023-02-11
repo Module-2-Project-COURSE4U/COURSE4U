@@ -37,7 +37,7 @@ const userSchema = new Schema(
        type: String, 
        required: [true, "Coutry name is required."]
     },
-    Courses: [{
+    courses: [{
       type: Schema.Types.ObjectId,
       ref: "Course",
     }],
@@ -51,12 +51,6 @@ const userSchema = new Schema(
       default:
         "https://media.vogue.mx/photos/62e19b3d4a4bcdd2c09a7c1b/2:3/w_1920,c_limit/GettyImages-1155131913-2.jpg",
     },
-    my_courses:[
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Course'
-      }
-    ]
   },
   {
     timestamps: true,
