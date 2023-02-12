@@ -1,7 +1,14 @@
 <h3>Results by: {{query}}</h3>
-
 {{#if course}}
-  {{>courseCard course}}
-  {{else}}
+  {{#each course}}
+   <div class="card-course {{this.title}}" id= '{{_id}}'>
+      <h4>{{this.title}}</h4>
+      <img width="150px" src={{this.image}} alt={{this.title}} />
+      <p>{{truncate this.description 100}}...</p>
+    </div>
+  {{/each}}
+{{else}}
   <p>Sorry, no courses found by {{query}}. Try again: <a href="/courses">go back to courses</a></p>
 {{/if}}
+
+

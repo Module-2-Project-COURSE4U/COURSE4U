@@ -3,38 +3,99 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <link href="/stylesheets/style.css" rel="stylesheet" />
     <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <link href="/stylesheets/style.detail.css" rel="stylesheet" />
-     <link href="/stylesheets/style.about.css" rel="stylesheet" />
+    <link href="/stylesheets/style.about.css" rel="stylesheet" />
     <title>Project module 2</title>
   </head>
   <body>
 
     <nav class="menu">
-      <img class="app-logo" src="/images/SVG/LOGO/LOGO.svg" alt="course4u logo"/>
+      <img
+        class="app-logo"
+        src="/images/SVG/LOGO/LOGO.svg"
+        alt="course4u logo"
+      />
+      
+      <form class="search_form" method="GET" action="/courses/search">
+        <label>Search</label>
+        <input id="input_search" type="text" name="title" placeholder="what do you want to learn"/>
+        <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
+        <span class="btn_close">  <img src="/images/closeBtn.png" alt="Icon close">
+        </span>
+
+      </form>
       <ul class="menu_nav menu_items">
         {{#if user}}
-        <li class="active"><a href="/">Home</a></li>
-<<<<<<< HEAD
-=======
-         <li><a href="/about">About</a></li>
->>>>>>> 13ef2e8ccf7467c4d812cd44cc858931a0320769
-        <li><a href="/courses/newCourse">Add Course</a></li>
-        <li><a href="/courses/myCourses">My courses</a></li> 
-        <li><a href="/user/profile">Profile</a></li>
-        <li><a href="/auth/logout">Log out</a></li>
-        {{else}}    
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/auth/signup">Sign up</a></li>
-        <li><a href="/auth/login">Log in</a></li>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/courses/newCourse">Add Course</a></li>
+          <li><a href="/courses/myCourses">My courses</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/user/profile">Profile</a></li>
+          <li><a href="/auth/logout">Log out</a></li>
+            <span class="btn_close"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+        {{else}}
+          <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/auth/signup">Sign up</a></li>
+          <li><a href="/auth/login">Log in</a></li>
+          
         {{/if}}
       </ul>
-      <img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu"/>  
+
+    
+  <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
+  
+  <span class="btn_search">
+    <img "btn_search" src="/images/search-Icon.png" alt="btn search"> 
+  </span>
+
+
+ 
     </nav>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="logo">
+            <img
+              class="app-footer-logo"
+              src="/images/SVG/LOGO/LOGO.svg"
+              alt="course4u logo"
+            />
+          </div>
+          <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
+          <div class="social-icons">
+            <a href="#"><img
+                src="/images/facebook-icon.png"
+                class="facebook-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/instagram-icon.png"
+                class="instagram-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/linkedin-icon.png"
+                class="linkedin-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/twitter-icon.png"
+                class="twitter-logo"
+              /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     {{{body}}}
-   <script src="/script/script.js"></script>
+    <script src="/script/script.js"></script>
+
   </body>
 </html>

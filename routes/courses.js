@@ -8,7 +8,7 @@ const Features = require("../models/Features");
 const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
 const User = require("../models/User");
-const { ObjectId } = require('mongodb');
+const { ObjectId } = require("mongodb");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    App courses page, GET ALL COURSES
@@ -37,15 +37,18 @@ router.get("/", async function (req, res, next) {
 // @route   GET /
 // @access  Public
 router.get("/search", async function (req, res, next) {
-  const user = req.session.currentUser;
+  // const user = req.session.currentUser;
   const { title } = req.query;
   if (title.length > 0)
-    try {
-      const course = await Course.find({ title: title });
-      res.render("course/search", { query: title, course });
-    } catch (error) {
-      next(error);
-    }
+  try {
+    // Create a case-insensitive regular expression from the search query
+    const regex = new RegExp(title, "i");
+    // Search for courses with a title that matches the regex pattern
+    const course = await Course.find({ title: regex });
+    res.render("course/search", { query: title, course });
+  } catch (error) {
+    next(error);
+  }
 });
 //@desc  view course details  by Id
 /* @route GET 
@@ -58,9 +61,11 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
-    const reviews = await Review.find({ course: id},{username:user._id})
-    .populate("username");
-    console.log(reviews)
+    const reviews = await Review.find(
+      { course: id },
+      { username: user._id }
+    ).populate("username");
+    console.log(reviews);
     const course = await Course.findById(id)
       .populate("offered")
       .populate("features")
@@ -72,7 +77,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    return res.render("course/course-details", { course , user, reviews});
+    return res.render("course/course-details", { course, user, reviews });
   } catch (err) {
     console.log(err);
     return res.status(500).send({ error: "Server error" });
@@ -143,26 +148,28 @@ router.get("/addCourse/:courseId", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-  console.log('found course: ', foundCourse);
-  if(foundCourse === null){
+  console.log("found course: ", foundCourse);
+  if (foundCourse === null) {
     try {
-      console.log(userId, ' -------- ', courseId);
-      await User.findByIdAndUpdate(userId, { $push: { courses: ObjectId(courseId) } });
+      console.log(userId, " -------- ", courseId);
+      await User.findByIdAndUpdate(userId, {
+        $push: { courses: ObjectId(courseId) },
+      });
     } catch (error) {
       next(error);
     }
   }
-res.redirect("/courses/myCourses");
+  res.redirect("/courses/myCourses");
 });
 //@desc   view courses in myaccount
 /* @route GET 
 /* @access  especific User*/
 router.get("/myCourses", async (req, res, next) => {
-  const user = req.session.currentUser
+  const user = req.session.currentUser;
   try {
     const courses = await User.findById(user._id).populate("courses");
     console.log("a ver qué tenemos: ", courses);
-    res.render("course/myCourses", { courses: courses.courses , user});
+    res.render("course/myCourses", { courses: courses.courses, user });
   } catch (error) {
     next(error);
   }
@@ -190,7 +197,6 @@ router.get("/editCourse/:id", (req, res) => {
 //     const content = req.body.content ? req.body.content : [];
 //     const reasons = req.body.reasons ? req.body.reasons : [];
 //     const offered = req.body.offered ? req.body.offered : [];
-
 
 //     const editCourse = await Course.findByIdAndUpdate(
 //       id,
