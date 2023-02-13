@@ -30,6 +30,9 @@ body {
   margin: 0;
   padding: 0;
 }
+input::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
 /***** Navbar styles ****/
 .menu {
   display: flex;
@@ -39,6 +42,7 @@ body {
   height: 80px;
   width: 100%;
   position: fixed;
+  z-index: 3;
   top: 0px;
 }
 .app-logo {
@@ -147,6 +151,9 @@ body {
   background-color: #38598b;
 }
  
+.margin-pre-footer{
+  padding: 5% 0%;
+}
 @media screen and (max-width: 1080px) {
   .menu {
     display: flex;
@@ -197,6 +204,7 @@ body {
 
   .menu_items {
     position: fixed;
+    z-index: 4;
     padding-left: 100px;
     width: 100vw;
     margin: auto;
@@ -258,6 +266,7 @@ body {
   
 .search_form {
   position: fixed;
+  z-index: 5;
    width: 100%;
    padding-top: 80px;
    height: calc(100% - 85px);
@@ -336,11 +345,13 @@ body {
   margin: auto; 
   bottom: 0;
   position: fixed;
+  z-index: 6;
   }
 
   .footer .container {
-  margin: auto;
+  padding: 1%;
   position:fixed;
+  z-index: 7;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -358,15 +369,24 @@ body {
 
 
 .logo {
-  width: 12vw;
+  display: flex;
+  width: 30%;
   height: 8vh;
-  object-fit: cover
+  object-fit: cover;
+  align-items: center;
+  justify-content: center;
+}
 
+.logo img {
+  width: 35%;
+  display: flex;
+  align-items: center;
 }
 
 /* Estilos para los iconos sociales */
 .social-icons {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly;
   width: 25%;
@@ -480,6 +500,9 @@ body {
 
   .socialSignup a {
     width: 40%;
+  }
+  .footer p{
+    font-size: x-small;
   }
 }
 
@@ -625,6 +648,9 @@ input[type="password"]:focus {
   .signupHeader h1 {
     font-size: 1.4rem;
     margin-top: 20px;
+  }
+  .logo img {
+    width: 80%;
   }
 }
 

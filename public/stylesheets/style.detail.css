@@ -37,15 +37,12 @@
   .active_display{
     display: flex;
   }
-  
-  #svg_no_process {
-    position: absolute;
-    width: 100%;
-  }
+
 
   .svg_process_color {
     object-fit: cover;
     position: absolute;
+    z-index: 2;
     display: inline-block;
     transition-property: width;
     transition-timing-function: ease-in-out;
@@ -65,6 +62,7 @@
   #div_svg {
     margin-top: 10%;
     position: relative;
+    z-index: 1;
     display: flex;
     align-items: flex-end;
     width: 90%;

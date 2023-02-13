@@ -115,7 +115,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
       enroled = true
     }
     
-    console.log(user.populate('courses'),id,enroled)
+    console.log(user.courses,id,enroled)
     // const enroll_true = User.find({ _id: user })
     return res.render("course/course-details", { course , user, reviews, review_user, enroled});
   } catch (err) {

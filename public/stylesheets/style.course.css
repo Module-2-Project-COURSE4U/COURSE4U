@@ -175,10 +175,11 @@ h3 {
       margin: 30px 0;
     }
     
-    .detailsPage a {
-      font-size: 1.2em;
+    .detailsPage a, .button_delete, .button_edit {
+      font-family: "Montserrat";
+      font-size: 2em;
       margin-bottom: 30px;
-      text-decoration: underline;
+      text-decoration: none;
     }
     
   .card-plan-Premium {
@@ -299,6 +300,7 @@ h3 {
       flex-wrap: wrap;
       justify-content: center;
       padding: 2%;
+      width: 80%;
     }
 
     .card-offered > * {
@@ -315,7 +317,6 @@ h3 {
       flex-wrap: wrap;
       width: 80%;
       justify-content: center;
-      margin-bottom: 30px;
     }
     
     
@@ -352,7 +353,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px 0;
+  padding: 4% 0% 10% 0%;
 }
 
 .review-form label {
@@ -366,9 +367,9 @@ h3 {
   width: 300px;
 }
 
-.review-form button[type="submit"] {
+.review-form button[type="submit"], .button_enroll, .button_delete, .button_edit {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #6495ed;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -418,7 +419,12 @@ h3 {
 
   .review-form input[type="number"],
   .review-form input[type="text"] {
-    width: 100%;
+    width: 80%;
+  }
+  .review-form {
+    padding-top: 0%;
+    margin-top: -8%;
+    padding-bottom: 20%;
   }
 
   .card-plan-Premium {
