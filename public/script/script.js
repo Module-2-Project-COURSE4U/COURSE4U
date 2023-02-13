@@ -30,3 +30,15 @@ btn_close2.addEventListener("click", () => {
   menu_items.classList.remove("show");
 });
 
+// let prevScrollpos = window.pageYOffset;
+
+// window.addEventListener("scroll", function() {
+//   const footer = document.getElementsByClassName("mainFooter")[0];
+//   const currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos || currentScrollPos === 0) {
+//     footer.style.display = "block";
+//   } else {
+//     footer.style.display = "none";
+//   }
+//   prevScrollpos = currentScrollPos;
+// });

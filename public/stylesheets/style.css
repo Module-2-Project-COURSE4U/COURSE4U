@@ -95,17 +95,17 @@ body {
 }
 
 .search_form label {
-  font-size: 0.9em;
+  font-size: 1em;
   color: rgb(63, 62, 62);
   font-weight: bold;
-  width: 50px;
+  width: 62px;
   margin:0%;
 }
 
 .search_form input {
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  font-size: 1em;
+  font-size: 0.9em;
   width: 50%;
   height: 30px;
   min-width: 200px;
@@ -137,10 +137,8 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s;
-
-    display: inline-block;
-    vertical-align: middle;
-    
+  display: inline-block;
+  vertical-align: middle;  
 }
 
 .search_form button[type="submit"]:hover {
@@ -155,26 +153,47 @@ body {
   }
   .app-logo {
     padding-left: 16px;
-    width: 20vh;
-    height: 8vh;
+    width: 10%;
+    height: 60px;
+    margin-top: 10px;
   }
   .menu_items li a {
     font-size: 12px;
   }
   .search_form label {
-    font-size: 0.7em;
+    font-size: 0.8em;
+    width: 45px;
  }
  .search_form img {
-  width: 15px;
-  height: 15px;
-
+  width: 10px;
+  height: 10px;
+}
+.search_form input {
+  border-radius: 3px;
+  font-size: 0.7em;
+  width: 70%;
+  height: 20px;
+  min-width: 150px;
+}
+.search_form button {
+  width: 8%;
+  border-radius: 3px;
+  background-color: rgb(100, 149, 237);
+  color: white;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  vertical-align: middle;  
 }
 }
 
 @media screen and (max-width: 858px) {
   .app-logo {
-  width: 50%;
+  width: 60%;
   height: 5vh;
+  padding: 10px;
   }
   .menu {
     display: flex;
@@ -190,28 +209,27 @@ body {
    justify-content: right;
    align-items: end;
    object-fit: cover;
-    order: -1;
-    margin: auto;
-    width: 50px
+   order: -1;
+   margin: auto;
+   width: 40px;
+   height: 30px;
   }
 
   .menu_items {
     position: fixed;
-    padding-left: 100px;
-    width: 100vw;
+    width: 100%;
     margin: auto;
     border-radius: 20px;
-    height: calc(40% - 85px);
-    background: #c7d7f2;
+    height: calc(60% - 65px);
+    background: #d3def2;
     color: rgb(82, 81, 81);
-    top: -65vh;
+    top: -100vh;
     border-radius: 20px;
-    text-align: center;
     transition: all 0.4s;
     display: flex;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-evenly;
     flex-direction: column;
+    text-align: center;
     transition-property: top;
     transition-timing-function: ease-in-out;
     transition-duration: 0.5s;
@@ -220,13 +238,12 @@ body {
     line-height: 20px;
     width: 50%;
   }
-  .menu_items li:hover,
-  li.active {
+  .menu_items li:hover {
     background-color: #85a0cf;
     transition: 0.4s;
   }
   .menu_items li a {
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(92, 92, 92);
     font-weight: bold;
   }
@@ -236,8 +253,8 @@ body {
 .btn_search {
   display: inline-flex;
   width: 50px;
-  height: 50px;
- margin: auto;
+  height: 35px;
+  margin: auto;
 }
 .btn_close {
   display: inline-block;
@@ -282,14 +299,14 @@ body {
 .search_form input {
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  font-size: 1em;
-  width: 80%;
+  font-size: 0.8em;
+  width: 70%;
   height: 30px;
-  /* min-width: 200px; */
 }
 .search_form img {
   width: 20px;
   height: 20px;
+ margin-top: 5px;
 }
 .search_form button {
   width: 10%;
@@ -328,48 +345,52 @@ body {
 } 
 
 /* Estilos para el footer */
-.footer {
+.mainFooter {
   border-top: 1px solid rgb(206, 223, 238);
   background-color: #c6e4f5;
   height: 85px;
   width: 100%;
-  margin: auto; 
-  bottom: 0;
-  position: fixed;
-  }
-
-  .footer .container {
-  margin: auto;
-  position:fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
   align-items: center;
-  
+  padding: 10px;
+  margin: auto; 
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+  align-items: center;
   }
 
-.footer p {
+  .mainFooter .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  }
+.mainFooter p {
   text-align: center;
-  width: 30%;
+  width: 500px;
+  font-size: 0.9em;
   margin: 0;
 }
 
-
 .logo {
-  width: 12vw;
-  height: 8vh;
-  object-fit: cover
-
+  width: 200px;
+  height: 60px;
+  object-fit: cover;
 }
 
 /* Estilos para los iconos sociales */
 .social-icons {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 25%;
+  justify-content: center;
+  gap:20px;
+  align-items: center;
+  width: 400px;
 }
 
 
@@ -381,6 +402,8 @@ body {
   width: 40px;
   object-fit: cover;
 }
+@media screen and (max-width: 1080px) {
+
 
 /* signup and login page*/
 #imagen img {
