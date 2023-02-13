@@ -62,7 +62,7 @@ const courseSchema = new Schema(
     },
     title_why: {
       type: String
-    }
+    },  
   },
   {
     timestamps: true

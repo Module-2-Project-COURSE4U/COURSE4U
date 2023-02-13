@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const Course = require("../models/Course");
 const Review = require("../models/Review");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
@@ -31,10 +32,10 @@ router.post(
 // @route   GET
 // @access  User
 router.get("/delete/:id", async function (req, res, next) {
-  const { id } = req.params;
-  const user = req.session.currentUser;
-  try {
-    const review = await Review.find({ course: id }, { username: user });
+    try {   
+    const { id } = req.params;
+    await Review.findByIdAndDelete(id)
+    console.log('review',id)
     res.redirect("/courses");
   } catch (err) {
     next(err);
