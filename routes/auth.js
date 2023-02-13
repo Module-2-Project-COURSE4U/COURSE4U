@@ -23,21 +23,11 @@ router.post("/signup", async (req, res, next) => {
     email,
     password,
     username,
-    nameOnCard,
-    cardNumber,
-    expirationDate,
-    cvv,
-    country,
   } = req.body;
   // Check that username, email, and password are provided
   if (
     !username ||
-    !password ||
-    !nameOnCard ||
-    !cardNumber ||
-    !expirationDate ||
-    !cvv ||
-    !country
+    !password 
   ) {
     res.render("auth/signup", { error: "All fields are necessary!" });
     return;
@@ -72,11 +62,7 @@ router.post("/signup", async (req, res, next) => {
         username,
         email,
         hashedPassword,
-        nameOnCard,
-        cardNumber,
-        expirationDate,
-        cvv,
-        country,
+      
       });
       req.session.isUserLoggedIn = true;
 const first_user = true

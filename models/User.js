@@ -17,26 +17,6 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    nameOnCard: { 
-      type: String, 
-      required: [true, "Card name is required."],
-    },
-    cardNumber: { 
-      type: Number, 
-      required: [true, "Card Number is required."],
-    },
-    expirationDate: { 
-      type: Date, 
-      required: [true, "Expiration Date is required."],
-    },
-    cvv: { 
-      type: String, 
-      required: [true, "Cvv is required."],
-     },
-    country: {
-       type: String, 
-       required: [true, "Coutry name is required."]
-    },
     courses: [{
       type: Schema.Types.ObjectId,
       ref: "Course",

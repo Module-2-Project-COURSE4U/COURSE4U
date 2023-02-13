@@ -1,34 +1,108 @@
 /* Online Course Page */
-.popup-message h1{
+/* .containerHome {
+  margin-top: -70px;
+  width: 100%;
+  background-color: #fff;
+  height: calc(100% +85px);
+} */
+.containerHome {
+position: relative;
+margin-top: -70px;
+width: 100%;
+background-color: #fff;
+min-height: calc(100% + 85px);
+padding-bottom: 85px;
+}
+.popup-message h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
   color: #38598b;
   margin-bottom: 20px;
-  margin-top: 10px;
+  padding-top: 20px;
+}
+.cardPlan {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  gap:20px;
+  width: 100%;
+  background-color: rgb(173, 206, 234);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
 
+.card-plan-Premium {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-h3 {
-  font-size: 2rem;
-  text-align: center;
+
+.card-plan-Premium h2 {
+  font-size: 1.5em;
+  color:rgb(63, 62, 62);
+}
+
+.card-plan-Premium h3 {
+  font-size: 1.2em;
+}
+.card-plan-premium h3, .card-plan-premium h4 {
+  margin: 5px 0;
+  color:rgb(63, 62, 62);
+  }
+.card-plan-Premium a {
+  font-size: 1.2em;
+  text-decoration: none;
+  text-align:  center;
+  margin-bottom: 10px;
+  background-color: rgb(100, 149, 237);
+  color: #fff;
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.card-plan-Premium a:hover {
+  background-color: rgb(208, 220, 249);
   color: #333;
-  margin-bottom: 20px;
-  margin-top: 50px;
 }
+
+.card-plan-Premium p {
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color:rgb(63, 62, 62);
+}
+.homePic {
+  width: 476px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 70%;
+  overflow: hidden; /* Corrige errores de sintaxis */
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transform: skewY(-3deg);
+}
+/* .homePic:hover {
+      transform: scale(1.1); /* Agrega un efecto de escala en hover */
+
 .card-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 70px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 200px;
   margin-left: 50px;
   margin-right: 50px;
 }
-
 .card-course {
   display: flex;
   flex-direction: column;
@@ -83,9 +157,62 @@ h3 {
   color: #053691;
 }
 
-@media (max-width: 858px) { 
+@media only screen and (max-width: 1080px) {
+  .popup-message h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #38598b;
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+  .cardPlan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: rgb(173, 206, 234);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-plan-Premium {
+    width: 60%;
+    /* border-radius: 20px; */
+    /* box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-plan-Premium h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card-plan-Premium h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .card-plan-Premium a {
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-bottom: 10px;
+    background-color: rgb(100, 149, 237);
+    color: #fff;
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+}
+@media (max-width: 858px) {
 
-  .popup-message h1{
+  .popup-message h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -94,7 +221,13 @@ h3 {
     color: #38598b;
     margin-bottom: 20px;
     margin-top: 10px;
-  
+  }
+  .card-plan-Premium {
+    flex-direction: column; /* Cambia la dirección de flex para apilar los elementos */
+  }
+
+  .homePic {
+    width: 80%; /* Reduce el ancho de la imagen */
   }
   .card-container {
     margin-top: 50px;
@@ -136,7 +269,7 @@ h3 {
     border-radius: 5px;
   }
   #select {
-    width:90%;
+    width: 90%;
     margin: 0 auto;
     margin-top: -3%;
     padding: 2%;
@@ -146,8 +279,8 @@ h3 {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     outline: none;
   }
-  
 }
+
 @media screen and (max-width: 1080px) {
   .course-form button[type="submit"] {
     width: 30%;
@@ -156,172 +289,131 @@ h3 {
   }
 }
 
+/*course ViewDetails*/
 
+.detailsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  margin: 50px auto;
+}
 
-  
-    
-    /*course ViewDetails*/
+.detailsPage h1 {
+  font-size: 2em;
+  margin: 30px 0;
+}
 
-    .detailsPage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 80%;
-      margin: 50px auto;
-    }
-    
-    .detailsPage h1 {
-      font-size: 2em;
-      margin: 30px 0;
-    }
-    
-    .detailsPage a, .button_delete, .button_edit {
-      font-family: "Montserrat";
-      font-size: 2em;
-      margin-bottom: 30px;
-      text-decoration: none;
-    }
-    
-  .card-plan-Premium {
-    background-color: #eee;
-    padding: 20px;
-    width: 40%;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-  }
-    
-    .card-plan-Premium h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-    
-    .card-plan-Premium h3 {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-    
-    .card-plan-Premium a {
-      font-size: 1.2em;
-      text-decoration: none;
-      margin-bottom: 10px;
-      background-color: rgb(100, 149, 237);
-      color:#333;
-      width: 150px;
-      height: auto;
-      border-radius: 10px;
-    }
-    .card-plan-Premium a:hover {
-      color: rgb(208, 220, 249);
-    }
-    
-    .card-plan-Premium p {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-    
-    .card-info,.div_content, .card-reasons {
-      background-color: #eee;
-      padding: 20px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
+.detailsPage a,
+.button_delete,
+.button_edit {
+  font-family: "Montserrat";
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
 
-    .card-info,.div_content, .card-reasons {
-      width: 100%;
-    }
-    
-    .card-info p {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-    
-    .card-skills {
-      background-color: #eee;
-      padding: 20px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-    
-    .card-skills p {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-    .card-featContent {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width:60%;
-      margin-bottom: 20px;
-    }
-    .card-featAbout{
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row; 
-      gap:50px;
-    }
-    .card-features {
-      display: flex;
-      flex-direction: row;
-      flex-wrap:wrap;
-      margin: auto;
-      width:30%;
-    }
-    
-    .card-features img {
-      width: 50%;
-      margin: 10px;
-      align-items:flex-start;
-    }
-    
-    .card-features h5 {
-      font-size: 0.8rem;
-      margin: 10px;
-    }
-    
-    .card-features p {
-      font-size: 0.8rem;
-    }
-    .imgFeatures {
-      display: flex;
-      flex-direction: column;
-      align-items:flex-end;
-      width: 30%
-    }
+.card-info,
+.div_content,
+.card-reasons {
+  background-color: #eee;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
 
-    .card-offered {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2%;
-    }
+.card-info,
+.div_content,
+.card-reasons {
+  width: 100%;
+}
 
-    .card-offered > * {
-      padding: 1%;
-      width: 100%;
-    }
+.card-info p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
 
-    .card-offered img{
-      width: 15%;
-    }
-    
-    .card-content {
-      display: flex;
-      flex-wrap: wrap;
-      width: 80%;
-      justify-content: center;
-    }
-    
-    
+.card-skills {
+  background-color: #eee;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.card-skills p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.card-featContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin-bottom: 20px;
+}
+.card-featAbout {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 50px;
+}
+.card-features {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 30%;
+}
+
+.card-features img {
+  width: 50%;
+  margin: 10px;
+  align-items: flex-start;
+}
+
+.card-features h5 {
+  font-size: 0.8rem;
+  margin: 10px;
+}
+
+.card-features p {
+  font-size: 0.8rem;
+}
+.imgFeatures {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 30%;
+}
+
+.card-offered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2%;
+}
+
+.card-offered > * {
+  padding: 1%;
+  width: 100%;
+}
+
+.card-offered img {
+  width: 15%;
+}
+
+.card-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+}
+
 .card-content h5 {
   text-align: center;
   margin: 20px 0;
@@ -351,39 +443,7 @@ h3 {
   margin: 0 20px;
 }
 
-.review-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 4% 0% 10% 0%;
-}
-
-.review-form label {
-  margin: 10px 0;
-}
-
-.review-form input[type="number"],
-.review-form input[type="text"] {
-  padding: 10px;
-  margin: 10px 0;
-  width: 300px;
-}
-
-.review-form button[type="submit"], .button_enroll, .button_delete, .button_edit {
-  padding: 10px 20px;
-  background-color: #6495ed;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-@media (max-width: 767px) {
-  .detailsPage {
-    padding: 20px;
-  }
-
+@media (max-width: 858px) {
   .card-info,
   .card-skills,
   .card-features,
@@ -393,7 +453,6 @@ h3 {
     width: 100%;
     text-align: center;
   }
-
 
   .card-plan-Premium h3,
   .card-plan-Premium p,
@@ -418,29 +477,17 @@ h3 {
   .card-reasons p {
     margin: 0;
   }
-
-  .review-form input[type="number"],
-  .review-form input[type="text"] {
-    width: 80%;
-  }
-  .review-form {
-    padding-top: 0%;
-    margin-top: -8%;
-    padding-bottom: 20%;
-  }
-
   .card-plan-Premium {
     width: 70%;
   }
   .card-plan-Premium a {
-    width: 40%
+    width: 40%;
   }
   .card-plan-Premium h2 {
     font-size: 1.2em;
     margin-bottom: 10px;
-
   }
-  
+
   .card-plan-Premium h3 {
     font-size: 0.8em;
     margin-bottom: 10px;
@@ -450,75 +497,55 @@ h3 {
   }
   .card-plan-Premium p {
     font-size: 1em;
-
   }
 }
 
-/*edit course and add new course */
-/* 
-.editCourse {
+/*review container in details page*/
+
+.review-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  padding: 4% 0% 10% 0%;
 }
 
-.editCourseForm {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 80%;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
+.review-form label {
+  margin: 10px 0;
 }
 
-.editCourseForm label {
-  width: 150px;
-  text-align: right;
-  margin-right: 20px;
-}
-
-.editCourseForm input[type="text"],
-textarea {
-  width: 70%;
+.review-form input[type="number"],
+.review-form input[type="text"] {
   padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
+  margin: 10px 0;
+  width: 300px;
 }
 
-.editCourseForm input[type="submit"] {
-  width: 30%;
-  padding: 10px;
-  background-color: rgb(100, 149, 237);
-  color: white;
+.review-form button[type="submit"],
+.button_enroll,
+.button_delete,
+.button_edit {
+  padding: 10px 20px;
+  background-color: #6495ed;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-  .editCourseForm {
-    width: 90%;
+@media (max-width: 858px) {
+  .review-form input[type="number"],
+  .review-form input[type="text"] {
+    width: 80%;
   }
-
-  .editCourseForm label {
-    width: 100%;
-    text-align: left;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .editCourseForm input[type="text"],
-  textarea {
-    width: 100%;
+  .review-form {
+    padding-top: 0%;
+    margin-top: -8%;
+    padding-bottom: 20%;
   }
 }
- */
 
- .editCourse {
+.editCourse {
   width: 40%;
   margin: 0 auto;
   font-family: Arial, sans-serif;
@@ -589,36 +616,35 @@ textarea {
     padding: 10px;
   }
 
-.editCourseForm label {
-  display: block;
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 14px;
-  color: var(--h4);
-}
+  .editCourseForm label {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--h4);
+  }
 
-.editCourseForm input[type="text"],
-.editCourseForm textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-}
+  .editCourseForm input[type="text"],
+  .editCourseForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
 
-.editCourseForm input[type="submit"] {
-  background-color: var(--buttonBackground);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  cursor: pointer;
-}
+  .editCourseForm input[type="submit"] {
+    background-color: var(--buttonBackground);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
 
-.editCourseForm input[type="submit"]:hover {
-  background-color: var(--buttonsHover);
+  .editCourseForm input[type="submit"]:hover {
+    background-color: var(--buttonsHover);
+  }
 }
-}
-
