@@ -90,17 +90,14 @@ router.get("/search", async function(req, res, next) {
 /* @access Public*/
 router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
   try {
-    const user = req.session.currentUser;
-    const { username } = req.session.currentUser;
+    const user  = req.session.currentUser;
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
     }
-    const reviews = await Review.find(
-      { course: id },
-      { username: user._id }
-    ).populate("username");
-    console.log(reviews);
+    const review_user = await Review.find({ course: id, username: user._id})
+    .populate("username");
+    const reviews = await Review.find({ course: id, username:{ $ne: user._id }}).populate('username')
     const course = await Course.findById(id)
       .populate("offered")
       .populate("features")
@@ -112,9 +109,16 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    return res.render("course/course-details", { course, user, reviews });
+    console.log(user)
+    let enroled 
+    if(user.courses.indexOf(id) > -1){
+      enroled = true
+    }
+    
+    console.log(user.courses,id,enroled)
+    // const enroll_true = User.find({ _id: user })
+    return res.render("course/course-details", { course , user, reviews, review_user, enroled});
   } catch (err) {
-    console.log(err);
     return res.status(500).send({ error: "Server error" });
   }
 });
@@ -124,7 +128,6 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
 router.get("/newCourse", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.session.currentUser;
-    console.log(user);
     const offered = await Offered.find();
     const features = await Features.find();
     const reasons = await Reasons.find();
@@ -137,7 +140,6 @@ router.get("/newCourse", isLoggedIn, async (req, res, next) => {
       user,
     });
   } catch (err) {
-    console.log(err);
     next(err);
   }
 });
@@ -176,20 +178,16 @@ router.post("/newCourse", async function (req, res, next) {
 /* @access User*/
 router.get("/addCourse/:courseId", async (req, res, next) => {
   const { courseId } = req.params;
-  const userId = req.session.currentUser._id;
+  const user = req.session.currentUser;
   let foundCourse = null;
   try {
     foundCourse = await User.findOne({ courses: ObjectId(courseId) });
   } catch (error) {
     next(error);
   }
-  console.log("found course: ", foundCourse);
-  if (foundCourse === null) {
+  if(foundCourse === null){
     try {
-      console.log(userId, " -------- ", courseId);
-      await User.findByIdAndUpdate(userId, {
-        $push: { courses: ObjectId(courseId) },
-      });
+      await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) } });
     } catch (error) {
       next(error);
     }
@@ -203,8 +201,7 @@ router.get("/myCourses", async (req, res, next) => {
   const user = req.session.currentUser;
   try {
     const courses = await User.findById(user._id).populate("courses");
-    console.log("a ver qué tenemos: ", courses);
-    res.render("course/myCourses", { courses: courses.courses, user });
+    res.render("course/myCourses", { courses: courses.courses , user});
   } catch (error) {
     next(error);
   }
@@ -277,7 +274,6 @@ router.post("/editCourse/:id", async (req, res) => {
     await course.save();
     res.redirect("/courses");
   } catch (err) {
-    console.log(err);
     res.redirect(`/course-details/${course._id}`);
   }
 });
