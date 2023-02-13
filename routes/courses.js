@@ -109,13 +109,13 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    console.log(user)
+    // console.log(user)
     let enroled 
     if(user.courses.indexOf(id) > -1){
       enroled = true
     }
     
-    console.log(user.courses,id,enroled)
+    // console.log(user.courses,id,enroled)
     // const enroll_true = User.find({ _id: user })
     return res.render("course/course-details", { course , user, reviews, review_user, enroled});
   } catch (err) {
@@ -177,22 +177,19 @@ router.post("/newCourse", async function (req, res, next) {
 /* @route GET 
 /* @access User*/
 router.get("/addCourse/:courseId", async (req, res, next) => {
-  const { courseId } = req.params;
-  const user = req.session.currentUser;
   let foundCourse = null;
-  try {
-    foundCourse = await User.findOne({ courses: ObjectId(courseId) });
-  } catch (error) {
-    next(error);
-  }
-  if(foundCourse === null){
     try {
-      await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) } });
+      const { courseId } = req.params;
+      const { user } = req.session.currentUser;
+      foundCourse = await User.findOne({ courses: ObjectId(courseId) });
+      if(foundCourse === null){
+        const user = await User.findByIdAndUpdate(user._id, { $push: { courses: courseId } });
+        console.log(`user ${user}`)
+        res.redirect("/courses/myCourses");
+      }      
     } catch (error) {
       next(error);
     }
-  }
-  res.redirect("/courses/myCourses");
 });
 //@desc   view courses in myaccount
 /* @route GET 
@@ -201,6 +198,7 @@ router.get("/myCourses", async (req, res, next) => {
   const user = req.session.currentUser;
   try {
     const courses = await User.findById(user._id).populate("courses");
+    console.log(`courses ${courses}`)
     res.render("course/myCourses", { courses: courses.courses , user});
   } catch (error) {
     next(error);
