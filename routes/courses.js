@@ -8,7 +8,7 @@ const Features = require("../models/Features");
 const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
 const User = require("../models/User");
-const { ObjectId } = require('mongodb');
+const { ObjectId } = require("mongodb");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 
 // @desc    App courses page, GET ALL COURSES
@@ -17,7 +17,7 @@ const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 router.get("/", async function (req, res, next) {
   const user = req.session.currentUser;
   try {
-    const courses = await await Course.find({ active: true }).sort({
+    const courses = await Course.find({ active: true }).sort({
       title: 1,
     });
     // it maps each course object and truncates its description property to show only the first 100 lines by splitting the string by newline characters and rejoining the first 100 lines.
@@ -36,17 +36,55 @@ router.get("/", async function (req, res, next) {
 // @desc    Search for course results
 // @route   GET /
 // @access  Public
-router.get("/search", async function (req, res, next) {
-  const user = req.session.currentUser;
+// router.get("/search", async function (req, res, next) {
+  // const user = req.session.currentUser;
+  // const { title } = req.query;
+  // if (title.length > 0)
+  // try {
+  //   // Create a case-insensitive regular expression from the search query
+    // const regex = new RegExp(title, "i");
+    // Search for courses with a title that matches the regex pattern
+//     const course = await Course.find({ title: regex });
+//     res.render("course/search", { query: title, course });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+
+// @desc   
+// @route   GET /search
+// @access  Public
+router.get("/search", async function(req, res, next) {
   const { title } = req.query;
   if (title.length > 0)
     try {
-      const course = await Course.find({ title: title });
-      res.render("course/search", { query: title, course });
+      const regex = new RegExp(title, "i");
+      const course = await Course.find({ title: regex }).limit(10);
+      res.render("course/search", {query: title, course});
     } catch (error) {
       next(error);
     }
 });
+
+// @desc    
+// @route   POST /search
+// @access  Public
+// router.post("/search", async (req, res, next) => {
+//   const { search } = req.body;
+// try {
+//   const regex = new RegExp(title, "i");
+//   const similarCourses = await Course.find({ title: search, title: regex }).populate("courseId");
+//   const coursesDB = new Set(similarCourses.map((course) => course.courseId));
+//   res.render("course/search", { title, coursesDB });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+
+
+
 //@desc  view course details  by Id
 /* @route GET 
 /* @access Public*/
@@ -154,13 +192,13 @@ router.get("/addCourse/:courseId", async (req, res, next) => {
       next(error);
     }
   }
-res.redirect("/courses/myCourses");
+  res.redirect("/courses/myCourses");
 });
 //@desc   view courses in myaccount
 /* @route GET 
 /* @access  especific User*/
 router.get("/myCourses", async (req, res, next) => {
-  const user = req.session.currentUser
+  const user = req.session.currentUser;
   try {
     const courses = await User.findById(user._id).populate("courses");
     res.render("course/myCourses", { courses: courses.courses , user});
@@ -191,7 +229,6 @@ router.get("/editCourse/:id", (req, res) => {
 //     const content = req.body.content ? req.body.content : [];
 //     const reasons = req.body.reasons ? req.body.reasons : [];
 //     const offered = req.body.offered ? req.body.offered : [];
-
 
 //     const editCourse = await Course.findByIdAndUpdate(
 //       id,
