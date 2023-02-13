@@ -26,6 +26,9 @@ body {
   background-color: #f5f5f5;
   margin: auto;
   overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 /***** Navbar styles ****/
 .menu {
@@ -39,32 +42,32 @@ body {
   top: 0px;
 }
 .app-logo {
-  width: 20%;
+  width: 12%;
   align-items: center;
   height: 70px;
+  margin-top: 5px;
 }
 
 .menu_items {
   display: flex;
+  justify-content: center;
   list-style: none;
   align-items: center;
-  width: 400px;
+  width: 700px;
   padding: 0%;
-  margin-right: 5%;
   overflow: hidden;
 }
 .menu_items li {
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  width: 100px;
+  width: 110px;
 }
 .menu_items li a {
   text-decoration: none;
   font-size: 16px;
   font-weight: 800;
   display: block;
-  text-transform: uppercase;
   color: rgb(92, 92, 92);
 }
 .menu_items li:hover {
@@ -83,18 +86,19 @@ body {
 .search_form {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
+  flex: auto ;
   align-items: center;
   width: 50%;
   margin: auto;
+  padding: 0%;
 }
 
 .search_form label {
   font-size: 0.9em;
   color: rgb(63, 62, 62);
   font-weight: bold;
-  width: 80px;
-  text-transform: uppercase;
+  width: 50px;
   margin:0%;
 }
 
@@ -125,7 +129,7 @@ body {
   display: none;
 }
 .search_form button {
-  width: 10%;
+  width: 7%;
   border-radius: 3px;
   background-color: rgb(100, 149, 237);
   color: white;
@@ -133,6 +137,10 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.2s;
+
+    display: inline-block;
+    vertical-align: middle;
+    
 }
 
 .search_form button[type="submit"]:hover {
@@ -151,8 +159,16 @@ body {
     height: 8vh;
   }
   .menu_items li a {
-    font-size: 14px;
+    font-size: 12px;
   }
+  .search_form label {
+    font-size: 0.7em;
+ }
+ .search_form img {
+  width: 15px;
+  height: 15px;
+
+}
 }
 
 @media screen and (max-width: 858px) {
@@ -177,7 +193,6 @@ body {
     order: -1;
     margin: auto;
     width: 50px
-
   }
 
   .menu_items {
@@ -200,8 +215,7 @@ body {
     transition-property: top;
     transition-timing-function: ease-in-out;
     transition-duration: 0.5s;
-  }
-  
+  } 
   .menu_items li {
     line-height: 20px;
     width: 50%;
@@ -312,194 +326,60 @@ body {
     height: calc(100% -65px);
   }
 } 
-/* 
-@media only screen and (max-width: 1080px) {
-  .app-logo {
-    padding-left: 16px;
-    width: 20vh;
-    height: 8vh;
-  }
-  .menu_items {
-  gap: 30px;
-  width: 40%;
-  }
-  .menu_items li a {
-    font-size: 12px;
-  }
 
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    height: 60px;
-    top: 5px;
-  }
-  .search-form {
-    width: 30%;
-    margin: auto;
-  }
-  
-  .search-form label {
-    font-size: 0.8em;
-    color: rgb(63, 62, 62);
-    font-weight: bold;
-    width: 8%;
-    text-transform: uppercase;
-    margin:0%;
-  }
-  
-  .search-form input {
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    font-size: 1em;
-    width: 50%;
-    height: 30px;
-    /* min-width: 200px; */
-  /* }
-
-  .search-form img {
-    width: 20px;
-    height: 20px;
-  
-  }
-  .search-form button {
-    width: 10%;
-    border-radius: 3px;
-    background-color: rgb(100, 149, 237);
-    color: white;
-    height: 30px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
-  } */ 
-
-  /* .menu {
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid rgb(206, 223, 238);
-    box-shadow: 5px 0 10px rgba(230, 226, 251, 0.6);
-    background-color: #ebf5fb;
-    gap: 80px;
-    height: 80px;
-    width: 100vw;
-    position: fixed;
-    top: 5px;
-  } */
-
-  /* .menu_items li a {
-    font-size: 14px;
-  } */
-  /* .btn_menu {
-  display: block;
-  } */
-/* 
-  @media screen and (max-width: 858px) {
-  .menu {
-    height: 65px;
-  }
-  .btn_menu {
-    display: inline-flex;
-    width: 40px;
-    height: 40px;
-  }
-  .menu_items {
-    position: fixed;
-    padding-left: 100px;
-    width: 100vw;
-    height: calc(50% - 65px);
-    background: #85a0cf;
-    color: rgb(82, 81, 81);
-    top: -100vh;
-    text-align: center;
-    transition: all 0.4s;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    transition-property: top;
-    transition-timing-function: ease-in-out;
-    transition-duration: 0.5s;
-  }
-  
-  .menu_items li {
-    line-height: 20px;
-    width: 50%;
-  }
-  .menu_items li:hover,
-  li.active {
-    background-color: #85a0cf;
-    transition: 0.4s;
-  }
-  .menu_items li a {
-    font-size: 20px;
-    color: rgb(92, 92, 92);
-    font-weight: bold;
-  }
-  .menu_items li a:hover {
-    color: rgb(208, 220, 249);
-  }
-  .show {
-    transition-property: top;
-    transition-timing-function: ease-in-out;
-    top: 65px;
-    transition-duration: 0.5s;
-  }
-  .app-logo {
-    padding-left: 35px;
-    width: 18vh;
-    height: 8vh;
-  }
-}
-@media screen and (max-width: 858px) and (orientation: landscape) {
-  .menu_items li {
-    margin: 5px 0 0 0;
-  }
-  .menu_items {
-    overflow: scroll;
-    height: calc(100% -65px);
-  }
-} */
-
-
+/* Estilos para el footer */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  border-top: 1px solid rgb(206, 223, 238);
+  background-color: #c6e4f5;
+  height: 85px;
   width: 100%;
-  height: 100px;
-  background-color: rgb(100, 149, 237);
-  color: rgb(92, 92, 92);
-  text-align: center;
-  padding: 20px;
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.app-footer-logo {
-  display: inline-block;
-  vertical-align: middle;
-  width: 50px;
-  height: auto;
-}
-
-.footer-logo {
-  display: inline-block;
-  vertical-align: middle;
-  float: right;
-}
-
-.footer-content {
-display:flex;
-flex-direction: column;
-width: 100%;
-height: 100px;
-}
-
-@media only screen and (max-width: 600px) {
-  .footer {
-    font-size: 14px;
+  margin: auto; 
+  bottom: 0;
+  position: fixed;
   }
+
+  .footer .container {
+  margin: auto;
+  position:fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  
+  }
+
+.footer p {
+  text-align: center;
+  width: 30%;
+  margin: 0;
+}
+
+
+.logo {
+  width: 12vw;
+  height: 8vh;
+  object-fit: cover
+
+}
+
+/* Estilos para los iconos sociales */
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 25%;
+}
+
+
+.facebook-logo,
+.instagram-logo,
+.linkedin-logo,
+.twitter-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
 }
 
 /* signup and login page*/

@@ -24,22 +24,21 @@
       
       <form class="search_form" method="GET" action="/courses/search">
         <label>Search</label>
-        <input id="input_search" type="text" name="title" placeholder="what do you want to learn"/>
-        <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
-        <span class="btn_close">  <img src="/images/closeBtn.png" alt="Icon close">
+        <input id="input_search" type="text" name="title" placeholder="What do you want to learn?"/>
+          <span class="btn_close">  <img src="/images/closeBtn.png" alt="Icon close">
         </span>
-
+         <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
       </form>
+
       <ul class="menu_nav menu_items">
         {{#if user}}
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/courses/newCourse">Add Course</a></li>
           <li><a href="/courses/myCourses">My courses</a></li>
-          <li><a href="/about">About</a></li>
           <li><a href="/user/profile">Profile</a></li>
           <li><a href="/auth/logout">Log out</a></li>
-            <span class="btn_close"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+           <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
         {{else}}
           <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
           <li><a href="/">Home</a></li>
@@ -48,31 +47,24 @@
           <li><a href="/auth/login">Log in</a></li>
           
         {{/if}}
-      </ul>
-
-    
+      </ul> 
   <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
-  
   <span class="btn_search">
     <img "btn_search" src="/images/search-Icon.png" alt="btn search"> 
   </span>
+</nav>
 
+  <footer class="footer">
+    <div class="container">
+        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
 
- 
-    </nav>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="logo">
-            <img
-              class="app-footer-logo"
-              src="/images/SVG/LOGO/LOGO.svg"
-              alt="course4u logo"
-            />
-          </div>
-          <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
-          <div class="social-icons">
+            <div class="logo">
+                <img
+                  src="/images/SVG/LOGO/LOGO.svg"
+                  alt="course4u logo"
+                />
+           </div>
+        <div class="social-icons">
             <a href="#"><img
                 src="/images/facebook-icon.png"
                 class="facebook-logo"
@@ -91,11 +83,11 @@
               /></a>
           </div>
         </div>
-      </div>
     </footer>
-
+<div style="height: 85px;"></div>
     {{{body}}}
     <script src="/script/script.js"></script>
+    <script src="/script/Search.js"></script>
 
   </body>
 </html>

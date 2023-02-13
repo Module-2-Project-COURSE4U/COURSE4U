@@ -25,6 +25,10 @@ const courseSchema = new Schema(
     subdescription: {
       type: String
     },
+    status: {
+      type: Boolean,
+      default: false
+    },
     list: {
       type: Array
     },
