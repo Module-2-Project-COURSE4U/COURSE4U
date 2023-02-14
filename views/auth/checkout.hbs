@@ -1,7 +1,7 @@
 <h1>Set up your credit or debit card</h1>
 <div class="container">
   <div class="signup-form">
-   <form method="post" action="/auth/checkout/{{course._id}}">
+   <form method="post" action="/auth/checkout/{{courseId}}">
       <label>Name on Card</label>
       <input type="text" name="cardholderName" placeholder="John White" />
       <label>Credit Card Number</label>
@@ -12,8 +12,11 @@
       <input type="text" name="cvv" placeholder="***" />
       <label>Country</label>
       <input type="text" name="country" placeholder="USA" />
-      <p>EUR29.99 month</p>
-      <p>You are one click away from becoming a Premium membership</p>
+      <p style="color:rgb(32, 106, 136)" >EUR29.99 month</p>
+      <p style="color:rgb(32, 106, 136)">You are one click away from becoming a Premium membership</p>
+      {{#if error}}
+      <p style="color: red;">Error {{error}}</p>
+      {{/if}}
       <button type="submit">Submit</button>
     </form>
     </div>

@@ -144,13 +144,9 @@ router.post('/checkout/:courseId', async function (req, res, next) {
   // } catch (error) {
   //   return next(error);
   // }
-  try {
-
-    const courseId = req.params.courseId;
+    const { courseId } = req.params;
     const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
     const user = req.session.currentUser;
-    let foundCourse = null;
-    console.log("BBBBBBBBBBBBBBBBBBBBBBBB", cvv);
   
     // Validating the credit card details
     if (cardNumber.length != 16) {
@@ -164,24 +160,16 @@ router.post('/checkout/:courseId', async function (req, res, next) {
      
       return render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
     }
-    foundCourse = await User.findOne({ courses: ObjectId(courseId) });
-    console.log("-----------------------------------BBBBBBBBBBB", foundCourse);
-  } catch (error) {
-    return next(error);
-  }
-  if (!foundCourse) 
- {
-    try {
-      await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
+  try {
+      const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
         true } });
-        console.log("-----------------------------------BBBBBBBBBBB", courseId);
+        console.log('userrrrr',usertrue)
+        // Redirect the user to their account page
+      res.redirect('/courses/myCourses');
     } catch (error) {
       return next(error);
     }
-  }
-      // Redirect the user to their account page
-      res.redirect('/course/myCourses');
-    });
+  });
 
 
 // @desc    Destroy user session and log out
@@ -189,14 +177,18 @@ router.post('/checkout/:courseId', async function (req, res, next) {
 // @access  Private/ use
   
 router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
-  res.render('auth/checkout');
+  const { courseId } = req.params
+  const user = req.session.currentUser
+  console.log('hi',{courseId})
+  res.render('auth/checkout', { courseId, user });
 });   
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user
 router.get("/logout", (req, res, next) => {
-  res.render('auth/logout');
+  const user = req.session.currentUser
+  res.render('auth/logout', { user });
 });
 
 //@desc    Destroy user session and log out

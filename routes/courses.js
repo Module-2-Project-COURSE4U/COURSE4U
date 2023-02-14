@@ -54,7 +54,7 @@ router.get("/search", async function(req, res, next) {
 /* @access Public*/
 router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
   try {
-    const user  = req.session.currentUser;
+    const user  = await req.session.currentUser;
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
@@ -73,10 +73,8 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     for (let i = 0; i < course.features.length; i++) {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
-    const enroled = await User.find({courses: id, _id: user._id})
-    // console.log(` user courses ${user.courses}, id ${id}, enroled ${enroled}`)
-    console.log(review_user,reviews)
-    return res.render("course/course-details", { course , user, reviews, review_user, enroled});
+    const enroled = await User.find({_id: user._id, courses: id })
+    return res.render("course/course-details", { course , user, reviews, review_user, enroled });
     
   } catch (err) {
     return res.status(500).send({ error: "Server error" });
