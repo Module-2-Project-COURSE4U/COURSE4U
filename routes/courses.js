@@ -138,7 +138,6 @@ router.post("/newCourse", async function (req, res, next) {
 /* @route GET 
 /* @access User*/
 router.get("/addCourse/:courseId", async (req, res, next) => {
-  let foundCourse = null;
     try {
       const { courseId } = req.params;
       const  user  = req.session.currentUser;
