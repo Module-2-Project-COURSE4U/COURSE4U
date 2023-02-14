@@ -3,9 +3,10 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific route
-const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { ObjectId } = require("mongodb");
+const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { simulatePaymentProcessing } = require("./checkoutPay");
+const Course = require("../models/Course");
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
@@ -115,6 +116,57 @@ router.post("/login", async function (req, res, next) {
     next(error);
   }
 });
+
+router.get("/checkout/:courseId", (req, res, next) => {
+  res.render('auth/checkout');
+});
+
+// @desc    Destroy user session and log out
+// @route   Post /auth/checkout
+// @access  Private/ user
+
+
+router.post("/checkout/:courseId", async function (req, res, next) {
+  const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
+  const user = req.session.currentUser;
+  const courseId = req.params.courseId;
+  let foundCourse = null;
+
+  if (cardNumber.length != 16) {
+        res.render("auth/checkout", { error: "Please enter 16 numbers!" });
+        return;
+      } 
+  if (expiryDate != 4) {
+        res.render("auth/checkout", { error: "The expiration year must be between 2023 and 2048!" });
+        return;
+      }
+  if (cvv.length < 3) {
+        res.render("auth/checkout", { error: "Please enter 3 numbers for The CVV!" });
+        return;
+      } 
+      try {
+        // Simulate payment processing
+        await simulatePaymentProcessing();
+      } catch (error) {
+        return next(error);
+      }
+      try {
+        foundCourse = await User.findOne({ courses: ObjectId(courseId) });
+      } catch (error) {
+        return next(error);
+      }
+      if (!foundCourse) {
+        try {
+          await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: true } });
+        } catch (error) {
+          return next(error);
+        }
+      }
+    
+      return res.redirect("/courses/myCourses", { message: "Great choice!" });
+    });
+    
+
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user

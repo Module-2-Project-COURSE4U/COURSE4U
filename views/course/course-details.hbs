@@ -1,34 +1,34 @@
 <div class="detailsPage">
-  <style id="style">
- .svg_process_color {
-     width: 100%;
-  }
-</style>
-  <h1>{{course.title}}</h1>
-  <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-  {{#unless enroled}}
-  <a class="button_enroll" href="/courses/addCourse/{{course._id}}">Enroll course</a>
-  {{/unless}}
-  <form action="/courses/delete/{{course._id}}" method="post">
-    <button class="button_delete" type="submit">Delete course</button>
-  </form>
-  <div class="card-featAbout">
-  <div class="card-skillsAbout">
-  <div class="card-info">
-  <p>About: {{course.description}}</p>
-  <p>{{course.subdescription}}</p>
-  {{#each course.list}}
-    <p>{{this}}</p>
-  {{/each}}
-  {{#if course.skills}}
-   </div>
-   <div class="card-skills">
-    <h5>Skills you will learn:</h5>
-    {{#each course.skills}}
-    <p>{{this}}</p>
-    {{/each}}
-    </div>
-    {{/if}}
+        <style id="style">
+      .svg_process_color {
+          width: 100%;
+        }
+      </style>
+        <h1>{{course.title}}</h1>
+        <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
+        {{#unless enroled}}
+          <a class="button_enroll" href="/courses/addCourse/{{course._id}}">Enroll course</a>
+         {{!-- <a class="button_enroll" href="/auth/checkout/{{course._id}}">Enroll course</a> --}}
+        {{/unless}}
+        <form action="/courses/delete/{{course._id}}" method="post">
+          <button class="button_delete" type="submit">Delete course</button>
+        </form>
+    <div class="card-featAbout">
+          <div class="card-skillsAbout">
+          <div class="card-info">
+          <p>About: {{course.description}}</p>
+          <p>{{course.subdescription}}</p>
+          {{#each course.list}}
+            <p>{{this}}</p>
+          {{/each}}
+          {{#if course.skills}}
+          <div class="card-skills">
+            <h5>Skills you will learn:</h5>
+            {{#each course.skills}}
+            <p>{{this}}</p>
+            {{/each}}
+            </div>
+            {{/if}}
   </div>
   </div>
  <div class="card-features">
@@ -44,30 +44,30 @@
       {{/each}}
       {{/if}}
     </div>
-     {{#if course.offered}}
-  {{#each course.offered}}
-<div class="card-offered">
-  <p><strong>Offered by:{{this.place}}</strong></p>
-  <img src={{this.logo}} alt={{this.place}} />
-</div>
-{{/each}}
-{{/if}}
-<div class="card-content">
-{{#if course.content}}
-<h3>PROGRESS</h3>
-  <div id='div_svg'>
-        <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
+            {{#if course.offered}}
+          {{#each course.offered}}
+  <div class="card-offered">
+        <p><strong>Offered by:{{this.place}}</strong></p>
+        <img src={{this.logo}} alt={{this.place}} />
+    </div>
+                  {{/each}}
+              {{/if}}
+ <div class="card-content">
+        {{#if course.content}}
+        <h3>PROGRESS</h3>
+          <div id='div_svg'>
+                <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
   </div>
-  <div class="navbar_content_title">
-    {{#each course.content}}
-    <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
-    {{/each}}
-  </div>
-  {{#each course.content}}
+        <div class="navbar_content_title">
+                  {{#each course.content}}
+                  <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
+                  {{/each}}
+                </div>
+                {{#each course.content}}
    <div class="div_content no_active_display">
-      <div>
+            <div>
         <img width="100px" src={{this.image}} alt={{this.title}} />
-      </div>
+         </div>
       <div>
         <h2>{{this.subtitle}}</h2>
         <p>Duration: {{this.time}}</p>
@@ -77,12 +77,10 @@
         <p>{{this.description_3}}</p>
         <p>{{this.description_4}}</p>
      </div>
+</div>
 
-    </div>
-  </div>
 {{/each}}
 {{/if}}
-</div>
 {{#if course.reasons}}
 <div class="card-reasons">
   <h5>{{course.title_why}}</h5>
@@ -137,9 +135,40 @@
     {{/unless}}
   {{/if}}
   {{/if}}
-  
+  </div>
 </div>
   </div>
+
+
+  <footer class="mainFooter">
+    <div class="container">
+        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
+            <div class="logo">
+                <img
+                  src="/images/SVG/LOGO/LOGO.svg"
+                  alt="course4u logo"
+                />
+           </div>
+        <div class="social-icons">
+            <a href="#"><img
+                src="/images/facebook-icon.png"
+                class="facebook-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/instagram-icon.png"
+                class="instagram-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/linkedin-icon.png"
+                class="linkedin-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/twitter-icon.png"
+                class="twitter-logo"
+              /></a>
+          </div>
+        </div>
+    </footer>
  
 
 

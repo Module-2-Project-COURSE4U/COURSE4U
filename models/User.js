@@ -26,10 +26,30 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
+    isPremiumMember: {
+      type: Boolean,
+      default: false
+    },
     imageUrl: {
       type: String,
       default:
         "https://media.vogue.mx/photos/62e19b3d4a4bcdd2c09a7c1b/2:3/w_1920,c_limit/GettyImages-1155131913-2.jpg",
+    },
+    cardholderName: {
+      type: String,
+      // required: [true, "Cardholder Name is required."],
+    },
+    cardNumber: {
+      type: String,
+      // required: [true, "Card Number is required."],
+    },
+    expiryDate: {
+      type: String,
+      // required: [true, "Expiry Date is required."],
+    },
+    cvv: {
+      type: String,
+      // required: [true, "CVV is required."],
     },
   },
   {

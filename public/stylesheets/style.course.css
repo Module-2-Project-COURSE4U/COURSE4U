@@ -1,4 +1,4 @@
-/* Online Course Page */
+/******* Online Course Page ******/
 /* .containerHome {
   margin-top: -70px;
   width: 100%;
@@ -7,11 +7,13 @@
 } */
 .containerHome {
 position: relative;
+padding-top: 85px;
 margin-top: -70px;
 width: 100%;
 background-color: #fff;
 min-height: calc(100% + 85px);
 padding-bottom: 85px;
+box-sizing: border-box;
 }
 .popup-message h1 {
   display: flex;
@@ -99,7 +101,7 @@ padding-bottom: 85px;
   justify-content: center;
   gap: 70px;
   margin-top: 50px;
-  margin-bottom: 200px;
+  /* margin-bottom: 100px; */
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -111,8 +113,8 @@ padding-bottom: 85px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  min-height: 350px;
+  max-width: 300px;
+  min-height: 250px;
   padding: 0.5em;
   cursor: pointer;
   text-decoration: none;
@@ -128,7 +130,7 @@ padding-bottom: 85px;
   color: inherit;
 }
 .card-course h4 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin-bottom: 1em;
   color: rgb(63, 62, 62);
 }
@@ -142,7 +144,7 @@ padding-bottom: 85px;
 }
 
 .card-course p {
-  font-size: 1.2em;
+  font-size: 1em;
   margin-bottom: 1em;
   color: rgb(63, 62, 62);
 }
@@ -289,15 +291,19 @@ padding-bottom: 85px;
   }
 }
 
-/*course ViewDetails*/
+/********course ViewDetails*******/
 
 .detailsPage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
-  width: 80%;
-  margin: 50px auto;
+  margin: auto;
+  width:80%;
+  padding-top:90px; 
+  padding-bottom: 300px;
+  position: relative;
 }
 
 .detailsPage h1 {
@@ -360,6 +366,8 @@ padding-bottom: 85px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
+  margin: auto;
   gap: 50px;
 }
 .card-features {
@@ -499,8 +507,7 @@ padding-bottom: 85px;
     font-size: 1em;
   }
 }
-
-/*review container in details page*/
+/*******review container in details page*******/
 
 .review-form {
   display: flex;
@@ -544,16 +551,26 @@ padding-bottom: 85px;
     padding-bottom: 20%;
   }
 }
+/*******edit and create view*******/
 
 .editCourse {
   width: 40%;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
-}
+  /* font-family: Arial, sans-serif; */
+  padding-top:100px; 
+  padding-bottom: 180px;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap:wrap; */
+  justify-content: center;
+  gap: 70px;
+  margin: auto;
+  }
+
 
 .editCourse h1 {
   color: var(--navbar);
-  font-size: 30px;
+  font-size: 22px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -648,3 +665,18 @@ padding-bottom: 85px;
     background-color: var(--buttonsHover);
   }
 }
+
+/***** search view ******/
+
+.searchContainer {
+  width:98%;
+  padding-top:100px; 
+  padding-bottom: 180px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+  gap: 70px;
+  margin: auto;
+}
+

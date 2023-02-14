@@ -55,12 +55,3 @@ window.addEventListener("scroll", function() {
 //   }
 //   prevScrollpos = currentScrollPos;
 // });
-
-/* if the user reaches the end of the page the footer is displayed otherwise the footer is hidden*/
-window.addEventListener('scroll', function() {
-  if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
-    document.querySelector('.mainFooter').style.display = 'flex';
-  } else {
-    document.querySelector('.mainFooter').style.display = 'none';
-  }
-});
