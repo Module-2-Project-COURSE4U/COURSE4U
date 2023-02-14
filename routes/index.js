@@ -1,4 +1,5 @@
 const Course = require("../models/Course");
+const User = require("../models/User");
 const router = require("express").Router();
 
 // @desc    App home page
@@ -9,7 +10,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/about", (req, res, next) => {
-  res.render("about");
+  const user = req.session.currentUser;
+  res.render("about", { user } );
 });
 
 router.get("/terms_privacy", (req, res, next) => {
