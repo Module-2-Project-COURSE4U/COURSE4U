@@ -37,7 +37,7 @@ const userSchema = new Schema(
     },
     cardholderName: {
       type: String,
-      // required: [true, "Cardholder Name is required."],
+    
     },
     cardNumber: {
       type: String,
