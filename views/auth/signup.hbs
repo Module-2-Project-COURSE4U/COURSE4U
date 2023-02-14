@@ -3,7 +3,7 @@
       src="/images/leftIcon.png"
       alt="icon Left"
     /></a> -->
-  <h1>Welcome to course4U</h1>
+  <h1>Sign up and start learning now.</h1>
 </div>
 <div class="container">
   <div id="imagen"><img src="/images/onlinecourse.jpg" alt="online course" />
@@ -11,21 +11,12 @@
   <div class="signup-form">
   <form action="/auth/signup" method="POST">
     <label>Email</label>
-    <input type="email" name="email" placeholder="john@doe.com" />
+    <input type="email" name="email" placeholder="andrewnice@hotmail.com" />
     <label>Username</label>
-    <input type="text" name="username" placeholder="JohnDoe88" />
+    <input type="text" name="username" placeholder="Andrew@2023" />
     <label>Password</label>
     <input type="password" name="password" placeholder="********" />
-    <label>Name on Card</label>
-    <input type="text" name="nameOnCard" placeholder="John Doe" />
-    <label>Credit Card Number</label>
-    <input type="text" name="cardNumber" placeholder="1111 2222 3333 4444" />
-    <label>Expiration Date</label>
-    <input type="text" name="expirationDate" placeholder="MM/YY" />
-    <label>CVV</label>
-    <input type="text" name="cvv" placeholder="***" />
-    <label>Country</label>
-    <input type="text" name="country" placeholder="USA" />
+  
 
     {{#if error}}
       <p style="color: red;">{{error}}</p>
@@ -48,5 +39,34 @@
   </form>
   </div>
 </div>
+<footer class="mainFooter">
+    <div class="container">
+        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
+            <div class="logo">
+                <img
+                  src="/images/SVG/LOGO/LOGO.svg"
+                  alt="course4u logo"
+                />
+           </div>
+        <div class="social-icons">
+            <a href="#"><img
+                src="/images/facebook-icon.png"
+                class="facebook-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/instagram-icon.png"
+                class="instagram-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/linkedin-icon.png"
+                class="linkedin-logo"
+              /></a>
+            <a href="#"><img
+                src="/images/twitter-icon.png"
+                class="twitter-logo"
+              /></a>
+          </div>
+        </div>
+    </footer>
 
 <script src="/script/signup.js"></script>

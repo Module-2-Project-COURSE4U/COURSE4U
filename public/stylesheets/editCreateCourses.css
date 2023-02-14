@@ -1,0 +1,103 @@
+.editCourse {
+  width: 40%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.editCourse h1 {
+  color: var(--navbar);
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.editCourse hr {
+  border: 1px solid var(--navbar);
+}
+
+.editCourse form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editCourse label {
+  color: var(--h4);
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.editCourse input[type="text"],
+.editCourse textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: 1px solid var(--navbar);
+  border-radius: 5px;
+}
+
+.editCourse input[type="submit"] {
+  width: 200px;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: var(--buttonBackground);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.editCourse input[type="submit"]:hover {
+  background-color: var(--buttonsHover);
+}
+
+@media (max-width: 858px) {
+  .editCourse {
+    width: 70%;
+    padding: 20px;
+  }
+  .editCourse h1 {
+    color: var(--navbar);
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .editCourseForm {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .editCourseForm label {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--h4);
+  }
+
+  .editCourseForm input[type="text"],
+  .editCourseForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+
+  .editCourseForm input[type="submit"] {
+    background-color: var(--buttonBackground);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .editCourseForm input[type="submit"]:hover {
+    background-color: var(--buttonsHover);
+  }
+}

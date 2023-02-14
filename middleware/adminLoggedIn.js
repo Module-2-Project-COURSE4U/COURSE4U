@@ -14,13 +14,13 @@ const isLoggedIn = (req, res, next) => {
     }
     };
 
-    // const isAdmin = (req, res, next) => {
-    //     if (req.user.role === "admin") {
-    //       next();
-    //     } else {
-    //       res.redirect("/auth/login");
-    //     }
-    //   };
+    const isAdmin = (req, res, next) => {
+        if (req.user.role === "admin") {
+          next();
+        } else {
+          res.redirect("/auth/login");
+        }
+      };
       const isUser = (req, res, next) => {
         if (req.session.role === "user") {
           next();

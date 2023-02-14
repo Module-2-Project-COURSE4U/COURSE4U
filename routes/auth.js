@@ -3,9 +3,10 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific route
-const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { ObjectId } = require("mongodb");
+const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+// const { simulatePaymentProcessing } = require("./checkoutPay");
+const Course = require("../models/Course");
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
@@ -23,21 +24,11 @@ router.post("/signup", async (req, res, next) => {
     email,
     password,
     username,
-    nameOnCard,
-    cardNumber,
-    expirationDate,
-    cvv,
-    country,
   } = req.body;
   // Check that username, email, and password are provided
   if (
     !username ||
-    !password ||
-    !nameOnCard ||
-    !cardNumber ||
-    !expirationDate ||
-    !cvv ||
-    !country
+    !password 
   ) {
     res.render("auth/signup", { error: "All fields are necessary!" });
     return;
@@ -72,11 +63,7 @@ router.post("/signup", async (req, res, next) => {
         username,
         email,
         hashedPassword,
-        nameOnCard,
-        cardNumber,
-        expirationDate,
-        cvv,
-        country,
+      
       });
       req.session.isUserLoggedIn = true;
 const first_user = true
@@ -129,6 +116,82 @@ router.post("/login", async function (req, res, next) {
     next(error);
   }
 });
+
+//google login
+// router.get(
+//   "/auth/google",
+//   passport.authenticate("google", {
+//     scope: [
+//       "https://www.googleapis.com/auth/userinfo.profile",
+//       "https://www.googleapis.com/auth/userinfo.email"
+//     ]
+//   })
+// );
+// router.get(
+//   "/auth/google/callback",
+//   passport.authenticate("google", {
+//     successRedirect: "/private-page",
+//     failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+//   })
+// );
+
+
+// ROUTE POST CHECKOUT *******************************
+router.post('/checkout/:courseId', async function (req, res, next) {
+  // Simulate payment processing
+  // try {
+  //   await simulatePaymentProcessing();
+  // } catch (error) {
+  //   return next(error);
+  // }
+  try {
+
+    const courseId = req.params.courseId;
+    const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
+    const user = req.session.currentUser;
+    let foundCourse = null;
+    console.log("BBBBBBBBBBBBBBBBBBBBBBBB", cvv);
+  
+    // Validating the credit card details
+    if (cardNumber.length != 16) {
+  
+      return render('/',  { error: 'Please enter 16 numbers!' });
+    }
+    if (expiryDate.length != 4) {
+      return render("auth/login", { error: 'The expiration year must be between 2023 and 2048!' });
+    }
+    if (cvv.length != 3) {
+     
+      return render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
+    }
+    foundCourse = await User.findOne({ courses: ObjectId(courseId) });
+    console.log("-----------------------------------BBBBBBBBBBB", foundCourse);
+  } catch (error) {
+    return next(error);
+  }
+  if (!foundCourse) 
+ {
+    try {
+      await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
+        true } });
+        console.log("-----------------------------------BBBBBBBBBBB", courseId);
+    } catch (error) {
+      return next(error);
+    }
+  }
+      // Redirect the user to their account page
+      res.redirect('/course/myCourses');
+    });
+
+
+// @desc    Destroy user session and log out
+// @route   Post /auth/checkout
+// @access  Private/ use
+  
+router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
+  res.render('auth/checkout');
+});   
+
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user

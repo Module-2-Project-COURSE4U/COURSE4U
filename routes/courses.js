@@ -33,26 +33,8 @@ router.get("/", async function (req, res, next) {
     next(error);
   }
 });
-// @desc    Search for course results
-// @route   GET /
-// @access  Public
-// router.get("/search", async function (req, res, next) {
-  // const user = req.session.currentUser;
-  // const { title } = req.query;
-  // if (title.length > 0)
-  // try {
-  //   // Create a case-insensitive regular expression from the search query
-    // const regex = new RegExp(title, "i");
-    // Search for courses with a title that matches the regex pattern
-//     const course = await Course.find({ title: regex });
-//     res.render("course/search", { query: title, course });
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
-
-// @desc   
+// @desc   Search for course results
 // @route   GET /search
 // @access  Public
 router.get("/search", async function(req, res, next) {
@@ -66,24 +48,6 @@ router.get("/search", async function(req, res, next) {
       next(error);
     }
 });
-
-// @desc    
-// @route   POST /search
-// @access  Public
-// router.post("/search", async (req, res, next) => {
-//   const { search } = req.body;
-// try {
-//   const regex = new RegExp(title, "i");
-//   const similarCourses = await Course.find({ title: search, title: regex }).populate("courseId");
-//   const coursesDB = new Set(similarCourses.map((course) => course.courseId));
-//   res.render("course/search", { title, coursesDB });
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-
-
 
 //@desc  view course details  by Id
 /* @route GET 
@@ -169,6 +133,7 @@ router.post("/newCourse", async function (req, res, next) {
     next(err);
   }
 });
+
 //@desc   add course to myaccount
 /* @route GET 
 /* @access User*/

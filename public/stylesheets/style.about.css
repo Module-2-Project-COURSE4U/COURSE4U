@@ -1,5 +1,5 @@
 body {
-  margin-top: 150px;
+  width: 100%;
   font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
   overflow-x: hidden;
@@ -27,22 +27,19 @@ body {
 .about-container p {
   font-size: 1rem;
 }
+.about-container {
+  width: 100%;
+  padding-top: 85px;
+  padding-bottom: 100px;
+  position: relative;
+}
 
 .header-text {
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 20px;
   color: rgb(63, 62, 62);
 }
-
-/* .img_About {
-  display: inline-block;
-  margin: 20px;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin-bottom: 40px;
-} */
 
 .img_About {
   display: inline-block;
@@ -82,7 +79,7 @@ body {
   margin: auto;
   padding-top: 30px;
   width: 70%;
-  height: 500px;
+  height: 350px;
   align-items: flex-start;
 }
 .features-section-text {
@@ -109,23 +106,28 @@ body {
 }
 
 .cta-section {
-  background-color: rgb(129, 167, 238);
+  background-color: rgba(128, 167, 238, 0.1);
   color: rgb(67, 66, 66);
   text-align: center;
+  border-radius: 10px;
   box-sizing: border-box;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   padding-top: 20px;
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 1em;
   position: relative;
+  width: 50%;
+  margin: 0 auto;
 }
-.cta-section img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  height: 100px;
-  padding-bottom: 20px;
-  filter: brightness(70%);
+
+.textH2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: rgb(63, 62, 62);
+}
+.cta-section p {
+  font-size: 0.8em;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -133,14 +135,13 @@ body {
     width: 80%;
   }
   .header-text {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
   }
   .cta-section img {
     width: 180px;
     height: 80px;
-    /* position: absolute; */
     right: 0;
   }
   .cta-section-content {
@@ -228,7 +229,6 @@ body {
   .cta-section img {
     width: 100px;
     height: 60px;
-    /* position: absolute; */
     right: 20px;
   }
 }
