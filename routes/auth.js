@@ -135,6 +135,14 @@ router.post("/login", async function (req, res, next) {
 //   })
 // );
 
+// @desc    Destroy user session and log out
+// @route   Post /auth/checkout
+// @access  Private/ use
+  
+router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
+  const course = req.params;
+  res.render('auth/checkout', course );
+});   
 
 // ROUTE POST CHECKOUT *******************************
 router.post('/checkout/:courseId', async function (req, res, next) {
@@ -151,14 +159,14 @@ router.post('/checkout/:courseId', async function (req, res, next) {
     // Validating the credit card details
     if (cardNumber.length != 16) {
   
-      return render('/',  { error: 'Please enter 16 numbers!' });
+      return res.render('auth/checkout',  { error: 'Please enter 16 numbers!' });
     }
     if (expiryDate.length != 4) {
-      return render("auth/login", { error: 'The expiration year must be between 2023 and 2048!' });
+      return res.render("auth/checkout", { error: 'The expiration year must be between 2023 and 2048!' });
     }
     if (cvv.length != 3) {
      
-      return render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
+      return res.render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
     }
   try {
       const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 

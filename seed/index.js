@@ -43,7 +43,7 @@ mongoose.connect(process.env.MONGO_URL)
     .then((offered) => offered = offered)
     .then(() => Course.findByIdAndUpdate(all_courses[5].id, { $push: { offered: offered.id } }))
     // MY COURSES
-    .then(() => User.findByIdAndUpdate(id.user, { $push: { courses: courses.id } }))
+    // .then(() => User.findByIdAndUpdate(id.user, { $push: { courses: courses.id } }))
     .then(() => Course.findByIdAndUpdate(all_courses[6].id, { $push: { offered: offered.id } }))
     .then(() => Course.findByIdAndUpdate(all_courses[7].id, { $push: { offered: offered.id } }))
     .then(() => Course.findByIdAndUpdate(all_courses[8].id, { $push: { offered: offered.id } }))
