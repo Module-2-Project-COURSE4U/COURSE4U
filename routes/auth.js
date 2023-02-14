@@ -5,14 +5,12 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { ObjectId } = require("mongodb");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
-// const { simulatePaymentProcessing } = require("./checkoutPay");
 const Course = require("../models/Course");
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
 // @access  Public
 router.get("/signup", async (req, res, next) => {
-  // const user = req.session.currentUser;
   res.render("auth/signup");
 });
 

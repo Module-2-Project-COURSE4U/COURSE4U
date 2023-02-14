@@ -24,11 +24,11 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
-  margin: auto;
   overflow-x: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin-top: auto;
   margin: 0;
   padding: 0;
 }
@@ -363,11 +363,11 @@ input::placeholder {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   padding: 10px;
   bottom: 0;
   left: 0;
-  align-items: center;
+  text-align: center;
+  margin-top: auto;
 }
 .mainFooter .container {
   display: flex;
@@ -463,11 +463,11 @@ input::placeholder {
 }
 
 .offerFooter {
-  background-color: rgba(173, 206, 234, 0.5);
+  background-color: rgba(134, 139, 143, 0.5);
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 85px;
+  height: 95px;
   width: 100vw;
   z-index: 100;
 }
@@ -485,7 +485,7 @@ input::placeholder {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: rgb(35, 36, 37);
+  color: rgb(41, 2, 217);
 }
 
 .offerFooter-bottom {
@@ -531,8 +531,8 @@ input::placeholder {
   
   @media screen and (max-width: 858px) {
   .h3OfferFooter {
-  font-size: 0.9em;
-  font-weight: 900;
+  font-size: 1em;
+  font-weight:bolder;
   }
   
   .btnOfferFooter {
@@ -653,8 +653,8 @@ input::placeholder {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: auto;
-  margin-top: -40px;
+  width: 100%;
+  margin-top: 100px;
 }
 
 .signupHeader h1 {
@@ -671,8 +671,8 @@ input::placeholder {
 }
 
 .signup-form form {
-  width: 20%;
-  height: 500px;
+  width: 60%;
+  min-height: 400px;
   margin: 0 auto;
   padding: 30px;
   background-color: #f5f9fa;
@@ -785,9 +785,17 @@ input[type="password"]:focus {
   .signup-form p {
     font-size: 14px;
   }
+  .signupHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
   .signupHeader h1 {
-    font-size: 1.4rem;
-    margin-top: 20px;
+    font-size: 1rem;
+    margin-bottom: 10px;
   }
   .logo img {
     width: 80%;
