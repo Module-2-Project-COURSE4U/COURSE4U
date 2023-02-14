@@ -99,21 +99,29 @@
       {{#if success_message}}
         <h1>Review deleted successfully</h1>
       {{/if}}
-      {{#each review_user}}
-      <p><strong>{{this.username.username}}</strong>:
-        {{this.comment}}. Stars:
-        {{this.stars}}/5</p>
-      <form>
-     <a href="/reviews/delete/{{this._id}}">DELETE</a>
-      </form>
-    {{/each}}
+      <div class="reviews">
+        {{#each review_user}}
+        <form> 
+          <a href="/reviews/delete/{{this._id}}">DELETE</a>
+        </form> 
+        <div class="star-reviews" id={{this.stars}}></div>
+        <p><strong>{{this.username.username}}</strong>: 
+        {{this.comment}}.        
+        {{/each}}
+      </div>
   {{/if}}
    {{#if reviews}}
-      {{#each reviews}}
+   <div class="reviews">
+    {{#each reviews}}
+    <div>
       <p><strong>{{this.username.username}}</strong>:
         {{this.comment}}. Stars:
         {{this.stars}}/5</p>
+       <div class="star-reviews" id={{this.stars}}></div>
+    </div>
+      
     {{/each}}
+   </div>
   {{/if}}
 
   {{#if user}}
@@ -125,7 +133,14 @@
       action="/reviews/newReview/{{course._id}}"
     >
       <label>How would you rate this course?</label>
-      <input type="number" placeholder="5" name="stars" min="1" max="5" />
+      <div class="stars-view">
+        <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_1'/>
+        <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_2'/>
+        <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_3'/>
+        <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_4'/>
+        <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_5'/>
+      </div>
+      <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5"/>
       <label>Comment:</label>
       <input
         type="text"

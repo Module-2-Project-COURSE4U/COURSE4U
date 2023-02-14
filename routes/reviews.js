@@ -15,6 +15,7 @@ router.post(
     const user_id = req.session.currentUser._id;
     const { stars, comment } = req.body;
     const { courseId } = req.params;
+    console.log(stars,'stars')
     try {
       const review = await Review.create({
         stars,
