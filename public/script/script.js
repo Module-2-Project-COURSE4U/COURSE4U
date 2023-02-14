@@ -42,3 +42,4 @@ window.addEventListener("scroll", function() {
   }
   prevScrollpos = currentScrollPos;
 });
+
