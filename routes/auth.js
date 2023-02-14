@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { ObjectId } = require("mongodb");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
-const { simulatePaymentProcessing } = require("./checkoutPay");
+// const { simulatePaymentProcessing } = require("./checkoutPay");
 const Course = require("../models/Course");
 
 // @desc    Displays form view to sign up
@@ -117,55 +117,80 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
-router.get("/checkout/:courseId", (req, res, next) => {
-  res.render('auth/checkout');
-});
+//google login
+// router.get(
+//   "/auth/google",
+//   passport.authenticate("google", {
+//     scope: [
+//       "https://www.googleapis.com/auth/userinfo.profile",
+//       "https://www.googleapis.com/auth/userinfo.email"
+//     ]
+//   })
+// );
+// router.get(
+//   "/auth/google/callback",
+//   passport.authenticate("google", {
+//     successRedirect: "/private-page",
+//     failureRedirect: "/" // here you would redirect to the login page using traditional login approach
+//   })
+// );
+
+
+// ROUTE POST CHECKOUT *******************************
+router.post('/checkout/:courseId', async function (req, res, next) {
+  // Simulate payment processing
+  // try {
+  //   await simulatePaymentProcessing();
+  // } catch (error) {
+  //   return next(error);
+  // }
+  try {
+
+    const courseId = req.params.courseId;
+    const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
+    const user = req.session.currentUser;
+    let foundCourse = null;
+    console.log("BBBBBBBBBBBBBBBBBBBBBBBB", cvv);
+  
+    // Validating the credit card details
+    if (cardNumber.length != 16) {
+  
+      return render('/',  { error: 'Please enter 16 numbers!' });
+    }
+    if (expiryDate.length != 4) {
+      return render("auth/login", { error: 'The expiration year must be between 2023 and 2048!' });
+    }
+    if (cvv.length != 3) {
+     
+      return render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
+    }
+    foundCourse = await User.findOne({ courses: ObjectId(courseId) });
+    console.log("-----------------------------------BBBBBBBBBBB", foundCourse);
+  } catch (error) {
+    return next(error);
+  }
+  if (!foundCourse) 
+ {
+    try {
+      await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
+        true } });
+        console.log("-----------------------------------BBBBBBBBBBB", courseId);
+    } catch (error) {
+      return next(error);
+    }
+  }
+      // Redirect the user to their account page
+      res.redirect('/course/myCourses');
+    });
+
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/checkout
-// @access  Private/ user
-
-
-router.post("/checkout/:courseId", async function (req, res, next) {
-  const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
-  const user = req.session.currentUser;
-  const courseId = req.params.courseId;
-  let foundCourse = null;
-
-  if (cardNumber.length != 16) {
-        res.render("auth/checkout", { error: "Please enter 16 numbers!" });
-        return;
-      } 
-  if (expiryDate != 4) {
-        res.render("auth/checkout", { error: "The expiration year must be between 2023 and 2048!" });
-        return;
-      }
-  if (cvv.length < 3) {
-        res.render("auth/checkout", { error: "Please enter 3 numbers for The CVV!" });
-        return;
-      } 
-      try {
-        // Simulate payment processing
-        await simulatePaymentProcessing();
-      } catch (error) {
-        return next(error);
-      }
-      try {
-        foundCourse = await User.findOne({ courses: ObjectId(courseId) });
-      } catch (error) {
-        return next(error);
-      }
-      if (!foundCourse) {
-        try {
-          await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: true } });
-        } catch (error) {
-          return next(error);
-        }
-      }
-    
-      return res.redirect("/courses/myCourses", { message: "Great choice!" });
-    });
-    
+// @access  Private/ use
+  
+router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
+  res.render('auth/checkout');
+});   
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout

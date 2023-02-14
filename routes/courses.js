@@ -138,9 +138,6 @@ router.post("/newCourse", async function (req, res, next) {
   }
 });
 
-
-
-
 //@desc   add course to myaccount
 /* @route GET 
 /* @access User*/
