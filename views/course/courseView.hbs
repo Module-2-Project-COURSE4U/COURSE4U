@@ -4,64 +4,194 @@
       <h1> Course deleted succesfully!</h1>
     </div>
   {{/if}}
+
   {{#if user}}
     <div class="popup-message">
       <h1>Let's start learning, {{user.username}}!</h1>
     </div>
   {{else}}
+  
     <div class="cardPlan">
       <div class="card-plan-Premium">
         <h2>Course4u</h2>
-        <h3>Subscribe to Course4u's premium courses for top-quality learning.</h3>
-        <h3>Gain access to all courses by choosing the Personal Plan</h3>
-        <a href="/auth/signup">Subscribe</a>
-        <h4> €21.99 per month</h4>
+       <div class="premiumText">
+        <h3>"Take your learning to the next level with Course4u's premium courses. Sign up and subscribe today to gain exclusive access to our top-quality courses and unlock your full potential."</h3>
+        
+        </div>
+        <a href="/auth/checkout/{{course._id}}">Subscribe</a>
+        <h4> €29.99 per month</h4>
         <p>No commitments, cancel anytime.</p>
       </div>
-      <img class="homePic" src="/images/homepic.jpg" alt="home pic" />
+      <div class="homepic">
+        <img src="/images/homepic.jpg" alt="home pic" />
+      </div>
     </div>
+
+    <div class="slider">
+      <div class="slide-track">
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+  
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+          <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        </div>
+           <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
+            height="100"
+            width="250"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
   {{/if}}
   <div class="card-container">
     {{#each courses}}
       <div class="card-course {{this.title}}" id="{{_id}}">
         <h4>{{this.title}}</h4>
         <img width="150px" src={{this.image}} alt={{this.title}} />
-        <p>{{truncate this.description 100}}...</p>
+        <p>{{truncate this.description 50}}...</p>
       </div>
     {{/each}}
   </div>
 </div>
 
-
-{{!-- <footer class="mainFooter">
-    <div class="container">
-        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
-            <div class="logo">
-                <img
-                  src="/images/SVG/LOGO/LOGO.svg"
-                  alt="course4u logo"
-                />
-           </div>
-        <div class="social-icons">
-            <a href="#"><img
-                src="/images/facebook-icon.png"
-                class="facebook-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/instagram-icon.png"
-                class="instagram-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/linkedin-icon.png"
-                class="linkedin-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/twitter-icon.png"
-                class="twitter-logo"
-              /></a>
-          </div>
-        </div>
-    </footer> --}}
+{{!-- 
+  <div class="featuresCourse">
+    <h1>Invest in your career goals with Course4U</h1>
+      <h2>Get unlimited access to all courses, specialty programs on Course4U, taught by top instructors from top universities and companies.</h2>
+  <ul>
+    <div class="featureCard1"></div>
+    <li>
+      <h3>Learn what you want</h3>
+      <p>Explore any topic of interest or trend, take the prerequisites and advance your skills</p>
+    </li>
+    <li>
+      <h3>Save money</h3>
+      <p>If you want to take multiple courses this year, spend less money on your learning.</p>
+    </li>
+    <div class="featureCard2">
+    <li>
+      <h3>Flexible learning</h3>
+      <p>Learn at your own pace, move between multiple courses, or switch to a different course</p>
+    </li>
+    <li>
+     <h3>Learn anytime anywhere</h3>
+      <p>Learn at your own pace through our easy to navigate Android & iOS App.</p>
+    </li>
+    </div>
+     </ul>
+  </div>
+  </div> --}}
 <script src="/script/courseView.js"></script>
 
 <!-- <p>This course is the first of a series that aims to prepare you for a role as an entry-level IT Support Specialist. In this course, you’ll be introduced to the world of Information Technology, or IT. You’ll learn about the different facets of Information Technology, like computer hardware, the Internet, computer software, troubleshooting, and customer service. This course covers a wide variety of topics in IT that are designed to give you an overview of what’s to come in this certificate program.

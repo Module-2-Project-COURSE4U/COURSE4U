@@ -8,10 +8,10 @@
       rel="stylesheet"
     />
     <link href="/stylesheets/style.css" rel="stylesheet" />
+    <link href="/stylesheets/style.slider.css" rel="stylesheet" />
     <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <link href="/stylesheets/style.detail.css" rel="stylesheet" />
-    {{!-- <link href="/stylesheets/style.search.css" rel="stylesheet" /> --}}
-     <link href="/stylesheets/style.about.css" rel="stylesheet" />
+    <link href="/stylesheets/style.about.css" rel="stylesheet" />
     <title>Project module 2</title>
   </head>
   <body>
@@ -31,7 +31,7 @@
          <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
       </form>
 
-      <ul class="menu_nav menu_items">
+      {{!-- <ul class="menu_nav menu_items">
         {{#if user}}
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
@@ -48,10 +48,32 @@
           <li><a href="/auth/login">Log in</a></li>
           
         {{/if}}
-      </ul> 
+      </ul>  --}}
+
+
+<ul class="menu_nav menu_items">
+  {{#if user}}
+    <li class="active"><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/courses/myCourses">My courses</a></li>
+    <li><a href="/user/profile">Profile</a></li>
+    <li><a href="/auth/logout">Log out</a></li>
+    <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+  {{#if isAdmin}}
+    <li><a href="/courses/newCourse">Add Course</a></li>
+    {{/if}}
+  {{else}}
+    <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/auth/signup">Sign up</a></li>
+    <li><a href="/auth/login">Log in</a></li>
+  {{/if}}
+</ul>
+
   <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
   <span class="btn_search">
-    <img "btn_search" src="/images/search-Icon.png" alt="btn search"> 
+    <img "btn_search" src="/images/search-Icon.png" alt="btn search"/>
   </span>
 </nav>
 

@@ -4,8 +4,10 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { ObjectId } = require("mongodb");
-const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { isLoggedIn, isUser, isAdmin } = require("../middleware/adminLoggedIn");
 const Course = require("../models/Course");
+const passport = require("passport");
+const session = require("express-session");
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
@@ -18,16 +20,8 @@ router.get("/signup", async (req, res, next) => {
 // @route   Post /auth/signup
 // @access  Public
 router.post("/signup", async (req, res, next) => {
-  const {
-    email,
-    password,
-    username,
-  } = req.body;
-  // Check that username, email, and password are provided
-  if (
-    !username ||
-    !password 
-  ) {
+  const { email, password, username } = req.body;
+  if (!username || !password) {
     res.render("auth/signup", { error: "All fields are necessary!" });
     return;
   }
@@ -49,7 +43,6 @@ router.post("/signup", async (req, res, next) => {
   try {
     const findUserInDB = await User.findOne({ username: username });
     if (findUserInDB) {
-
       res.render("auth/signup", {
         error: `There alredy is a user with username ${username}`,
       });
@@ -61,18 +54,15 @@ router.post("/signup", async (req, res, next) => {
         username,
         email,
         hashedPassword,
-      
       });
       req.session.isUserLoggedIn = true;
-const first_user = true
-res.render("auth/login", { user, first_user });
-}
-} catch (err) {
-next(err);
-}
+      const first_user = true;
+      res.render("auth/login", { user, first_user });
+    }
+  } catch (err) {
+    next(err);
+  }
 });
-  
-
 // @desc    Displays form view to log in
 // @route   Get /auth/login
 // @access  Public
@@ -102,10 +92,8 @@ router.post("/login", async function (req, res, next) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = user;
-        // res.render("user/profile", { user });
         res.redirect("/courses");
       } else {
-        console.log("password");
         res.render("auth/login", { error: "incorrect password" });
         return;
       }
@@ -115,112 +103,122 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
-//google login
-// router.get(
-//   "/auth/google",
-//   passport.authenticate("google", {
-//     scope: [
-//       "https://www.googleapis.com/auth/userinfo.profile",
-//       "https://www.googleapis.com/auth/userinfo.email"
-//     ]
-//   })
-// );
-// router.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: "/private-page",
-//     failureRedirect: "/" // here you would redirect to the login page using traditional login approach
-//   })
-// );
+// @desc    Displays google login view
+// @route   Get /google
+// @access  Public
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
-// @desc    Destroy user session and log out
-// @route   Post /auth/checkout
-// @access  Private/ use
-  
+// @desc    Authenticate the user with Passport, retrieve the user from the database
+// @route   GET /google/callback
+// @access  Public
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/auth/login" }),
+  async function (req, res, next) {
+    try {
+      const user = await User.findOne({ username: req.user.username });
+      req.session.currentUser = user;
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+// @desc    Displays form view to facebook log in
+// @route   GET /facebook
+// @access  Public
+router.get("/facebook", passport.authenticate("facebook"));
+
+// @desc    Authenticate the user with Passport
+// @route   GET /facebook/callback
+// @access  Public
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
+
+// @desc    display checkout view
+// @route   GET /chekout/:courseId
+// @access  private, User
 router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
   const course = req.params;
-  res.render('auth/checkout', course );
-});   
+  res.render("auth/checkout", course);
+});
 
-// ROUTE POST CHECKOUT *******************************
-router.post('/checkout/:courseId', async function (req, res, next) {
-  // Simulate payment processing
-  // try {
-  //   await simulatePaymentProcessing();
-  // } catch (error) {
-  //   return next(error);
-  // }
-    const { courseId } = req.params;
-    const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
-    const user = req.session.currentUser;
-  
-    // Validating the credit card details
-    if (cardNumber.length != 16) {
-  
-      return res.render('auth/checkout',  { error: 'Please enter 16 numbers!' });
-    }
-    if (expiryDate.length != 4) {
-      return res.render("auth/checkout", { error: 'The expiration year must be between 2023 and 2048!' });
-    }
-    if (cvv.length != 3) {
-     
-      return res.render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
-    }
+// @desc    This route checks the user's payment information and updates their account to become a premium member.
+// @route   POST /chekout/:courseId
+// @access  private, User
+router.post("/checkout/:courseId", async function (req, res, next) {
+  const { courseId } = req.params;
+  const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
+  const user = req.session.currentUser;
+  if (cardNumber.length != 16) {
+    return res.render("auth/checkout", { error: "Please enter 16 numbers!" });
+  }
+  if (expiryDate.length != 4) {
+    return res.render("auth/checkout", {
+      error: "The expiration year must be between 2023 and 2048!",
+    });
+  }
+  if (cvv.length != 3) {
+    return res.render("auth/checkout", {
+      error: "Please enter 3 numbers for The CVV!",
+    });
+  }
   try {
-      const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
-        true } });
-        console.log('userrrrr',usertrue)
-        // Redirect the user to their account page
-      res.redirect('/courses/myCourses');
-    } catch (error) {
-      return next(error);
-    }
-  });
+    const usertrue = await User.findByIdAndUpdate(user._id, {
+      $push: { courses: ObjectId(courseId) },
+      $set: { isPremiumMember: true },
+    });
+    res.redirect("/courses/myCourses");
+  } catch (error) {
+    return next(error);
+  }
+});
+
+/*******ANDREA, ¿ESTA RUTA NO SIRVE? LA BORRAMOS? *****/
+
+// router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
+//   const { courseId } = req.params;
+//   const user = req.session.currentUser;
+//   res.render("auth/checkout", { courseId, user });
+// });
 
 
-// @desc    Destroy user session and log out
-// @route   Post /auth/checkout
-// @access  Private/ use
-  
-router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
-  const { courseId } = req.params
-  const user = req.session.currentUser
-  console.log('hi',{courseId})
-  res.render('auth/checkout', { courseId, user });
-});   
-
-// @desc    Destroy user session and log out
-// @route   Post /auth/logout
+// @desc    This route renders the logout page
+// @route   GET /auth/logout
 // @access  Private/ user
 router.get("/logout", (req, res, next) => {
-  const user = req.session.currentUser
-  res.render('auth/logout', { user });
+  const user = req.session.currentUser;
+  res.render("auth/logout", { user });
 });
 
 //@desc    Destroy user session and log out
-//@route   Post /auth/logout
+//@route   POST /auth/logout
 //@access  Private/ user
 router.post("/logout", (req, res, next) => {
   const submit = req.body.submit;
-  try{
-    if(submit === "YES"){
+  try {
+    if (submit === "YES") {
       req.session.destroy((err) => {
         if (err) {
           return next(err);
         } else {
           res.clearCookie("course4u-cookie");
-          console.log('cookie cleared')
+          console.log("cookie cleared");
           res.redirect("/auth/login");
         }
-      })
+      });
+    } else if (submit === "NO") {
+      res.redirect("/user/profile");
     }
-    else if(submit === "NO"){
-      res.redirect('/user/profile')
-    }
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
-})
+});
 
 module.exports = router;

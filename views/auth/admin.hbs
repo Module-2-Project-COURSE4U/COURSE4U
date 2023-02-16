@@ -1,0 +1,15 @@
+<h1>Lista de usuarios</h1>
+<ul>
+  {{#each users}}
+  <li>
+    {{this.name}} - {{this.email}} - {{this.role}}
+    <form method="POST" action="/admin/roles/{{this._id}}">
+      <select name="role">
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <button type="submit">Cambiar rol</button>
+    </form>
+  </li>
+  {{/each}}
+</ul>
