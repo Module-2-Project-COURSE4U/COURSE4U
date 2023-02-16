@@ -16,13 +16,17 @@
     <input type="text" name="username" placeholder="Andrew@2023" />
     <label>Password</label>
     <input type="password" name="password" placeholder="********" />
-  
 
     {{#if error}}
       <p style="color: red;">{{error}}</p>
     {{/if}}
 
-    <button type="submit">Subscribe</button>
+    {{#if subscribe}}
+        <button type="submit" value="YES" name="subscribe">Continue to checkout</button>
+    {{else}}
+        <button type="submit" value="NO" name="subscribe">Signup</button>
+    {{/if}}
+
     <p style="color: gray">
       By subscribing, you agree to our terms of use and Privacy Policy
     </p>

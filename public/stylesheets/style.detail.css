@@ -46,17 +46,13 @@
     display: inline-block;
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
   }
 
   .transformed_svg{
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 1s;
-  }
-
-  .delay-1 {
-    transition-delay: 0.5s;
+    transition-duration: 1.5s;
   }
 
   #div_svg {

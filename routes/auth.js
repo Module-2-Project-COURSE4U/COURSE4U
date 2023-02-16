@@ -5,13 +5,22 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { ObjectId } = require("mongodb");
 const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
+const { simulatePaymentProcessing } = require("../middleware/simulate_payment");
 const Course = require("../models/Course");
+
 
 // @desc    Displays form view to sign up
 // @route   Get/auth/signup
 // @access  Public
 router.get("/signup", async (req, res, next) => {
   res.render("auth/signup");
+});
+
+// @desc    Displays form view to sign up
+// @route   Get/auth/signup
+// @access  Public
+router.get("/signup&subscribe", async (req, res, next) => {
+  res.render("auth/signup", { subscribe: true });
 });
 
 // @desc    Sends user auth data to database to create a new user
@@ -22,6 +31,7 @@ router.post("/signup", async (req, res, next) => {
     email,
     password,
     username,
+    subscribe
   } = req.body;
   // Check that username, email, and password are provided
   if (
@@ -60,12 +70,16 @@ router.post("/signup", async (req, res, next) => {
       const user = await User.create({
         username,
         email,
-        hashedPassword,
-      
+        hashedPassword
       });
       req.session.isUserLoggedIn = true;
 const first_user = true
-res.render("auth/login", { user, first_user });
+if(subscribe=='YES'){
+  res.render('auth/checkout', { user, first_user })
+}
+else{
+  res.render("auth/login", { user, first_user });
+}
 }
 } catch (err) {
 next(err);
@@ -135,26 +149,29 @@ router.post("/login", async function (req, res, next) {
 // @desc    Destroy user session and log out
 // @route   Post /auth/checkout
 // @access  Private/ use
-  
-router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
-  const { courseId } = req.params
+router.get("/checkout", isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser
-  res.render('auth/checkout', { courseId, user });
-});  
+  res.render('auth/checkout', { user });
+});
 
-// ROUTE POST CHECKOUT *******************************
-router.post('/checkout/:courseId', async function (req, res, next) {
+router.post('/checkout', async function (req, res, next) {
   // Simulate payment processing
-  // try {
-  //   await simulatePaymentProcessing();
-  // } catch (error) {
-  //   return next(error);
-  // }
-    const { courseId } = req.params;
-    const { expiryDate, cardNumber, cvv, cardholderName } = req.body;
-    const user = req.session.currentUser;
-  
-    // Validating the credit card details
+  try {
+    await simulatePaymentProcessing();
+  } catch (error) {
+    return next(error);
+  }
+    const { expiryDate, cardNumber, cvv, cardholderName, username } = req.body;
+    console.log('username',username)
+    let user
+    if(!req.session.currentUser){
+      user = await User.findOne({ username: username });
+      console.log('user',user)
+    }
+    else{
+      user = req.session.currentUser
+    }
+   // Validating the credit card details
     if (cardNumber.length != 16) {
       return res.render('auth/checkout',  { error: 'Please enter 16 numbers!' , user, courseId});
     }
@@ -165,17 +182,14 @@ router.post('/checkout/:courseId', async function (req, res, next) {
       return res.render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!', user, courseId });
     }
   try {
-      const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: courseId }, $set: { isPremiumMember: 
-        true } });
+      const usertrue = await User.findByIdAndUpdate(user._id, { $set: { isPremiumMember: true } }, { new: true });
       req.session.currentUser = usertrue
         // Redirect the user to their account page
-      res.redirect('/courses/myCourses');
+      res.redirect('/');      
     } catch (error) {
       return next(error);
     }
   });
-
-
 
 
 // @desc    Destroy user session and log out

@@ -17,11 +17,7 @@ let i = 0;
 let parameter;
 function change() {
   svg_color.classList.toggle("transformed_svg");
-  if (i == 3) {
-    i = 1;
-  } else {
     i++;
-  }
 }
 arr_title.forEach(function (elem, i) {
   elem.addEventListener("click", function () {
@@ -29,12 +25,19 @@ arr_title.forEach(function (elem, i) {
     div[i].classList.replace("no_active_display", "active_display");
     if (i % 2) {
       parameter = ".svg_process_color";
+      const svg = document.querySelector('.svg_process_color')
+      // svg.style.width="`${Math.round(((i + 1) / arr_title.length) * 100)}%`"
+      // console.log(svg)
     } else {
       parameter = ".transformed_svg";
+      const transformed = document.querySelector('.transformed_svg')
+      // console.log(transformed)
+      // transformed.style.width="`${Math.round(((i + 1) / arr_title.length) * 100)}%`"
     }
     let text = `${parameter}{
       width:${Math.round(((i + 1) / arr_title.length) * 100)}%;
     }`;
+    // console.log(parameter)
     style.innerText = text;
     change();
   });

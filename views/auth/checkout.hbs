@@ -1,7 +1,10 @@
 <h1>Set up your credit or debit card</h1>
 <div class="container">
   <div class="signup-form">
-   <form method="post" action="/auth/checkout/{{courseId}}">
+  {{#if first_user}}
+    <h2>Last step to become a premium member</h2>
+  {{/if}} 
+   <form method="post" action="/auth/checkout">
       <label>Name on Card</label>
       <input type="text" name="cardholderName" placeholder="John White" />
       <label>Credit Card Number</label>
@@ -17,7 +20,10 @@
       {{#if error}}
       <p style="color: red;">Error {{error}}</p>
       {{/if}}
-      <button type="submit">Submit</button>
+      <button type="submit" {{#if user.username}}
+      value="{{user.username}}"
+      {{else}} value="NO" 
+      {{/if}} name="username">Continue to checkout</button>
     </form>
     </div>
     </div>

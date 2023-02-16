@@ -64,7 +64,7 @@
   </div>
 </footer> --}}
 
-
+{{#unless user.isPremiumMember}}
 <footer class="offerFooter">
   <div class="offerFooter-top">
     <div class="h3OfferFooter">
@@ -73,10 +73,11 @@
   </div>
   <div class="offerFooter-bottom">
     <div class="btnOfferFooter">
-      <a href="/auth/signup">Subscribe</a>
+      <a {{#if user}} href="/auth/checkout" {{else}} href="/auth/signup&subscribe" {{/if}} >Subscribe</a>
     </div>
   </div>
 </footer>
+{{/unless}}
 
     {{{body}}}
 
