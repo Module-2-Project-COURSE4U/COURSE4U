@@ -143,6 +143,9 @@ hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper("truncate", function (str, length) {
   return str.slice(0, length);
 });
+hbs.registerHelper('isAdmin', function (value) {
+  return value == 'admin';
+});
 
 // routes intro
 app.use("/", indexRouter);

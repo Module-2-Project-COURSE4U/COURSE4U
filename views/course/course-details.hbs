@@ -10,11 +10,12 @@
   <form action="/courses/delete/{{course._id}}" method="post">
     <button class="button_delete" type="submit">Delete course</button>
   </form>
-{{/if}}
+{{else}}
 {{#if user.isPremiumMember}}
   {{#unless enroled}}
     <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
   {{/unless}}
+  {{/if}}
   {{/if}}
   <div class="card-featAbout">
     <div class="card-skillsAbout">

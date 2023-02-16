@@ -79,7 +79,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
     const enroled = await User.find({ _id: user._id, courses: id });
-    const isAdmin = user && user.role === "admin";
+    // const isAdmin = user && user.role === "admin";
     console.log('userrrrr',user)
     return res.render("course/course-details", {
       course,

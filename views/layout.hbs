@@ -58,7 +58,7 @@
     <li><a href="/user/profile">Profile</a></li>
     <li><a href="/auth/logout">Log out</a></li>
     <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-  {{#if isAdmin}}
+  {{#if (isAdmin user.role)}}
     <li><a href="/courses/newCourse">Add Course</a></li>
     {{/if}}
   {{else}}
