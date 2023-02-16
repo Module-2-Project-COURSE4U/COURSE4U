@@ -6,19 +6,16 @@ const search_form = document.querySelector(".search_form");
 const btn_close = document.querySelector(".btn_close");
 const btn_close2 = document.querySelector(".btn_close2");
 
-
 btn_logo.addEventListener("click", () => {
   window.location.href = `/`;
 });
 
 btn_menu.addEventListener("click", () => {
- 
-      menu_items.classList.toggle("show");
-    
-    });
+  menu_items.classList.toggle("show");
+});
 btn_search.addEventListener("click", () => {
-        search_form.classList.toggle("show");
-      });
+  search_form.classList.toggle("show");
+});
 
 btn_close.addEventListener("click", () => {
   btn_menu.classList.remove("show");
@@ -32,7 +29,7 @@ btn_close2.addEventListener("click", () => {
 
 /*when the user scrolls up the page this pop up */
 let prevScrollpos = window.pageYOffset;
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function () {
   const footer = document.getElementsByClassName("offerFooter")[0];
   const currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos || currentScrollPos === 0) {
@@ -42,4 +39,3 @@ window.addEventListener("scroll", function() {
   }
   prevScrollpos = currentScrollPos;
 });
-

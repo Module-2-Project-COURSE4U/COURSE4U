@@ -4,9 +4,10 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { ObjectId } = require("mongodb");
-const { isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
-const { simulatePaymentProcessing } = require("../middleware/simulate_payment");
+const { isLoggedIn, isUser, isAdmin } = require("../middleware/adminLoggedIn");
 const Course = require("../models/Course");
+const passport = require("passport");
+const session = require("express-session");
 
 
 // @desc    Displays form view to sign up
@@ -59,7 +60,6 @@ router.post("/signup", async (req, res, next) => {
   try {
     const findUserInDB = await User.findOne({ username: username });
     if (findUserInDB) {
-
       res.render("auth/signup", {
         error: `There alredy is a user with username ${username}`,
       });
@@ -85,8 +85,6 @@ else{
 next(err);
 }
 });
-  
-
 // @desc    Displays form view to log in
 // @route   Get /auth/login
 // @access  Public
@@ -116,7 +114,6 @@ router.post("/login", async function (req, res, next) {
       const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
       if (passwordMatch) {
         req.session.currentUser = user;
-        // res.render("user/profile", { user });
         res.redirect("/courses");
       } else {
         res.render("auth/login", { error: "incorrect password" });
@@ -128,23 +125,10 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
-//google login
-// router.get(
-//   "/auth/google",
-//   passport.authenticate("google", {
-//     scope: [
-//       "https://www.googleapis.com/auth/userinfo.profile",
-//       "https://www.googleapis.com/auth/userinfo.email"
-//     ]
-//   })
-// );
-// router.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: "/private-page",
-//     failureRedirect: "/" // here you would redirect to the login page using traditional login approach
-//   })
-// );
+// @desc    Displays google login view
+// @route   Get /google
+// @access  Public
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/checkout
@@ -188,23 +172,54 @@ router.post('/checkout', async function (req, res, next) {
       return next(error);
     }
   });
+// @desc    Authenticate the user with Passport, retrieve the user from the database
+// @route   GET /google/callback
+// @access  Public
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/auth/login" }),
+  async function (req, res, next) {
+    try {
+      const user = await User.findOne({ username: req.user.username });
+      req.session.currentUser = user;
+      res.redirect("/");
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
+// @desc    Displays form view to facebook log in
+// @route   GET /facebook
+// @access  Public
+router.get("/facebook", passport.authenticate("facebook"));
+
+// @desc    Authenticate the user with Passport
+// @route   GET /facebook/callback
+// @access  Public
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
 // @access  Private/ user
 router.get("/logout", (req, res, next) => {
-  const user = req.session.currentUser
-  res.render('auth/logout', { user });
+  const user = req.session.currentUser;
+  res.render("auth/logout", { user });
 });
 
 //@desc    Destroy user session and log out
-//@route   Post /auth/logout
+//@route   POST /auth/logout
 //@access  Private/ user
 router.post("/logout", (req, res, next) => {
   const submit = req.body.submit;
-  try{
-    if(submit === "YES"){
+  try {
+    if (submit === "YES") {
       req.session.destroy((err) => {
         if (err) {
           return next(err);
@@ -212,15 +227,13 @@ router.post("/logout", (req, res, next) => {
           res.clearCookie("course4u-cookie");
           res.redirect("/auth/login");
         }
-      })
+      });
+    } else if (submit === "NO") {
+      res.redirect("/user/profile");
     }
-    else if(submit === "NO"){
-      res.redirect('/user/profile')
-    }
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
-})
+});
 
 module.exports = router;

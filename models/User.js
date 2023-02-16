@@ -17,27 +17,38 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    courses: [{
-      type: Schema.Types.ObjectId,
-      ref: "Course",
-    }],
-    
+
     hashedPassword: {
       type: String,
       required: [true, "Password is required."],
     },
+
+    role: { 
+      type: String, 
+      enum: ['user', 'admin'], 
+      default: 'user' 
+    },
     isPremiumMember: {
       type: Boolean,
-      default: false
+      default: false,
     },
     imageUrl: {
       type: String,
       default:
         "https://media.vogue.mx/photos/62e19b3d4a4bcdd2c09a7c1b/2:3/w_1920,c_limit/GettyImages-1155131913-2.jpg",
     },
+    password: {
+      type: String,
+    },
+    facebookID: {
+      type: String,
+    },
+    googleID: {
+      type: String,
+    },
+
     cardholderName: {
       type: String,
-    
     },
     cardNumber: {
       type: String,
@@ -45,15 +56,23 @@ const userSchema = new Schema(
     },
     expiryDate: {
       type: String,
-      // required: [true, "Expiry Date is required."],
     },
     cvv: {
       type: String,
-      // required: [true, "CVV is required."],
     },
+    courses: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Course",
+      },
+    ],
   },
   {
     timestamps: true,
+  },
+
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
 );
 
