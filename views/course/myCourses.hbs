@@ -1,12 +1,18 @@
-{{!-- <h1>Great choice!</h1>
-<p>Thank you for upgrading to premium membership. We appreciate your support!</p>
-<img src="https://example.com/images/great-choice-image.jpg" alt="Great choice!" /> --}}
+<div class="myCourse">
+   {{#if showWelcomeMessage}}
+  <p>Thank you for upgrading to premium membership. We appreciate your support!</p>
+  {{/if}}
+  
+  <div class="myCourseDetails">
+          <h1>My Learning</h1>
+          {{#each courses}}
+          <div class="courseItem">
+            <img class="courseImage" src={{this.image}} alt={{this.title}} />
+            <div class="courseInfo">
+              <h4>{{this.title}}</h4>
+              <p>{{this.description}}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 
-<div class="myCoursesContainer">
-<h1>My Learning</h1>
-{{#each courses}}
-    <img width="300px" src={{this.image}} alt={{this.title}} />
-    <h4>{{this.title}}</h4>
-    <p>{{this.description}}</p>
-{{/each}}
-</div>

@@ -1,6 +1,7 @@
 <h3>Results by: {{query}}</h3>
 {{#if course}}
   <div class="searchContainer">
+    
   {{#each course}}
    <div class="card-course {{this.title}}" id= '{{_id}}'>
       <h4>{{this.title}}</h4>
@@ -15,34 +16,5 @@
 {{/if}}
 
 
-<footer class="mainFooter">
-    <div class="container">
-        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
-            <div class="logo">
-                <img
-                  src="/images/SVG/LOGO/LOGO.svg"
-                  alt="course4u logo"
-                />
-           </div>
-        <div class="social-icons">
-            <a href="#"><img
-                src="/images/facebook-icon.png"
-                class="facebook-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/instagram-icon.png"
-                class="instagram-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/linkedin-icon.png"
-                class="linkedin-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/twitter-icon.png"
-                class="twitter-logo"
-              /></a>
-          </div>
-        </div>
-    </footer>
 
 <script src="/script/courseView.js"></script>

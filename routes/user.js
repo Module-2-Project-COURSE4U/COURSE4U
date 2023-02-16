@@ -7,27 +7,27 @@ const { isAdmin, isLoggedIn, isUser } = require("../middleware/adminLoggedIn");
 const fileUploader = require("../config/cloudinary.config");
 
 // @desc    is responsible for displaying the user's profile page.
-// @route   get /profile
+// @route   GET /profile
 // @access  Public
 router.get("/profile", isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
   res.render("user/profile", { user });
 });
 
-// @desc  is responsible for displaying the user's profile editing page.
-// @route   get /profile/edit
+// @desc    is responsible for displaying the user's profile editing page.
+// @route   GET /profile/edit
 // @access  Public
 router.get("/profile/edit", isLoggedIn, (req, res, next) => {
   const user = req.session.currentUser;
   res.render("user/profileEditPass", { user });
 });
-// @desc This route allows a user to change their password. It verifies that the password fields are valid and then updates the user's password in the database. It then redirects the user to their profile page.
-// @route   post /profile/edit
-// Post login route ==> to process form data
+
+// @desc    This route allows a user to change their password.
+// @route   POST/profile/edit
+// @access  Private
 router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   const { currentPassword, newPassword1, newPassword2 } = req.body;
   const user = req.session.currentUser;
-
   if (!currentPassword || !newPassword1 || !newPassword2) {
     res.render("user/profileEditPass", {
       user,
@@ -85,19 +85,20 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-// @desc  is responsible for displaying the user's profile editing page.
-// @route   get /profile/editPhoto
-// @access  Public
-router.get("/profile/editPhoto", function (req, res, next) {
+
+// @desc    is responsible for displaying the user's profile editing page.
+// @route   GET /profile/editPhoto
+// @access  Private, user
+router.get("/profile/editPhoto", isLoggedIn,  function (req, res, next) {
   const user = req.session.currentUser;
   res.render("user/profileEditPhoto", { user });
 });
 
-// @desc  This route allows the user to edit their profile picture.
-// @route   post /profile/editPhoto
-// @access  User
+// @desc    This route allows the user to edit their profile picture.
+// @route   POST /profile/editPhoto
+// @access  Private, user
 router.post(
-  "/profile/editPhoto",
+  "/profile/editPhoto", isLoggedIn, 
   fileUploader.single("imageUrl"),
   async (req, res, next) => {
     if (!req.file) {
@@ -118,10 +119,10 @@ router.post(
     }
   }
 );
-// @desc  This route allows the user to delete their profile picture.
-// @route   Get /user/profile/deletePhoto
-// @access  User
-router.get("/profile/deletePhoto", async (req, res, next) => {
+// @desc    This route allows the user to delete their profile picture.
+// @route   GET /user/profile/deletePhoto
+// @access  Private, User
+router.get("/profile/deletePhoto",isLoggedIn, async (req, res, next) => {
   const user = req.session.currentUser;
   try {
     const updatedUser = await User.findByIdAndUpdate(

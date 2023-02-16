@@ -1,6 +1,6 @@
 require("dotenv").config();
 require("./db");
-const hbs = require('hbs')
+const hbs = require("hbs");
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -9,24 +9,22 @@ const logger = require("morgan");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/User");
-// const passport = require("passport");
+const FacebookStrategy = require("passport-facebook").Strategy;
 
 // Routers require
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const coursesRouter = require("./routes/courses");
-const reviewsRouter = require('./routes/reviews');
+const reviewsRouter = require("./routes/reviews");
 const mongoose = require("mongoose");
+const passport = require("passport");
 mongoose.set("strictPopulate", false);
-
 const app = express();
 
 // cookies and loggers
 app.use(logger("dev"));
 app.use(express.json());
-// app.use(passport.initialize());
-// app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
@@ -52,78 +50,106 @@ app.use(
   })
 );
 
-// const facebookStrategy = require("passport-facebook").Strategy;
-//facebook login 
-// passport.use(new facebookStrategy({
-//   clientID : "1233841630868265",
-//   clientSecret:  process.env.clientSecret,
-//   profileFields : [ "id", 'displayName', 'name', 'gender', 'email', 'picture.type(large)'  ]
-// },
-// function(token, refreshToken, profile, done) {
-//   console.log(profile);
-//   return done(null, profile);
-// }))
-// app.use('/auth/facebook' , passport.authenticate('facebook', {scope:'email'})) ;
-// app.use('facebook/callback', passport.authenticate('facebook', {
-//   successRedirect: '/profile',
-//   failurerediredirec:'/failed'
-// }))
-// app.use'/profile', (req, res, next) => {
-//   res.send("You are a valid user")
-// } 
+const LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
 
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 
-//google login 
-// const GoogleStrategy = require("passport-google-oauth20").Strategy;
- 
-// passport.use(
-//   new GoogleStrategy(
-//     {
-//       clientID: "your Google client id here",
-//       clientSecret: "your Google client secret here",
-//       callbackURL: "/auth/google/callback"
-//     },
-//     (accessToken, refreshToken, profile, done) => {
-//       // to see the structure of the data in received response:
-//       console.log("Google account details:", profile);
- 
-//       User.findOne({ googleID: profile.id })
-//         .then(user => {
-//           if (user) {
-//             done(null, user);
-//             return;
-//           }
- 
-//           User.create({ googleID: profile.id })
-//             .then(newUser => {
-//               done(null, newUser);
-//             })
-//             .catch(err => done(err)); // closes User.create()
-//         })
-//         .catch(err => done(err)); // closes User.findOne()
-//     }
-//   )
-// );
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+
+      User.findOne({ googleID: profile.id })
+        .then((user) => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+
+          User.create({
+            googleID: profile.id,
+            username: profile.displayName,
+            email: "a@b.com",
+            hashedPassword: "1234567890",
+          })
+            .then((newUser) => {
+              done(null, newUser);
+            })
+            .catch((err) => done(err)); // closes User.create()
+        })
+        .catch((err) => done(err)); // closes User.findOne()
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/facebook/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      // console.log("Facebook account details:", profile);
+      return done(null, profile);
+
+      User.findOne({ facebookID: profile.id })
+        .then((user) => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+
+          User.create({ facebookID: profile.id })
+            .then((newUser) => {
+              done(null, newUser);
+            })
+            .catch((err) => done(err));
+        })
+        .catch((err) => done(err));
+    }
+  )
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + "/views/partials");
 // that takes in a string and a length and returns a truncated version of the string, limited to the specified length.
-hbs.registerHelper('truncate', function(str, length) {
+hbs.registerHelper("truncate", function (str, length) {
   return str.slice(0, length);
 });
-
 
 // routes intro
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/courses", coursesRouter);
-app.use('/reviews', reviewsRouter);
-
-
+app.use("/reviews", reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
