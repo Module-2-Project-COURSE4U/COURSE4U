@@ -91,13 +91,14 @@ router.get("/newCourse", isLoggedIn, async (req, res, next) => {
     const reasons = await Reasons.find().limit(1);
     const content = await Content.find().limit(1);
     const course = await Course.find().limit(1);
+    console.log(course[0].title_why)
     res.render("course/newCourse", {
-      course,
-      offered,
-      features,
-      reasons,
-      content,
-      user,
+      course:course[0],
+      offered:offered[0],
+      features:features[0],
+      reasons:reasons[0],
+      conten:content[0],
+      user:user[0],
     });
   } catch (err) {
     next(err);
