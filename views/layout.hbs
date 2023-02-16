@@ -51,23 +51,28 @@
 
 
 <ul class="menu_nav menu_items">
-  {{#if user}}
+ {{#if (isUser user.role)}}
     <li class="active"><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/courses/myCourses">My courses</a></li>
     <li><a href="/user/profile">Profile</a></li>
     <li><a href="/auth/logout">Log out</a></li>
     <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-  {{#if isAdmin}}
-    <li><a href="/courses/newCourse">Add Course</a></li>
     {{/if}}
-  {{else}}
+  {{#if (isAdmin user.role)}}
+   <li class="active"><a href="/">Home</a></li>
+   <li><a href="/user/profile">Profile</a></li> 
+  <li><a href="/about">About</a></li>
+    <li><a href="/courses/newCourse">Add Course</a></li>
+     <li><a href="/auth/logout">Log out</a></li>
+    {{/if}}
+    {{#unless user}}
     <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
     <li><a href="/">Home</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/auth/signup">Sign up</a></li>
     <li><a href="/auth/login">Log in</a></li>
-  {{/if}}
+  {{/unless}}
 </ul>
 
   <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>

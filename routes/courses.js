@@ -56,6 +56,7 @@ router.get("/search", async function (req, res, next) {
 router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
   try {
     const user = await req.session.currentUser;
+
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ error: "Invalid course ID" });
@@ -80,15 +81,14 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
     const enroled = await User.find({ _id: user._id, courses: id });
-    const isAdmin = user && user.role === "admin";
-    console.log("hay USER", isAdmin);
+
+    console.log('userrrrr',user)
     return res.render("course/course-details", {
       course,
       user,
       reviews,
       review_user,
-      enroled,
-      isAdmin,
+      enroled
     });
   } catch (err) {
     return res.status(500).send({ error: "Server error" });
@@ -106,12 +106,13 @@ router.get("/newCourse", isLoggedIn, async (req, res, next) => {
     const reasons = await Reasons.find().limit(1);
     const content = await Content.find().limit(1);
     const course = await Course.find().limit(1);
+    console.log(course[0].title_why)
     res.render("course/newCourse", {
-      course,
-      offered,
-      features,
-      reasons,
-      content,
+      course:course[0],
+      offered:offered[0],
+      features:features[0],
+      reasons:reasons[0],
+      conten:content[0],
       user,
     });
   } catch (err) {

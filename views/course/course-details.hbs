@@ -4,23 +4,20 @@
       width: 100%;
       }
 </style>
-<p>{{isAdmin}}</p>
+<p>{{user.role}}</p>
 <h1>{{course.title}}</h1>
-{{#if isAdmin}}
+ {{#if (isAdmin user.role)}}
   <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-  {{#if user.isPremiumMember}}
+  <form action="/courses/delete/{{course._id}}" method="post">
+    <button class="button_delete" type="submit">Delete course</button>
+  </form>
+{{else}}
+{{#if user.isPremiumMember}}
   {{#unless enroled}}
     <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
   {{/unless}}
   {{/if}}
-  <form action="/courses/delete/{{course._id}}" method="post">
-    <button class="button_delete" type="submit">Delete course</button>
-  </form>
-{{/if}}
-
-{{#unless enroled}}
-  <a class="button_enroll" {{#if user.isPremiumMember}} href="/courses/addCourse/{{course._id}}" {{else}} href="/auth/checkout/{{course._id}}" {{/if}}>Enroll course</a>
-{{/unless}}
+  {{/if}}
   <div class="card-featAbout">
     <div class="card-skillsAbout">
       <div class="card-info">
