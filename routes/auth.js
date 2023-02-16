@@ -162,11 +162,9 @@ router.post('/checkout', async function (req, res, next) {
     return next(error);
   }
     const { expiryDate, cardNumber, cvv, cardholderName, username } = req.body;
-    console.log('username',username)
     let user
     if(!req.session.currentUser){
       user = await User.findOne({ username: username });
-      console.log('user',user)
     }
     else{
       user = req.session.currentUser

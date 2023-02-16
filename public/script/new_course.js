@@ -32,4 +32,5 @@ arr_btn_features.forEach(function(btn,index){
         btn.classList.add('no_active_display')
     })
 })
+
   
