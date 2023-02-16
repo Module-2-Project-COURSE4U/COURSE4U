@@ -105,7 +105,6 @@ router.post("/login", async function (req, res, next) {
         // res.render("user/profile", { user });
         res.redirect("/courses");
       } else {
-        console.log("password");
         res.render("auth/login", { error: "incorrect password" });
         return;
       }
@@ -138,9 +137,10 @@ router.post("/login", async function (req, res, next) {
 // @access  Private/ use
   
 router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
-  const course = req.params;
-  res.render('auth/checkout', course );
-});   
+  const { courseId } = req.params
+  const user = req.session.currentUser
+  res.render('auth/checkout', { courseId, user });
+});  
 
 // ROUTE POST CHECKOUT *******************************
 router.post('/checkout/:courseId', async function (req, res, next) {
@@ -156,20 +156,18 @@ router.post('/checkout/:courseId', async function (req, res, next) {
   
     // Validating the credit card details
     if (cardNumber.length != 16) {
-  
-      return res.render('auth/checkout',  { error: 'Please enter 16 numbers!' });
+      return res.render('auth/checkout',  { error: 'Please enter 16 numbers!' , user, courseId});
     }
     if (expiryDate.length != 4) {
-      return res.render("auth/checkout", { error: 'The expiration year must be between 2023 and 2048!' });
+      return res.render("auth/checkout", { error: 'The expiration year must be between 2023 and 2048!' , user, courseId});
     }
     if (cvv.length != 3) {
-     
-      return res.render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!' });
+      return res.render('auth/checkout', { error: 'Please enter 3 numbers for The CVV!', user, courseId });
     }
   try {
-      const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: ObjectId(courseId) }, $set: { isPremiumMember: 
+      const usertrue = await User.findByIdAndUpdate(user._id, { $push: { courses: courseId }, $set: { isPremiumMember: 
         true } });
-        console.log('userrrrr',usertrue)
+      req.session.currentUser = usertrue
         // Redirect the user to their account page
       res.redirect('/courses/myCourses');
     } catch (error) {
@@ -178,16 +176,7 @@ router.post('/checkout/:courseId', async function (req, res, next) {
   });
 
 
-// @desc    Destroy user session and log out
-// @route   Post /auth/checkout
-// @access  Private/ use
-  
-router.get("/checkout/:courseId", isLoggedIn, (req, res, next) => {
-  const { courseId } = req.params
-  const user = req.session.currentUser
-  console.log('hi',{courseId})
-  res.render('auth/checkout', { courseId, user });
-});   
+
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
@@ -209,7 +198,6 @@ router.post("/logout", (req, res, next) => {
           return next(err);
         } else {
           res.clearCookie("course4u-cookie");
-          console.log('cookie cleared')
           res.redirect("/auth/login");
         }
       })

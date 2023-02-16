@@ -86,11 +86,13 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
 router.get("/newCourse", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.session.currentUser;
-    const offered = await Offered.find();
-    const features = await Features.find();
-    const reasons = await Reasons.find();
-    const content = await Content.find();
+    const offered = await Offered.find().limit(1);
+    const features = await Features.find().limit(1);
+    const reasons = await Reasons.find().limit(1);
+    const content = await Content.find().limit(1);
+    const course = await Course.find().limit(1);
     res.render("course/newCourse", {
+      course,
       offered,
       features,
       reasons,

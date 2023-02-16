@@ -11,7 +11,6 @@ const fileUploader = require("../config/cloudinary.config");
 // @access  Public
 router.get("/profile", isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
-  console.log("profile", user);
   res.render("user/profile", { user });
 });
 
@@ -102,7 +101,6 @@ router.post(
   fileUploader.single("imageUrl"),
   async (req, res, next) => {
     if (!req.file) {
-      // console.log("No file was uploaded.");
       res.render("/user/profile", { error: "there is no file" }); //it renders a page for the user to select an image to upload.
       return;
     }
@@ -125,18 +123,15 @@ router.post(
 // @access  User
 router.get("/profile/deletePhoto", async (req, res, next) => {
   const user = req.session.currentUser;
-  console.log("it works");
   try {
     const updatedUser = await User.findByIdAndUpdate(
       user._id,
       { imageUrl: "https://cdn-icons-png.flaticon.com/512/720/720236.png" },
       { new: true }
     );
-    console.log("DELETE PIC", updatedUser);
     req.session.currentUser = updatedUser;
     res.redirect("/user/profile");
   } catch (error) {
-    console.error(error);
     next(error);
   }
 });
