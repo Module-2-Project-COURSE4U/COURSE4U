@@ -4,6 +4,7 @@
       width: 100%;
       }
 </style>
+<p>{{isAdmin}}</p>
 <h1>{{course.title}}</h1>
 {{#if isAdmin}}
   <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>

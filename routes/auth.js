@@ -139,12 +139,6 @@ router.get("/checkout", isLoggedIn, (req, res, next) => {
 });
 
 router.post('/checkout', async function (req, res, next) {
-  // Simulate payment processing
-  try {
-    await simulatePaymentProcessing();
-  } catch (error) {
-    return next(error);
-  }
     const { expiryDate, cardNumber, cvv, cardholderName, username } = req.body;
     let user
     if(!req.session.currentUser){

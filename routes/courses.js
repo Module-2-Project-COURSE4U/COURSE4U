@@ -16,6 +16,7 @@ const { isLoggedIn, isUser, isAdmin } = require("../middleware/adminLoggedIn");
 // @access  SemiPublic (Can see part of the info)
 router.get("/", async function (req, res, next) {
   const user = req.session.currentUser;
+  const isAdmin = user && user.role === "admin";
   try {
     const courses = await Course.find({ active: true }).sort({
       title: 1,
@@ -28,7 +29,7 @@ router.get("/", async function (req, res, next) {
         .join("\n");
       return course;
     });
-    res.render("course/courseView", { courses: truncatedCourses, user });
+    res.render("course/courseView", { courses: truncatedCourses, isAdmin, user });
   } catch (error) {
     next(error);
   }
@@ -80,6 +81,7 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     }
     const enroled = await User.find({ _id: user._id, courses: id });
     const isAdmin = user && user.role === "admin";
+    console.log("hay USER", isAdmin);
     return res.render("course/course-details", {
       course,
       user,
@@ -150,13 +152,14 @@ router.post("/newCourse", async function (req, res, next) {
 //@desc    add course to myaccount
 /* @route  GET 
 /* @access User*/
-router.get("/addCourse/:courseId", isLoggedIn,isUser,  async (req, res, next) => {
+router.get("/addCourse/:courseId", isLoggedIn,  async (req, res, next) => {
   try {
     const { courseId } = req.params;
     const user = req.session.currentUser;
     const user2 = await User.findByIdAndUpdate(user._id, {
       $push: { courses: ObjectId(courseId) },
     });
+     console.log("hay course", courseId);
     res.redirect("/courses/myCourses");
   } catch (error) {
     next(error);
