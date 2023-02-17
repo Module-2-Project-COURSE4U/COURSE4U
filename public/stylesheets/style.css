@@ -21,7 +21,7 @@
   --h4: rgb(63, 62, 62);
   --homepage-first-container: rgb(173, 206, 234);
 }
-body {
+html, body {
   font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
   overflow-x: hidden;

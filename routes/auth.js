@@ -126,12 +126,21 @@ router.post("/login", async function (req, res, next) {
 });
 
 
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
 
 // @desc    Authenticate the user with Passport, retrieve the user from the database
 // @route   GET /googleisLoggedIn, isUser/callback
 // @access  Public
 router.get(
-  "/google/callback",  
+  "/google/callback",
   passport.authenticate("google", { failureRedirect: "/auth/login" }),
   async function (req, res, next) {
     try {
