@@ -1,14 +1,23 @@
 <div class="signupHeader">
-  <!-- <a href="/"><img
-      src="/images/leftIcon.png"
+   <div class="iconMessage">
+  <a href="/"><img
+      src="/images/left-arrow.png"
       alt="icon Left"
-    /></a> -->
+    /></a> 
+
+    {{!-- {{#unless user}}
+  <a href="/">Home page</a>
+  <div>
+    <a href="/auth/google">Login With Google</a>
+  </div>
+{{/unless}} --}}
     {{#if first_user}}
       <h1>Welcome {{user.username}}</h1>
     {{else}}
   <h1>Welcome Back </h1>
   {{/if}}
-</div>
+  </div>
+
 <div class="container">
   <div id="imagen"><img
       src="/images/onlinecourse.jpg"
@@ -28,15 +37,14 @@
       <a href="/auth/signup">Not registered yet? Sign up!</a>
       <div class="socialSignup">
         <h2> or connect with</h2>
-        <a href="/auth/login">
-          <img src="/images/googleLogo.png" alt="signup google" />
-        </a>
-        <a href="/auth/login">
-          <img src="/images/facebookLogo.png" alt="signup facebook" />
-        </a>
+        <a href="/auth/google">
+  <img src="/images/googleLogo.png" alt="signup google" />
+</a>
      </div>
     </form>
   </div>
 </div>
+
+
 <script src="/script.js"></script>
 

@@ -1,48 +1,22 @@
-<h3>Results by: {{query}}</h3>
-{{#if course}}
-  <div class="searchContainer">
+<div class="searchPage">
+<h3>RESULTS by: {{query}}</h3>
+<div class="searchContainer">
+{{#if course}}  
   {{#each course}}
-   <div class="card-course {{this.title}}" id= '{{_id}}'>
+  <div class="contentSearch"></div>
+   <div class="searchCard {{this.title}}" id= '{{_id}}'>
       <h4>{{this.title}}</h4>
       <img width="150px" src={{this.image}} alt={{this.title}} />
-      <p>{{truncate this.description 100}}...</p>
+      <p>{{truncate this.description 50}}...</p>
     </div>
+    
   {{/each}}
-  
-{{else}}
-  <p>Sorry, no courses found by {{query}}. Try again: <a href="/courses">go back to courses</a></p>
   </div>
+{{else}}
+  <p>Sorry, no courses found by {{query}}. Try again:</p>
+  <a href="/courses">go back to courses</a>
 {{/if}}
-
-
-<footer class="mainFooter">
-    <div class="container">
-        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
-            <div class="logo">
-                <img
-                  src="/images/SVG/LOGO/LOGO.svg"
-                  alt="course4u logo"
-                />
-           </div>
-        <div class="social-icons">
-            <a href="#"><img
-                src="/images/facebook-icon.png"
-                class="facebook-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/instagram-icon.png"
-                class="instagram-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/linkedin-icon.png"
-                class="linkedin-logo"
-              /></a>
-            <a href="#"><img
-                src="/images/twitter-icon.png"
-                class="twitter-logo"
-              /></a>
-          </div>
-        </div>
-    </footer>
+</div>
+</div>
 
 <script src="/script/courseView.js"></script>

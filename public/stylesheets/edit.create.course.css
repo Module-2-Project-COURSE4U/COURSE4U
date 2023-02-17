@@ -1,12 +1,22 @@
+/*******edit and create view*******/
+
 .editCourse {
   width: 40%;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  padding-top: 100px;
+  padding-bottom: 180px;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap:wrap; */
+  justify-content: center;
+  gap: 70px;
+  margin: auto;
 }
 
 .editCourse h1 {
   color: var(--navbar);
-  font-size: 30px;
+  font-size: 22px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -101,3 +111,4 @@
     background-color: var(--buttonsHover);
   }
 }
+

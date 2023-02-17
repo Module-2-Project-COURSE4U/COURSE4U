@@ -12,7 +12,7 @@ const contentSchema = new Schema(
     description_1:String,
     description_2:String,
     description_3:String,
-    description_4:String
+    description_4:String,
 })
  
 const Content = mongoose.model('Content', contentSchema);

@@ -17,11 +17,7 @@ let i = 0;
 let parameter;
 function change() {
   svg_color.classList.toggle("transformed_svg");
-  if (i == 3) {
-    i = 1;
-  } else {
     i++;
-  }
 }
 arr_title.forEach(function (elem, i) {
   elem.addEventListener("click", function () {
@@ -29,68 +25,68 @@ arr_title.forEach(function (elem, i) {
     div[i].classList.replace("no_active_display", "active_display");
     if (i % 2) {
       parameter = ".svg_process_color";
+      const svg = document.querySelector('.svg_process_color')
+      // svg.style.width="`${Math.round(((i + 1) / arr_title.length) * 100)}%`"
+      // console.log(svg)
     } else {
       parameter = ".transformed_svg";
+      const transformed = document.querySelector('.transformed_svg')
+      // console.log(transformed)
+      // transformed.style.width="`${Math.round(((i + 1) / arr_title.length) * 100)}%`"
     }
     let text = `${parameter}{
       width:${Math.round(((i + 1) / arr_title.length) * 100)}%;
     }`;
+    // console.log(parameter)
     style.innerText = text;
     change();
   });
 });
 
-const stars_img = document.getElementsByClassName('star')
-const value_stars = document.querySelector('input[name="stars"]')
-
-
+const stars_img = document.getElementsByClassName("star");
+const value_stars = document.querySelector('input[name="stars"]');
 const stars = Array.from(stars_img);
 
-let toggle2change
-stars.forEach(function (star, index){
-  star.addEventListener('click', function(){
-    console.log(value_stars.value)
-    if(index==toggle2change){
-      for(let i=0;i<toggle2change+1;i++){
+let toggle2change;
+stars.forEach(function (star, index) {
+  star.addEventListener("click", function () {
+    if (index == toggle2change) {
+      for (let i = 0; i < toggle2change + 1; i++) {
         stars[i].classList.toggle("highlight");
-      } 
-      value_stars.value = 0
-      toggle2change = 'reset'
-    }
-    else{
-      if(toggle2change!='reset'){
-        for(let i=0;i<toggle2change+1;i++){
-          stars[i].classList.toggle("highlight");
-        } 
       }
-      toggle2change = index
-      for(let i=0;i<index+1;i++){
+      value_stars.value = 0;
+      toggle2change = "reset";
+    } else {
+      if (toggle2change != "reset") {
+        for (let i = 0; i < toggle2change + 1; i++) {
+          stars[i].classList.toggle("highlight");
+        }
+      }
+      toggle2change = index;
+      for (let i = 0; i < index + 1; i++) {
         stars[i].classList.toggle("highlight");
-      } 
-      value_stars.value = index + 1
+      }
+      value_stars.value = index + 1;
     }
-  })
-  
-})
+  });
+});
 
-const stars_review = document.querySelectorAll(".star-reviews")
-
+const stars_review = document.querySelectorAll(".star-reviews");
 window.addEventListener("load", (event) => {
   const arr_stars = Array.from(stars_review);
-  arr_stars.forEach( function (elem,i){
-    for(let i=0;i<5;i++){
-      if(i>=elem.id){
-        elem.insertAdjacentHTML('beforeend', "<img class='star' src='/images/SVG/REVIEWS/Navy-blue.svg' alt='star_1'/>") 
-        console.log(i)
-      }
-      else{
-        elem.insertAdjacentHTML('afterbegin', "<img class='star' src='/images/SVG/REVIEWS/Sky-blue.svg' alt='star_1'/>")
-        console.log(i)
+  arr_stars.forEach(function (elem, i) {
+    for (let i = 0; i < 5; i++) {
+      if (i >= elem.id) {
+        elem.insertAdjacentHTML(
+          "beforeend",
+          "<img class='star' src='/images/SVG/REVIEWS/Navy-blue.svg' alt='star_1'/>"
+        );
+      } else {
+        elem.insertAdjacentHTML(
+          "afterbegin",
+          "<img class='star' src='/images/SVG/REVIEWS/Sky-blue.svg' alt='star_1'/>"
+        );
       }
     }
-  })
+  });
 });
-    
-    
-
-

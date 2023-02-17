@@ -1,7 +1,17 @@
-<h1>Set up your credit or debit card</h1>
-<div class="container">
-  <div class="signup-form">
-   <form method="post" action="/auth/checkout/{{courseId}}">
+
+<div class="containerCheckout">
+
+    <div class="iconMessage">
+  <a href="/"><img
+      src="/images/left-arrow.png"
+      alt="icon Left"
+    /></a> 
+  <h1>Set up your credit or debit card</h1>
+
+  {{#if first_user}}
+    <h2>Last step to become a premium member</h2>
+  {{/if}} 
+   <form method="post" action="/checkout">
       <label>Name on Card</label>
       <input type="text" name="cardholderName" placeholder="John White" />
       <label>Credit Card Number</label>
@@ -12,12 +22,17 @@
       <input type="text" name="cvv" placeholder="***" />
       <label>Country</label>
       <input type="text" name="country" placeholder="USA" />
-      <p style="color:rgb(32, 106, 136)" >EUR29.99 month</p>
-      <p style="color:rgb(32, 106, 136)">You are one click away from becoming a Premium membership</p>
+      <h2 style="color:rgb(5, 45, 61)" >€21.99 month</h2>
+      <p style="color:rgb(59, 61, 62)">You are one click away from becoming a Premium membership</p>
       {{#if error}}
       <p style="color: red;">Error {{error}}</p>
       {{/if}}
-      <button type="submit">Submit</button>
+      <button type="submit" {{#if user.username}}
+      value="{{user.username}}"
+      {{else}} value="NO" 
+      {{/if}} name="username">Continue to checkout</button>
     </form>
+    </div>
+    </div>
     </div>
     </div>

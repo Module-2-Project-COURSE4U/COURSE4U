@@ -1,43 +1,85 @@
-  .navbar_content_title, .div_content,.div_content div,.div_content div:last-child,.div_content div:last-child > *{
+.detailsPage {
+  min-height: 100hv;
+  max-width: 1080px;
+  margin: auto;
+  padding: 20px;
+  padding-top: 160px;
   display: flex;
-  flex-wrap: wrap;
-  }
-
-  .navbar_content_title, .div_content{
-    width: 90%;
-    justify-content: space-evenly;
-  }
-
-.div_content div,.div_content div:last-child,.div_content div:last-child > *{
-  width: 100%;
+  flex-direction: column;
   justify-content: center;
 }
-.div_content div:last-child > *{
-  padding: 1%;
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
 }
-  .navbar_content_title h4 {
-    
-    padding: 2%;
-  }
 
-  #PREWORK {
-    display: flex;
-  }
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-  #PREWORK div {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+.card-featContent {
+  text-align: center;
+  margin: 20px;
+}
 
-  .no_active_display{
-    display: none;
-  }
+.imgFeatures {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
 
-  .active_display{
-    display: flex;
-  }
+.svg_features {
+  width: 100%;
+}
 
+.card-offered {
+  text-align: center;
+  margin: 20px;
+}
+
+.card-offered img {
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+.card-skillsAbout {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card-info {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.card-skills {
+  width: 100%;
+}
+
+.card-skills h5 {
+  margin-bottom: 10px;
+}
+
+.card-skills p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-content {
+  margin-top: 20px;
+}
+
+.div_content {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
 
   .svg_process_color {
     object-fit: cover;
@@ -46,55 +88,259 @@
     display: inline-block;
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
   }
 
   .transformed_svg{
     transition-property: width;
     transition-timing-function: ease-in-out;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
   }
+.div_content img {
+  margin-right: 20px;
+}
 
-  .delay-1 {
-    transition-delay: 0.5s;
-  }
+.div_content h2 {
+  margin-bottom: 10px;
+}
 
-  #div_svg {
-    margin-top: 10%;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: flex-end;
-    width: 90%;
-  }
+.div_content p {
+  margin: 0;
+  padding: 0;
+}
 
-  .stars-view, .star-reviews {
-    display: flex;
-    flex-wrap: wrap;
-    width: 25%;
-  }
+.card-reasons {
+  margin-top: 20px;
+}
 
-  .stars-view > * , .star-reviews > *{
-    width: 19%;
-    padding: 0.5%;
-  }
+.card-reasons h6 {
+  margin-bottom: 10px;
+}
 
-  .star {
-    transition-property: content;
-    transition-timing-function: ease-in-out;
-    transition-property: 0.5s;
-  }
+.card-reasons p {
+  margin: 0;
+  padding: 0;
+}
 
-  .highlight {
-    transition-property: content;
-    content: url("/images/SVG/REVIEWS/Sky-blue.svg");
-    transition-timing-function: ease-in-out;
-    transition-property: 0.5s;
-  }
+.star-reviews {
+  display: inline-block;
+  width: 80px;
+  height: 16px;
+  background-image: url("/images/SVG/REVIEWS/Yellow.svg");
+  background-size: contain;
+  margin-right: 10px;
+}
 
-  /* .star:hover, .star:active {
-    content: url("/images/SVG/REVIEWS/Sky-blue.svg");
-  } */
+.star-reviews#1 {
+  background-position: 0 0;
+}
+
+.star-reviews#2 {
+  background-position: -16px 0;
+}
+
+.star-reviews#3 {
+  background-position: -32px 0;
+}
+
+.star-reviews#4 {
+  background-position: -48px 0;
+}
+
+.star-reviews#5 {
+  background-position: -64px 0;
+}
+
+.review-form {
+  margin-top: 20px;
+}
+
+.review-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.stars-view {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.star {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.review-form input[type="number"] {
+  display: none;
+}
+
+.review-form input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.review-form button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(10, 105, 148);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* ******review container in details page******/
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4% 0% 10% 0%;
+}
+
+.review-form label {
+  margin: 10px 0;
+}
+
+.review-form input[type="number"],
+.review-form input[type="text"] {
+  padding: 10px;
+  margin: 10px 0;
+  width: 300px;
+}
+
+.review-form button[type="submit"],
+.button_enroll,
+.button_delete,
+.button_edit {
+  padding: 10px 20px;
+  background-color: #6495ed;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 150px;
+  text-decoration: none;
+}
+.button_enroll:hover {
+  background-color: #38598b;
+}
+.button_delete:hover {
+  background-color: #38598b;
+}
+.button_edit:hover {
+  background-color: #38598b;
+}
+
+.navbar_content_title,
+.div_content,
+.div_content div,
+.div_content div:last-child,
+.div_content div:last-child > * {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar_content_title,
+.div_content {
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.div_content div,
+.div_content div:last-child,
+.div_content div:last-child > * {
+  width: 100%;
+  justify-content: center;
+}
+.div_content div:last-child > * {
+  padding: 1%;
+}
+.navbar_content_title h4 {
+  padding: 2%;
+}
+
+#PREWORK {
+  display: flex;
+}
+
+#PREWORK div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.no_active_display {
+  display: none;
+}
+
+.active_display {
+  display: flex;
+}
+
+.svg_process_color {
+  object-fit: cover;
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+}
+
+.transformed_svg {
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+}
+
+.delay-1 {
+  transition-delay: 0.5s;
+}
+
+#div_svg {
+  margin-top: 10%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  width: 90%;
+}
+
+.stars-view,
+.star-reviews {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25%;
+}
+
+.stars-view > *,
+.star-reviews > * {
+  width: 19%;
+  padding: 0.5%;
+}
+
+.star {
+  transition-property: content;
+  transition-timing-function: ease-in-out;
+  transition-property: 0.5s;
+}
+
+.highlight {
+  transition-property: content;
+  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
+  transition-timing-function: ease-in-out;
+  transition-property: 0.5s;
+}
+
+.star:hover,
+.star:active {
+  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
+}
 
 .reviews {
   display: flex;
@@ -114,4 +360,89 @@
 
 .reviews form a {
   text-decoration-line: none;
+}
+
+@media (max-width: 1080px) {
+  .detailsPage {
+    max-width: 858px;
+  }
+}
+
+@media (max-width: 858px) {
+  .detailsPage {
+    max-width: 100%;
+    padding-top: 80px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .card-info,
+  .card-skillsAbout {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .card-features {
+    flex-direction: column;
+  }
+
+  .card-skillsAbout,
+  .card-features {
+    margin-bottom: 10px;
+  }
+
+  .card-reasons h5 {
+    margin-top: 20px;
+  }
+
+  .div_content {
+    flex-direction: column;
+  }
+
+  .div_content img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .review-form input[type="number"],
+  .review-form input[type="text"] {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-info {
+    width: 60%;
+    margin-right: 40px;
+  }
+
+  .card-skillsAbout {
+    margin-bottom: 40px;
+  }
+
+  .card-features {
+    margin-bottom: 40px;
+  }
+
+  .card-offered {
+    margin-bottom: 40px;
+  }
+
+  .div_content {
+    margin-top: 40px;
+  }
+
+  .review-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .stars-view,
+  .star-reviews {
+    width: 50%;
+  }
 }

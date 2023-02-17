@@ -1,45 +1,151 @@
 <div class="editCourse">
     <form action="/courses/newCourse" method="post">
-            <h1>Add New Course</h1>
-            <label>Category: </label>
-            <input type="text" name="category" placeholder="{{course.category}}" />
-            <label>Title:</label>
-            <input  type="text" name="title" placeholder="{{course.title}}" />
-            <label>Description:</label>
-            <input  type="text" name="description" placeholder="{{course.description}}" />
-            <label>List:</label>
-            <input  type="text" name="description" placeholder="{{course.list}}" />
+    <div>
+        <h1>Add New Course</h1>
+        <label>Category: </label>
+        <input type="text" name="category" placeholder="{{course.category}}" />
+        <label>Title:</label>
+        <input  type="text" name="title" placeholder="{{course.title}}" />
+        <label>Description:</label>
+        <input  type="text" name="description" placeholder="{{course.description}}" />
+        <label>List:</label>
+        <input  type="text" name="list" placeholder="{{course.list}}" />
+        <label>Image: </label>
+        <input type="text" name="image" placeholder="https://.../" />  
+    </div>
+    
+    <div>
+        <h1>Skills</h1>
+        <label>Add a list of items for this skills</label>
+        <p>TIP: Separate each item with a comma</p>
+        <input  type="text" name="skills" placeholder="{{skills}}" />
+    </div>
+
+    <div>
+        <h1>Offered by: </h1>
+        <label>Logo Business: </label>
+        <input  type="text" name="logo" placeholder="https://.../" />
+        <label>Place:</label>
+        <input  type="text" name="place" placeholder="{{offered.place}}" />        
+    </div>
+
+    <div>
+        <h1>Content</h1>
+        {{#each content}}
+        <div class="content no_active_display">
+            <h3>{{Order @index}} Module/Week</h3>
             <label>Image: </label>
-            <input type="text" name="image" placeholder="https://.../" />
-      
-            <h1>Offered by: </h1>
-            <label>Logo Business: </label>
-            <input  type="text" name="logo" placeholder="https://.../" />
-            <label>Place:</label>
-            <input  type="text" name="place" placeholder="{{offered.place}}" />
-            <h1>Content</h1>
-            <label>Image: </label>
-            <input type="text" name="image" placeholder="https://.../" />
+            <input type="text" name="image_{{Math @index "+" 1}}" placeholder="https://.../" />
             <label>Title:</label>
-            <input  type="text" name="title" placeholder="{{course.title}}" />
+            <input  type="text" name="title_{{Math @index "+" 1}}" placeholder="{{this.title}}" />
             <label>Subtitle:</label>
-            <input  type="text" name="subtitle" placeholder="{{course.description}}" />
+            <input  type="text" name="subtitle_{{Math @index "+" 1}}" placeholder="{{this.description}}" />
             <label>Time to complete the course:</label>
-            <input  type="text" name="time" placeholder="{{course.description}}" />
+            <input  type="text" name="time_{{Math @index "+" 1}}" placeholder="{{this.time}}" />
             <label>Title of the description of the content:</label>
-            <input  type="text" name="title_description" placeholder="{{course.description}}" />
-            <label>First description paragraph:</label>
-            <input  type="text" name="description" placeholder="{{course.description}}" />
-            <label>Second description paragraph:</label>
-            <input  type="text" name="description" placeholder="{{course.description}}" />
-            <label>Third description paragraph:</label>
-            <input  type="text" name="description" placeholder="{{course.description}}" />
-            <label>Fourth description paragraph:</label>
-            <input  type="text" name="description" placeholder="{{course.description}}" />
+            <input  type="text" name="title_description_{{Math @index "+" 1}}" placeholder="{{this.tile_description}}" />
+            <div  class="content_description no_active_display">
+                <label>First description paragraph:</label>
+                <input type="text" name="description_{{Math @index "+" 1}}_1" placeholder="description_1">
+            </div>
+            <div class="content_description no_active_display">
+                <label>Second description paragraph:</label>
+                <input type="text" name="description_{{Math @index "+" 1}}_2" placeholder="description_2">
+            </div>
+            <div class="content_description no_active_display">
+                <label>Third description paragraph:</label>
+                <input type="text" name="description_{{Math @index "+" 1}}_3" placeholder="description_3">
+            </div>
+            <div class="content_description no_active_display">
+              <label>Fourth description paragraph:</label>
+                <input type="text" name="description_{{Math @index "+" 1}}_4" placeholder="description_4">  
+            </div>
+            <h3 id="btn_content_description">Add description field</h3>
+            <h3 id="limit_message_content" class="no_active_display">You can't add more fields</h3>
+        </div>
+        {{/each}}
+        <h3 id="btn_content_module">Add module category</h3>
+        <h3 id="limit_message_module" class="no_active_display">You can't add more modules</h3>
+    </div>
+    
+    
+    
+    
+    <div>
+        <h1>Features</h1>
+        <div>
+            <label>Deadlines: Is it flexible or not?</label>
+            <input  type="text" name="features_title_1" placeholder="Flexible deadlines" />
+            <label class="no_active_display features">Subtitle deadlines</label>
+            <input  class="no_active_display features" type="text" name="features_subtitle_1" placeholder="Choose a date prior to..." />
+            <h3 class="btn_subtitle_features" >Add subtitle field</h3>
+        </div>
+        <div>            
+            <label>Type of certificate</label>
+            <input  type="text" name="features_title_2" placeholder="Shareable Certificate" />
+            <label class="no_active_display features">Subtitle certificate information</label>
+            <input class="no_active_display features" type="text" name="features_subtitle_2" placeholder="Earn a certificate upon..." />
+            <h3 class="btn_subtitle_features" >Add subtitle field</h3>
+        </div>
+        <div>
+            <label>Modality type: Is it online, face-to-face, or both?</label>
+            <input  type="text" name="features_title_3" placeholder="100% online" />
+            <label class="no_active_display features">Subtitle modality</label>
+            <input class="no_active_display features" type="text" name="features_subtitle_3" placeholder="Learn with professional..." />
+            <h3 class="btn_subtitle_features" >Add subtitle field</h3>
+        </div>
+        <div>
+            <label>Level: Beginner, medium, high</label>
+            <input  type="text" name="features_title_4" placeholder="Beginner Level" />            
+            <label class="no_active_display features">Subtitle level</label>
+            <input class="no_active_display features" type="text" name="features_subtitle_4" placeholder="Learn from cero base" />
+            <h3 class="btn_subtitle_features" >Add subtitle field</h3>
+        </div>
+        <div>
+            <label>Timeframe: How many weeks or months does it take to complete the course?</label>
+            <input  type="text" name="features_title_5" placeholder="26 weeks to complete" />
+            <label class="no_active_display features">Subtitle timeframe for more information</label>
+            <input class="no_active_display features" type="text" name="features_subtitle_5" placeholder="Partial-time and full-time modality" />
+            <h3 class="btn_subtitle_features" >Add subtitle field</h3>
+        </div>
+        <div>            
+            <label>Languages: what languages are the courses in?</label>
+            <input  type="text" name="features_title_6" placeholder="English or Spanish" />
+            <label class="no_active_display features">Subtitle languages</label>
+            <input class="no_active_display features" type="text" name="features_subtitle_6" placeholder="Choose your language preference" />
+            <h3 class="btn_subtitle_features">Add subtitle field</h3>
+        </div>
+    </div>
+            
+    <div>
+        <h1>Reasons</h1>
+        <label>Title Reason</label>
+        <input  type="text" name="title_why" placeholder="{{course.title_why}}" />
+        {{#each reasons}}
+        <label>Title of the {{Order @index}} reason</label>
+        <input  type="text" name="reasons_subtitle_{{Math @index "+" 1}}" placeholder="sr{{Math @index "+" 1}}" />
+        <div class="no_active_display list_reasons">
+            <label>Add a list of items/phrases for this reason</label>
+            <p>TIP: Separate each item with a comma</p>
+            <input  type="text" name="reasons_list_{{Math @index "+" 1}}" placeholder="lr{{Math @index "+" 1}}" />
+        </div>
+        <div class="no_active_display description_reasons">
+            <label>Title of the {{Order @index}} reason</label>
+            <input type="text" name="reasons_description_{{Math @index '+' 1}}" placeholder="{{Math @index '+' 1}}" />
+        </div>
+        <div>
+            <h3 class="btn_list_reasons">Add list field</h3>
+            <h3 class="btn_description_reasons">Add paragraph field for description</h3>
+        </div> 
+        {{/each}}
+    </div>
+            
+
             <input type="submit" value="Create Course" />
    </form>
 </div>  
 
+<script src="/script/new_course.js"></script>
           
      
 

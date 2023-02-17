@@ -3,15 +3,24 @@
     .svg_process_color {
       width: 100%;
       }
-  </style>
-  <h1>{{course.title}}</h1>
+</style>
+{{!-- <p>{{user.role}}</p> --}}
+<h1>{{course.title}}</h1>
+ {{#if (isAdmin user.role)}}
   <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-  {{#unless enroled}}
-    <a class="button_enroll" {{#if user.isPremiumMember}} href="/courses/addCourse/{{course._id}} {{else}} href="/auth/checkout/{{course._id}} {{/if}}">Enroll course</a>
-  {{/unless}}
   <form action="/courses/delete/{{course._id}}" method="post">
     <button class="button_delete" type="submit">Delete course</button>
   </form>
+{{else}}
+{{#if user.isPremiumMember}}
+  {{#unless enroled}}
+    <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
+  {{/unless}}
+  {{/if}}
+{{#unless user.isPremiumMember}}
+  <a href="/auth/checkout" class="my-button">Ir a checkout</a>
+{{/unless}}
+  {{/if}}
   <div class="card-featAbout">
     <div class="card-skillsAbout">
       <div class="card-info">
@@ -141,9 +150,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 
 <script src="/script/dom_details.js"></script>

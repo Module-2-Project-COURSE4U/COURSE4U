@@ -1,40 +1,65 @@
-.checkout-container {
-  max-width: 600px;
+.containerCheckout {
+  max-width: 100vw;
+  min-height: 80%;
   margin: 0 auto;
   text-align: center;
+  margin-top: 100px;
   padding: 30px;
   box-sizing: border-box;
 }
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.containerCheckout h1 {
+  font-size: 18px;
+  color: rgb(63, 62, 62);
 }
 
-.form-group {
-  margin: 15px 0;
-  text-align: left;
+.checkoutForm button {
+  font-size: 18px;
 }
-
-label {
-  font-weight: bold;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
+.checkoutForm h2  {
   font-size: 16px;
 }
+.checkoutForm p {
+  font-size: 14px;
+} 
 
-button {
-  width: 200px;
-  padding: 10px;
-  background-color: #0366d6;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  font-size: 18px;
-  cursor: pointer;
-}
+@media screen and (max-width: 1080px) {
+  .containerCheckout {
+  max-width: 100vw;
+  min-height: 100vh;
+  margin-top: 50px;
+  padding: 20px;
+  }
+  .containerCheckout h1 {
+  font-size: 16px;
+  }
+  .checkoutForm button {
+  font-size: 16px;
+  }
+  .checkoutForm h2 {
+  font-size: 14px;
+  }
+  .checkoutForm p {
+  font-size: 12px;
+  }
+  }
+  @media screen and (max-width: 858px) {
+    .containerCheckout {
+    max-width: 100vw;
+    margin-top: 100px;
+    min-height: 100vh;
+    /* padding: 10px; */
+    padding-bottom: -100px;
+    }
+    .containerCheckout h1 {
+    font-size: 14px;
+    }
+    .checkoutForm button {
+    font-size: 14px;
+    }
+    .checkoutForm h2 {
+    font-size: 12px;
+    }
+    .checkoutForm p {
+    font-size: 10px;
+    }
+    }

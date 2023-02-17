@@ -12,9 +12,7 @@ const { content__1, content__2, content__3, content__4, content__5, content__6, 
 const { features__1, features__2, features__3, features__4, features__5, features__6, features__7, features__8, features__9 } = require('../data/features');
 const { reasons__6, reasons__7, reasons__8, reasons__9} = require('../data/reasons');
 const { offered__GOOGLE__1_2_3_4_5, offered__IRONHACK__6_7_8_9 } = require('../data/offered');
-
-
-  
+ 
 let all_courses;
 let offered;
 
@@ -198,8 +196,6 @@ mongoose.connect(process.env.MONGO_URL)
       reasons.forEach(elem => reasons_ids.push(`${elem.id}`))
       return Course.findByIdAndUpdate(all_courses[8].id, { $push: { reasons: { $each: reasons_ids } } })
     })
-
-    
 
   .then(() => Course.find({}))
   .then((createdCourses) => console.log(`Inserted ${createdCourses.length} courses in the database`))
