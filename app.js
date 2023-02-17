@@ -19,6 +19,7 @@ const coursesRouter = require("./routes/courses");
 const reviewsRouter = require("./routes/reviews");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const { randomUUID } = require("crypto");
 mongoose.set("strictPopulate", false);
 const app = express();
 
@@ -89,11 +90,11 @@ passport.use(
             done(null, user);
             return;
           }
-
+          
           User.create({
             googleID: profile.id,
             username: profile.displayName,
-            email: "a@b.com",
+            email: randomUUID() + "@gmail.com",
             hashedPassword: "1234567890",
           })
             .then((newUser) => {
@@ -106,34 +107,6 @@ passport.use(
   )
 );
 
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/facebook/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      // console.log("Facebook account details:", profile);
-      return done(null, profile);
-
-      User.findOne({ facebookID: profile.id })
-        .then((user) => {
-          if (user) {
-            done(null, user);
-            return;
-          }
-
-          User.create({ facebookID: profile.id })
-            .then((newUser) => {
-              done(null, newUser);
-            })
-            .catch((err) => done(err));
-        })
-        .catch((err) => done(err));
-    }
-  )
-);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

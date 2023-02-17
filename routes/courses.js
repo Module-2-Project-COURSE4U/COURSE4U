@@ -119,6 +119,7 @@ router.get("/newCourse", isLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
+
 //@desc  create new course
 /* @route Post 
 /* @access Admin*/
@@ -178,6 +179,19 @@ router.get("/myCourses", isLoggedIn, isUser,  async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+//@desc     view courses video 
+/* @route   GET 
+/* @access  premium User*/
+router.get('/viewMyCourses', isLoggedIn, isUser, (req, res, next) => { 
+  const data = {
+    title: 'Reproductor de YouTube',
+    videoSrc: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
+    user: req.session.currentUser
+  };
+
+  res.render('course/viewMyCourses', data);  
 });
 
 //@desc    edit course details  by Id
@@ -241,7 +255,6 @@ router.post("/delete/:id", isLoggedIn, isAdmin,  async (req, res) => {
       .send("No se puede borrar un curso que ha sido comprado.");
   }
   const user = req.session.currentUser;
-  console.log('1.');
   try {
     const active = { active: false };
     // const isAdmin = user && user.role === "admin";
