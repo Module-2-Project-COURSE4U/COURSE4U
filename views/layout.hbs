@@ -8,6 +8,8 @@
       rel="stylesheet"
     />
     <link href="/stylesheets/style.css" rel="stylesheet" />
+    <link href="/public/stylesheets/edit.create.course.css" rel="stylesheet" />
+     <link href="/public/stylesheets/style.checkout.css" rel="stylesheet" />
     <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <link href="/stylesheets/style.detail.css" rel="stylesheet" />
     <link href="/stylesheets/style.about.css" rel="stylesheet" />
@@ -81,15 +83,6 @@
   </span>
 </nav>
 
-{{!-- <footer class="offerFooter">
-  <div class="h3OfferFooter">
-    <h3>Starting at E21.99/month for all courses</h3>
-  </div>
-  <div class="btnOfferFooter">
-    <a href="/auth/signup">Subscribe</a>
-  </div>
-</footer> --}}
-
 {{#unless user.isPremiumMember}}
 <footer class="offerFooter">
   <div class="offerFooter-top">
@@ -108,14 +101,11 @@
     {{{body}}}
 
   <footer class="mainFooter">
-    <div class="container">
-        <p>@2023 Course4U Inc. Todos los derechos reservados.</p>
-            <div class="logo">
-                <img
-                  src="/images/SVG/LOGO/LOGO.svg"
-                  alt="course4u logo"
-                />
-           </div>
+        <p class="myFooterP">@2023 Course4U Inc. Todos los derechos reservados.</p>
+        <img class="myFooterImage"
+          src="/images/SVG/LOGO/LOGO.svg"
+          alt="course4u logo"
+        />
         <div class="social-icons">
             <a href="#"><img
                 src="/images/facebook-icon.png"
@@ -133,7 +123,6 @@
                 src="/images/twitter-icon.png"
                 class="twitter-logo"
               /></a>
-          </div>
         </div>
     </footer>
 

@@ -156,11 +156,33 @@ input::placeholder {
   padding: 5% 0%;
 }
 @media screen and (max-width: 1080px) {
-  .menu {
+  .menu_items {
     display: flex;
     justify-content: center;
-    background-color: #ebf5fb;
+    list-style: none;
+    align-items: center;
+    width: 50%;
+    padding: 0%;
+    overflow: hidden;
+    z-index: 4;
   }
+  .menu_items li {
+    border-radius: 3px;
+    width: 80px;
+    align-items:flex-start;
+  }
+  .menu_items li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    display: block;
+    color: rgb(92, 92, 92);
+    
+  }
+  .search_form {
+    width: 30%;
+  }
+  
   .app-logo {
     padding-left: 16px;
     width: 14%;
@@ -359,56 +381,30 @@ input::placeholder {
   background-color: #c6e4f5;
   height: 85px;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 10px;
   bottom: 0;
   left: 0;
-  text-align: center;
-  margin-top: auto;
-  padding-left: 40px;
-}
-.mainFooter .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  width: 100%;
   margin: 0 auto;
 }
-*/ .mainFooter p {
-  text-align: center;
-  width: 500px;
-  font-size: 0.9em;
-}
 
-.logo {
-  width: 200px;
-  height: 60px;
-  object-fit: cover;
+.myFooterP {
   display: flex;
-  width: 30%;
-  height: 8vh;
-  object-fit: cover;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo img {
-  width: 35%;
-  display: flex;
-  align-items: center;
-}
-.social-icons {
-  display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
-  align-items: center;
-  width: 400px;
+  width: 30vw;
+  font-size: 110%;
 }
+
+.myFooterImage {
+  width: 160px;
+  display: flex;
+  align-items: center;
+}
+
 .facebook-logo,
 .instagram-logo,
 .linkedin-logo,
@@ -429,8 +425,9 @@ input::placeholder {
   }
 
   .mainFooter p {
-    width: 25%;
+    width: 30%;
     font-size: 0.8em;
+    margin-left: 30px;
   }
   .logo img {
     width: 250px;
@@ -439,13 +436,13 @@ input::placeholder {
     align-items: center;
   }
   .logo {
-    width: 250px;
+    /* width: 250px; */
     height: 70px;
     width: 40%;
   }
   .social-icons {
     align-items: center;
-    width: 370px;
+    width: 30%;
     gap: 5px;
     margin-right: 20px;
   }
@@ -458,11 +455,6 @@ input::placeholder {
   }
 }
 
-@media only screen and (max-width: 858px) {
-  .mainFooter {
-    display: none;
-  }
-}
 /************************ FOOTER ADVERTISEMENT ******/
 .offerFooter {
   background-color: rgba(134, 139, 143, 0.5);
@@ -543,11 +535,13 @@ input::placeholder {
   }
 }
 
-/* signup and login page*/
+/* signup, checkout and login page*/
 #imagen img {
   width: 300px;
   height: 150px;
   border-radius: 20px;
+  padding: 0px;
+  margin-left: 20px;
   box-shadow: 0px 0px 10px #ccc;
   object-fit: cover;
 }
@@ -602,8 +596,8 @@ input::placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  width: 90%;
+  height: 25px;
+  width: 80%;
   padding: 0.35em 1.2em;
   border: 0.2em solid;
   border-radius: 10px;
@@ -640,7 +634,8 @@ input::placeholder {
   }
 
   .socialSignup a {
-    width: 40%;
+    width: 75%;
+    height: 25px;
   }
   .footer p {
     font-size: x-small;
@@ -665,16 +660,16 @@ input::placeholder {
   flex-direction: row;
   justify-content: center;
   gap: 20px;
-  width: 35%;
+  width: 100%;
   padding-top: 100px;
 }
 .iconMessage img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 .iconMessage h1 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: rgb(92, 92, 92);
   margin-right: 50px;
 }
@@ -690,8 +685,8 @@ input::placeholder {
 }
 
 .signup-form form {
-  width: 60%;
-  min-height: 400px;
+  width: 90%;
+  min-height:fit-content;
   margin: 0 auto;
   padding: 30px;
   background-color: #f5f9fa;
@@ -732,7 +727,7 @@ input[type="password"]:focus {
 }
 
 .signup-form button[type="submit"] {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   background-color: rgb(100, 149, 237);
   color: whitesmoke;
@@ -769,29 +764,42 @@ input[type="password"]:focus {
   font-size: 12px;
 }
 
+.myFooterImage {
+  width: 100px;
+}
+
+.facebook-logo,
+.instagram-logo,
+.linkedin-logo,
+.twitter-logo {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 1080px) {
-  .signup-form form {
-    width: 50%;
-  }
+
   .signupHeader {
-    min-height: auto;
+    min-height: 100vh;
     padding-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
   }
 
   .iconMessage {
     gap: 15px;
-    width: 70%;
-    padding-top: 60px;
+    width: 100%;
+    padding-top: 100px;
   }
 
   .iconMessage h1 {
     font-size: 1rem;
-    margin-right: 3ppx;
     text-align: center;
   }
-
-  .container {
+  #imagen img {
+    width: 250px;
+    height: 150px;
+  }
+.container {
     padding-top: 5px;
   }
 }
@@ -810,8 +818,9 @@ input[type="password"]:focus {
   }
 
   .iconMessage {
-    width: 80%;
+    width: 100%;
     padding-top: 30px;
+    align-items: center;
   }
 
   .iconMessage h1 {
@@ -820,10 +829,12 @@ input[type="password"]:focus {
   .iconMessage img {
     width: 30px;
     height: 30px;
+    margin-left: 20px;
   }
   #imagen img {
     width: 250px;
     height: 150px;
+    margin: auto;
   }
   .signup-form label {
     font-size: 12px;

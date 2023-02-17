@@ -372,6 +372,19 @@ router.get("/myCourses", isLoggedIn, isUser,  async (req, res, next) => {
   }
 });
 
+//@desc     view courses video 
+/* @route   GET 
+/* @access  premium User*/
+router.get('/viewMyCourses', isLoggedIn, isUser, (req, res, next) => { 
+  const data = {
+    title: 'Reproductor de YouTube',
+    videoSrc: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
+    user: req.session.currentUser
+  };
+
+  res.render('course/viewMyCourses', data);  
+});
+
 //@desc    edit course details  by Id
 /* @route  GET
 /* @access Admin*/

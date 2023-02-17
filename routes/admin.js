@@ -10,16 +10,16 @@ const passport = require("passport");
 const session = require("express-session");
 
 
-router.get('/admin', isLoggedIn, isAdmin, async (req, res) => {
+router.get('/', isLoggedIn, isAdmin, async (req, res) => {
   try {
     const users = await User.find();
-    res.render('/auth/admin', { users });
+    res.render('/admin', { users });
   } catch (err) {
     res.render('error', { message: 'Error getting list of users' });
   }
 });
 
-router.post('/admin/roles/:userId', isLoggedIn, isAdmin, async (req, res) => {
+router.post('/roles/:userId', isLoggedIn, isAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     user.role = req.body.role;

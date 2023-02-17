@@ -4,7 +4,7 @@
       width: 100%;
       }
 </style>
-<p>{{user.role}}</p>
+{{!-- <p>{{user.role}}</p> --}}
 <h1>{{course.title}}</h1>
  {{#if (isAdmin user.role)}}
   <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
@@ -17,6 +17,9 @@
     <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
   {{/unless}}
   {{/if}}
+{{#unless user.isPremiumMember}}
+  <a href="/auth/checkout" class="my-button">Ir a checkout</a>
+{{/unless}}
   {{/if}}
   <div class="card-featAbout">
     <div class="card-skillsAbout">

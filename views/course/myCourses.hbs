@@ -1,18 +1,21 @@
 <div class="myCourse">
-   {{#if showWelcomeMessage}}
+  {{#if showWelcomeMessage}}
   <p>Thank you for upgrading to premium membership. We appreciate your support!</p>
   {{/if}}
   
   <div class="myCourseDetails">
-          <h1>My Learning</h1>
-          {{#each courses}}
-          <div class="courseItem">
-            <img class="courseImage" src={{this.image}} alt={{this.title}} />
-            <div class="courseInfo">
-              <h4>{{this.title}}</h4>
-              <p>{{this.description}}</p>
+    <h1>My Learning</h1>
+    {{#each courses}}
+    <div class="courseItem">
+      <img class="courseImage" src={{this.image}} alt={{this.title}} />
+      <div class="courseInfo">
+        <h4>{{this.title}}</h4>
+        <p>{{truncate this.description 100}}...</p>
+        <a class="start-now-btn" href="/courses/viewMyCourses">Start Now</a>
       </div>
     </div>
     {{/each}}
   </div>
+  
+
 

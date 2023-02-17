@@ -125,17 +125,13 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
-// @desc    Displays google login view
-// @route   Get /google
-// @access  Public
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 
 // @desc    Authenticate the user with Passport, retrieve the user from the database
-// @route   GET /google/callback
+// @route   GET /googleisLoggedIn, isUser/callback
 // @access  Public
 router.get(
-  "/google/callback",
+  "/google/callback",  
   passport.authenticate("google", { failureRedirect: "/auth/login" }),
   async function (req, res, next) {
     try {
@@ -148,21 +144,6 @@ router.get(
   }
 );
 
-// @desc    Displays form view to facebook log in
-// @route   GET /facebook
-// @access  Public
-router.get("/facebook", passport.authenticate("facebook"));
-
-// @desc    Authenticate the user with Passport
-// @route   GET /facebook/callback
-// @access  Public
-router.get(
-  "/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-  })
-);
 
 // @desc    Destroy user session and log out
 // @route   Post /auth/logout
