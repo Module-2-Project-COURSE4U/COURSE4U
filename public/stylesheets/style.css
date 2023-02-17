@@ -536,6 +536,11 @@ input::placeholder {
 }
 
 /* signup, checkout and login page*/
+
+.checkoutPage {
+  width: 20%;
+}
+
 #imagen img {
   width: 300px;
   height: 150px;

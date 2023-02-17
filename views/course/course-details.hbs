@@ -26,7 +26,7 @@
       {{/unless}}
     {{/if}}
     {{#unless user.isPremiumMember}}
-      <a href="/auth/checkout" class="my-button">Ir a checkout</a>
+      <a href="/checkout" class="button_enroll">Ir a checkout</a>
     {{/unless}}
   {{/if}}
 
@@ -120,12 +120,9 @@
     {{#if reviews}}
       <div class="reviews">
       {{#each reviews}}
-        <div>
-          <p><strong>{{this.username.username}}</strong>:
-          {{this.comment}}. Stars:
-          {{this.stars}}/5</p>
+          <p><strong>{{this.username.username}}</strong>:</p>
           <div class="star-reviews" id={{this.stars}}></div>
-        </div>
+          <p>{{this.comment}}</p>
       {{/each}}
       </div>
     {{/if}}
