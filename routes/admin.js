@@ -15,7 +15,6 @@ router.get('/admin', isLoggedIn, isAdmin, async (req, res) => {
     const users = await User.find();
     res.render('/auth/admin', { users });
   } catch (err) {
-    console.error(err);
     res.render('error', { message: 'Error getting list of users' });
   }
 });
@@ -27,7 +26,6 @@ router.post('/admin/roles/:userId', isLoggedIn, isAdmin, async (req, res) => {
     await user.save();
     res.redirect('/auth/admin');
   } catch (err) {
-    console.error(err);
     res.render('error', { message: 'Error changing user role' });
   }
 });

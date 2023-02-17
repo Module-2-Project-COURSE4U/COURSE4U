@@ -17,6 +17,7 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 const coursesRouter = require("./routes/courses");
 const reviewsRouter = require("./routes/reviews");
+const checkoutRouter = require("./routes/checkout");
 const mongoose = require("mongoose");
 const passport = require("passport");
 mongoose.set("strictPopulate", false);
@@ -149,6 +150,33 @@ hbs.registerHelper('isAdmin', function (value) {
 hbs.registerHelper('isUser', function (value) {
   return value == 'user';
 });
+hbs.registerHelper("Math", function(lvalue, operator, rvalue) {
+  lvalue = parseFloat(lvalue);
+  rvalue = parseFloat(rvalue);
+      
+  return {
+      "+": lvalue + rvalue,
+      "-": lvalue - rvalue,
+      "*": lvalue * rvalue,
+      "/": lvalue / rvalue,
+      "%": lvalue % rvalue
+  }[operator];
+});
+hbs.registerHelper("Order", function(value) {
+   return {
+      '0': 'First',
+      '1': 'Second',
+      '2': 'Third',
+      '3': 'Fourth',
+      '4': 'Fifth',
+      '5': 'Sixth',
+      '6': 'Seventh',
+      '7': 'Eighth',
+      '8': 'Nineth',
+      '9': 'Tenth'
+  }[value];
+});
+
 
 // routes intro
 app.use("/", indexRouter);
@@ -156,6 +184,7 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/courses", coursesRouter);
 app.use("/reviews", reviewsRouter);
+app.use("/checkout", checkoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

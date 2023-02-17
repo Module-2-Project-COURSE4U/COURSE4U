@@ -82,7 +82,6 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
     }
     const enroled = await User.find({ _id: user._id, courses: id });
 
-    console.log('userrrrr',user)
     return res.render("course/course-details", {
       course,
       user,
@@ -103,47 +102,241 @@ router.get("/newCourse", isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
     const offered = await Offered.find().limit(1);
     const features = await Features.find().limit(1);
-    const reasons = await Reasons.find().limit(1);
-    const content = await Content.find().limit(1);
-    const course = await Course.find().limit(1);
-    console.log(course[0].title_why)
+    const content = await Content.find().limit(10);
+    const reasons = await Reasons.find().limit(4);
+    const course = await Course.findOne({title_why:'Why should you learn cybersecurity?'})
     res.render("course/newCourse", {
-      course:course[0],
+      course:course,
       offered:offered[0],
       features:features[0],
-      reasons:reasons[0],
-      conten:content[0],
+      reasons,
+      content,
       user,
     });
   } catch (err) {
     next(err);
   }
 });
+
 //@desc  create new course
 /* @route Post 
 /* @access Admin*/
 router.post("/newCourse", async function (req, res, next) {
-  const {
-    category,
-    title,
-    description,
-    image,
-    offered,
-    features,
-    reasons,
-    content,
-  } = req.body;
+  const course = {
+    category:req.body.category, 
+    title:req.body.title, 
+    description:req.body.description, 
+    list:req.body.list, 
+    image:req.body.image, 
+    skills:req.body.skills, 
+    title_why:req.body.title_why
+  }
+  Object.keys(course).forEach(key => {
+    if(course[key] == ''){
+      delete course[key]
+    }
+  });
+  const offered = {
+    logo:req.body.logo, place: req.body.place
+  }
+  const contentobject = [{
+    image:req.body.image_1,
+    title:req.body.title_1,
+    subtitle:req.body.subtitle_1,
+    time:req.body.time_1,
+    title_description:req.body.title_description_1,
+    description_1:req.body.description_1_1,
+    description_2:req.body.description_1_2,
+    description_3:req.body.description_1_3,
+    description_4:req.body.description_1_4,
+  },
+  {
+    image:req.body.image_2,
+    title:req.body.title_2,
+    subtitle:req.body.subtitle_2,
+    time:req.body.time_2,
+    title_description:req.body.title_description_2,
+    description_1:req.body.description_2_1,
+    description_2:req.body.description_2_2,
+    description_3:req.body.description_2_3,
+    description_4:req.body.description_2_4,
+  },
+  {
+    image:req.body.image_3,
+    title:req.body.title_3,
+    subtitle:req.body.subtitle_3,
+    time:req.body.time_3,
+    title_description:req.body.title_description_3,
+    description_1:req.body.description_3_1,
+    description_2:req.body.description_3_2,
+    description_3:req.body.description_3_3,
+    description_4:req.body.description_3_4,
+  },
+  {
+    image:req.body.image_4,
+    title:req.body.title_4,
+    subtitle:req.body.subtitle_4,
+    time:req.body.time_4,
+    title_description:req.body.title_description_4,
+    description_1:req.body.description_4_1,
+    description_2:req.body.description_4_2,
+    description_3:req.body.description_4_3,
+    description_4:req.body.description_4_4,
+  },
+  {
+    image:req.body.image_5,
+    title:req.body.title_5,
+    subtitle:req.body.subtitle_5,
+    time:req.body.time_5,
+    title_description:req.body.title_description_5,
+    description_1:req.body.description_5_1,
+    description_2:req.body.description_5_2,
+    description_3:req.body.description_5_3,
+    description_4:req.body.description_5_4,
+  },
+  {
+    image:req.body.image_6,
+    title:req.body.title_6,
+    subtitle:req.body.subtitle_6,
+    time:req.body.time_6,
+    title_description:req.body.title_description_6,
+    description_1:req.body.description_6_1,
+    description_2:req.body.description_6_2,
+    description_3:req.body.description_6_3,
+    description_4:req.body.description_6_4,
+  },
+  {
+    image:req.body.image_7,
+    title:req.body.title_7,
+    subtitle:req.body.subtitle_7,
+    time:req.body.time_7,
+    title_description:req.body.title_description_7,
+    description_1:req.body.description_7_1,
+    description_2:req.body.description_7_2,
+    description_3:req.body.description_7_3,
+    description_4:req.body.description_7_4,
+  },
+  {
+    image:req.body.image_8,
+    title:req.body.title_8,
+    subtitle:req.body.subtitle_8,
+    time:req.body.time_8,
+    title_description:req.body.title_description_8,
+    description_1:req.body.description_8_1,
+    description_2:req.body.description_8_2,
+    description_3:req.body.description_8_3,
+    description_4:req.body.description_8_4,
+  },
+  {
+    image:req.body.image_9,
+    title:req.body.title_9,
+    subtitle:req.body.subtitle_9,
+    time:req.body.time_9,
+    title_description:req.body.title_description_9,
+    description_1:req.body.description_9_1,
+    description_2:req.body.description_9_2,
+    description_3:req.body.description_9_3,
+    description_4:req.body.description_9_4,
+  },
+  {
+    image:req.body.image_10,
+    title:req.body.title_10,
+    subtitle:req.body.subtitle_10,
+    time:req.body.time_10,
+    title_description:req.body.title_description_10,
+    description_1:req.body.description_10_1,
+    description_2:req.body.description_10_2,
+    description_3:req.body.description_10_3,
+    description_4:req.body.description_10_4,
+  }
+]
+contentobject.forEach(function(inside){
+  Object.keys(inside).forEach(key => {
+    if(inside[key] == ''){
+      delete inside[key]
+    }
+  });
+})
+const content = contentobject.filter(value => Object.keys(value).length !== 0);
+const featuresobject = [{
+  title:req.body.features_title_1,
+  subtitle:req.body.features_subtitle_1
+},
+{
+  title:req.body.features_title_2,
+  subtitle:req.body.features_subtitle_2
+},
+{
+  title:req.body.features_title_3,
+  subtitle:req.body.features_subtitle_3
+},
+{
+  title:req.body.features_title_4,
+  subtitle:req.body.features_subtitle_4
+},
+{
+  title:req.body.features_title_5,
+  subtitle:req.body.features_subtitle_5
+},
+{
+  title:req.body.features_title_6,
+  subtitle:req.body.features_subtitle_6
+}
+]
+featuresobject.forEach(function(inside){
+  Object.keys(inside).forEach(key => {
+    if(inside[key] == ''){
+      delete inside[key]
+    }
+  });
+})
+const features = featuresobject.filter(value => Object.keys(value).length !== 0);
+const reasonsobject = [{
+  subtitle:req.body.reasons_subtitle_1,
+  list:req.body.reasons_list_1,
+  description:req.body.reasons_description_1
+},
+{
+  subtitle:req.body.reasons_subtitle_2,
+  list:req.body.reasons_list_2,
+  description:req.body.reasons_description_2
+},
+{
+  subtitle:req.body.reasons_subtitle_3,
+  list:req.body.reasons_list_3,
+  description:req.body.reasons_description_3
+},
+{
+  subtitle:req.body.reasons_subtitle_4,
+  list:req.body.reasons_list_4,
+  description:req.body.reasons_description_4
+}]
+reasonsobject.forEach(function(inside){
+  Object.keys(inside).forEach(key => {
+    if(inside[key] == ''){
+      delete inside[key]
+    }
+  });
+})
+const reasons = reasonsobject.filter(value => Object.keys(value).length !== 0);
   try {
-    const newCourse = await Course.create({
-      category,
-      title,
-      description,
-      image,
-    });
-    newCourse.offered = offered;
-    newCourse.features = features;
-    newCourse.reasons = reasons;
-    newCourse.content = content;
+    const new_course = await Course.create(course)
+    //OFFERED
+    const new_offered = await Offered.create(offered)
+    //FEARURES
+    const new_features = await Features.create(features)
+    let features_ids = []
+    new_features.forEach(elem => features_ids.push(`${elem.id}`))
+    //CONTENT
+    const new_content = await Content.create(content)
+    let content_ids = []
+    new_content.forEach(elem => content_ids.push(`${elem.id}`))
+    //REASONS
+    const new_reasons = await Content.create(content)
+    let reasons_ids = []
+    new_reasons.forEach(elem => reasons_ids.push(`${elem.id}`))
+    //COMBINE
+    await Course.findByIdAndUpdate(new_course._id, { $push: { offered: new_offered._id}, features: features_ids , content: content_ids, reasons: reasons_ids  })
     res.redirect("/courses");
   } catch (err) {
     next(err);
@@ -160,7 +353,6 @@ router.get("/addCourse/:courseId", isLoggedIn,  async (req, res, next) => {
     const user2 = await User.findByIdAndUpdate(user._id, {
       $push: { courses: ObjectId(courseId) },
     });
-     console.log("hay course", courseId);
     res.redirect("/courses/myCourses");
   } catch (error) {
     next(error);
@@ -228,10 +420,8 @@ router.post("/editCourse/:id",isLoggedIn, isAdmin,  async (req, res) => {
 /* @route  GET
 // @access Admin*/
 router.post("/delete/:id", isLoggedIn, isAdmin,  async (req, res) => {
- 
-  console.log(req);
+
   const course = await Course.findById(req.params.id);
-  console.log('0. ', course);
   if (!course) {
     return res.status(404).send("No se encontró el curso.");
   }
@@ -241,15 +431,12 @@ router.post("/delete/:id", isLoggedIn, isAdmin,  async (req, res) => {
       .send("No se puede borrar un curso que ha sido comprado.");
   }
   const user = req.session.currentUser;
-  console.log('1.');
   try {
     const active = { active: false };
     // const isAdmin = user && user.role === "admin";
     const delete_course = true;
-    console.log('2.');
     await Course.findByIdAndUpdate(req.params.id, active);
     const courses = await Course.find({ active: true }).sort({ title: 1 });
-    console.log('3.', courses);
     const truncatedCourses = courses.map((course) => {
       course.description = course.description
         .split("\n")
@@ -257,7 +444,6 @@ router.post("/delete/:id", isLoggedIn, isAdmin,  async (req, res) => {
         .join("\n");
       return course;
     });
-    console.log('4. ', truncatedCourses);
     res.render("course/courseView", {
       courses: truncatedCourses,
       user, 
@@ -269,3 +455,53 @@ router.post("/delete/:id", isLoggedIn, isAdmin,  async (req, res) => {
 });
 
 module.exports = router;
+
+// const {
+//   // COURSE
+//   category, title, description, list, image, skills, title_why,
+//   // OFFERED
+//   logo, place,
+//   // CONTENT
+//   // 1
+//   image_1, title_1, subtitle_1, time_1, title_description_1, description_1_1, description_1_2, description_1_3, description_1_4,
+//   // 2
+//   image_2, title_2, subtitle_2, time_2, title_description_2, description_2_1, description_2_2, description_2_3, description_2_4,
+//   // 3
+//   image_3, title_3, subtitle_3, time_3, title_description_3, description_3_1, description_3_2, description_3_3, description_3_4,
+//   // 4
+//   image_4, title_4, subtitle_4, time_4, title_description_4, description_4_1, description_4_2, description_4_3, description_4_4,
+//   // 5
+//   image_5, title_5, subtitle_5, time_5, title_description_5, description_5_1, description_5_2, description_5_3, description_5_4,
+//   // 6
+//   image_6, title_6, subtitle_6, time_6, title_description_6, description_6_1, description_6_2, description_6_3, description_6_4,
+//   // 7
+//   image_7, title_7, subtitle_7, time_7, title_description_7, description_7_1, description_7_2, description_7_3, description_7_4,
+//   // 8
+//   image_8, title_8, subtitle_8, time_8, title_description_8, description_8_1, description_8_2, description_8_3, description_8_4,
+//   // 9
+//   image_9, title_9, subtitle_9, time_9, title_description_9, description_9_1, description_9_2, description_9_3, description_9_4,
+//   // 10
+//   image_10, title_10, subtitle_10, time_10, title_description_10, description_10_1, description_10_2, description_10_3, description_10_4,
+//   //FEATURES
+//   //1
+//   features_title_1,features_subtitle_1,
+//   //2
+//   features_title_2,features_subtitle_2,
+//   //3
+//   features_title_3,features_subtitle_3,
+//   //4
+//   features_title_4,features_subtitle_4,
+//   //5
+//   features_title_5,features_subtitle_5,
+//   //6
+//   features_title_6,features_subtitle_6,
+//   //REASONS
+//   //1
+//   reasons_subtitle_1,reasons_list_1,reasons_description_1,
+//   //1
+//   reasons_subtitle_2,reasons_list_2,reasons_description_2,
+//   //1
+//   reasons_subtitle_3,reasons_list_3,reasons_description_3,
+//   //1
+//   reasons_subtitle_4,reasons_list_4,reasons_description_4
+// } = req.body;
