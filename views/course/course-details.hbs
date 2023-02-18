@@ -59,7 +59,6 @@
     {{/each}}
   {{/if}}
 </div>
-
     {{#if course.content}}
       <h3>PROGRESS</h3>
       <div id='div_svg'>
@@ -85,6 +84,7 @@
         </div>
       {{/each}}
     {{/if}}
+
     {{#if course.reasons}}
           <br>
         <div class="sectionTitle">{{course.title_why}}</div>
@@ -104,6 +104,7 @@
       {{#if success_message}}
         <h1>Review deleted successfully</h1>
       {{/if}}
+
       {{#if user}}
         {{#if enroled}}
           {{#unless review_user}}
@@ -125,6 +126,7 @@
             
          {{/unless}}
         {{/if}}
+      {{/if}}
      {{/if}}
     </div>
   </div>
