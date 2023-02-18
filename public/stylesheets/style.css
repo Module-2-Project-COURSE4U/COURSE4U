@@ -381,26 +381,25 @@ input::placeholder {
   background-color: #c6e4f5;
   height: 85px;
   width: 100%;
-  padding: 10px;
+  margin: auto;
   bottom: 0;
   left: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
-.myFooter p {
+.myFooterText {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 110%;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 .myFooterImage {
-  width: 160px;
-  display: flex;
-  align-items: center;
+  width: 190px;
 }
 
 .facebook-logo,
@@ -410,6 +409,7 @@ input::placeholder {
   height: 40px;
   width: 40px;
   object-fit: cover;
+  margin-right: 20px;
 }
 
 @media only screen and (max-width: 1080px) {
@@ -452,6 +452,24 @@ input::placeholder {
     height: 40px;
     width: 40px;
   }
+}
+
+@media only screen and (max-width: 858px) {
+  .myFooterText {
+    display: none;
+  }
+
+.myFooterImage {
+  margin-left: 40%;
+  width: 100px;
+}
+
+.facebook-logo,
+.instagram-logo,
+.linkedin-logo,
+.twitter-logo {
+  display: none;
+}
 }
 
 /************************ FOOTER ADVERTISEMENT ******/
@@ -768,19 +786,6 @@ input[type="password"]:focus {
   font-size: 12px;
 }
 
-.myFooterImage {
-  width: 100px;
-}
-
-.facebook-logo,
-.instagram-logo,
-.linkedin-logo,
-.twitter-logo {
-  height: 30px;
-  width: 30px;
-  object-fit: cover;
-}
-
 @media screen and (max-width: 1080px) {
 
   .signupHeader {
@@ -874,7 +879,7 @@ input[type="password"]:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 100px;
   width: 100%;
   min-height: 100%;
 }
@@ -957,6 +962,19 @@ input[type="password"]:focus {
   .card-profile {
     height: auto;
   }
+.profilePage h1 {
+  font-size: 16px;
+}
+.profilePage h2 {
+  font-size: 16px;
+}
+.profilePage {
+  padding-top:100px;
+  bottom: 0px
+  /* width: 100%;
+  min-height: 100%; */
+}
+
 
   .editbtn a {
     font-size: 0.8em;
@@ -964,11 +982,10 @@ input[type="password"]:focus {
   }
   .card-img-profile {
     display: inline-block;
-    margin: 20px;
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 }
 /* edit password profile page */

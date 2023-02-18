@@ -1,9 +1,15 @@
 <div class="profilePage">
-  <h1>My account</h1>
+  {{!-- <div class="iconMessage">
+  <a href="/"><img
+      src="/images/left-arrow.png"
+      alt="icon Left"
+    /></a>  --}}
+     <h1>MY ACCOUNT</h1>
+    </div>
     <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl">
   <div class="card-profile">
   <h1>{{user.username}}</h1>
-  <h2>Email: {{user.email}}</h2>
+  {{!-- <h2>Email: {{user.email}}</h2> --}}
   <div class="editBtn">
     <a href="/user/profile/edit">Change password</a>
     <a href="/user/profile/editPhoto">Edit profile picture</a>
