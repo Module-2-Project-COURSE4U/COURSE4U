@@ -30,7 +30,6 @@ h1 {
   align-items: center;
   width: 100%;
 }
-
 .sectionTitle {
   font-size: 24px; 
   font-weight: bold; 
@@ -394,8 +393,13 @@ h1 {
     font-size: 13px;
   }
 }
-/*
 @media (max-width: 858px) {
+  .courseTitle {
+    font-size: 18px;
+  }
+}
+/*
+
   .detailsPage {
     max-width: 100%;
     padding-top: 80px;

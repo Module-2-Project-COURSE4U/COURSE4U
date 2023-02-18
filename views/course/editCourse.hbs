@@ -15,19 +15,20 @@
 
     <label>Subdescription:</label>
     <textarea name="subdescription">{{course.subdescription}}</textarea>
+{{#if course.list}}
+  <label>List:</label>
+  {{#each course.list}}
+    <input type="text" name="list_{{@index}}" value="{{this}}" />
+  {{/each}}
+{{/if}}
 
-<label>List:</label>
-{{#each course.list}}
-  <input type="text" name="list_{{@index}}" value="{{this}}" />
-{{/each}}
-
-<label>Skills:</label>
 {{#each course.skills}}
+  <label>Skills:</label>
   <input type="text" name="skills_{{@index}}" value="{{this}}" />
 {{/each}}
 
-<label>Features:</label>
 {{#if course.features}}
+  <label>FEATURES</label>
   {{#each course.features}}
     <label>Title:</label>
     <input
