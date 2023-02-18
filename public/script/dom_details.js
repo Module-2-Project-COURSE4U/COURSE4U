@@ -49,7 +49,6 @@ const stars = Array.from(stars_img);
 
 const error_message = document.getElementById('error_message')
 
-value_stars.value = "";
 let toggle2change;
 stars.forEach(function (star, index) {
   star.addEventListener("click", function () {

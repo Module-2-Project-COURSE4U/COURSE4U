@@ -100,10 +100,33 @@
             <br>
         {{/each}}
     {{/if}}
-    {{#if review_user}}
+      {{#if review_user}}
       {{#if success_message}}
         <h1>Review deleted successfully</h1>
       {{/if}}
+      <div class="reviews">
+        {{#each review_user}}
+        <form> 
+          <a href="/reviews/delete/{{this._id}}">DELETE</a>
+        </form> 
+        <div class="star-reviews" id={{this.stars}}></div>
+        <p><strong>{{this.username.username}}</strong>: 
+        {{this.comment}}.        
+        {{/each}}
+      </div>
+  {{/if}}
+   {{#if reviews}}
+   <div class="reviews">
+    {{#each reviews}}
+    <div>
+      <p><strong>{{this.username.username}}</strong>:
+        {{this.comment}}
+       <div class="star-reviews" id={{this.stars}}></div>
+    </div>
+      
+    {{/each}}
+   </div>
+  {{/if}}
 
       {{#if user}}
         {{#if enroled}}
@@ -126,7 +149,6 @@
             
          {{/unless}}
         {{/if}}
-      {{/if}}
      {{/if}}
     </div>
   </div>

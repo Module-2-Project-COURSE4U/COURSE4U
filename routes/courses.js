@@ -9,7 +9,7 @@ const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
 const User = require("../models/User");
 const { ObjectId } = require("mongodb");
-const { isLoggedIn, isUser, isAdmin } = require("../middleware/adminLoggedIn");
+const { isLoggedIn, isUser, isAdmin } = ("../middleware/adminLoggedIn");
 
 // @desc    Display all courses
 // @route   GET /
@@ -81,7 +81,6 @@ router.get("/course-details/:id", isLoggedIn, async (req, res, next) => {
       course.features[i].svg = `/images/SVG/FEATURES/${i + 1}.svg`;
     }
     const enroled = await User.find({ _id: user._id, courses: id });
-
     return res.render("course/course-details", {
       course,
       user,
