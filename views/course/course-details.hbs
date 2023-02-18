@@ -4,8 +4,7 @@
       width: 100%;
       }
   </style>
-{{!-- <p>{{user.role}}</p> --}}
-<h1 class="courseTitle">{{course.title}}</h1>
+<h1 class="courseDetailsH1">{{course.title}}</h1>
 <div class="subheader">
   {{#if course.offered}}
     {{#each course.offered}}
@@ -106,28 +105,26 @@
       {{/if}}
       <div class="reviews">
         {{#each review_user}}
-        <form> 
-          <a href="/reviews/delete/{{this._id}}">DELETE</a>
+        <form class="reviewDelete"> 
+          <a href="/reviews/delete/{{this._id}}">Delete</a>
         </form> 
-        <div class="star-reviews" id={{this.stars}}></div>
         <p><strong>{{this.username.username}}</strong>: 
-        {{this.comment}}.        
+        {{this.comment}}.</p>
+         <div class="star-reviews" id={{this.stars}}></div>
+      </div>       
         {{/each}}
-      </div>
+    
   {{/if}}
    {{#if reviews}}
    <div class="reviews">
     {{#each reviews}}
-    <div>
       <p><strong>{{this.username.username}}</strong>:
         {{this.comment}}
-       <div class="star-reviews" id={{this.stars}}></div>
-    </div>
-      
+       <div class="star-reviews" id={{this.stars}}>
+    </div> 
     {{/each}}
    </div>
   {{/if}}
-
       {{#if user}}
         {{#if enroled}}
           {{#unless review_user}}
@@ -141,9 +138,9 @@
                 <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_5'/>
               </div>
               <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5" required="true"/>
-              <label>Comment:</label>
+              <label>Comment</label>
               <input type="text" placeholder="I really liked this course" name="comment" required="true"/>
-              <button type="submit">Add review</button>
+              <button  type="submit">Add review</button>
               <h5 style=color:red id="error_message" class="no_active_display">It is mandatory to choose a score, and write a comment</h5>
             </form>
             
@@ -152,6 +149,7 @@
      {{/if}}
     </div>
   </div>
+</div>
 </div>
 
 <script src="/script/dom_details.js"></script>

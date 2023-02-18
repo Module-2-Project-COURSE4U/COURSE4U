@@ -2,7 +2,6 @@
 
 .editCourse {
   width: 40%;
-  /* font-family: Arial, sans-serif; */
   padding-top: 100px;
   padding-bottom: 180px;
   gap: 70px;
@@ -76,48 +75,6 @@
     width: 70%;
     padding: 20px;
   }
-  /*
-  .editCourse h1 {
-    color: var(--navbar);
-    font-size: 18px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .editCourseForm {
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .editCourseForm label {
-    display: block;
-    font-weight: bold;
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--h4);
-  }
-
-  .editCourseForm input[type="text"],
-  .editCourseForm textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-  }
-
-  .editCourseForm input[type="submit"] {
-    background-color: var(--buttonBackground);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
-  }
-
-  .editCourseForm input[type="submit"]:hover {
-    background-color: var(--buttonsHover);
-  } */
+  
 }
 

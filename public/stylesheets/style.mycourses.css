@@ -1,0 +1,126 @@
+/***************** myCourse page (list of my courses) ***********/
+h1 {
+  color: rgb(63, 62, 62);
+}
+.myCourse {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myCourseDetails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.courseItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.courseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.courseTitle {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+}
+
+.courseDescription {
+  width: 90%;
+  font-size: 14px;
+  color: #444;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.courseItem a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30%;
+  padding: 0.35em 1.2em;
+  border: 0.2em solid;
+  border-radius: 10px;
+  background-color: rgb(100, 149, 237);
+  margin: 0 0.3em 0.3em 0;
+  color: whitesmoke;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@media only screen and (max-width: 858px) {
+  .courseItem {
+    width: 130px;
+    height: auto;
+  }
+  .courseTitle {
+    font-size: 11px;
+  }
+  .courseDescription {
+    font-size: 9px;
+  }
+
+  .courseItem a {
+    width: 40%;
+    font-size: 9px;
+  }
+}
+
+/******************************MY VIEW COURSES **********/
+.video-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10px;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+.video-player {
+  width: 60%;
+  height: 40%;
+}
+
+p {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+@media screen and (max-width: 1080px) {
+  p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  p {
+    font-size: 16px;
+  }
+  #video-container {
+    margin-bottom: 10px;
+  }
+}

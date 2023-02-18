@@ -13,6 +13,8 @@
     <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <link href="/stylesheets/style.detail.css" rel="stylesheet" />
     <link href="/stylesheets/style.about.css" rel="stylesheet" />
+    <link href="/stylesheets/style.search.css" rel="stylesheet" />
+    <link href="/stylesheets/style.mycourses.css" rel="stylesheet" />
     <title>Project module 2</title>
   </head>
   <body>
@@ -26,37 +28,10 @@
       <form class="search_form" method="GET" action="/courses/search">
         <label>Search</label>
         <input id="input_search" type="text" name="title" placeholder="What do you want to learn?"/>
-        {{!-- <div id="search_field" class="no_active_display"></div>
-        <div class="no_active_display">
-          {{#each courses}}
-          <a id='{{this.title}}' class='{{this._id}} card-course'>{{this.title}}</a>
-          {{/each}}
-        </div> --}}
           <span class="btn_close">  <img src="/images/closeBtn.png" alt="Icon close">
         </span>
          <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
       </form>
-
-      {{!-- <ul class="menu_nav menu_items">
-        {{#if user}}
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/courses/newCourse">Add Course</a></li>
-          <li><a href="/courses/myCourses">My courses</a></li>
-          <li><a href="/user/profile">Profile</a></li>
-          <li><a href="/auth/logout">Log out</a></li>
-           <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-        {{else}}
-          <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/auth/signup">Sign up</a></li>
-          <li><a href="/auth/login">Log in</a></li>
-          
-        {{/if}}
-      </ul>  --}}
-
-
 <ul class="menu_nav menu_items">
  {{#if (isUser user.role)}}
     <li class="active"><a href="/">Home</a></li>
@@ -84,7 +59,7 @@
 
   <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
   <span class="btn_search">
-    <img "btn_search" src="/images/search-Icon.png" alt="btn search"/>
+    <img class="btn_search" src="/images/search-Icon.png" alt="btn search"/>
   </span>
 </nav>
 

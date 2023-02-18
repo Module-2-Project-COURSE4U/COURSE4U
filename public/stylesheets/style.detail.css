@@ -14,10 +14,10 @@ h1 {
 .subheader {
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
 }
 .offeredBy {
-  font-size: 11px;
+  font-size: 14px;
 }
 .logos {
   width: 30px;
@@ -29,27 +29,19 @@ h1 {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin: auto;
 }
 .sectionTitle {
-  font-size: 24px; 
-  font-weight: bold; 
+  font-size: 20px;
+  font-weight: bold;
+}
+.courseDetailsH1 {
+  font-size: 24px;
 }
 
 .description {
   text-align: justify;
-  font-size: 20px;
-}
-
-.card-features {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 80vw;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  font-size: 18px;
 }
 
 .groupFeatures {
@@ -72,7 +64,7 @@ h1 {
 
 .featuresDescription {
   text-align: start;
-  font-size: 12px;
+  font-size: 14px;
   width: 200px;
 }
 
@@ -86,21 +78,21 @@ h1 {
   margin-top: 20px;
 }
 
-  .svg_process_color {
-    object-fit: cover;
-    position: absolute;
-    z-index: 2;
-    display: inline-block;
-    transition-property: width;
-    transition-timing-function: ease-in-out;
-    transition-duration: 1.5s;
-  }
+.svg_process_color {
+  object-fit: cover;
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1.5s;
+}
 
-  .transformed_svg{
-    transition-property: width;
-    transition-timing-function: ease-in-out;
-    transition-duration: 1.5s;
-  }
+.transformed_svg {
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1.5s;
+}
 .div_content img {
   margin-right: 20px;
 }
@@ -131,6 +123,186 @@ h1 {
   width: 200px;
   border: 1px solid #333;
 }
+
+/****** courseView feature part */
+.featuresCourse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+}
+
+.featuresCourse h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.featuresCourse h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.featuresCourse ul {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.featuresCourse li {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 300px;
+  text-align: justify;
+}
+
+.featuresCourse h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.featuresCourse p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 1080px) {
+  .featuresCourse li {
+    max-width: 700px;
+  }
+}
+
+@media only screen and (max-width: 858px) {
+  .featuresCourse h1 {
+    font-size: 1.5rem;
+  }
+
+  .featuresCourse h2 {
+    font-size: 1.2rem;
+  }
+
+  .featuresCourse li {
+    max-width: 400px;
+  }
+  .courseDetailsH1 {
+    font-size: 18px;
+  }
+}
+
+.detailsPage {
+  min-height: 100hv;
+  max-width: 1080px;
+  margin: auto;
+  padding: 5vw;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card-featContent {
+  text-align: center;
+  margin: 20px;
+}
+
+.imgFeatures {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+}
+
+.svg_features {
+  width: 100%;
+}
+
+.card-offered {
+  text-align: center;
+  margin: 20px;
+}
+
+.card-offered img {
+  width: 100px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+.card-skillsAbout {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card-skills {
+  width: 100%;
+}
+
+.card-skills h5 {
+  margin-bottom: 10px;
+}
+
+.card-skills p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-content {
+  margin-top: 20px;
+}
+
+.div_content {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.div_content img {
+  margin-right: 20px;
+}
+
+.div_content h2 {
+  margin-bottom: 10px;
+}
+
+.div_content p {
+  margin: 0;
+  padding: 0;
+}
+
+.card-reasons {
+  margin-top: 20px;
+}
+
+.card-reasons h6 {
+  margin-bottom: 10px;
+}
+
+.card-reasons p {
+  margin: 0;
+  padding: 0;
+}
+
 .star-reviews {
   display: inline-block;
   width: 80px;
@@ -179,8 +351,8 @@ h1 {
 }
 
 .star {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .review-form input[type="number"] {
@@ -203,6 +375,77 @@ h1 {
   font-size: 16px;
   cursor: pointer;
 }
+
+.stars-view,
+.star-reviews {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+}
+
+.stars-view > *,
+.star-reviews > * {
+  width: 19%;
+  padding: 0.5%;
+}
+
+.star {
+  transition-property: content;
+  transition-timing-function: ease-in-out;
+  transition-property: 0.5s;
+}
+
+.highlight {
+  transition-property: content;
+  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
+  transition-timing-function: ease-in-out;
+  transition-property: 0.5s;
+}
+
+.star:hover,
+.star:active {
+  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: fit-content;
+  padding-bottom: 20px;
+}
+
+.reviews p {
+  font-size: 16px;
+  width: 100%;
+}
+
+.reviews > * {
+  width: fit-content;
+}
+
+.reviews form {
+  display: flex;
+  align-items: center;
+  border-color: #333;
+  margin: 0% 2%;
+}
+
+.reviews form a {
+  text-decoration-line: none;
+  background-color: rgb(100, 149, 237);
+  color: #fff;
+  width: 80px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+.reviews form a:hover {
+  color: #38598b;
+}
+
 /* ******review container in details page******/
 
 .review-form {
@@ -214,6 +457,7 @@ h1 {
 
 .review-form label {
   margin: 10px 0;
+  color: #38598b;
 }
 
 .review-form input[type="number"],
@@ -261,6 +505,7 @@ h1 {
 .div_content {
   width: 100%;
   justify-content: space-evenly;
+  /* flex-wrap: nowrap; */
 }
 
 .div_content div,
@@ -274,6 +519,7 @@ h1 {
 }
 .navbar_content_title h4 {
   padding: 2%;
+  font-size: 14px;
 }
 
 #PREWORK {
@@ -323,60 +569,7 @@ h1 {
   width: 90%;
 }
 
-.stars-view,
-.star-reviews {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 200px;
-}
-
-.stars-view > *,
-.star-reviews > * {
-  width: 19%;
-  padding: 0.5%;
-}
-
-.star {
-  transition-property: content;
-  transition-timing-function: ease-in-out;
-  transition-property: 0.5s;
-}
-
-.highlight {
-  transition-property: content;
-  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
-  transition-timing-function: ease-in-out;
-  transition-property: 0.5s;
-}
-
-.star:hover,
-.star:active {
-  content: url("/images/SVG/REVIEWS/Sky-blue.svg");
-}
-
-.reviews {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0% 15%;
-}
-
-.reviews > * {
-  padding: 2% 2%;
-}
-
-.reviews form {
-  display: flex;
-  align-items: center;
-  margin: 0% 2%;
-}
-
-.reviews form a {
-  text-decoration-line: none;
-}
-
-
 @media (max-width: 1080px) {
-
   h1 {
     font-size: 24px;
   }
@@ -386,9 +579,9 @@ h1 {
   }
 
   .sectionTitle {
-    font-size: 16px; 
+    font-size: 16px;
   }
-  
+
   .description {
     font-size: 13px;
   }
@@ -398,84 +591,3 @@ h1 {
     font-size: 18px;
   }
 }
-/*
-
-  .detailsPage {
-    max-width: 100%;
-    padding-top: 80px;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  .card-info,
-  .card-skillsAbout {
-    width: 100%;
-    margin-right: 0;
-  }
-
-  .card-features {
-    flex-direction: column;
-  }
-
-  .card-skillsAbout,
-  .card-features {
-    margin-bottom: 10px;
-  }
-
-  .card-reasons h5 {
-    margin-top: 20px;
-  }
-
-  .div_content {
-    flex-direction: column;
-  }
-
-  .div_content img {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .review-form input[type="number"],
-  .review-form input[type="text"] {
-    width: 100%;
-  }
-}
-
-/*
-@media (min-width: 1200px) {
-  .card-info {
-    width: 60%;
-    margin-right: 40px;
-  }
-
-  .card-skillsAbout {
-    margin-bottom: 40px;
-  }
-
-  .card-features {
-    margin-bottom: 40px;
-  }
-
-  .card-offered {
-    margin-bottom: 40px;
-  }
-
-  .div_content {
-    margin-top: 40px;
-  }
-
-  .review-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .stars-view,
-  .star-reviews {
-    width: 50%;
-  }
-}
-*/
