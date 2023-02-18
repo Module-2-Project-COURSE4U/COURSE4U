@@ -72,10 +72,11 @@
 }
 
 @media (max-width: 858px) {
-  .editCourse {
+   .editCourse {
     width: 70%;
     padding: 20px;
   }
+  /*
   .editCourse h1 {
     color: var(--navbar);
     font-size: 18px;
@@ -117,6 +118,6 @@
 
   .editCourseForm input[type="submit"]:hover {
     background-color: var(--buttonsHover);
-  }
+  } */
 }
 
