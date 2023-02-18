@@ -2,27 +2,34 @@
 
 .editCourse {
   width: 40%;
-  margin: 0 auto;
   /* font-family: Arial, sans-serif; */
   padding-top: 100px;
   padding-bottom: 180px;
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap:wrap; */
-  justify-content: center;
   gap: 70px;
   margin: auto;
 }
 
 .editCourse h1 {
-  color: var(--navbar);
+  color: rgb(63, 62, 62);
   font-size: 22px;
   margin-bottom: 20px;
   text-align: center;
 }
 
+.editCourse h3 {
+  color: rgb(63, 62, 62);
+  font-size: 18px;
+}
+
 .editCourse hr {
-  border: 1px solid var(--navbar);
+  border: 1px solid rgb(63, 62, 62);
+}
+
+.editCourse p {
+  color: rgb(63, 62, 62);
+  font-size: 12px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .editCourse form {
@@ -32,8 +39,8 @@
 }
 
 .editCourse label {
-  color: var(--h4);
-  font-size: 18px;
+  color: rgb(63, 62, 62);
+  font-size: 16px;
   margin-top: 20px;
 }
 
@@ -45,6 +52,7 @@
   margin-top: 10px;
   border: 1px solid var(--navbar);
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .editCourse input[type="submit"] {
