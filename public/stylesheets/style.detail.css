@@ -1,12 +1,9 @@
 .detailsPage {
-  min-height: 100hv;
-  max-width: 1080px;
-  margin: auto;
-  padding: 20px;
-  padding-top: 160px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  min-height: 100hv;
+  max-width: 1080px;
 }
 
 h1 {
@@ -14,61 +11,70 @@ h1 {
   margin-bottom: 20px;
 }
 
-.card-features {
+.subheader {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: row;
+  align-items:center;
 }
-
-.card-featContent {
-  text-align: center;
-  margin: 20px;
+.offeredBy {
+  font-size: 11px;
 }
-
-.imgFeatures {
-  width: 60px;
-  height: 60px;
-  margin: 20px;
-}
-
-.svg_features {
-  width: 100%;
-}
-
-.card-offered {
-  text-align: center;
-  margin: 20px;
-}
-
-.card-offered img {
-  width: 100px;
-  height: 100px;
-  margin-top: 20px;
-}
-
-.card-skillsAbout {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+.logos {
+  width: 30px;
+  height: 30px;
 }
 
 .card-info {
-  width: 50%;
-  margin-right: 20px;
-}
-
-.card-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
-.card-skills h5 {
-  margin-bottom: 10px;
+.sectionTitle {
+  font-size: 24px; 
+  font-weight: bold; 
 }
 
-.card-skills p {
-  margin: 0;
-  padding: 0;
+.description {
+  text-align: justify;
+  font-size: 20px;
+}
+
+.card-features {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80vw;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.groupFeatures {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.svg_features {
+  width: 60px;
+  height: 60px;
+}
+
+.card-featContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.featuresDescription {
+  text-align: start;
+  font-size: 12px;
+  width: 200px;
 }
 
 .card-content {
@@ -122,6 +128,10 @@ h1 {
   padding: 0;
 }
 
+.weekImage {
+  width: 200px;
+  border: 1px solid #333;
+}
 .star-reviews {
   display: inline-block;
   width: 80px;
@@ -163,13 +173,15 @@ h1 {
 
 .stars-view {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 200px;
   margin-bottom: 10px;
 }
 
 .star {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
 }
 
 .review-form input[type="number"] {
@@ -216,6 +228,7 @@ h1 {
 .button_enroll,
 .button_delete,
 .button_edit {
+  text-align: center;
   padding: 10px 20px;
   background-color: #6495ed;
   color: #fff;
@@ -247,7 +260,7 @@ h1 {
 
 .navbar_content_title,
 .div_content {
-  width: 90%;
+  width: 100%;
   justify-content: space-evenly;
 }
 
@@ -314,8 +327,8 @@ h1 {
 .stars-view,
 .star-reviews {
   display: flex;
-  flex-wrap: wrap;
-  width: 25%;
+  flex-wrap: nowrap;
+  width: 200px;
 }
 
 .stars-view > *,
@@ -362,12 +375,26 @@ h1 {
   text-decoration-line: none;
 }
 
+
 @media (max-width: 1080px) {
-  .detailsPage {
-    max-width: 858px;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .div_content h2 {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 16px; 
+  }
+  
+  .description {
+    font-size: 13px;
   }
 }
-
+/*
 @media (max-width: 858px) {
   .detailsPage {
     max-width: 100%;
@@ -412,6 +439,7 @@ h1 {
   }
 }
 
+/*
 @media (min-width: 1200px) {
   .card-info {
     width: 60%;
@@ -446,3 +474,4 @@ h1 {
     width: 50%;
   }
 }
+*/

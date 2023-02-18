@@ -483,8 +483,8 @@
   min-height: 100hv;
   max-width: 1080px;
   margin: auto;
-  padding: 20px;
-  padding-top: 160px;
+  padding: 5vw;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -536,7 +536,6 @@ h1 {
 
 .card-info {
   width: 50%;
-  margin-right: 20px;
 }
 
 .card-skills {
@@ -662,11 +661,10 @@ h1 {
 /***** search view ******/
 .searchPage {
   width: 100%;
-  min-height: 100vh;
+  min-height: 78vh;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: auto;
 }
@@ -801,27 +799,34 @@ h1 {
   }
 }
 
-/***************** myCourse page ***********/
+/***************** myCourse page (list of my courses) ***********/
+h1 {
+  color: rgb(63, 62, 62);
+}
 .myCourse {
   width: 100%;
   min-height: 100vh;
   padding-top: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: auto;
 }
 
 .myCourseDetails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-auto-rows: minmax(200px, auto);
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
 }
+
 .courseItem {
-  display: grid;
-  grid-template-rows: 150px 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 25px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
@@ -831,34 +836,61 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  grid-row: 1 / 2;
-}
-
-.courseDetails {
-  padding: 20px;
-  grid-row: 2 / 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .courseTitle {
-  font-size: 24px;
-  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
   color: #333;
 }
 
-.courseInstructor {
-  font-size: 18px;
-  color: #777;
-}
-
 .courseDescription {
-  font-size: 16px;
+  width: 90%;
+  font-size: 14px;
   color: #444;
   margin-top: 10px;
+  text-align: justify;
 }
 
+.courseItem a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30%;
+  padding: 0.35em 1.2em;
+  border: 0.2em solid;
+  border-radius: 10px;
+  background-color: rgb(100, 149, 237);
+  margin: 0 0.3em 0.3em 0;
+  color: whitesmoke;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@media only screen and (max-width: 858px) {
+  .courseItem{
+    width: 130px;
+    height: auto;
+  }
+  .courseTitle {
+    font-size: 11px;
+  }  
+  .courseDescription {
+    font-size: 9px;
+  }  
+
+  .courseItem a {
+    width: 40%;
+    font-size: 9px;
+  }  
+}
+
+/*
 @media only screen and (max-width: 1080px) {
   .myCourseDetails {
     display: flex;
@@ -910,6 +942,7 @@ h1 {
     font-weight: 800;
   }
 }
+
 /******************************my course video **********/
 .video-container {
   display: flex;

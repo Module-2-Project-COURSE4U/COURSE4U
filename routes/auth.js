@@ -127,6 +127,10 @@ router.post("/login", async function (req, res, next) {
 
 
 
+// @desc    Displays google login view
+// @route   Get /google
+// @access  Public
+router.get("/google",  passport.authenticate("google", { scope: ["profile"] }));
 // @desc    Authenticate the user with Passport, retrieve the user from the database
 // @route   GET /googleisLoggedIn, isUser/callback
 // @access  Public
