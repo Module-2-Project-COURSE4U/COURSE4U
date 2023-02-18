@@ -9,7 +9,7 @@
     />
     <link href="/stylesheets/style.css" rel="stylesheet" />
     <link href="/public/stylesheets/edit.create.course.css" rel="stylesheet" />
-     <link href="/public/stylesheets/style.checkout.css" rel="stylesheet" />
+    <link href="/public/stylesheets/style.checkout.css" rel="stylesheet" />
     <link href="/stylesheets/style.course.css" rel="stylesheet" />
     <link href="/stylesheets/style.detail.css" rel="stylesheet" />
     <link href="/stylesheets/style.about.css" rel="stylesheet" />
@@ -97,7 +97,7 @@
   </div>
   <div class="offerFooter-bottom">
     <div class="btnOfferFooter">
-      <a {{#if user}} href="/auth/checkout" {{else}} href="/auth/signup&subscribe" {{/if}} >Subscribe</a>
+      <a {{#if user}} href="/checkout" {{else}} href="/auth/signup&subscribe" {{/if}} >Subscribe</a>
     </div>
   </div>
 </footer>
@@ -110,11 +110,8 @@
 
   </body>
     <footer class="mainFooter">
-        <p class="myFooterP">@2023 Course4U Inc. Todos los derechos reservados.</p>
-        <img class="myFooterImage"
-          src="/images/SVG/LOGO/LOGO.svg"
-          alt="course4u logo"
-        />
+        <p class="myFooterText">@2023 Course4U Inc. Todos los derechos reservados.</p>
+        <img class="myFooterImage" src="/images/SVG/LOGO/LOGO.svg" alt="course4u logo"/>
         <div class="social-icons">
             <a href="#"><img
                 src="/images/facebook-icon.png"
@@ -136,6 +133,7 @@
     </footer>
 
     <script src="/script/script.js"></script>
+    <script src="/script/dom_details.js"></script>
     {{!-- <script src="/script/search.js"></script> --}}
 
   </body>

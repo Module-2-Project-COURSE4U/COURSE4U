@@ -15,10 +15,8 @@
   {{/if}}
 </div>
   {{#if (isAdmin user.role)}}
-    <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-    <form action="/courses/delete/{{course._id}}" method="post">
-      <button class="button_delete" type="submit">Delete course</button>
-    </form>
+    <a class="button_edit" href="/courses/editCourse/{{course._id}}">Edit</a>
+    <a class="button_edit" href="/courses/delete/{{course._id}}">Delete course</a>
   {{else}}
     {{#if user.isPremiumMember}}
       {{#unless enroled}}
@@ -61,7 +59,6 @@
     {{/each}}
   {{/if}}
 </div>
-
     {{#if course.content}}
       <h3>PROGRESS</h3>
       <div id='div_svg'>
@@ -87,6 +84,7 @@
         </div>
       {{/each}}
     {{/if}}
+
     {{#if course.reasons}}
           <br>
         <div class="sectionTitle">{{course.title_why}}</div>
@@ -106,6 +104,7 @@
       {{#if success_message}}
         <h1>Review deleted successfully</h1>
       {{/if}}
+
       {{#if user}}
         {{#if enroled}}
           {{#unless review_user}}
@@ -127,10 +126,10 @@
             
          {{/unless}}
         {{/if}}
+      {{/if}}
      {{/if}}
     </div>
   </div>
 </div>
-
 
 <script src="/script/dom_details.js"></script>

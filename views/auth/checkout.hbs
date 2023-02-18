@@ -11,27 +11,30 @@
   {{#if first_user}}
     <h2>Last step to become a premium member</h2>
   {{/if}}
-      <form class="checkoutForm" method="post" action="/checkout">
-        <label>Name on Card</label>
-        <input type="text" name="cardholderName" placeholder="John White" />
-        <label>Credit Card Number</label>
-        <input type="text" name="cardNumber" placeholder="1111 2222 3333 4444" />
-        <label>Expiration Date</label>
-        <input type="text" name="expiryDate" placeholder="MM/YY" />
-        <label>CVV</label>
-        <input type="text" name="cvv" placeholder="***" />
-        <label>Country</label>
-        <input type="text" name="country" placeholder="USA" />
-        <h2 style="color:rgb(5, 45, 61)" >€21.99 month</h2>
-        <p style="color:rgb(59, 61, 62)">You are one click away from becoming a Premium membership</p>
-        {{#if error}}
-        <p style="color: red;">Error {{error}}</p>
-        {{/if}}
-        <button type="submit" {{#if user.username}}
-        value="{{user.username}}"
-        {{else}} value="NO" 
-        {{/if}} name="username">Continue to checkout</button>
-      </form>
+  </div>
+  <div class="signup-form">
+  <div class="checkoutForm">
+   <form method="post" action="/checkout">
+      <label>Name on Card</label>
+      <input type="text" name="cardholderName" placeholder="John White" />
+      <label>Credit Card Number</label>
+      <input type="text" name="cardNumber" placeholder="1111 2222 3333 4444" />
+      <label>Expiration Date</label>
+      <input type="text" name="expiryDate" placeholder="MM/YY" />
+      <label>CVV</label>
+      <input type="text" name="cvv" placeholder="***" />
+      <label>Country</label>
+      <input type="text" name="country" placeholder="USA" />
+      <h2 style="color:rgb(5, 45, 61)" >€21.99 month</h2>
+      <p style="color:rgb(59, 61, 62)">You are one click away from becoming a Premium membership</p>
+      {{#if error}}
+      <p style="color: red;">Error {{error}}</p>
+      {{/if}}
+      <button type="submit" {{#if user.username}}
+      value="{{user.username}}"
+      {{else}} value="NO" 
+      {{/if}} name="username">Continue to checkout</button>
+    </form>
     </div>
     </div>
     </div>
