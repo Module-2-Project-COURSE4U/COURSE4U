@@ -47,6 +47,9 @@ const stars_img = document.getElementsByClassName("star");
 const value_stars = document.querySelector('input[name="stars"]');
 const stars = Array.from(stars_img);
 
+const error_message = document.getElementById('error_message')
+
+value_stars.value = "";
 let toggle2change;
 stars.forEach(function (star, index) {
   star.addEventListener("click", function () {
@@ -54,7 +57,7 @@ stars.forEach(function (star, index) {
       for (let i = 0; i < toggle2change + 1; i++) {
         stars[i].classList.toggle("highlight");
       }
-      value_stars.value = 0;
+      value_stars.value = "";
       toggle2change = "reset";
     } else {
       if (toggle2change != "reset") {
@@ -67,6 +70,12 @@ stars.forEach(function (star, index) {
         stars[i].classList.toggle("highlight");
       }
       value_stars.value = index + 1;
+    }
+    if(value_stars.value==""){
+      error_message.classList.replace('no_active_display','active_display')
+    }
+    else{
+      error_message.classList.replace('active_display','no_active_display')
     }
   });
 });

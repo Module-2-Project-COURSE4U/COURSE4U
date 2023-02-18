@@ -21,6 +21,9 @@ router.post(
         comment,
         course: courseId,
       });
+      // if(stars==0){
+      //   res.re
+      // }
       await Review.findByIdAndUpdate(review._id, {
         $push: { username: user_id },
       });

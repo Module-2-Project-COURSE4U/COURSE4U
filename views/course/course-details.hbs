@@ -139,11 +139,13 @@
                 <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_4'/>
                 <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_5'/>
               </div>
-              <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5"/>
+              <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5" required="true"/>
               <label>Comment:</label>
-              <input type="text" placeholder="I really liked this course" name="comment"/>
+              <input type="text" placeholder="I really liked this course" name="comment" required="true"/>
               <button type="submit">Add review</button>
+              <h5 style=color:red id="error_message" class="no_active_display">It is mandatory to choose a score, and write a comment</h5>
             </form>
+            
          {{/unless}}
         {{/if}}
      {{/if}}

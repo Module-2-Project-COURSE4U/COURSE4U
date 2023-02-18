@@ -23,10 +23,16 @@
         src="/images/SVG/LOGO/LOGO.svg"
         alt="course4u logo"
       />
-      
+
       <form class="search_form" method="GET" action="/courses/search">
         <label>Search</label>
         <input id="input_search" type="text" name="title" placeholder="What do you want to learn?"/>
+        {{!-- <div id="search_field" class="no_active_display"></div>
+        <div class="no_active_display">
+          {{#each courses}}
+          <a id='{{this.title}}' class='{{this._id}} card-course'>{{this.title}}</a>
+          {{/each}}
+        </div> --}}
           <span class="btn_close">  <img src="/images/closeBtn.png" alt="Icon close">
         </span>
          <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
@@ -127,7 +133,7 @@
     </footer>
 
     <script src="/script/script.js"></script>
-    <script src="/script/Search.js"></script>
+    {{!-- <script src="/script/search.js"></script> --}}
 
   </body>
 </html>
