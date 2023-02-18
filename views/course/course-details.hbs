@@ -15,10 +15,8 @@
   {{/if}}
 </div>
   {{#if (isAdmin user.role)}}
-    <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-    <form action="/courses/delete/{{course._id}}" method="post">
-      <button class="button_delete" type="submit">Delete course</button>
-    </form>
+    <a class="button_edit" href="/courses/editCourse/{{course._id}}">Edit</a>
+    <a class="button_edit" href="/courses/delete/{{course._id}}">Delete course</a>
   {{else}}
     {{#if user.isPremiumMember}}
       {{#unless enroled}}
