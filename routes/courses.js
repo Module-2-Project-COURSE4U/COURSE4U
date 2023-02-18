@@ -9,7 +9,7 @@ const Offered = require("../models/Offered");
 const Reasons = require("../models/Reasons");
 const User = require("../models/User");
 const { ObjectId } = require("mongodb");
-const { isLoggedIn, isUser, isAdmin } = ("../middleware/adminLoggedIn");
+const { isLoggedIn, isUser, isAdmin } = require("../middleware/adminLoggedIn");
 
 // @desc    Display all courses
 // @route   GET /
