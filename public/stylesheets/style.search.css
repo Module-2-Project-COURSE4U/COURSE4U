@@ -16,7 +16,7 @@
   padding-bottom: 60px;
   color: rgb(63, 62, 62);
 }
-.container {
+.searchContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

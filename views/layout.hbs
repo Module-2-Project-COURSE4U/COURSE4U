@@ -32,58 +32,57 @@
         </span>
          <button type="submit"><img src="/images/search-Icon.png" alt="search icon"></button>
       </form>
-<ul class="menu_nav menu_items">
- {{#if (isUser user.role)}}
-    <li class="active"><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/courses/myCourses">My courses</a></li>
-    <li><a href="/user/profile">Profile</a></li>
-    <li><a href="/auth/logout">Log out</a></li>
-    <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-    {{/if}}
-  {{#if (isAdmin user.role)}}
-   <li class="active"><a href="/">Home</a></li>
-   <li><a href="/user/profile">Profile</a></li> 
-  <li><a href="/about">About</a></li>
-    <li><a href="/courses/newCourse">Add Course</a></li>
-     <li><a href="/auth/logout">Log out</a></li>
-    {{/if}}
-    {{#unless user}}
-    <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/auth/signup">Sign up</a></li>
-    <li><a href="/auth/login">Log in</a></li>
-  {{/unless}}
-</ul>
+      <ul class="menu_nav menu_items">
+      {{#if (isUser user.role)}}
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/courses/myCourses">My courses</a></li>
+          <li><a href="/user/profile">Profile</a></li>
+          <li><a href="/auth/logout">Log out</a></li>
+          <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+          {{/if}}
+        {{#if (isAdmin user.role)}}
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/user/profile">Profile</a></li> 
+        <li><a href="/about">About</a></li>
+          <li><a href="/courses/newCourse">Add Course</a></li>
+          <li><a href="/auth/logout">Log out</a></li>
+          {{/if}}
+          {{#unless user}}
+          <span class="btn_close2"> <img class="btn_close" src="/images/closeBtn.png" alt="Icon close"></span>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/auth/signup">Sign up</a></li>
+          <li><a href="/auth/login">Log in</a></li>
+        {{/unless}}
+      </ul>
 
-  <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
-  <span class="btn_search">
-    <img class="btn_search" src="/images/search-Icon.png" alt="btn search"/>
-  </span>
-</nav>
+      <span class="btn_menu"><img class="btn_menu" src="/images/menu_icon.png" alt="Icon menu" />    </span>
+      <span class="btn_search">
+        <img class="btn_search" src="/images/search-Icon.png" alt="btn search"/>
+      </span>
+    </nav>
 
-{{#unless user.isPremiumMember}}
-<footer class="offerFooter">
-  <div class="offerFooter-top">
-    <div class="h3OfferFooter">
-      <h3 class="h3OfferFooter">Starting at €21.99/month for all courses</h3>
-    </div>
-  </div>
-  <div class="offerFooter-bottom">
-    <div class="btnOfferFooter">
-      <a {{#if user}} href="/checkout" {{else}} href="/auth/signup&subscribe" {{/if}} >Subscribe</a>
-    </div>
-  </div>
-</footer>
-{{/unless}}
+    {{#unless user.isPremiumMember}}
+    <footer class="offerFooter">
+      <div class="offerFooter-top">
+        <div class="h3OfferFooter">
+          <h3 class="h3OfferFooter">Starting at €21.99/month for all courses</h3>
+        </div>
+      </div>
+      <div class="offerFooter-bottom">
+        <div class="btnOfferFooter">
+          <a {{#if user}} href="/checkout" {{else}} href="/auth/signup&subscribe" {{/if}} >Subscribe</a>
+        </div>
+      </div>
+    </footer>
+    {{/unless}}
 
     {{{body}}}
 
     <script src="/script/script.js"></script>
     <script src="/script/Search.js"></script>
 
-  </body>
     <footer class="mainFooter">
         <p class="myFooterText">@2023 Course4U Inc. Todos los derechos reservados.</p>
         <img class="myFooterImage" src="/images/SVG/LOGO/LOGO.svg" alt="course4u logo"/>
@@ -106,6 +105,8 @@
               /></a>
         </div>
     </footer>
+
+  </body>
 
     <script src="/script/script.js"></script>
     {{!-- <script src="/script/dom_details.js"></script> --}}
