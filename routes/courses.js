@@ -44,11 +44,12 @@ router.get("/", async function (req, res, next) {
 // @access  Public
 router.get("/search", async function (req, res, next) {
   const { title } = req.query;
+  const user = req.session.currentUser;
   if (title.length > 0)
     try {
       const regex = new RegExp(title, "i");
       const course = await Course.find({ title: regex }).limit(10);
-      res.render("course/search", { query: title, course });
+      res.render("course/search", { query: title, course, user});
     } catch (error) {
       next(error);
     }
@@ -454,6 +455,7 @@ router.post("/editCourse/:id", isLoggedIn, isAdmin, async (req, res) => {
 /* @route  GET
 // @access Admin*/
 router.post("/delete/:id", isLoggedIn, isAdmin, async (req, res) => {
+  const user = req.session.currentUser;
   const course = await Course.findById(req.params.id);
   if (!course) {
     return res.status(404).send("No se encontró el curso.");
@@ -463,7 +465,6 @@ router.post("/delete/:id", isLoggedIn, isAdmin, async (req, res) => {
       .status(400)
       .send("No se puede borrar un curso que ha sido comprado.");
   }
-  const user = req.session.currentUser;
   try {
     const active = { active: false };
     const delete_course = true;

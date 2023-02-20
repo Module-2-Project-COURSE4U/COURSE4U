@@ -1,7 +1,5 @@
 /***************** myCourse page (list of my courses) ***********/
-h1 {
-  color: rgb(63, 62, 62);
-}
+
 .myCourse {
   display: flex;
   flex-direction: column;
