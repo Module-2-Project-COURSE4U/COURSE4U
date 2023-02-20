@@ -1,0 +1,132 @@
+.searchPage {
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.searchPage h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 60px;
+  color: rgb(63, 62, 62);
+}
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 1000px;
+  top: 60px;
+  gap: 60px;
+  left: calc(50% - 300px);
+}
+
+.searchCard {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 280px;
+  width: 212px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+}
+
+.searchCard h3 {
+  margin: 0px;
+  padding: 0px;
+  width: 90%;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.searchCard img {
+  width: 150px;
+  height: fit-content;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.searchCard:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.bar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+}
+
+.emptybar {
+  background-color: #38598b;
+  width: 115%;
+  height: 100%;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(0, 154, 217);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 154, 217, 1) 0%,
+    rgba(217, 147, 0, 1) 100%,
+    rgba(255, 186, 0, 1) 100%
+  );
+  transition: 0.6s ease-out;
+}
+
+.searchCard:hover .filledbar {
+  width: 173px;
+  transition: 0.4s ease-out;
+}
+
+.searchCard:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
+
+.msnNoCourse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+.msnNoCourse p {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgb(63, 62, 62);
+}
+.msnNoCourse a {
+  background-color: rgb(100, 149, 237);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding-top: 8px;
+  height: 30px;
+  width: 180px;
+}
+.msnNoCourse a:hover {
+  background-color: #38598b;
+}

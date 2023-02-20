@@ -1,5 +1,5 @@
-const search = document.getElementById('input_search')
-const div_search = document.getElementById('select')
+// const search = document.getElementByIdquerySelector('input[id="input_search"]')
+const div_search = document.getElementById('search_field')
 const content = document.querySelectorAll('.card-course')
 
 let content_id = []
@@ -39,7 +39,7 @@ arr_content.forEach(function (elem){
 })
 
 content_title.forEach(function (elem){
-    let text = `<option class=''options>${elem}</option>`
+    let text = `<a options>${elem}</a>`
   div_search.insertAdjacentHTML('beforeend',text)
 })
 let length = 0

@@ -3,130 +3,134 @@
     .svg_process_color {
       width: 100%;
       }
-</style>
-{{!-- <p>{{user.role}}</p> --}}
-<h1>{{course.title}}</h1>
- {{#if (isAdmin user.role)}}
-  <a class="button_edit" href="/courses/editCourse/{{course._id}}">EDIT</a>
-  <form action="/courses/delete/{{course._id}}" method="post">
-    <button class="button_delete" type="submit">Delete course</button>
-  </form>
-{{else}}
-{{#if user.isPremiumMember}}
-  {{#unless enroled}}
-    <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
-  {{/unless}}
+  </style>
+      <div class="iconLeft">
+  <a href="/"><img
+      src="/images/left-arrow.png"
+      alt="icon Left"
+    /></a> 
+    </div>
+<h1 class="courseDetailsH1">{{course.title}}</h1>
+<div class="subheader">
+  {{#if course.offered}}
+    {{#each course.offered}}
+      <p class="offeredBy">Offered by:{{this.place}}</p>
+      <img class="logos" src={{this.logo}} alt={{this.place}} />
+    {{/each}}
   {{/if}}
-{{#unless user.isPremiumMember}}
-  <a href="/auth/checkout" class="my-button">Ir a checkout</a>
-{{/unless}}
+</div>
+  {{#if (isAdmin user.role)}}
+    <a class="button_edit" href="/courses/editCourse/{{course._id}}">Edit</a>
+    <a class="button_edit" href="/courses/delete/{{course._id}}">Delete course</a>
+  {{else}}
+    {{#if user.isPremiumMember}}
+      {{#unless enroled}}
+        <a class="button_enroll"href="/courses/addCourse/{{course._id}}">Enroll course</a>
+      {{/unless}}
+    {{/if}}
+    {{#unless user.isPremiumMember}}
+      <a href="/checkout" class="button_enroll">Ir a checkout</a>
+    {{/unless}}
   {{/if}}
-  <div class="card-featAbout">
-    <div class="card-skillsAbout">
-      <div class="card-info">
-        <p>About: {{course.description}}</p>
-        <p>{{course.subdescription}}</p>
-        {{#each course.list}}
-          <p>{{this}}</p>
-        {{/each}}
-        {{#if course.skills}}
-          <div class="card-skills">
-            <h5>Skills you will learn:</h5>
-            {{#each course.skills}}
-              <p>{{this}}</p>
-            {{/each}}
-            </div>
-        {{/if}}
+
+<div class="card-info">
+  <p class="sectionTitle">About:</p>
+  <p class="description"> {{course.description}}</p>
+  <p class="description"><strong>{{course.subdescription}}</strong></p>
+  <ul>
+  {{#each course.list}}
+    <li class="description">{{this}}</li>
+  {{/each}}
+  </ul>  
+  {{#if course.skills}}
+    <p class="sectionTitle">Skills you will learn:</p>
+    <ul>
+      {{#each course.skills}}
+        <li class="description">{{this}}</li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+<div class="card-features">
+  {{#if course.features}}
+    {{#each course.features}}
+      <div class="groupFeatures">
+        <img class="svg_features" src={{this.svg}} alt={{this.title}}/>
+        <div class="card-featContent">
+          <div class="featuresDescription">{{this.title}}</div>
+          <div class="featuresDescription">{{this.subtitle}}</div>
+        </div>
       </div>
-    </div>
-    <div class="card-features">
-      {{#if course.features}}
-        {{#each course.features}}
-          <div class="imgFeatures">
-            <img class="svg_features" src={{this.svg}} alt={{this.title}}/>
-          </div>
-          <div class="card-featContent">
-            <h4>{{this.title}}</h4>
-            <h5>{{this.subtitle}}</h5>
-          </div>
+    {{/each}}
+  {{/if}}
+</div>
+    {{#if course.content}}
+      <h3>PROGRESS</h3>
+      <div id='div_svg'>
+        <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
+      </div>
+      <div class="navbar_content_title">
+        {{#each course.content}}
+          <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
         {{/each}}
-      {{/if}}
-    </div>
-    {{#if course.offered}}
-      {{#each course.offered}}
-        <div class="card-offered">
-          <p><strong>Offered by:{{this.place}}</strong></p>
-          <img src={{this.logo}} alt={{this.place}} />
-         </div>
+      </div>
+      {{#each course.content}}
+        <div class="div_content no_active_display">
+            <img class="weekImage" src={{this.image}} alt={{this.title}} />
+          <div>
+            <h2>{{this.subtitle}}</h2>
+            <p class="sectionTitle">Duration: {{this.time}}</p>
+            <p class="sectionTitle">{{this.title_description}}</h5>
+            <p class="description">{{this.description_1}}</p>
+            <p class="description">{{this.description_2}}</p>
+            <p class="description">{{this.description_3}}</p>
+            <p class="description">{{this.description_4}}</p>
+          </div>
+        </div>
       {{/each}}
     {{/if}}
-   <div class="card-content">
-     {{#if course.content}}
-        <h3>PROGRESS</h3>
-        <div id='div_svg'>
-          <img id="svg_process_color" class="svg_process_color delay-1" src="/images/SVG/WEB_DEV/Background process modules - skills color.svg"/>
-        </div>
-        <div class="navbar_content_title">
-          {{#each course.content}}
-            <h4 class='title'>{{this.title}} {{this.subtitile}}</h4>
-          {{/each}}
-        </div>
-        {{#each course.content}}
-          <div class="div_content no_active_display">
-            <div>
-              <img width="100px" src={{this.image}} alt={{this.title}} />
-            </div>
-            <div>
-              <h2>{{this.subtitle}}</h2>
-              <p>Duration: {{this.time}}</p>
-              <h5>{{this.title_description}}</h5>
-              <p>{{this.description_1}}</p>
-              <p>{{this.description_2}}</p>
-              <p>{{this.description_3}}</p>
-              <p>{{this.description_4}}</p>
-            </div>
-          </div>
-        {{/each}}
-      {{/if}}
-      {{#if course.reasons}}
-        <div class="card-reasons">
-          <h5>{{course.title_why}}</h5>
-            {{#each course.reasons}}
-              <h6>{{this.subtitle}}</h6>
-              {{#each this.list}}
-                <p>{{this}}</p>
-              {{/each}}
-              <p>{{this.description}}</p>
+
+    {{#if course.reasons}}
+          <br>
+        <div class="sectionTitle">{{course.title_why}}</div>
+          <br>
+          {{#each course.reasons}}
+            <div class="description">{{this.subtitle}}</div>
+            <br>
+            {{#each this.list}}
+              <div class="description">{{this}}</div>
+              <br>
             {{/each}}
-        </div>
-      {{/if}}
-      {{#if review_user}}
-        {{#if success_message}}
-          <h1>Review deleted successfully</h1>
-        {{/if}}
-        <div class="reviews">
-          {{#each review_user}}
-            <form> 
-              <a href="/reviews/delete/{{this._id}}">DELETE</a>
-            </form> 
-            <div class="star-reviews" id={{this.stars}}></div>
-              <p><strong>{{this.username.username}}</strong>: 
-              {{this.comment}}.   
-          {{/each}}
-        </div>  
-      {{/if}}
-      {{#if reviews}}
-        <div class="reviews">
-        {{#each reviews}}
-          <div>
-            <p><strong>{{this.username.username}}</strong>:
-            {{this.comment}}. Stars:
-            {{this.stars}}/5</p>
-            <div class="star-reviews" id={{this.stars}}></div>
-          </div>
+            <div class="description">{{this.description}}</div>
+            <br>
         {{/each}}
-        </div>
+    {{/if}}
+      {{#if review_user}}
+      {{#if success_message}}
+        <h1>Review deleted successfully</h1>
       {{/if}}
+      <div class="reviews">
+        {{#each review_user}}
+        <form class="reviewDelete"> 
+          <a href="/reviews/delete/{{this._id}}">Delete</a>
+        </form> 
+        <p><strong>{{this.username.username}}</strong>: 
+        {{this.comment}}.</p>
+         <div class="star-reviews" id={{this.stars}}></div>
+      </div>       
+        {{/each}}
+    
+  {{/if}}
+   {{#if reviews}}
+   <div class="reviews">
+    {{#each reviews}}
+      <p><strong>{{this.username.username}}</strong>:
+        {{this.comment}}
+       <div class="star-reviews" id={{this.stars}}>
+    </div> 
+    {{/each}}
+   </div>
+  {{/if}}
       {{#if user}}
         {{#if enroled}}
           {{#unless review_user}}
@@ -139,17 +143,19 @@
                 <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_4'/>
                 <img class="star" src="/images/SVG/REVIEWS/Navy-blue.svg" alt='star_5'/>
               </div>
-              <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5"/>
-              <label>Comment:</label>
-              <input type="text" placeholder="I really liked this course" name="comment"/>
-              <button type="submit">Add review</button>
+              <input class="no_active_display" type="number" placeholder="5" name="stars" min="1" max="5" required="true"/>
+              <label>Comment</label>
+              <input type="text" placeholder="I really liked this course" name="comment" required="true"/>
+              <button  type="submit">Add review</button>
+              <h5 style=color:red id="error_message" class="no_active_display">It is mandatory to choose a score, and write a comment</h5>
             </form>
+            
          {{/unless}}
         {{/if}}
      {{/if}}
     </div>
   </div>
 </div>
-
+</div>
 
 <script src="/script/dom_details.js"></script>

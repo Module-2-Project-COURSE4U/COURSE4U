@@ -1,22 +1,24 @@
 <div class="searchPage">
-<h3>RESULTS by: {{query}}</h3>
-<div class="searchContainer">
-{{#if course}}  
-  {{#each course}}
-  <div class="contentSearch"></div>
-   <div class="searchCard {{this.title}}" id= '{{_id}}'>
-      <h4>{{this.title}}</h4>
-      <img width="150px" src={{this.image}} alt={{this.title}} />
-      <p>{{truncate this.description 50}}...</p>
+  <h3>RESULTS by: {{query}}</h3>
+  <div class="searchcontainer">
+    {{#if course}}
+      {{#each course}}
+        <div class="searchCard {{this.title}}" id="{{_id}}">
+          <div class="bar">
+            <div class="emptybar"></div>
+            <div class="filledbar"></div>
+          </div>
+          <h3 class="title">{{this.title}}</h3>
+          <img src="{{this.image}}" alt="{{this.title}}" />
+        </div>
+      {{/each}}
+    {{else}}
+    <div class="msnNoCourse">
+      <p>Sorry, no courses found by {{query}}. Try again:</p>
+      <a href="/courses">go back to courses</a>
     </div>
-    
-  {{/each}}
+    {{/if}}
   </div>
-{{else}}
-  <p>Sorry, no courses found by {{query}}. Try again:</p>
-  <a href="/courses">go back to courses</a>
-{{/if}}
-</div>
 </div>
 
 <script src="/script/courseView.js"></script>
