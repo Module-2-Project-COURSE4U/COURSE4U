@@ -4,7 +4,7 @@
 
 COURSE4u is a state-of-the-art online learning platform developed by Monica Camargo and Andrea García. It provides users with a comprehensive and dynamic learning experience, offering the ability to browse, explore, and register for courses, as well as add courses to their favorites and leave reviews. COURSE4u is revolutionizing the world of online education, and we invite you to join our community of learners today and take your education to the next level!
 
-<img src="/images/course4uscreenshot.png">
+<img src="./public/images/course4uscreenshot.png">
 
 ---
 
@@ -322,36 +322,36 @@ const featuresSchema = new Schema(
 
 ## Routes
 
-|Name---------------------|Method-------|Endpoints---------------------------|Protected-------------|Redirects
+|Name---------------------------|Method-------------|Endpoints---------------------------|Protected-------------|Redirects
 				
-Home	                    |GET	        | "/"		
-About	                    |GET	        |/about		 
-Login	                    |GET	        |/auth/login               	         |No	                   |/courses
-Login	                    |POST	        |/auth/login	                       |No	
-Logout	                  |GET	        |/auth/logout	                       |Yes	
-Login google	            |GET	        |/auth/google/callback	             |No	
-Signup	                  |GET	        |/auth/signup	                       |No	
-Signup	                  |GET	        |/auth/signup	                       |No	
-User Profile	            |GET	        |/user/profile	                     |Yes	
-Edit password	            |GET	        |/user/profile/edit	                 |Yes	                   |/user/profile
-Edit password	            |POST	        |/user/profile/edit	                 |Yes	
-edit photo	              |GET	        |/user/profile/editPhoto         	   |Yes	
-edit photo	              |POST	        |/user/profile/editPhoto	           |Yes           	       |/user/profile
-Delete photo	            |GET	        |/user/profile/deletePhoto	         |Yes	                   |/user/profile
-create review	            |POST	        |/reviews/newReview/:courseId	       |Yes	                   |/courses/course-details
-Delete review	            |GET	        |/reviews/delete/:id	               |yes	                   |/courses
-Search	                  |GET	        |/courses/search	No	
-Course details	          |GET	        |/courses/course-details/:id	       |Yes	
-Create new course	        |GET	        |/courses/newCourse	                 |Yes Admin	
-Create new course	        |POST	        |/courses/newCourse	                 |Yes Admin	             |/courses
-Add course to my courses	|GET	        |/addCourse/:courseId	               |Yes            	       |/courses/myCourses
-My courses	              |GET	        |/courses/myCourses	                 |Yes user	
-View a specific course	  |GET	        |/viewMyCourses	                     |Yes user	
-Edit Course 	            |GET	        |/courses/editCourse/:id	           |Yes Admin	
-Edit Course 	            |POST	        |/courses/editCourse/:id	           |Yes Admin	             |/courses
-Delete course	            |POST	        |/courses/delete/:id	               |Yes Admin	             |/course/courseView
-checkout payment	        |GET	        |/checkout	                         |Yes 	
-checkout payment	        |POST	        |/checkout	                         |Yes	                     "/"
+|Home---------------------------|GET	              | "/"		                             |No
+|About	                        |GET	              |/about		                           |No
+|Login	                        |GET	              |/auth/login               	         |No	                   |/courses
+|Login	                        |POST	              |/auth/login	                       |No	
+|Logout	                        |GET	              |/auth/logout	                       |Yes	
+|Login google	                  |GET	              |/auth/google/callback	             |No	
+|Signup	                        |GET	              |/auth/signup	                       |No	
+|Signup	                        |GET	              |/auth/signup	                       |No	
+|User Profile	                  |GET	              |/user/profile	                     |Yes	
+|Edit password	                |GET	              |/user/profile/edit	                 |Yes	                   |/user/profile
+|Edit password	                |POST	              |/user/profile/edit	                 |Yes	
+|edit photo	                    |GET	              |/user/profile/editPhoto         	   |Yes	
+|edit photo	                    |POST	              |/user/profile/editPhoto	           |Yes           	       |/user/profile
+|Delete photo	                  |GET	              |/user/profile/deletePhoto	         |Yes	                   |/user/profile
+|create review	                |POST	              |/reviews/newReview/:courseId	       |Yes	                   |/courses/course-details
+|Delete review	                |GET	              |/reviews/delete/:id	               |yes	                   |/courses
+|Search	                        |GET	              |/courses/search	No	
+|Course details	                |GET	              |/courses/course-details/:id	       |Yes	
+|Create new course	            |GET	              |/courses/newCourse	                 |Yes Admin	
+|Create new course	            |POST	              |/courses/newCourse	                 |Yes Admin	             |/courses
+|Add course to my courses	      |GET	              |/addCourse/:courseId	               |Yes            	       |/courses/myCourses
+|My courses	                    |GET	              |/courses/myCourses	                 |Yes user	
+|View a specific course	        |GET	              |/viewMyCourses	                     |Yes user	
+|Edit Course 	                  |GET	              |/courses/editCourse/:id	           |Yes Admin	
+|Edit Course 	                  |POST	              |/courses/editCourse/:id	           |Yes Admin	             |/courses
+|Delete course	                |POST	              |/courses/delete/:id	               |Yes Admin	             |/course/courseView
+|checkout payment	              |GET	              |/checkout	                         |Yes 	
+|checkout payment	              |POST	              |/checkout	                         |Yes	                     "/"
 
 ---
 
