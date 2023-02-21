@@ -316,8 +316,10 @@ const featuresSchema = new Schema(
     description_4:String,
 })
 
----
+```
+
 ## Routes
+
 
 | Name                           | Method | Endpoints                          | Protected | Redirects |
 |--------------------------------|--------|-----------------------------------|-----------|-----------|
@@ -350,7 +352,7 @@ const featuresSchema = new Schema(
 | Checkout payment               | GET    | "/checkout"                       | Yes       |           |
 | Checkout payment               | POST   | "/checkout"                       | Yes       | "/"       |
 
----
+
 ## Useful links
 
 - [Github Repo](https://github.com/Module-2-Project-COURSE4U/COURSE4U)
@@ -358,4 +360,3 @@ const featuresSchema = new Schema(
 - [Deployed version](https://course4u.fly.dev/courses)
 - [Presentation slides](https://1drv.ms/p/s!Akm3TPUfj8PLhmOWcd6_o-DQ-JKr?e=zK0Nfy)
 
----
