@@ -1,20 +1,18 @@
 <div class="profilePage">
-  <div class="iconMessage">
-  <a href="/"><img
-      src="/images/left-arrow.png"
-      alt="icon Left"
-    /></a>  
-  
-     <h2>MY ACCOUNT</h2>
-       </div> 
-    <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl">
-  <div class="card-profile">
-  <h1>{{user.username}}</h1>
-  {{!-- <h2>Email: {{user.email}}</h2> --}}
-  <div class="editBtn">
-    <a href="/user/profile/edit">Change password</a>
-    <a href="/user/profile/editPhoto">Edit profile picture</a>
+  <div class="iconLeft">
+    <a href="/"><img src="/images/left-arrow.png" alt="icon Left" /></a>
   </div>
+  <div class="profileH2">
+    <h2>MY ACCOUNT</h2>
+  </div>
+  <img src="{{user.imageUrl}}" class="card-img-profile" alt="imageUrl" />
+  <div class="card-profile">
+    <h1>{{user.username}}</h1>
+    {{!-- <h2>Email: {{user.email}}</h2> --}}
+    <div class="editBtn">
+      <a href="/user/profile/edit">Change password</a>
+      <a href="/user/profile/editPhoto">Edit profile picture</a>
+    </div>
   </div>
 </div>
 <script src="/script.js"></script>
