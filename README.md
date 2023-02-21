@@ -319,9 +319,9 @@ const featuresSchema = new Schema(
     description_4:String,
 })
 
----
 
-## Routes
+
+##Routes
 
 |Name---------------------------|Method-------------|Endpoints---------------------------|Protected-------------|Redirects
 				
@@ -354,8 +354,8 @@ const featuresSchema = new Schema(
 |checkout payment	              |GET	              |/checkout	                         |Yes 	
 |checkout payment	              |POST	              |/checkout	                         |Yes	                     "/"
 
----
-## Useful links
+
+ ##Useful links
 
 - [Github Repo](https://github.com/Module-2-Project-COURSE4U/COURSE4U)
 - [Trello kanban](https://github.com/orgs/Module-2-Project-COURSE4U/projects/1/views/1?layout=board)
