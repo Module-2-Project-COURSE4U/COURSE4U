@@ -2,7 +2,8 @@
 
 ## Description
 
-COURSE4u is a state-of-the-art online learning platform developed by Monica Camargo and Andrea García. It provides users with a comprehensive and dynamic learning experience, offering the ability to browse, explore, and register for courses, as well as add courses to their favorites and leave reviews. COURSE4u is revolutionizing the world of online education, and we invite you to join our community of learners today and take your education to the next level!
+COURSE4u is a state-of-the-art online learning platform developed by Monica Camargo and Andrea García. It provides users with a comprehensive and dynamic learning experience, offering the ability to browse, explore (search), and subscribe as a premium member for courses, as well as add courses to their Account and leave reviews. Course4u also provides the admin interface that can create new courses, edit current ones, and delete them. 
+<img src="./public/images/logo.png">
 
 <img src="./public/images/course4uscreenshot.png">
 

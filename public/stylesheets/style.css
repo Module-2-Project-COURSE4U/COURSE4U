@@ -21,7 +21,8 @@
   --h4: rgb(63, 62, 62);
   --homepage-first-container: rgb(173, 206, 234);
 }
-html, body {
+html,
+body {
   font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
   overflow-x: hidden;
@@ -169,7 +170,7 @@ input::placeholder {
   .menu_items li {
     border-radius: 3px;
     width: 80px;
-    align-items:flex-start;
+    align-items: flex-start;
   }
   .menu_items li a {
     text-decoration: none;
@@ -177,12 +178,11 @@ input::placeholder {
     font-weight: 800;
     display: block;
     color: rgb(92, 92, 92);
-    
   }
   .search_form {
     width: 30%;
   }
-  
+
   .app-logo {
     padding-left: 16px;
     width: 14%;
@@ -459,17 +459,17 @@ input::placeholder {
     display: none;
   }
 
-.myFooterImage {
-  margin-left: 40%;
-  width: 100px;
-}
+  .myFooterImage {
+    margin-left: 40%;
+    width: 100px;
+  }
 
-.facebook-logo,
-.instagram-logo,
-.linkedin-logo,
-.twitter-logo {
-  display: none;
-}
+  .facebook-logo,
+  .instagram-logo,
+  .linkedin-logo,
+  .twitter-logo {
+    display: none;
+  }
 }
 
 /************************ FOOTER ADVERTISEMENT ******/
@@ -552,7 +552,7 @@ input::placeholder {
   }
 }
 
-/* signup, checkout and login page*/
+/********* signup, checkout and login page************/
 
 .checkoutPage {
   width: 20%;
@@ -689,15 +689,15 @@ input::placeholder {
   object-fit: cover;
 }
 .iconMessage a {
- padding-top: 15px;
+  padding-top: 15px;
 }
 
 .iconMessage h1 {
   font-size: 1.2rem;
   color: rgb(92, 92, 92);
   margin-right: 50px;
- text-align: center;
- padding-top: 5px;
+  text-align: center;
+  padding-top: 5px;
 }
 
 .container {
@@ -713,7 +713,7 @@ input::placeholder {
 
 .signup-form form {
   width: 90%;
-  min-height:fit-content;
+  min-height: fit-content;
   margin: 0 auto;
   padding: 30px;
   background-color: #f5f9fa;
@@ -792,7 +792,6 @@ input[type="password"]:focus {
 }
 
 @media screen and (max-width: 1080px) {
-
   .signupHeader {
     min-height: 100vh;
     padding-top: 60px;
@@ -813,7 +812,7 @@ input[type="password"]:focus {
     width: 250px;
     height: 150px;
   }
-.container {
+  .container {
     padding-top: 5px;
   }
 }
@@ -831,23 +830,6 @@ input[type="password"]:focus {
     margin: auto;
   }
 
-  .iconMessage {
-    padding-top: 50px;
-  }
-
-  .iconMessage img {
-    width: 25px;
-    height: 25px;
-  }
-
-  .iconMessage a {
-   padding-top: 20px;
-  }
-  
-  .iconMessage h2 {
-    font-size: 0.9rem;
-    padding-top: 10px;
-  }
   #imagen img {
     width: 250px;
     height: 150px;
@@ -905,11 +887,12 @@ input[type="password"]:focus {
   font-size: 1.3rem;
   text-align: center;
   color: rgb(82, 81, 81);
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .profilePage h1 {
-  font-size: 2rem;
+  font-size: 1.3rem;
   text-align: center;
   color: rgb(92, 92, 92);
 
@@ -930,9 +913,9 @@ input[type="password"]:focus {
   display: inline-block;
   margin: 20px;
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 40px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .card-profile {
@@ -942,7 +925,6 @@ input[type="password"]:focus {
   align-items: center;
   height: 250px;
   width: 100%;
-  padding: 0.35em 1.2em;
   margin: 0px;
 }
 
@@ -982,49 +964,49 @@ input[type="password"]:focus {
     height: auto;
   }
 
-.profilePage h1 {
-  font-size: 16px;
-}
-.profilePage h2 {
-  font-size: 14px;
-}
+  .profilePage h1 {
+    font-size: 16px;
+  }
+  .profilePage h2 {
+    font-size: 14px;
+  }
 
-.profilePage {
-  padding-top: 70px;
-  bottom: 0px
-}
+  .profilePage {
+    padding-top: 70px;
+    bottom: 0px;
+  }
 
-.iconLeft {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  margin-left: 20px;
-}
+  .iconLeft {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 20px;
+  }
 
-.iconLeft img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-}
-.iconLeft a {
- padding-top: 15px;
-}
+  .iconLeft img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+  .iconLeft a {
+    padding-top: 15px;
+  }
 
-.editbtn a {
+  .editbtn a {
     font-size: 0.8em;
     width: 70%;
- }
+  }
 
-.card-img-profile {
-  display: inline-block;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin-bottom: 0px;
+  .card-img-profile {
+    display: inline-block;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0px;
+  }
 }
-}
-/* edit password profile page */
+/**************** edit password profile page ***********************/
 
 .formEditPass {
   width: 25%;
@@ -1139,7 +1121,7 @@ input[type="password"]:focus {
   }
 }
 
-/* edit photo (profile page)*/
+/************* edit photo (profile page)*********************/
 
 .formEditPhoto {
   width: 25%;
