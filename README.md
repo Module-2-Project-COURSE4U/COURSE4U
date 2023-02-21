@@ -355,13 +355,11 @@ const featuresSchema = new Schema(
 |checkout payment	              |POST	              |/checkout	                         |Yes	                     "/"
 
 ---
-
 ## Useful links
 
-- [Github Repo]("https://github.com/Module-2-Project-COURSE4U/COURSE4U")
-- [Trello kanban]("https://github.com/orgs/Module-2-Project-COURSE4U/projects/1/views/1?layout=board")
-- [Deployed version]("https://course4u.fly.dev/courses")
-- [Presentation slides]("https://1drv.ms/p/s!Akm3TPUfj8PLhmOWcd6_o-DQ-JKr?e=zK0Nfy")
+- [Github Repo](https://github.com/Module-2-Project-COURSE4U/COURSE4U)
+- [Trello kanban](https://github.com/orgs/Module-2-Project-COURSE4U/projects/1/views/1?layout=board)
+- [Deployed version](https://course4u.fly.dev/courses)
+- [Presentation slides](https://1drv.ms/p/s!Akm3TPUfj8PLhmOWcd6_o-DQ-JKr?e=zK0Nfy)
 
 
-```
