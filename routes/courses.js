@@ -421,6 +421,37 @@ router.get("/editCourse/:id", isLoggedIn, isAdmin, (req, res) => {
     });
 });
 
+//@desc    Remove course by id but it does not delete from User Account
+/* @route  GET
+// @access Admin*/
+router.get("/delete/:id", async (req, res) => {
+  const user = req.session.currentUser;
+  const course = await Course.findById(req.params.id);
+  if (!course) {
+    return res.status(404).send("No se encontró el curso.");
+  }
+  try {
+    const active = { active: false };
+    const delete_course = true;
+    await Course.findByIdAndUpdate(req.params.id, active);
+    const courses = await Course.find({ active: true }).sort({ title: 1 });
+    const truncatedCourses = courses.map((course) => {
+      course.description = course.description
+        .split("\n")
+        .slice(0, 100)
+        .join("\n");
+      return course;
+    });
+    res.render("course/courseView", {
+      courses: truncatedCourses,
+      user,
+      delete_course,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 //@desc    edit course details  by Id
 /* @route  POST 
 /* @access Admin*/
@@ -448,42 +479,6 @@ router.post("/editCourse/:id", isLoggedIn, isAdmin, async (req, res) => {
     res.redirect("/courses");
   } catch (err) {
     res.redirect(`/course-details/${course._id}`);
-  }
-});
-
-//@desc    Remove course by id but it does not delete from User Account
-/* @route  GET
-// @access Admin*/
-router.post("/delete/:id", isLoggedIn, isAdmin, async (req, res) => {
-  const user = req.session.currentUser;
-  const course = await Course.findById(req.params.id);
-  if (!course) {
-    return res.status(404).send("No se encontró el curso.");
-  }
-  if (course.purchased) {
-    return res
-      .status(400)
-      .send("No se puede borrar un curso que ha sido comprado.");
-  }
-  try {
-    const active = { active: false };
-    const delete_course = true;
-    await Course.findByIdAndUpdate(req.params.id, active);
-    const courses = await Course.find({ active: true }).sort({ title: 1 });
-    const truncatedCourses = courses.map((course) => {
-      course.description = course.description
-        .split("\n")
-        .slice(0, 100)
-        .join("\n");
-      return course;
-    });
-    res.render("course/courseView", {
-      courses: truncatedCourses,
-      user,
-      delete_course,
-    });
-  } catch (error) {
-    next(error);
   }
 });
 
